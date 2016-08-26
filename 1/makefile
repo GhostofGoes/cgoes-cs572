@@ -1,0 +1,25 @@
+BIN  = 1
+CC   = g++
+SRCS = $(BIN).cpp $(BIN).h # rand.h rand.cpp
+LIBS = -lm $(BIN).cpp # rand.cpp
+CCFLAGS = -g -std=gnu++11
+
+$(BIN): $(SRCS)
+	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o $(BIN)
+
+all:    
+	touch $(SRCS)
+	make
+
+clean:
+	rm -f $(BIN) $(BIN).tar *~ $(BIN).output
+
+tar:
+	tar -cvf $(BIN).tar $(SRCS) makefile
+	
+test: $(SRCS)
+	$(CC) $(CCFLAGS) -Wall $(OBJS) $(LIBS) -o $(BIN)
+	
+full-test:
+	touch $(SRCS)
+	make test
