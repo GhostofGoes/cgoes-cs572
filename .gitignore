@@ -1,6 +1,7 @@
 *.vagrant
 *.vscode
 *.idea
+*.output
 
 # Compiled Object files
 *.slo
