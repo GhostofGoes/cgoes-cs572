@@ -1,8 +1,7 @@
+// Copyright Robert Heckendorn
+
 #ifndef BITHELPERSH
 #define BITHELPERSH
-
-// #define Bit64 unsigned long long int
-// #define Bit32 unsigned int
 
 typedef unsigned long long int Bit64;
 typedef unsigned int Bit32;

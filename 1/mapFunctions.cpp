@@ -1,5 +1,7 @@
+// Copyright Robert Heckendorn
+
 // map value from [low1, high2] -> [low2, high2]
-//
+// This basically maps from range of, say, [0,10] to [0,1023]
 double map(double value, double low1, double high1, double low2, double high2) {
     double denom, a, b;
 

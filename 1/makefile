@@ -1,8 +1,8 @@
 BIN  = localsearch
 CC   = g++
-SRCS = $(BIN).cpp $(BIN).h rand.h rand.cpp bitHelpers.h bitHelpers.cpp
-LIBS = -lm $(BIN).cpp rand.cpp bitHelpers.cpp mapFunctions.cpp
-CCFLAGS = -g -O3 # -std=gnu++11
+SRCS = $(BIN).cpp rand.h rand.cpp bitHelpers.h bitHelpers.cpp # $(BIN).h
+LIBS = -lm $(BIN).cpp rand.cpp bitHelpers.cpp
+CCFLAGS = -O3 # -g -Ofast -std=gnu++11
 
 $(BIN): $(SRCS)
 	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o $(BIN)
