@@ -46,12 +46,12 @@ int main( int argc, char *argv[] ) {
 		cout << bitFlip(test) << endl;
 	}
 	else {
-		for( int i = 0; i < 1000; i++ ) {  // Used to average behavior of program across many runs
-			Bit64 genotype = randULL();  // Represents chromosome, 20 Least-signifigant Bits (LSB) of UUL
-			Bit32 x = 0;
-			Bit32 y = 0;
-			Bit64 xprime = 0;
-			Bit64 yprime = 0;
+		for( int i = 0; i < 1000; i++ ) { // Used to average behavior of program across many runs
+			Bit64 genotype = randULL(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
+			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
+			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
+			Bit64 xprime = 0; // Used to represent decimal value of X for fitness function
+			Bit64 yprime = 0; // See above
 			double currentFitness = 0.0; // Current fitness to compare against best
 			double bestFitness = 0.0; // Best fitness found
 			int numImproveMoves = 0; // Number of times fitness was improved
@@ -79,9 +79,13 @@ int main( int argc, char *argv[] ) {
 
 				// Evaluate fitness
 				currentFitness = fitness(xprime, yprime);
+
+				// If the fitness we found is better, save it's genotype, fitness, and iterations taken
 				if( currentFitness > bestFitness ) {
 					bestFitness = currentFitness;
 					numFitEvalsBest = fitEvals;
+					fit_xprime = xprime;
+					fit_yprime = yprime;
 					numImproveMoves++;
 				}
 				
@@ -107,7 +111,26 @@ Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
 }
 
 Bit64 sdIncDec( Bit64 chromosome ) {
+	Bit32 x = chromosome >> 10;
+	Bit32 y = chromosome & ((1ULL << 10) - 1);
+	Bit64 newChromosome = 0;
+	int change = randMod(4); // 0 = x + inc, 1 = x + dec, 2 = y + inc, 3 = y + dec
+
+	if( change == 0 ) { // Increment X
+
+	} else if( change == 1 ) { // Decrement X
+
+	} else if( change == 2 ) { // Increment Y
+
+	} else if( change == 3 ) { // Decrement Y
+
+	} else 
+		cerr << "Bad random value in sdIncDec" << endl;
 	
+	// Recombine modified X and Y
+	newChromosome = x << 10;
+	newChromosome |= y;
+	return newChromosome;
 }
 
 Bit32 extractX( Bit64 genome ) {
@@ -129,7 +152,7 @@ Bit32 extractY( Bit64 genome ) {
 // Function Copyright Robert Heckendorn
 double map(double value, double low1, double high1, double low2, double high2) {
     double denom, a, b;
-
+	
     denom = high1 - low1;
     a = (high2 - low2)/denom;
     b = (high1 * low2 - high2 * low1)/denom;
