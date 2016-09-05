@@ -8,7 +8,6 @@
 #include "localSearchLib.h"
 int encoding, mutation;
 
-
 inline double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
 inline Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
 inline Bit64 bitFlip( Bit64 chromosome );  // Mutation randomly flips exactly one bit in the 20 bit chromosome
@@ -51,13 +50,13 @@ int main( int argc, char *argv[] ) {
 		Bit64 temp = randomGenotype();
 		printBinary(temp);
 		cout << temp << endl;
-		
 	}
 	else {
 		int runs = 1000;
 		if(TESTING) runs = 1;
 		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
 			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
+			if(TESTING) printBinary(genotype);
 			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
 			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
 			double xprime = 0; // Used to represent decimal value of X for fitness function
@@ -68,27 +67,26 @@ int main( int argc, char *argv[] ) {
 			int numFitEvalsBest = 0; // Number of fitness evaluations it took to get best fitness
 			double fit_xprime = 0.0;
 			double fit_yprime = 0.0;
-			
-			if(TESTING) printBinary(genotype);
+
 			int evals = 10000;
 			if(TESTING) evals = 5;
 			for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
 				// Mutate: 0 = random jump, 1 = bit flip, 2 = int/dec
 				if( mutation == 0 ) {
-					x = randomJump(genotype, 10);
-					y = randomJump(genotype, 10);
+					genotype = randomJump(genotype, 20);
 				} else if( mutation == 1 ) {
-					x = bitFlip(genotype);
-					y = bitFlip(genotype);
+					genotype = bitFlip(genotype);
 				} else if( mutation == 2 ) {
-					x = sdIncDec(genotype);
-					y = sdIncDec(genotype);
+					genotype = sdIncDec(genotype);
 				}
 
-				// Convert binary mutations to decimal for fitness evaluation
+				// Genotype to phenotype mapping
+				x = extractX(genotype);
+				y = extractY(genotype);
 				xprime = map(double(x), 0.0, 1023.0, 0.0, 10.0); 	// x range = [0, 10]
 				yprime = map(double(y), 0.0, 1023.0, -10.0, 10.0); 	// y range = [-10, 10]
 				printf("Pre-eval:\txprime: %f\typrime: %f\n", xprime, yprime);
+
 				// Evaluate fitness
 				currentFitness = fitness(xprime, yprime);
 
@@ -100,7 +98,6 @@ int main( int argc, char *argv[] ) {
 					fit_yprime = yprime;
 					numImproveMoves++;
 				}
-				
 			} // end fitness eval loop
 
 			// Output results of the run
@@ -125,6 +122,7 @@ inline Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
 }
 
 Bit64 sdIncDec( Bit64 chromosome ) {
+	// TODO: issue with grey encoding here!
 	Bit32 x = chromosome >> 10;
 	Bit32 y = chromosome & ((1ULL << 10) - 1);
 	Bit64 newChromosome = 0;
