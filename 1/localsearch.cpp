@@ -5,25 +5,32 @@
 // Description:	Assignment 1 - Local Search
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 
+// #define TESTING 1
+/*
+#include <string>
+#include <bitset>
+
 #include <iostream>
+#include <stdio.h>
 #include "rand.h"
 #include "bitHelpers.h"
-#define TESTING 1
-
+*/
+#include "localSearchLib.h"
+int encoding, mutation;
+/*
 using namespace std;
 typedef unsigned long long int Bit64;
 typedef unsigned int Bit32;
 int encoding = -1, mutation = -1;
+*/
 
-double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
-Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
-Bit64 bitFlip( Bit64 chromosome );  // Mutation randomly flips exactly one bit in the 20 bit chromosome
+inline double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
+inline Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
+inline Bit64 bitFlip( Bit64 chromosome );  // Mutation randomly flips exactly one bit in the 20 bit chromosome
 Bit64 sdIncDec( Bit64 chromosome ); // Mutation increments or decrements one of the fields of 10 bits fields for x or for y (4 possible changes/neighbors)
+
 Bit32 extractX( Bit64 genome ); // Gets x chromosome from the genome
 Bit32 extractY( Bit64 genome ); // Gets y chromosome from the genome
-double convertX( Bit64 binaryX );
-double convertY( Bit64 binaryY );
-double map(double value, double low1, double high1, double low2, double high2);
 
 int main( int argc, char *argv[] ) {
 	if(argc < 3) { // so we don't segfault on something silly like forgetting arguments lol
@@ -36,17 +43,30 @@ int main( int argc, char *argv[] ) {
 	
 	if(TESTING) {
 		cout << fitness(5, 1) << endl;
-		Bit64 test = pow(2, 20) - 1; // 2^20
+		Bit64 test = 1048575; // 2^20 - 1, which is first 20 bits set to 1
 		//test = bitGray(test);
 		Bit64 x = extractX(test);
 		Bit64 y = extractY(test);
 		cout << map(double(x), 0.0, 1023.0, 0.0, 10.0) << endl;
 		cout << map(double(y), 0.0, 1023.0, -10.0, 10.0) << endl;
-		cout << randomJump(test, 20) << endl;
-		cout << bitFlip(test) << endl;
+		printBinary(test);
+		printBinary(x);
+		printBinary(y);
+		Bit64 randJump = randomJump(test, 20);
+		Bit64 bflip = bitFlip(test);
+		Bit64 sd = sdIncDec(test);
+		printf("randJump(%llu): %llu\n", test, randJump);
+		printBinary(randJump);
+		printf("bitFlip(%llu): %llu\n", test, bflip);
+		printBinary(bflip);
+		printf("sdIncDec(%llu): %llu\n", test, sd);
+		printBinary(sd);
+		
 	}
 	else {
-		for( int i = 0; i < 1000; i++ ) { // Used to average behavior of program across many runs
+		int runs = 1000;
+		if(TESTING) runs = 1;
+		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
 			Bit64 genotype = randULL(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
 			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
 			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
@@ -58,9 +78,11 @@ int main( int argc, char *argv[] ) {
 			int numFitEvalsBest = 0; // Number of fitness evaluations it took to get best fitness
 			double fit_xprime = 0.0;
 			double fit_yprime = 0.0;
-
 			
-			for( int fitEvals = 0; fitEvals < 10000; fitEvals++ ) { // Fitness evaluation loop
+			if(TESTING) printBinary(genotype);
+			int evals = 10000;
+			if(TESTING) evals = 5;
+			for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
 				// Mutate: 0 = random jump, 1 = bit flip, 2 = int/dec
 				if( mutation == 0 ) {
 					x = randomJump(genotype, 10);
@@ -90,24 +112,25 @@ int main( int argc, char *argv[] ) {
 				}
 				
 			} // end fitness eval loop
+
+			// Output results of the run
 			cout << numFitEvalsBest << numImproveMoves << fit_xprime << fit_yprime << bestFitness << endl;
 		} // end program loop
 	}
 	return 0;
 } // end main
 
-double fitness( double x, double y ) {
+inline double fitness( double x, double y ) {
 	return 1.0 / ( pow((x - 1.0), 2) + pow((y - 3.0), 2) + 1.0 );
 }
 
-
-Bit64 randomJump( Bit64 chromosome, int size ) {
+inline Bit64 randomJump( Bit64 chromosome, int size ) {
 	return randMask((1ULL << size) - 1); // Mask is number of bits in chromosome 
 }
 
-Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
-	int randBit = randMod(20) + 1; // We want range to be [1, 20] not [0, 19], hence the +1
-	return chromosome ^ (1ULL << randBit); // Flip a random bit in the chromosome
+inline Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
+	// int randBit = randMod(20) + 1; // We want range to be [1, 20] not [0, 19], hence the +1
+	return chromosome ^ (1ULL << (randMod(20) + 1)); // Flip a random bit in the chromosome
 }
 
 Bit64 sdIncDec( Bit64 chromosome ) {
@@ -115,21 +138,25 @@ Bit64 sdIncDec( Bit64 chromosome ) {
 	Bit32 y = chromosome & ((1ULL << 10) - 1);
 	Bit64 newChromosome = 0;
 	int change = randMod(4); // 0 = x + inc, 1 = x + dec, 2 = y + inc, 3 = y + dec
-
-	if( change == 0 ) { // Increment X
-
-	} else if( change == 1 ) { // Decrement X
-
-	} else if( change == 2 ) { // Increment Y
-
-	} else if( change == 3 ) { // Decrement Y
-
-	} else 
-		cerr << "Bad random value in sdIncDec" << endl;
+	// printf("OLD\t chromo: %llu \t x: %d \t y: %d \n", chromosome, x, y);
+	if( change == 0 ) { // Increment X (MSD of genotype)
+		if( x == 1023 ) x = 0; // 1024 == 2^10 (or 2**10 in python its handy)
+		else x += 1;
+	} else if( change == 1 ) { // Decrement X (MSD of genotype)
+		if( x == 0 ) x = 1023;
+		else x -= 1;
+	} else if( change == 2 ) { // Increment Y (LSD of genotype)
+		if( y == 1023 ) y = 0; 
+		else y += 1;
+	} else if( change == 3 ) { // Decrement Y (LSD of genotype)
+		if( y == 0 ) y = 1023;
+		else y -= 1;
+	}
 	
 	// Recombine modified X and Y
 	newChromosome = x << 10;
 	newChromosome |= y;
+	// printf("NEW\t chromo: %llu \t x: %d \t  y: %d \n", newChromosome, x, y);
 	return newChromosome;
 }
 
@@ -145,16 +172,4 @@ Bit32 extractY( Bit64 genome ) {
 	if( encoding == 1 ) // Grey code mapping
 		y = bitDeGray(y);
 	return y;
-}
-
-// map value from [low1, high2] -> [low2, high2]
-// This basically maps from range of, say, [0,10] to [0,1023]
-// Function Copyright Robert Heckendorn
-double map(double value, double low1, double high1, double low2, double high2) {
-    double denom, a, b;
-	
-    denom = high1 - low1;
-    a = (high2 - low2)/denom;
-    b = (high1 * low2 - high2 * low1)/denom;
-    return a * value + b;
 }
