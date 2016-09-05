@@ -23,7 +23,3 @@ void printBinary( Bit64 value ) {
 	bitset<20> binaryValue ((unsigned long) value);
 	cout << binaryValue.to_string() << endl;
 }
-
-inline Bit64 randomGenotype() {
-	return randULL() ^ 1048575; // 2^20 - 1
-}

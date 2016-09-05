@@ -26,6 +26,5 @@ inline double convertX( Bit64 binaryX );
 inline double convertY( Bit64 binaryY );
 double map(double value, double low1, double high1, double low2, double high2);
 void printBinary( Bit64 value ); // Prints the binary representation of value
-inline Bit64 randomGenotype();
 
 #endif

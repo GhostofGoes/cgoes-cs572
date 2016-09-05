@@ -5,24 +5,9 @@
 // Description:	Assignment 1 - Local Search
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 
-// #define TESTING 1
-/*
-#include <string>
-#include <bitset>
-
-#include <iostream>
-#include <stdio.h>
-#include "rand.h"
-#include "bitHelpers.h"
-*/
 #include "localSearchLib.h"
 int encoding, mutation;
-/*
-using namespace std;
-typedef unsigned long long int Bit64;
-typedef unsigned int Bit32;
-int encoding = -1, mutation = -1;
-*/
+
 
 inline double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
 inline Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
@@ -31,6 +16,8 @@ Bit64 sdIncDec( Bit64 chromosome ); // Mutation increments or decrements one of 
 
 Bit32 extractX( Bit64 genome ); // Gets x chromosome from the genome
 Bit32 extractY( Bit64 genome ); // Gets y chromosome from the genome
+inline Bit64 randomGenotype();
+
 
 int main( int argc, char *argv[] ) {
 	if(argc < 3) { // so we don't segfault on something silly like forgetting arguments lol
@@ -41,7 +28,7 @@ int main( int argc, char *argv[] ) {
 	mutation = (int)*argv[2];  // 0 = random jump, 1 = bit flip, 2 = int/dec
 	initRand();  // Initialize random number generator
 	
-	if(TESTING) {
+	if(true) {
 		cout << fitness(5, 1) << endl;
 		Bit64 test = 1048575; // 2^20 - 1, which is first 20 bits set to 1
 		//test = bitGray(test);
@@ -61,13 +48,16 @@ int main( int argc, char *argv[] ) {
 		printBinary(bflip);
 		printf("sdIncDec(%llu): %llu\n", test, sd);
 		printBinary(sd);
+		Bit64 temp = randomGenotype();
+		printBinary(temp);
+		cout << temp << endl;
 		
 	}
 	else {
 		int runs = 1000;
 		if(TESTING) runs = 1;
 		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
-			Bit64 genotype = randULL(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
+			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
 			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
 			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
 			Bit64 xprime = 0; // Used to represent decimal value of X for fitness function
@@ -172,4 +162,8 @@ Bit32 extractY( Bit64 genome ) {
 	if( encoding == 1 ) // Grey code mapping
 		y = bitDeGray(y);
 	return y;
+}
+
+inline Bit64 randomGenotype() {
+	return randULL() & 1048575; // 2^20 - 1
 }
