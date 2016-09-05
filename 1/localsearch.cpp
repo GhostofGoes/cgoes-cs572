@@ -28,7 +28,7 @@ int main( int argc, char *argv[] ) {
 	mutation = (int)*argv[2];  // 0 = random jump, 1 = bit flip, 2 = int/dec
 	initRand();  // Initialize random number generator
 	
-	if(true) {
+	if(false) {
 		cout << fitness(5, 1) << endl;
 		Bit64 test = 1048575; // 2^20 - 1, which is first 20 bits set to 1
 		//test = bitGray(test);
@@ -60,8 +60,8 @@ int main( int argc, char *argv[] ) {
 			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
 			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
 			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
-			Bit64 xprime = 0; // Used to represent decimal value of X for fitness function
-			Bit64 yprime = 0; // See above
+			double xprime = 0; // Used to represent decimal value of X for fitness function
+			double yprime = 0; // See above
 			double currentFitness = 0.0; // Current fitness to compare against best
 			double bestFitness = 0.0; // Best fitness found
 			int numImproveMoves = 0; // Number of times fitness was improved
@@ -88,7 +88,7 @@ int main( int argc, char *argv[] ) {
 				// Convert binary mutations to decimal for fitness evaluation
 				xprime = map(double(x), 0.0, 1023.0, 0.0, 10.0); 	// x range = [0, 10]
 				yprime = map(double(y), 0.0, 1023.0, -10.0, 10.0); 	// y range = [-10, 10]
-
+				printf("Pre-eval:\txprime: %f\typrime: %f\n", xprime, yprime);
 				// Evaluate fitness
 				currentFitness = fitness(xprime, yprime);
 
@@ -104,7 +104,8 @@ int main( int argc, char *argv[] ) {
 			} // end fitness eval loop
 
 			// Output results of the run
-			cout << numFitEvalsBest << numImproveMoves << fit_xprime << fit_yprime << bestFitness << endl;
+			printf("%d %d %f %f %f\n", numFitEvalsBest, numImproveMoves, fit_xprime, fit_yprime, bestFitness);
+			//cout << numFitEvalsBest << numImproveMoves << fit_xprime << fit_yprime << bestFitness << endl;
 		} // end program loop
 	}
 	return 0;
