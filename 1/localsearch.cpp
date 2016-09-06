@@ -28,7 +28,6 @@ int main( int argc, char *argv[] ) {
 	initRand();  // Initialize random number generator
 	
 	if(false) {
-		cout << fitness(5, 1) << endl;
 		Bit64 test = 1048575; // 2^20 - 1, which is first 20 bits set to 1
 		//test = bitGray(test);
 		Bit64 x = extractX(test);
@@ -47,27 +46,21 @@ int main( int argc, char *argv[] ) {
 		printBinary(bflip);
 		printf("sdIncDec(%llu): %llu\n", test, sd);
 		printBinary(sd);
-		Bit64 temp = randomGenotype();
-		printBinary(temp);
-		cout << temp << endl;
 	}
 	else {
 		int runs = 1000;
 		if(TESTING) runs = 1;
 		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
 			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
-			if(TESTING) printBinary(genotype);
-			Bit32 x = 0; // Chromosome composed of the 10 Most-signifigant bits (MSB) of the Genotype
-			Bit32 y = 0; // Chromosome compoased of 10 LSB of the Genotype
-			double xprime = 0; // Used to represent decimal value of X for fitness function
-			double yprime = 0; // See above
+			Bit32 x = 0, y = 0; // x = 10 Most-signifigant bits (MSB), y = 10 LSB of chromosome
+			double xprime = 0, yprime = 0; // Used to represent decimal value of x/y for fitness function
+			double fit_xprime = 0.0, fit_yprime = 0.0;
 			double currentFitness = 0.0; // Current fitness to compare against best
 			double bestFitness = 0.0; // Best fitness found
 			int numImproveMoves = 0; // Number of times fitness was improved
 			int numFitEvalsBest = 0; // Number of fitness evaluations it took to get best fitness
-			double fit_xprime = 0.0;
-			double fit_yprime = 0.0;
-
+			
+			if(TESTING) printBinary(genotype);
 			int evals = 10000;
 			if(TESTING) evals = 5;
 			for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
@@ -102,7 +95,6 @@ int main( int argc, char *argv[] ) {
 
 			// Output results of the run
 			printf("%d %d %f %f %f\n", numFitEvalsBest, numImproveMoves, fit_xprime, fit_yprime, bestFitness);
-			//cout << numFitEvalsBest << numImproveMoves << fit_xprime << fit_yprime << bestFitness << endl;
 		} // end program loop
 	}
 	return 0;
@@ -117,7 +109,6 @@ inline Bit64 randomJump( Bit64 chromosome, int size ) {
 }
 
 inline Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
-	// int randBit = randMod(20) + 1; // We want range to be [1, 20] not [0, 19], hence the +1
 	return chromosome ^ (1ULL << (randMod(20) + 1)); // Flip a random bit in the chromosome
 }
 
