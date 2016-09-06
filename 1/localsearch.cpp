@@ -6,7 +6,7 @@
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 
 #include "localSearchLib.h"
-int encoding, mutation;
+int encoding = -1, mutation = -1;
 
 inline double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
 inline Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
@@ -23,8 +23,9 @@ int main( int argc, char *argv[] ) {
 		cout << "Not enough arguments: need encoding(0|1) and mutation(0|1|2)." << endl;
 		return 1;
 	}
-	encoding = (int)*argv[1];  // 0 = identity, 1 = Grey
-	mutation = (int)*argv[2];  // 0 = random jump, 1 = bit flip, 2 = int/dec
+	encoding = *argv[1] - '0';  // 0 = identity, 1 = Grey
+	mutation = *argv[2] - '0';  // 0 = random jump, 1 = bit flip, 2 = int/dec
+	//printf("encoding: %d\nmutation: %d\n", encoding, mutation);
 	initRand();  // Initialize random number generator
 	
 	if(false) {
@@ -34,22 +35,25 @@ int main( int argc, char *argv[] ) {
 		Bit64 y = extractY(test);
 		cout << map(double(x), 0.0, 1023.0, 0.0, 10.0) << endl;
 		cout << map(double(y), 0.0, 1023.0, -10.0, 10.0) << endl;
+		printf("test value: \t");
 		printBinary(test);
+		printf("x:\t\t");
 		printBinary(x);
+		printf("y:\t\t");
 		printBinary(y);
 		Bit64 randJump = randomJump(test, 20);
 		Bit64 bflip = bitFlip(test);
 		Bit64 sd = sdIncDec(test);
-		printf("randJump(%llu): %llu\n", test, randJump);
+		printf("randJump(%llu): %llu\n\t\t", test, randJump);
 		printBinary(randJump);
-		printf("bitFlip(%llu): %llu\n", test, bflip);
+		printf("bitFlip(%llu): %llu\n\t\t", test, bflip);
 		printBinary(bflip);
-		printf("sdIncDec(%llu): %llu\n", test, sd);
+		printf("sdIncDec(%llu): %llu\n\t\t", test, sd);
 		printBinary(sd);
 	}
 	else {
 		int runs = 1000;
-		if(TESTING) runs = 1;
+		if(TESTING) runs = 5;
 		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
 			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
 			Bit32 x = 0, y = 0; // x = 10 Most-signifigant bits (MSB), y = 10 LSB of chromosome
@@ -62,8 +66,11 @@ int main( int argc, char *argv[] ) {
 			
 			if(TESTING) printBinary(genotype);
 			int evals = 10000;
-			if(TESTING) evals = 5;
+			if(TESTING) evals = 10;
 			for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
+				//printf("Pre-mutation  Genotype: \t");
+				//printBinary(genotype);
+				//printf("Pre-mutation  X:\t %d\t\tY:\t %d\n", extractX(genotype), extractY(genotype));
 				// Mutate: 0 = random jump, 1 = bit flip, 2 = int/dec
 				if( mutation == 0 ) {
 					genotype = randomJump(genotype, 20);
@@ -72,13 +79,15 @@ int main( int argc, char *argv[] ) {
 				} else if( mutation == 2 ) {
 					genotype = sdIncDec(genotype);
 				}
-
+				//printf("Post-mutation Genotype: \t");
+				//printBinary(genotype);
 				// Genotype to phenotype mapping
 				x = extractX(genotype);
 				y = extractY(genotype);
+				//printf("Post-mutation\tx:\t %d\ty:\t %d\n", x, y);
 				xprime = map(double(x), 0.0, 1023.0, 0.0, 10.0); 	// x range = [0, 10]
 				yprime = map(double(y), 0.0, 1023.0, -10.0, 10.0); 	// y range = [-10, 10]
-				printf("Pre-eval:\txprime: %f\typrime: %f\n", xprime, yprime);
+				//printf("Post-map\txprime: %f\typrime: %f\n", xprime, yprime);
 
 				// Evaluate fitness
 				currentFitness = fitness(xprime, yprime);
@@ -109,7 +118,7 @@ inline Bit64 randomJump( Bit64 chromosome, int size ) {
 }
 
 inline Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
-	return chromosome ^ (1ULL << (randMod(20) + 1)); // Flip a random bit in the chromosome
+	return chromosome ^ (1ULL << randMod(20)); // Flip a random bit in the chromosome
 }
 
 Bit64 sdIncDec( Bit64 chromosome ) {

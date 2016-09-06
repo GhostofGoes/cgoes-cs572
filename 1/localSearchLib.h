@@ -10,7 +10,7 @@
 #ifndef LOCALSEARCHLIB_H
 #define LOCALSEARCHLIB_H
 
-#define TESTING 1
+#define TESTING 0
 #include <string>
 #include <bitset>
 #include <iostream>

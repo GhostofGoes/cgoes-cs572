@@ -2,7 +2,7 @@ BIN  = localsearch
 CC   = g++
 SRCS = $(BIN).cpp rand.h rand.cpp bitHelpers.h bitHelpers.cpp localSearchLib.h localSearchLib.cpp
 LIBS = -lm $(BIN).cpp rand.cpp bitHelpers.cpp localSearchLib.cpp
-CCFLAGS = -O4 # -Ofast # -g # -std=gnu++11
+CCFLAGS = -O3 # -O4 # -Ofast # -g # -std=gnu++11
 
 $(BIN): $(SRCS)
 	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o $(BIN)
@@ -12,7 +12,8 @@ all:
 	make
 
 clean:
-	rm -f $(BIN) $(BIN).tar *~ $(BIN).output *.o
+	# Rename files to .run if you want to save them
+	rm -f $(BIN) $(BIN).tar *~ $(BIN).output *.o *.output 
 
 tar:
 	tar -cvf pas1.tar $(SRCS) makefile
