@@ -4,130 +4,126 @@
 // Semester: 	Fall 2016
 // Description:	Assignment 1 - Local Search
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
+// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2.
 
-#include "localSearchLib.h"
+#include <stdio.h>
+#include <iostream>
+#include <bitset>
+#include "rand.h"
+#include "bitHelpers.h"
+#define TESTING 0
+
+typedef unsigned long long int Bit64;
+typedef unsigned int Bit32;
 int encoding = -1, mutation = -1;
 
-inline double fitness( double x, double y );  // Single-peak fitness function that evaluates quality of x and y
+inline double fitness( double x, double y );  			// Single-peak fitness function that evaluates quality of x and y
 inline Bit64 randomJump( Bit64 chromosome, int size );  // Mutation randomly jumps to somewhere in search space
-inline Bit64 bitFlip( Bit64 chromosome );  // Mutation randomly flips exactly one bit in the 20 bit chromosome
-Bit64 sdIncDec( Bit64 chromosome ); // Mutation increments or decrements one of the fields of 10 bits fields for x or for y (4 possible changes/neighbors)
+inline Bit64 bitFlip( Bit64 chromosome );  				// Mutation randomly flips exactly one bit in the 20 bit chromosome
+Bit64 sdIncDec( Bit64 chromosome ); 					// Mutation increments or decrements one of the fields of 10 bits fields for x or for y (4 possible changes/neighbors)
 
 Bit32 extractX( Bit64 genome ); // Gets x chromosome from the genome
 Bit32 extractY( Bit64 genome ); // Gets y chromosome from the genome
 inline Bit64 randomGenotype();
+double map(double value, double low1, double high1, double low2, double high2);
+void printBinary( Bit64 value ); // Prints the binary representation of value
 
 
 int main( int argc, char *argv[] ) {
-	if(argc < 3) { // so we don't segfault on something silly like forgetting arguments lol
-		cout << "Not enough arguments: need encoding(0|1) and mutation(0|1|2)." << endl;
+	if(argc < 3) { // so we don't segfault on something silly like forgetting arguments
+		printf("Not enough arguments: need encoding(0|1) and mutation(0|1|2).");
 		return 1;
 	}
-	encoding = *argv[1] - '0';  // 0 = identity, 1 = Grey
+	encoding = *argv[1] - '0';  // 0 = identity, 1 = Grey ( the -'0' is ASCII conversion)
 	mutation = *argv[2] - '0';  // 0 = random jump, 1 = bit flip, 2 = int/dec
-	//printf("encoding: %d\nmutation: %d\n", encoding, mutation);
-	initRand();  // Initialize random number generator
-	
-	if(false) {
-		Bit64 test = 1048575; // 2^20 - 1, which is first 20 bits set to 1
-		//test = bitGray(test);
-		Bit64 x = extractX(test);
-		Bit64 y = extractY(test);
-		cout << map(double(x), 0.0, 1023.0, 0.0, 10.0) << endl;
-		cout << map(double(y), 0.0, 1023.0, -10.0, 10.0) << endl;
-		printf("test value: \t");
-		printBinary(test);
-		printf("x:\t\t");
-		printBinary(x);
-		printf("y:\t\t");
-		printBinary(y);
-		Bit64 randJump = randomJump(test, 20);
-		Bit64 bflip = bitFlip(test);
-		Bit64 sd = sdIncDec(test);
-		printf("randJump(%llu): %llu\n\t\t", test, randJump);
-		printBinary(randJump);
-		printf("bitFlip(%llu): %llu\n\t\t", test, bflip);
-		printBinary(bflip);
-		printf("sdIncDec(%llu): %llu\n\t\t", test, sd);
-		printBinary(sd);
-	}
-	else {
-		int runs = 1000;
-		if(TESTING) runs = 5;
-		for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
-			Bit64 genotype = randomGenotype(); // Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
-			Bit32 x = 0, y = 0; // x = 10 Most-signifigant bits (MSB), y = 10 LSB of chromosome
-			double xprime = 0, yprime = 0; // Used to represent decimal value of x/y for fitness function
-			double fit_xprime = 0.0, fit_yprime = 0.0;
-			double currentFitness = 0.0; // Current fitness to compare against best
-			double bestFitness = 0.0; // Best fitness found
-			int numImproveMoves = 0; // Number of times fitness was improved
-			int numFitEvalsBest = 0; // Number of fitness evaluations it took to get best fitness
+	initRand();  				// Initialize random number generator
+	int runs = 1000; 			// Number of times to run the program
+	if(TESTING) runs = 5;
+
+	for( int i = 0; i < runs; i++ ) { // Used to average behavior of program across many runs
+		Bit64 genotype = randomGenotype(); 	// Represents chromosome, 20 Least-signifigant Bits (LSB) of an UUL
+		Bit32 x = 0, y = 0; 				// x = 10 Most-signifigant bits (MSB), y = 10 LSB of chromosome
+		double xprime = 0, yprime = 0; 		// Used to represent decimal value of x/y for fitness function (x:[0, 10], y:[-10, 10])
+		double fit_xprime = 0.0, fit_yprime = 0.0; // x/y prime values used for best fitness
+		double currentFitness = 0.0; 		// Current fitness to compare against best
+		double bestFitness = 0.0; 			// Best fitness found
+		int numImproveMoves = 0; 			// Number of times fitness was improved
+		int numFitEvalsBest = 0; 			// Number of fitness evaluations it took to get best fitness
+		int evals = 10000; 					// Number of times to evaluate the fitness function
+		if(TESTING) evals = 5;
+		if(TESTING) printBinary(genotype);
+
+		for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
+			if(TESTING) {
+				printf("Pre-mutation  Genotype: \t");
+				printBinary(genotype);
+				printf("Pre-mutation  X:\t %d\t\tY:\t %d\n", extractX(genotype), extractY(genotype));
+			}
 			
-			if(TESTING) printBinary(genotype);
-			int evals = 10000;
-			if(TESTING) evals = 10;
-			for( int fitEvals = 0; fitEvals < evals; fitEvals++ ) { // Fitness evaluation loop
-				//printf("Pre-mutation  Genotype: \t");
-				//printBinary(genotype);
-				//printf("Pre-mutation  X:\t %d\t\tY:\t %d\n", extractX(genotype), extractY(genotype));
-				// Mutate: 0 = random jump, 1 = bit flip, 2 = int/dec
-				if( mutation == 0 ) {
-					genotype = randomJump(genotype, 20);
-				} else if( mutation == 1 ) {
-					genotype = bitFlip(genotype);
-				} else if( mutation == 2 ) {
-					genotype = sdIncDec(genotype);
-				}
-				//printf("Post-mutation Genotype: \t");
-				//printBinary(genotype);
-				// Genotype to phenotype mapping
-				x = extractX(genotype);
-				y = extractY(genotype);
-				//printf("Post-mutation\tx:\t %d\ty:\t %d\n", x, y);
-				xprime = map(double(x), 0.0, 1023.0, 0.0, 10.0); 	// x range = [0, 10]
-				yprime = map(double(y), 0.0, 1023.0, -10.0, 10.0); 	// y range = [-10, 10]
-				//printf("Post-map\txprime: %f\typrime: %f\n", xprime, yprime);
+			// Mutate: 0 = random jump, 1 = bit flip, 2 = single-dimension inc/dec
+			if( mutation == 0 ) {
+				genotype = randomJump(genotype, 20);
+			} else if( mutation == 1 ) {
+				genotype = bitFlip(genotype);
+			} else if( mutation == 2 ) {
+				genotype = sdIncDec(genotype);
+			}
+			if(TESTING) {
+				printf("Post-mutation Genotype: \t");
+				printBinary(genotype);
+			}
 
-				// Evaluate fitness
-				currentFitness = fitness(xprime, yprime);
+			// Genotype to phenotype mapping
+			x = extractX(genotype);
+			y = extractY(genotype);
+			xprime = map(double(x), 0.0, 1023.0, 0.0, 10.0); 	// x range = [0, 10]
+			yprime = map(double(y), 0.0, 1023.0, -10.0, 10.0); 	// y range = [-10, 10]
+			if(TESTING) { printf("Post-mutation\tx:\t %d\ty:\t %d\n", x, y); }
 
-				// If the fitness we found is better, save it's genotype, fitness, and iterations taken
-				if( currentFitness > bestFitness ) {
-					bestFitness = currentFitness;
-					numFitEvalsBest = fitEvals;
-					fit_xprime = xprime;
-					fit_yprime = yprime;
-					numImproveMoves++;
-				}
-			} // end fitness eval loop
+			// Evaluate fitness
+			currentFitness = fitness(xprime, yprime);
 
-			// Output results of the run
-			printf("%d %d %f %f %f\n", numFitEvalsBest, numImproveMoves, fit_xprime, fit_yprime, bestFitness);
-		} // end program loop
-	}
+			// If the fitness we found is better, save it's genotype, fitness, and iterations taken
+			if( currentFitness > bestFitness ) {
+				bestFitness = currentFitness;
+				numFitEvalsBest = fitEvals;
+				fit_xprime = xprime;
+				fit_yprime = yprime;
+				numImproveMoves++;
+			}
+		} // end fitness eval loop
+
+		// Output results of the run
+		printf("%d %d %f %f %f\n", numFitEvalsBest, numImproveMoves, fit_xprime, fit_yprime, bestFitness);
+	} // end program loop
 	return 0;
 } // end main
 
+
+// Calculates the fitness of decoded X and Y values of the chromosome
 inline double fitness( double x, double y ) {
 	return 1.0 / ( pow((x - 1.0), 2) + pow((y - 3.0), 2) + 1.0 );
 }
 
+// Randomly jumps to anywhere in the search space, which is defined by the size.
 inline Bit64 randomJump( Bit64 chromosome, int size ) {
 	return randMask((1ULL << size) - 1); // Mask is number of bits in chromosome 
 }
 
+// Randomly flips a bit in the chromosome
 inline Bit64 bitFlip( Bit64 chromosome ) { // Assumes a 20 bit chromosome
 	return chromosome ^ (1ULL << randMod(20)); // Flip a random bit in the chromosome
 }
 
+// Single-dimension Increment or Decrement
+// Randomly increments or decrements X or Y of chromosome by 1.
+// This results in a very small neighborhood. Alternate encodings will only improve range, not size, of this neighborhood.
 Bit64 sdIncDec( Bit64 chromosome ) {
-	// TODO: issue with grey encoding here!
 	Bit32 x = chromosome >> 10;
 	Bit32 y = chromosome & ((1ULL << 10) - 1);
 	Bit64 newChromosome = 0;
 	int change = randMod(4); // 0 = x + inc, 1 = x + dec, 2 = y + inc, 3 = y + dec
-	// printf("OLD\t chromo: %llu \t x: %d \t y: %d \n", chromosome, x, y);
+
 	if( change == 0 ) { // Increment X (MSD of genotype)
 		if( x == 1023 ) x = 0; // 1024 == 2^10 (or 2**10 in python its handy)
 		else x += 1;
@@ -145,7 +141,6 @@ Bit64 sdIncDec( Bit64 chromosome ) {
 	// Recombine modified X and Y
 	newChromosome = x << 10;
 	newChromosome |= y;
-	// printf("NEW\t chromo: %llu \t x: %d \t  y: %d \n", newChromosome, x, y);
 	return newChromosome;
 }
 
@@ -163,6 +158,25 @@ Bit32 extractY( Bit64 genome ) {
 	return y;
 }
 
+// Gives a random 20-bit genotype
 inline Bit64 randomGenotype() {
 	return randULL() & 1048575; // 2^20 - 1
+}
+
+// map value from [low1, high2] -> [low2, high2]
+// This basically maps from range of, say, [0,10] to [0,1023]
+// Function Copyright Robert Heckendorn
+double map(double value, double low1, double high1, double low2, double high2) {
+    double denom, a, b;
+
+    denom = high1 - low1;
+    a = (high2 - low2)/denom;
+    b = (high1 * low2 - high2 * low1)/denom;
+    return a * value + b;
+}
+
+// Prints the binary representation of a ULL for testing purposes
+void printBinary( Bit64 value ) {
+	std::bitset<20> binaryValue ((unsigned long) value);
+	std::cout << binaryValue.to_string() << std::endl;
 }

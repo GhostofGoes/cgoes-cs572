@@ -3,5 +3,5 @@
 ass=$1
 
 cd ./$ass
-make
-../curlsubmit goes8945 $ass $ass.tar
+make tar
+../curlsubmit.sh goes8945 $ass $ass.tar
