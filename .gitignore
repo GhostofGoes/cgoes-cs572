@@ -2,6 +2,8 @@
 *.vscode
 *.idea
 *.output
+*.tmp
+~*
 
 # Compiled Object files
 *.slo

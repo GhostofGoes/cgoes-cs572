@@ -16,7 +16,7 @@ clean:
 	rm -f $(BIN) *~ *.o *.output pas1.tar
 
 tar:
-	tar -cvf pas1.tar $(SRCS) makefile
+	tar -cvf pas1.tar $(SRCS) makefile goes.pdf
 	ls -l pas1.tar
 	
 test: $(SRCS)
