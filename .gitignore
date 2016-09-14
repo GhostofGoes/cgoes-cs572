@@ -4,6 +4,8 @@
 *.output
 *.tmp
 ~*
+localsearch
+decipher
 
 # Compiled Object files
 *.slo
