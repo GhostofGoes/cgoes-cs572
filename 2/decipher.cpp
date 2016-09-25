@@ -127,7 +127,7 @@ string initKey() {
 }
 
 bool comp( keyFitType a, keyFitType b ) {
-	return (a.fit < b.fit);
+	return (a.fit > b.fit);
 }
 
 string bestIndividual() {
