@@ -39,8 +39,8 @@ double bFitness( string key ) {
 
 // Returns child that is the crossover of both parents
 // Length of the parents and the child are identical
-string crossover( int parentA, int parentB ) {
-	string child;
+int crossover( int parentA, int parentB ) {
+	int child; // Child of the two parents in the loser in the selection
 	// Order One Crossover
 	if(CROSSOVER == 0) {
 
@@ -50,11 +50,11 @@ string crossover( int parentA, int parentB ) {
 } // end crossover
 
 
-// Mutates the chromosome in-place
-void mutate( string chromosome ) {
-
-    // Mutate using permutation-based mutation operator
-
+// Mutate chromosome in-place using permutation-based mutation operator
+void mutate( int chromosome ) {
+	if(MUTATION == 0) {
+		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
+	}
 } // end mutate
 
 
@@ -63,10 +63,6 @@ void select( int &parentA, int &parentB ) {
 
     // select based on selection type, e.g Tournament selection
     // remove selected individual from population
-
-}
-
-void addToPopulation( string child ) {
 
 }
 

@@ -25,10 +25,9 @@ inline int encode( int index, string key ); // index + key -> index
 double eFitness( string key );	// Euclidean distance
 double bFitness( string key );	// Bhatthacaryya distance
 
-string crossover( int parentA, int parentB ); // Returns child that is the crossover of both parents
-void mutate( string chromosome ); // Mutates the chromosome in-place
+int crossover( int parentA, int parentB ); // Returns child that is the crossover of both parents
+void mutate( int chromosome ); // Mutates the chromosome in-place
 void select( int &parentA, int &parentB );
-void addToPopulation( string child );
 
 string bestIndividual();
 

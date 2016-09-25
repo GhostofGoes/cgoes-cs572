@@ -17,15 +17,15 @@ void initETable();
 void initCTable( string ciphertext );
 void initPopulation();
 string initKey();
-void printPopulation();
+void printPopulation( string title );
 bool comp( keyFitType a, keyFitType b );
 
 vector < keyFitType > population; // The population of possible keys
 
 int main() {
 	string ciphertext, temp, plaintext;
-	int par1 = 0, par2 = 0;
-	string key, child;
+	int par1 = 0, par2 = 0, child = 0;
+	string key;
 
 	initRand();  	// Initialize random number generator
 	initETable();	// Initialize the English contact table
@@ -33,15 +33,16 @@ int main() {
 	if(TESTING) { cout << "ciphertext: " << ciphertext << endl; }
 	initCTable(ciphertext);
 	initPopulation();
-	if(TESTING) { printPopulation(); }
+	if(TESTING) { printPopulation("Post-init"); }
 	
 	for( int i = 0; i < RUNS; i++ ) {
 		// Selects three individuals, returns 2 best by reference (ugh), throws away the poor soul that couldn't stand the heat
 		select(par1, par2); 
 		child = crossover( par1, par2 );
 		mutate(child);
-		addToPopulation(child);
 	}
+
+	if(TESTING) { printPopulation("Post-evolution"); }
 	
 	key = bestIndividual();
 	cout << "** goes " << key << endl;
@@ -159,8 +160,8 @@ void printTable( double table[][26], string title = "Table" ) {
 }
 
 
-void printPopulation() {
-	cout << "\n** Current Population **" << endl;
+void printPopulation( string title ) {
+	cout << "\n** Population " << title << " **" << endl;
 	for( unsigned int i = 0; i < population.size(); i++ ) {
 		cout << "Key:\t" << population[i].key << "\tFitness:\t" << population[i].fit << endl;
 	}
