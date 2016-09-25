@@ -1,8 +1,8 @@
 BIN  = decipher
 HW   = pas2
 CC   = g++
-SRCS = $(BIN).cpp rand.h rand.cpp 
-LIBS = -lm $(BIN).cpp rand.cpp
+SRCS = $(BIN).cpp rand.h rand.cpp evolve.cpp evolve.h
+LIBS = -lm $(BIN).cpp rand.cpp evolve.cpp
 CCFLAGS = -O3 # -O4 # -Ofast # -g # -std=gnu++11
 
 $(BIN): $(SRCS)
