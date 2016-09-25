@@ -4,6 +4,8 @@
 *.output
 *.tmp
 ~*
+*.tar
+
 localsearch
 decipher
 

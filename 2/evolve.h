@@ -9,7 +9,6 @@
 #include "rand.h"
 using namespace std;
 
-const bool TESTING = 1;
 const int CROSSOVER = 0;
 const int MUTATION = 0;
 const int SELECITON = 0;
@@ -25,14 +24,13 @@ inline int encode( int index, string key ); // index + key -> index
 double eFitness( string key );	// Euclidean distance
 double bFitness( string key );	// Bhatthacaryya distance
 
-int crossover( int parentA, int parentB ); // Returns child that is the crossover of both parents
+void crossover( int parentA, int parentB, int child ); // Returns child that is the crossover of both parents
 void mutate( int chromosome ); // Mutates the chromosome in-place
-void select( int &parentA, int &parentB );
-
-string bestIndividual();
+int select( int &parentA, int &parentB );
 
 int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
 char revert( int i );	// Reverts an int back to the ASCII letter it originally was
 void printTable( double table[][26], string name );
+void printPopulation( string title );
 
 #endif

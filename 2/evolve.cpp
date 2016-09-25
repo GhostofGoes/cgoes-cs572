@@ -37,32 +37,32 @@ double bFitness( string key ) {
 } // end bFitness
 
 
-// Returns child that is the crossover of both parents
-// Length of the parents and the child are identical
-int crossover( int parentA, int parentB ) {
-	int child; // Child of the two parents in the loser in the selection
+// Combines genomes of parents using crossover function of choice into child
+void crossover( int parentA, int parentB, int child ) {
 	// Order One Crossover
 	if(CROSSOVER == 0) {
 
 	}
 
-	return child;
 } // end crossover
 
 
 // Mutate chromosome in-place using permutation-based mutation operator
 void mutate( int chromosome ) {
-	if(MUTATION == 0) {
+	if(MUTATION == 0) { // Simple swap mutation
 		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
 	}
 } // end mutate
 
 
 // Selects parents out of the population, culls the weak (bwuahahha)
-void select( int &parentA, int &parentB ) {
-
+// This is where we calculate the fitnesses
+// NOTE: this is written with assumption of losing individual
+int select( int &parentA, int &parentB ) {
+    int loser = 0;
     // select based on selection type, e.g Tournament selection
-    // remove selected individual from population
-
+    
+    // Losing individual is overwritten by child...what a horrible fate
+    return loser;
 }
 

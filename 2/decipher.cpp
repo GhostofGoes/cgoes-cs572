@@ -9,23 +9,24 @@
 
 #include <fstream>
 #include "evolve.h"
+#define TESTING 0
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
+vector < keyFitType > population; // The population of possible keys
 
 void initETable();
 void initCTable( string ciphertext );
 void initPopulation();
 string initKey();
-void printPopulation( string title );
+
+string bestIndividual();
 bool comp( keyFitType a, keyFitType b );
 
-vector < keyFitType > population; // The population of possible keys
 
 int main() {
-	string ciphertext, temp, plaintext;
+	string ciphertext, temp, plaintext, key;
 	int par1 = 0, par2 = 0, child = 0;
-	string key;
 
 	initRand();  	// Initialize random number generator
 	initETable();	// Initialize the English contact table
@@ -36,12 +37,12 @@ int main() {
 	if(TESTING) { printPopulation("Post-init"); }
 	
 	for( int i = 0; i < RUNS; i++ ) {
-		// Selects three individuals, returns 2 best by reference (ugh), throws away the poor soul that couldn't stand the heat
-		select(par1, par2); 
-		child = crossover( par1, par2 );
+		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
+		child = select(par1, par2);
+		crossover( par1, par2, child );
 		mutate(child);
+		// We are modifying population in-place, so don't need to add child to the population
 	}
-
 	if(TESTING) { printPopulation("Post-evolution"); }
 	
 	key = bestIndividual();
@@ -69,7 +70,6 @@ void initETable() {
 		sum += num;
 		eTable[convert(a)][convert(b)] = num;
 	}
-	//printTable(eTable, "eTable: post-load");
 
 	// Normalize the frequencies
 	for(int i = 0; i < 26; i++) {
@@ -78,7 +78,6 @@ void initETable() {
 				eTable[i][j] /= sum;
 		}
 	}
-	//printTable(eTable, "eTable: post-normalize");
 	inf.close();
  } // end initETables
 
@@ -108,7 +107,7 @@ void initCTable( string ciphertext ) {
 	//printTable(cTable, "cTable: post-normalize");
 } // end initCTable
 
-
+// Initializes the population to random keys and zero fitness
 void initPopulation() {
 	keyFitType member;
 	for( int i = 0; i < POPSIZE; i++ ) {
@@ -118,15 +117,16 @@ void initPopulation() {
 	}
 }
 
+// Initializes key to random scrambling of the english alphabet
 string initKey() {
 	string key("abcdefghijklmnopqrstuvwxyz");
 	for( int i = 0; i < 26; i++ ) {
 		swap(key[i], key[randMod(26)]);
 	}
-	cout << key << endl;
 	return key;
 }
 
+// Comparison function for sorting
 bool comp( keyFitType a, keyFitType b ) {
 	return (a.fit > b.fit);
 }
@@ -142,13 +142,11 @@ int convert( char c ) {
 	return (int)(c - 97);
 }
 
-
 // Reverts an int back to the ASCII letter it originally was
 char revert( int i ) {
 	return (char)(i + 97);
 }
 
-// Print 26 x 26 table
 void printTable( double table[][26], string title = "Table" ) {
 	cout << "\n** " << title << " **" << endl;
 	for( int i = 0; i < 26; i++ ) {
@@ -158,7 +156,6 @@ void printTable( double table[][26], string title = "Table" ) {
 		cout << endl;
 	}
 }
-
 
 void printPopulation( string title ) {
 	cout << "\n** Population " << title << " **" << endl;
