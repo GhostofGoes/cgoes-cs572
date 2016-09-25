@@ -15,24 +15,35 @@ double cTable[26][26];		// Cipher contact table
 
 void initETable();
 void initCTable( string ciphertext );
+void initPopulation();
+string initKey();
+void printPopulation();
+bool comp( keyFitType a, keyFitType b );
+
 vector < keyFitType > population; // The population of possible keys
 
 int main() {
 	string ciphertext, temp, plaintext;
-	char key[26];
+	int par1 = 0, par2 = 0;
+	string key, child;
 
 	initRand();  	// Initialize random number generator
 	initETable();	// Initialize the English contact table
 	while( cin >> temp ) { ciphertext += temp; } // Input the ciphertext 
 	if(TESTING) { cout << "ciphertext: " << ciphertext << endl; }
 	initCTable(ciphertext);
-
-	if(TESTING) {
-		printTable(eTable, "eTable post-init");
-		printTable(cTable, "cTable post-init");
+	initPopulation();
+	if(TESTING) { printPopulation(); }
+	
+	for( int i = 0; i < RUNS; i++ ) {
+		// Selects three individuals, returns 2 best by reference (ugh), throws away the poor soul that couldn't stand the heat
+		select(par1, par2); 
+		child = crossover( par1, par2 );
+		mutate(child);
+		addToPopulation(child);
 	}
-
-
+	
+	key = bestIndividual();
 	cout << "** goes " << key << endl;
 	return 0;
 } // end main
@@ -97,6 +108,34 @@ void initCTable( string ciphertext ) {
 } // end initCTable
 
 
+void initPopulation() {
+	keyFitType member;
+	for( int i = 0; i < POPSIZE; i++ ) {
+		member.key = initKey();
+		member.fit = 0;
+		population.push_back(member);
+	}
+}
+
+string initKey() {
+	string key("abcdefghijklmnopqrstuvwxyz");
+	for( int i = 0; i < 26; i++ ) {
+		swap(key[i], key[randMod(26)]);
+	}
+	cout << key << endl;
+	return key;
+}
+
+bool comp( keyFitType a, keyFitType b ) {
+	return (a.fit < b.fit);
+}
+
+string bestIndividual() {
+	sort(population.begin(), population.end(), comp);
+	if(TESTING) { cout << "Best fitness:\t" << population[0].fit << endl; }
+	return population[0].key;
+}
+
 // Converts an ASCII letter to an int to be used to index a table
 int convert( char c ) {
 	return (int)(c - 97);
@@ -110,7 +149,7 @@ char revert( int i ) {
 
 // Print 26 x 26 table
 void printTable( double table[][26], string title = "Table" ) {
-	cout << "\n" << "** " << title << " **" << endl;
+	cout << "\n** " << title << " **" << endl;
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
 			cout << table[i][j] << " ";
@@ -119,3 +158,10 @@ void printTable( double table[][26], string title = "Table" ) {
 	}
 }
 
+
+void printPopulation() {
+	cout << "\n** Current Population **" << endl;
+	for( unsigned int i = 0; i < population.size(); i++ ) {
+		cout << "Key:\t" << population[i].key << "\tFitness:\t" << population[i].fit << endl;
+	}
+}
