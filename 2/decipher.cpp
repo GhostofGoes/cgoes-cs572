@@ -23,6 +23,7 @@ string initKey();
 string bestIndividual();
 bool comp( keyFitType a, keyFitType b );
 
+string decipher( string ciphertext, string key ); // Deciphers the encrypted ciphertext using the given key
 
 int main() {
 	string ciphertext, temp, plaintext, key;
@@ -36,16 +37,20 @@ int main() {
 	initPopulation();
 	if(TESTING) { printPopulation("Post-init"); }
 	
+
+	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < RUNS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
 		crossover( par1, par2, child );
-		mutate(child);
-		// We are modifying population in-place, so don't need to add child to the population
+		mutate(child);  // TODO: could make this random, so it doesn't ALWAYS mutate
+		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
 	if(TESTING) { printPopulation("Post-evolution"); }
 	
+
 	key = bestIndividual();
+	if(TESTING) { cout << "\n** Deciphered text **\n" << decipher(ciphertext, key) << endl; }
 	cout << "** goes " << key << endl;
 	return 0;
 } // end main
@@ -112,7 +117,7 @@ void initPopulation() {
 	keyFitType member;
 	for( int i = 0; i < POPSIZE; i++ ) {
 		member.key = initKey();
-		member.fit = 0;
+		member.fit = fitness(member.key);
 		population.push_back(member);
 	}
 }
@@ -162,4 +167,12 @@ void printPopulation( string title ) {
 	for( unsigned int i = 0; i < population.size(); i++ ) {
 		cout << "Key:\t" << population[i].key << "\tFitness:\t" << population[i].fit << endl;
 	}
+}
+
+string decipher( string ciphertext, string key ) {
+	string deciphered;
+	for( unsigned int i = 0; i < ciphertext.length(); i++ ) {
+		deciphered.push_back( key[ convert( ciphertext[i] )]);
+	}
+	return deciphered;
 }
