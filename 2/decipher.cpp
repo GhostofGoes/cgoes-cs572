@@ -53,8 +53,9 @@ int main() {
 	
 
 	key = bestIndividual();
-	if(TESTING) { cout << "\n** Deciphered text **\n" << decipher(ciphertext, key) << endl; }
 	cout << "** goes " << key << endl;
+	if(TESTING) { cout << "\n** Deciphered text **" << endl; }
+	cout << decipher(ciphertext, key) << endl;
 	return 0;
 } // end main
 
