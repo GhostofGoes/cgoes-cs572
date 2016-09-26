@@ -13,7 +13,7 @@ const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
 const int CROSSOVER = 1;    // 0 = Order One, 1 = PMX
 const int MUTATION = 0;     // 0 = Single Swap
 const int SELECTION = 0;    // Unused currently
-const int EVOLUTIONS = 10000; // # of times steady state algorithm evolves (# of runs)
+const int EVOLUTIONS = 20000; // # of times steady state algorithm evolves (# of runs)
 const int POPSIZE = 200;     // Size of population
 const int TSIZE = 3;        // Size of tournament
 

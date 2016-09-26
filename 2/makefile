@@ -3,10 +3,10 @@ HW   = pas2
 CC   = g++
 SRCS = $(BIN).cpp rand.h rand.cpp evolve.cpp evolve.h
 LIBS = -lm $(BIN).cpp rand.cpp evolve.cpp
-CCFLAGS = -O3 # -O4 # -Ofast # -g # -std=gnu++11
+CCFLAGS = -O3
 
 $(BIN): $(SRCS)
-	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o $(BIN)
+	$(CC) $(CCFLAGS) $(LIBS) -o $(BIN)
 
 all:    
 	touch $(SRCS)
@@ -22,8 +22,12 @@ tar:
 	
 test: $(SRCS)
 	make clean
-	$(CC) $(CCFLAGS) -Wall -g $(OBJS) $(LIBS) -o $(BIN)
-	
+	$(CC) $(CCFLAGS) -Wall -g $(LIBS) -o $(BIN)
+
+debug: $(SRCS)
+	make clean
+	$(CC) -Wall -g $(LIBS) -o $(BIN)
+
 full-test:
 	touch $(SRCS)
 	make test

@@ -47,7 +47,7 @@ int main() {
 		child = select(par1, par2);
 		if( choose(0.9) )
 			crossover( par1, par2, child );
-		if( choose(0.5) )
+		if( choose(0.7) )
 			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
