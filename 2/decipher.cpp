@@ -9,7 +9,7 @@
 
 #include <fstream>
 #include "evolve.h"
-#define TESTING 1
+#define TESTING 0
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
@@ -24,6 +24,8 @@ string bestIndividual();
 bool comp( keyFitType a, keyFitType b );
 
 string decipher( string ciphertext, string key ); // Deciphers the encrypted ciphertext using the given key
+char decode( string key, char c );
+string english("abcdefghijklmnopqrstuvwxyz"); // A hack of epic proportions
 
 int main() {
 	string ciphertext, temp, plaintext, key;
@@ -41,8 +43,9 @@ int main() {
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
-		crossover( par1, par2, child );
-		if( randUnit() < 0.8 )
+		if( choose(0.9) )
+			crossover( par1, par2, child );
+		if( choose(0.9) )
 			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
@@ -171,8 +174,20 @@ void printPopulation( string title ) {
 
 string decipher( string ciphertext, string key ) {
 	string deciphered;
+	
 	for( unsigned int i = 0; i < ciphertext.length(); i++ ) {
-		deciphered.push_back( key[ convert( ciphertext[i] )]);
+		deciphered.push_back(decode(key, ciphertext[i]));
 	}
 	return deciphered;
+}
+
+char decode( string key, char c ) {
+	// Find index of where c is in the key
+	int index = 0;
+	for( ; index < 26; index++ ) {
+		if(key[index] == c)
+			break;
+	}
+	// Return character from english key at same index
+	return english[index];
 }

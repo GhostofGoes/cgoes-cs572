@@ -9,7 +9,7 @@
 #include "rand.h"
 using namespace std;
 
-const int FITNESS_FUNC = 0; // 0 = Euclidean, 1+ = Bhatthacaryya
+const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
 const int CROSSOVER = 1;    // 0 = Order One, 1 = PMX
 const int MUTATION = 0;     // 0 = Single Swap
 const int SELECTION = 0;    // Unused currently
