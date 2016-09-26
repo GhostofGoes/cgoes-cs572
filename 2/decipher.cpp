@@ -10,7 +10,7 @@
 #include <fstream>
 #include "evolve.h"
 #define TESTING 0
-#define PRINT_FITNESS 0
+#define PRINT_FITNESS 1
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table

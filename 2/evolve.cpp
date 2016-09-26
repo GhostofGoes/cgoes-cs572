@@ -24,7 +24,8 @@ double eFitness( string key ) {
 	double fit = 0.0; // Fitness
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
-			fit += pow(( eTable[i][j] - cTable[encode(i, key)][encode(j, key)] ), 2);
+            if(eTable[i][j] != 0)
+    			fit += pow(( eTable[i][j] - cTable[encode(i, key)][encode(j, key)] ), 2);
 		}
 	}
 	return fit;
@@ -37,7 +38,8 @@ double bFitness( string key ) {
 	double fit = 0.0; // Fitness
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
-			fit += sqrt(eTable[i][j] * cTable[encode(i, key)][encode(j, key)]);
+            if(eTable[i][j] != 0)
+    			fit += sqrt(eTable[i][j] * cTable[encode(i, key)][encode(j, key)]);
 		}
 	}
 	return fit;
