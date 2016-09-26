@@ -64,7 +64,13 @@ void crossover( int parentA, int parentB, int child ) {
 void mutate( int chromosome ) {
 	if(MUTATION == 0) { // Single Swap mutation
 		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
-	}
+	} else if(MUTATION == 1) { // Swap twice
+		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
+		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
+    } else if(MUTATION == 2) { // Three-point shift 
+        int a, b, c;
+		swap(population[chromosome].key[a], population[chromosome].key[b]);
+    }
 } // end mutate
 
 
