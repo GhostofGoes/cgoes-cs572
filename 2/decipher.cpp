@@ -39,7 +39,7 @@ int main() {
 	
 
 	// Steady State - WHERE THE MAGIC HAPPENS
-	for( int i = 0; i < RUNS; i++ ) {
+	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
 		crossover( par1, par2, child );
@@ -89,7 +89,6 @@ void initETable() {
 
 // Initializes the Ciphertext contact table by counting occurances of pairs of letters in the ciphertext
 void initCTable( string ciphertext ) {
-	// Initialize the table
 	for(int i = 0; i < 26; i++) {
 		for(int j = 0; j < 26; j++) {
 			cTable[i][j] = 0;
@@ -97,11 +96,10 @@ void initCTable( string ciphertext ) {
 	}
 
 	// Count the number of times each pair of characters occurs in the ciphertext input
-	// length - 1 = total number of pairs in the ciphertext
 	for( unsigned int i = 0; i < ciphertext.length() - 1; i++ ) {
 		cTable[convert(ciphertext[i])][convert(ciphertext[i + 1])] += 1;
 	}
-	//printTable(cTable, "cTable: post-load");
+
 	// Normalize the frequencies
 	for(int i = 0; i < 26; i++) {
 		for(int j = 0; j< 26; j++) {
@@ -109,7 +107,6 @@ void initCTable( string ciphertext ) {
 				cTable[i][j] /= (double)(ciphertext.length() - 1); 
 		}
 	}
-	//printTable(cTable, "cTable: post-normalize");
 } // end initCTable
 
 // Initializes the population to random keys and zero fitness

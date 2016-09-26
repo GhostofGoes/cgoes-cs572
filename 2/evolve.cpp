@@ -48,14 +48,18 @@ void crossover( int parentA, int parentB, int child ) {
 	// Order One Crossover
 	if(CROSSOVER == 0) {
 
-	}
+	} 
+    // PMX Crossover
+    else if(CROSSOVER == 1) {
+        pmx( parentA, parentB, child);
+    }
 
 } // end crossover
 
 
 // Mutate chromosome in-place using permutation-based mutation operator
 void mutate( int chromosome ) {
-	if(MUTATION == 0) { // Simple swap mutation
+	if(MUTATION == 0) { // Single Swap mutation
 		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
 	}
 } // end mutate
@@ -103,3 +107,50 @@ bool compSelect( indFitType a, indFitType b) {
     else
         return (a.fit > b.fit);
 }
+
+void orderOne( int parentA, int parentB, int child ) {
+
+}
+
+// PMX Crossover. Code derived from Robert Heckendorn's implementation found in pmx.cpp
+void pmx( int parentA, int parentB, int child ) {
+    const double prob = 3.0 / 26.0; // Tweak this tweak the world
+    bool pick[26];
+    int locA[26];
+    int locB[26];
+    string a = population[parentA].key;
+    string b = population[parentB].key;
+    string c(26, 'a'); // Temporary child string
+
+    // Copy a random subnet (a "swath") of parent B
+    for( int i = 0; i < 26; i++ ) {
+        if(choose(prob)) { // Select what to copy from parent B
+            pick[i] = true;
+            c[i] = b[i];
+        } else { // Mark everything else as bad (-1)
+            pick[i] = false;
+            c[i] = -1;
+        }
+
+        // Location lookup table for A and B
+        locA[convert(a[i])] = locB[convert(b[i])] = i; 
+    }
+
+    // Remove duplicates
+    for( int i = 0; i < 26; i++ ) {
+        if( pick[i] && !pick[locB[convert(a[i])]] ) {
+            int loc = i;
+            do { loc = locA[convert(b[loc])]; } while( c[loc] != -1 );
+            c[loc] = a[i]; 
+        }
+    }
+
+    // Copy remaining genes from parent A
+    for( int i = 0; i < 26; i++ ) {
+        if( c[i] == -1 ) c[i] = a[i];
+    }
+    
+    // Put child into population
+    population[child].key = c;
+}
+

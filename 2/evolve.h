@@ -9,13 +9,13 @@
 #include "rand.h"
 using namespace std;
 
-const int FITNESS_FUNC = 1;
-const int CROSSOVER = 0;
-const int MUTATION = 0;
-const int SELECITON = 0;
-const int RUNS = 10000;
-const int POPSIZE = 5;
-const int TSIZE = 3;
+const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
+const int CROSSOVER = 1;    // 0 = Order One, 1 = PMX
+const int MUTATION = 0;     // 0 = Single Swap
+const int SELECTION = 0;    // Unused currently
+const int EVOLUTIONS = 10000; // # of times steady state algorithm evolves (# of runs)
+const int POPSIZE = 10;     // Size of population
+const int TSIZE = 3;        // Size of tournament
 
 typedef struct {
     string key;
@@ -35,6 +35,9 @@ double bFitness( string key );	// Bhatthacaryya distance
 void crossover( int parentA, int parentB, int child ); // Returns child that is the crossover of both parents
 void mutate( int chromosome ); // Mutates the chromosome in-place
 int select( int &parentA, int &parentB );
+
+void orderOne( int parentA, int parentB, int child );
+void pmx( int parentA, int parentB, int child );
 
 int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
 char revert( int i );	// Reverts an int back to the ASCII letter it originally was
