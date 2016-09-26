@@ -69,7 +69,12 @@ void mutate( int chromosome ) {
 		swap(population[chromosome].key[randMod(26)], population[chromosome].key[randMod(26)]);
     } else if(MUTATION == 2) { // Three-point shift 
         int a, b, c;
+        a = randMod(26 - 2);
+        do { b = randMod(26 - 1); } while(b <= a);
+        do { c = randMod(26); } while(c <= b);
+        char tempB = population[chromosome].key[b];
 		swap(population[chromosome].key[a], population[chromosome].key[b]);
+		swap(population[chromosome].key[c], tempB );
     }
 } // end mutate
 
