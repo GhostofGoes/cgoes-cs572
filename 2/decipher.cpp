@@ -5,11 +5,11 @@
 // Description:	Assignment 2 - Genetic Algorithms - Breaking a simple Substitution Cipher
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 // License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2.
-// if you're in the class, don't copy the code ( ͡° ͜ʖ ͡°)
+// if you're in the class, don't copy the code
 
 #include <fstream>
 #include "evolve.h"
-#define TESTING 0
+#define TESTING 1
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
@@ -32,18 +32,18 @@ int main() {
 	initRand();  	// Initialize random number generator
 	initETable();	// Initialize the English contact table
 	while( cin >> temp ) { ciphertext += temp; } // Input the ciphertext 
-	if(TESTING) { cout << "ciphertext: " << ciphertext << endl; }
+	if(TESTING) { cout << "\n ** Ciphertext **\n" << ciphertext << endl; }
 	initCTable(ciphertext);
 	initPopulation();
 	if(TESTING) { printPopulation("Post-init"); }
-	
 
 	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
 		crossover( par1, par2, child );
-		mutate(child);  // TODO: could make this random, so it doesn't ALWAYS mutate
+		if( randUnit() < 0.8 )
+			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
 	if(TESTING) { printPopulation("Post-evolution"); }

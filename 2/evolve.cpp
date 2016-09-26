@@ -108,8 +108,9 @@ bool compSelect( indFitType a, indFitType b) {
         return (a.fit > b.fit);
 }
 
+// Order One crossover - a fast permutation crossover.
 void orderOne( int parentA, int parentB, int child ) {
-
+    
 }
 
 // PMX Crossover. Code derived from Robert Heckendorn's implementation found in pmx.cpp
@@ -149,7 +150,7 @@ void pmx( int parentA, int parentB, int child ) {
     for( int i = 0; i < 26; i++ ) {
         if( c[i] == -1 ) c[i] = a[i];
     }
-    
+
     // Put child into population
     population[child].key = c;
 }
