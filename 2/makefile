@@ -21,6 +21,7 @@ tar:
 	ls -l $(HW).tar
 	
 test: $(SRCS)
+	make clean
 	$(CC) $(CCFLAGS) -Wall -g $(OBJS) $(LIBS) -o $(BIN)
 	
 full-test:

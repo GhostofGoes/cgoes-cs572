@@ -133,7 +133,10 @@ string initKey() {
 
 // Comparison function for sorting
 bool comp( keyFitType a, keyFitType b ) {
-	return (a.fit > b.fit);
+	if(FITNESS_FUNC == 0)
+		return (a.fit < b.fit);
+	else
+		return (a.fit > b.fit);
 }
 
 string bestIndividual() {

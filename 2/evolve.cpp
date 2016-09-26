@@ -98,5 +98,8 @@ int select( int &parentA, int &parentB ) {
 }
 
 bool compSelect( indFitType a, indFitType b) {
-    return (a.fit > b.fit);
+    if(FITNESS_FUNC == 0)
+        return (a.fit < b.fit);
+    else
+        return (a.fit > b.fit);
 }

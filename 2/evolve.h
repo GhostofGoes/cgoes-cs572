@@ -9,11 +9,11 @@
 #include "rand.h"
 using namespace std;
 
-const int FITNESS_FUNC = 0;
+const int FITNESS_FUNC = 1;
 const int CROSSOVER = 0;
 const int MUTATION = 0;
 const int SELECITON = 0;
-const int RUNS = 5;
+const int RUNS = 10000;
 const int POPSIZE = 5;
 const int TSIZE = 3;
 
