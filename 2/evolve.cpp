@@ -10,6 +10,7 @@ inline int encode( int index, string key ) {
 	return (int)(convert(key[index]));  // Converts char to int (ASCII 'a' - 97 = 0)
 } // end encode
 
+// Returns the fitness found using the currently selected fitness function
 double fitness( string key ) {
     if(FITNESS_FUNC == 0)
         return eFitness(key);
@@ -51,7 +52,7 @@ void crossover( int parentA, int parentB, int child ) {
 	} 
     // PMX Crossover
     else if(CROSSOVER == 1) {
-        pmx( parentA, parentB, child);
+        pmx(parentA, parentB, child);
     }
 
 } // end crossover
@@ -101,6 +102,7 @@ int select( int &parentA, int &parentB ) {
     return members[TSIZE - 1].index;
 }
 
+// Comparison function for sorting that changes based on fitness function used
 bool compSelect( indFitType a, indFitType b) {
     if(FITNESS_FUNC == 0)
         return (a.fit < b.fit);

@@ -32,6 +32,7 @@ double fitness( string key );
 double eFitness( string key );	// Euclidean distance
 double bFitness( string key );	// Bhatthacaryya distance
 
+
 void crossover( int parentA, int parentB, int child ); // Returns child that is the crossover of both parents
 void mutate( int chromosome ); // Mutates the chromosome in-place
 int select( int &parentA, int &parentB );

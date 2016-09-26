@@ -10,11 +10,12 @@
 #include <fstream>
 #include "evolve.h"
 #define TESTING 0
-#define PRINT_FITNESS 1
+#define PRINT_FITNESS 0
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
-vector < keyFitType > population; // The population of possible keys
+vector < keyFitType > population; // The population of keys and their fitnesses
+string english("abcdefghijklmnopqrstuvwxyz"); // A hack of epic proportions
 
 void initETable();
 void initCTable( string ciphertext );
@@ -26,7 +27,7 @@ bool comp( keyFitType a, keyFitType b );
 
 string decipher( string ciphertext, string key ); // Deciphers the encrypted ciphertext using the given key
 char decode( string key, char c );
-string english("abcdefghijklmnopqrstuvwxyz"); // A hack of epic proportions
+
 
 int main() {
 	string ciphertext, temp, plaintext, key;
@@ -38,7 +39,7 @@ int main() {
 	if(TESTING) { cout << "\n ** Ciphertext **\n" << ciphertext << endl; }
 	initCTable(ciphertext);
 	initPopulation();
-	if(TESTING) { printPopulation("Post-init"); }
+	//if(TESTING) { printPopulation("Post-init"); }
 	
 	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
@@ -46,12 +47,11 @@ int main() {
 		child = select(par1, par2);
 		if( choose(0.9) )
 			crossover( par1, par2, child );
-		if( choose(0.9) )
+		if( choose(0.5) )
 			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
-	if(TESTING) { printPopulation("Post-evolution"); }
-	
+	//if(TESTING) { printPopulation("Post-evolution"); }
 
 	key = bestIndividual();
 	cout << "** goes " << key << endl;
@@ -133,7 +133,7 @@ string initKey() {
 	return key;
 }
 
-// Comparison function for sorting
+// Comparison function for sorting that changes based on fitness function used
 bool comp( keyFitType a, keyFitType b ) {
 	if(FITNESS_FUNC == 0)
 		return (a.fit < b.fit);
@@ -141,6 +141,7 @@ bool comp( keyFitType a, keyFitType b ) {
 		return (a.fit > b.fit);
 }
 
+// Sorts population to determine best individual, then returns that individual's key
 string bestIndividual() {
 	sort(population.begin(), population.end(), comp);
 	if(PRINT_FITNESS) { cout << "Best fitness:\t" << population[0].fit << endl; }
@@ -157,6 +158,7 @@ char revert( int i ) {
 	return (char)(i + 97);
 }
 
+// Cleanly prints the given table prepended by the title
 void printTable( double table[][26], string title = "Table" ) {
 	cout << "\n** " << title << " **" << endl;
 	for( int i = 0; i < 26; i++ ) {
@@ -167,6 +169,7 @@ void printTable( double table[][26], string title = "Table" ) {
 	}
 }
 
+// Cleanly prints the global population keys + fitnesses, prepended by the title
 void printPopulation( string title ) {
 	cout << "\n** Population " << title << " **" << endl;
 	for( unsigned int i = 0; i < population.size(); i++ ) {
@@ -174,15 +177,15 @@ void printPopulation( string title ) {
 	}
 }
 
+// Deciphers the encrypted ciphertext into a plaintext string using the key
 string decipher( string ciphertext, string key ) {
 	string deciphered;
-	
-	for( unsigned int i = 0; i < ciphertext.length(); i++ ) {
+	for( unsigned int i = 0; i < ciphertext.length(); i++ )
 		deciphered.push_back(decode(key, ciphertext[i]));
-	}
 	return deciphered;
 }
 
+// Decrypts a given character using the given key. Uses the global english string.
 char decode( string key, char c ) {
 	// Find index of where c is in the key
 	int index = 0;
