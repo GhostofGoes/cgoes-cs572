@@ -10,6 +10,7 @@
 #include <fstream>
 #include "evolve.h"
 #define TESTING 0
+#define PRINT_FITNESS 1
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
@@ -38,7 +39,7 @@ int main() {
 	initCTable(ciphertext);
 	initPopulation();
 	if(TESTING) { printPopulation("Post-init"); }
-
+	
 	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
@@ -142,7 +143,7 @@ bool comp( keyFitType a, keyFitType b ) {
 
 string bestIndividual() {
 	sort(population.begin(), population.end(), comp);
-	if(TESTING) { cout << "Best fitness:\t" << population[0].fit << endl; }
+	if(PRINT_FITNESS) { cout << "Best fitness:\t" << population[0].fit << endl; }
 	return population[0].key;
 }
 
