@@ -39,19 +39,17 @@ int main() {
 	if(TESTING) { cout << "\n ** Ciphertext **\n" << ciphertext << endl; }
 	initCTable(ciphertext);
 	initPopulation();
-	//if(TESTING) { printPopulation("Post-init"); }
 	
 	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
-		if( choose(0.9) )
+		if( choose(0.7) )
 			crossover( par1, par2, child );
 		if( choose(0.5) )
 			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
-	//if(TESTING) { printPopulation("Post-evolution"); }
 
 	key = bestIndividual();
 	cout << "** goes " << key << endl;
