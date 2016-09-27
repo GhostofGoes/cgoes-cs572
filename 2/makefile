@@ -28,6 +28,10 @@ debug: $(SRCS)
 	make clean
 	$(CC) -Wall -g $(LIBS) -o $(BIN)
 
+profile: $(SRCS)
+	make clean
+	$(CC) -p -g $(LIBS) -o $(BIN)
+
 full-test:
 	touch $(SRCS)
 	make test

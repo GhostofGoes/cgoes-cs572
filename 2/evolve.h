@@ -13,7 +13,7 @@ const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
 const int CROSSOVER = 1;    // 0 = Order One, 1 = PMX
 const int MUTATION = 0;     // 0 = Single Swap
 const int SELECTION = 0;    // Unused currently
-const int EVOLUTIONS = 20000; // # of times steady state algorithm evolves (# of runs)
+const int EVOLUTIONS = 100000; // # of times steady state algorithm evolves (# of runs)
 const int POPSIZE = 400;     // Size of population
 const int TSIZE = 3;        // Size of tournament
 
@@ -40,8 +40,6 @@ int select( int &parentA, int &parentB );
 void orderOne( int parentA, int parentB, int child );
 void pmx( int parentA, int parentB, int child );
 
-int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
-char revert( int i );	// Reverts an int back to the ASCII letter it originally was
 void printTable( double table[][26], string name );
 void printPopulation( string title );
 

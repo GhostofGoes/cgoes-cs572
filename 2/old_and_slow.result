@@ -1,0 +1,1020 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00 20926541     0.00     0.00  convert(char)
+  0.00      0.00     0.00 19910400     0.00     0.00  encode(int, std::string)
+  0.00      0.00     0.00   600000     0.00     0.00  std::_Iter_base<indFitType*, false>::_S_base(indFitType*)
+  0.00      0.00     0.00   597158     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const
+  0.00      0.00     0.00   509794     0.00     0.00  choose(double)
+  0.00      0.00     0.00   509794     0.00     0.00  randUnit()
+  0.00      0.00     0.00   360000     0.00     0.00  std::_Niter_base<indFitType*>::iterator_type std::__niter_base<indFitType*>(indFitType*)
+  0.00      0.00     0.00   240000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::size() const
+  0.00      0.00     0.00   240000     0.00     0.00  std::_Miter_base<indFitType*>::iterator_type std::__miter_base<indFitType*>(indFitType*)
+  0.00      0.00     0.00   207084     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator*() const
+  0.00      0.00     0.00   204772     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&)
+  0.00      0.00     0.00   200000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator()
+  0.00      0.00     0.00   180000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::max_size() const
+  0.00      0.00     0.00   174181     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long)
+  0.00      0.00     0.00   120000     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::max_size(std::allocator<indFitType> const&)
+  0.00      0.00     0.00   120000     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&)
+  0.00      0.00     0.00   120000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() const
+  0.00      0.00     0.00   120000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::max_size() const
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<indFitType>(indFitType const*, indFitType const*, indFitType*)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__uninitialized_copy<true>::__uninit_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__copy_move_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::uninitialized_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__uninitialized_copy_a<indFitType*, indFitType*, indFitType>(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::__uninitialized_move_if_noexcept_a<indFitType*, indFitType*, std::allocator<indFitType> >(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&)
+  0.00      0.00     0.00   120000     0.00     0.00  indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00    90519     0.00     0.00  randMod(int)
+  0.00      0.00     0.00    80000     0.00     0.00  bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&)
+  0.00      0.00     0.00    80000     0.00     0.00  void std::_Destroy_aux<true>::__destroy<indFitType*>(indFitType*, indFitType*)
+  0.00      0.00     0.00    80000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long)
+  0.00      0.00     0.00    80000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::end()
+  0.00      0.00     0.00    80000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::begin()
+  0.00      0.00     0.00    80000     0.00     0.00  void std::_Destroy<indFitType*>(indFitType*, indFitType*)
+  0.00      0.00     0.00    80000     0.00     0.00  void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&)
+  0.00      0.00     0.00    74104     0.00     0.00  compSelect(indFitType, indFitType)
+  0.00      0.00     0.00    60911     0.00     0.00  operator new(unsigned long, void*)
+  0.00      0.00     0.00    60010     0.00     0.00  unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00      0.00     0.00    60000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::deallocate(indFitType*, unsigned long)
+  0.00      0.00     0.00    60000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::allocate(unsigned long, void const*)
+  0.00      0.00     0.00    60000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::construct(indFitType*, indFitType const&)
+  0.00      0.00     0.00    60000     0.00     0.00  void __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::construct<indFitType>(std::allocator<indFitType>&, indFitType*, indFitType const&)
+  0.00      0.00     0.00    60000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const
+  0.00      0.00     0.00    60000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_allocate(unsigned long)
+  0.00      0.00     0.00    60000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&)
+  0.00      0.00     0.00    60000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&)
+  0.00      0.00     0.00    60000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::operator[](unsigned long)
+  0.00      0.00     0.00    40000     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator++()
+  0.00      0.00     0.00    37158     0.00     0.00  std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, true>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00    37158     0.00     0.00  std::_Niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00    34104     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator--()
+  0.00      0.00     0.00    32386     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator+(long const&) const
+  0.00      0.00     0.00    27614     0.00     0.00  void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  0.00      0.00     0.00    24772     0.00     0.00  std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, false>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00    24772     0.00     0.00  std::_Miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00    20400     0.00     0.00  fitness(std::string)
+  0.00      0.00     0.00    20400     0.00     0.00  bFitness(std::string)
+  0.00      0.00     0.00    20386     0.00     0.00  void std::swap<char>(char&, char&)
+  0.00      0.00     0.00    20001     0.00     0.00  std::__lg(long)
+  0.00      0.00     0.00    20000     0.00     0.00  select(int&, int&)
+  0.00      0.00     0.00    20000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::new_allocator()
+  0.00      0.00     0.00    20000     0.00     0.00  __gnu_cxx::new_allocator<indFitType>::~new_allocator()
+  0.00      0.00     0.00    20000     0.00     0.00  bool __gnu_cxx::operator==<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&)
+  0.00      0.00     0.00    20000     0.00     0.00  std::allocator<indFitType>::allocator()
+  0.00      0.00     0.00    20000     0.00     0.00  std::allocator<indFitType>::~allocator()
+  0.00      0.00     0.00    20000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::_Vector_impl()
+  0.00      0.00     0.00    20000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::~_Vector_impl()
+  0.00      0.00     0.00    20000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_base()
+  0.00      0.00     0.00    20000     0.00     0.00  std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base()
+  0.00      0.00     0.00    20000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::vector()
+  0.00      0.00     0.00    20000     0.00     0.00  std::vector<indFitType, std::allocator<indFitType> >::~vector()
+  0.00      0.00     0.00    20000     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  0.00      0.00     0.00    20000     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType))
+  0.00      0.00     0.00    20000     0.00     0.00  void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  0.00      0.00     0.00    20000     0.00     0.00  void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  0.00      0.00     0.00    18069     0.00     0.00  pmx(int, int, int)
+  0.00      0.00     0.00    18069     0.00     0.00  crossover(int, int, int)
+  0.00      0.00     0.00    12386     0.00     0.00  indFitType* std::__copy_move_backward<false, true, std::random_access_iterator_tag>::__copy_move_b<indFitType>(indFitType const*, indFitType const*, indFitType*)
+  0.00      0.00     0.00    12386     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00    12386     0.00     0.00  indFitType* std::__copy_move_backward_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  0.00      0.00     0.00    12386     0.00     0.00  __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  0.00      0.00     0.00     9986     0.00     0.00  mutate(int)
+  0.00      0.00     0.00     8203     0.00     0.00  keyFitType::~keyFitType()
+  0.00      0.00     0.00     8202     0.00     0.00  keyFitType::keyFitType(keyFitType const&)
+  0.00      0.00     0.00     6237     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const
+  0.00      0.00     0.00     2995     0.00     0.00  comp(keyFitType, keyFitType)
+  0.00      0.00     0.00     2890     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const
+  0.00      0.00     0.00     2441     0.00     0.00  keyFitType::operator=(keyFitType const&)
+  0.00      0.00     0.00     1845     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator--()
+  0.00      0.00     0.00     1674     0.00     0.00  randULL()
+  0.00      0.00     0.00     1422     0.00     0.00  keyFitType* std::__addressof<keyFitType>(keyFitType&)
+  0.00      0.00     0.00     1385     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++()
+  0.00      0.00     0.00      911     0.00     0.00  void std::_Destroy<keyFitType>(keyFitType*)
+  0.00      0.00     0.00      902     0.00     0.00  bool __gnu_cxx::operator< <keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&)
+  0.00      0.00     0.00      902     0.00     0.00  void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >)
+  0.00      0.00     0.00      902     0.00     0.00  void std::swap<keyFitType>(keyFitType&, keyFitType&)
+  0.00      0.00     0.00      902     0.00     0.00  void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >)
+  0.00      0.00     0.00      511     0.00     0.00  void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&)
+  0.00      0.00     0.00      402     0.00     0.00  bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&)
+  0.00      0.00     0.00      400     0.00     0.00  initKey()
+  0.00      0.00     0.00      400     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&)
+  0.00      0.00     0.00      400     0.00     0.00  void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&)
+  0.00      0.00     0.00      400     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&)
+  0.00      0.00     0.00      399     0.00     0.00  void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00      181     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&)
+  0.00      0.00     0.00      130     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&)
+  0.00      0.00     0.00      120     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const
+  0.00      0.00     0.00      115     0.00     0.00  decode(std::string, char)
+  0.00      0.00     0.00       40     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::size() const
+  0.00      0.00     0.00       39     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator-(long const&) const
+  0.00      0.00     0.00       39     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00       39     0.00     0.00  void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00       39     0.00     0.00  __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00       31     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator()
+  0.00      0.00     0.00       30     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::max_size() const
+  0.00      0.00     0.00       20     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::max_size(std::allocator<keyFitType> const&)
+  0.00      0.00     0.00       20     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() const
+  0.00      0.00     0.00       20     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const
+  0.00      0.00     0.00       20     0.00     0.00  keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*)
+  0.00      0.00     0.00       20     0.00     0.00  keyFitType* std::uninitialized_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*)
+  0.00      0.00     0.00       20     0.00     0.00  keyFitType* std::__uninitialized_copy_a<keyFitType*, keyFitType*, keyFitType>(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+  0.00      0.00     0.00       20     0.00     0.00  keyFitType* std::__uninitialized_move_if_noexcept_a<keyFitType*, keyFitType*, std::allocator<keyFitType> >(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+  0.00      0.00     0.00       11     0.00     0.00  void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*)
+  0.00      0.00     0.00       11     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long)
+  0.00      0.00     0.00       11     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::end()
+  0.00      0.00     0.00       11     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::begin()
+  0.00      0.00     0.00       11     0.00     0.00  void std::_Destroy<keyFitType*>(keyFitType*, keyFitType*)
+  0.00      0.00     0.00       11     0.00     0.00  void std::_Destroy<keyFitType*, keyFitType>(keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::deallocate(keyFitType*, unsigned long)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::allocate(unsigned long, void const*)
+  0.00      0.00     0.00       10     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const
+  0.00      0.00     0.00       10     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_allocate(unsigned long)
+  0.00      0.00     0.00       10     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&)
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z7fitnessSs
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_eTable
+  0.00      0.00     0.00        1     0.00     0.00  initCTable(std::string)
+  0.00      0.00     0.00        1     0.00     0.00  initETable()
+  0.00      0.00     0.00        1     0.00     0.00  bestIndividual()
+  0.00      0.00     0.00        1     0.00     0.00  initPopulation()
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  decipher(std::string, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  initRand()
+  0.00      0.00     0.00        1     0.00     0.00  initRand(unsigned long long, unsigned long long)
+  0.00      0.00     0.00        1     0.00     0.00  keyFitType::keyFitType()
+  0.00      0.00     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::new_allocator()
+  0.00      0.00     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<keyFitType>::~new_allocator()
+  0.00      0.00     0.00        1     0.00     0.00  bool __gnu_cxx::operator==<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&)
+  0.00      0.00     0.00        1     0.00     0.00  std::allocator<keyFitType>::allocator()
+  0.00      0.00     0.00        1     0.00     0.00  std::allocator<keyFitType>::~allocator()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::_Vector_impl()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::~_Vector_impl()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_base()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<keyFitType, std::allocator<keyFitType> >::~_Vector_base()
+  0.00      0.00     0.00        1     0.00     0.00  std::vector<keyFitType, std::allocator<keyFitType> >::vector()
+  0.00      0.00     0.00        1     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00        1     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00        1     0.00     0.00  void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00        1     0.00     0.00  void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  0.00      0.00     0.00        1     0.00     0.00  void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00     228/20926541     initCTable(std::string) [142]
+                0.00    0.00     978/20926541     initETable() [143]
+                0.00    0.00 1014935/20926541     pmx(int, int, int) [82]
+                0.00    0.00 19910400/20926541     encode(int, std::string) [9]
+[8]      0.0    0.00    0.00 20926541         convert(char) [8]
+-----------------------------------------------
+                0.00    0.00 19910400/19910400     bFitness(std::string) [63]
+[9]      0.0    0.00    0.00 19910400         encode(int, std::string) [9]
+                0.00    0.00 19910400/20926541     convert(char) [8]
+-----------------------------------------------
+                0.00    0.00  240000/600000      std::_Miter_base<indFitType*>::iterator_type std::__miter_base<indFitType*>(indFitType*) [16]
+                0.00    0.00  360000/600000      std::_Niter_base<indFitType*>::iterator_type std::__niter_base<indFitType*>(indFitType*) [14]
+[10]     0.0    0.00    0.00  600000         std::_Iter_base<indFitType*, false>::_S_base(indFitType*) [10]
+-----------------------------------------------
+                0.00    0.00   37158/597158      std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, true>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [55]
+                0.00    0.00   40000/597158      bool __gnu_cxx::operator==<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [69]
+                0.00    0.00  120000/597158      std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+                0.00    0.00  160000/597158      bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [35]
+                0.00    0.00  240000/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+[11]     0.0    0.00    0.00  597158         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+-----------------------------------------------
+                0.00    0.00   40000/509794      main [6]
+                0.00    0.00  469794/509794      pmx(int, int, int) [82]
+[12]     0.0    0.00    0.00  509794         choose(double) [12]
+                0.00    0.00  509794/509794      randUnit() [13]
+-----------------------------------------------
+                0.00    0.00  509794/509794      choose(double) [12]
+[13]     0.0    0.00    0.00  509794         randUnit() [13]
+-----------------------------------------------
+                0.00    0.00  360000/360000      indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [29]
+[14]     0.0    0.00    0.00  360000         std::_Niter_base<indFitType*>::iterator_type std::__niter_base<indFitType*>(indFitType*) [14]
+                0.00    0.00  360000/600000      std::_Iter_base<indFitType*, false>::_S_base(indFitType*) [10]
+-----------------------------------------------
+                0.00    0.00  240000/240000      std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [49]
+[15]     0.0    0.00    0.00  240000         std::vector<indFitType, std::allocator<indFitType> >::size() const [15]
+-----------------------------------------------
+                0.00    0.00  240000/240000      indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [33]
+[16]     0.0    0.00    0.00  240000         std::_Miter_base<indFitType*>::iterator_type std::__miter_base<indFitType*>(indFitType*) [16]
+                0.00    0.00  240000/600000      std::_Iter_base<indFitType*, false>::_S_base(indFitType*) [10]
+-----------------------------------------------
+                0.00    0.00  102312/207084      void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [59]
+                0.00    0.00  104772/207084      void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[17]     0.0    0.00    0.00  207084         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator*() const [17]
+-----------------------------------------------
+                0.00    0.00   12386/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [87]
+                0.00    0.00   32386/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator+(long const&) const [58]
+                0.00    0.00   80000/204772      std::vector<indFitType, std::allocator<indFitType> >::begin() [39]
+                0.00    0.00   80000/204772      std::vector<indFitType, std::allocator<indFitType> >::end() [38]
+[18]     0.0    0.00    0.00  204772         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [18]
+-----------------------------------------------
+                0.00    0.00   20000/200000      std::vector<indFitType, std::allocator<indFitType> >::~vector() [77]
+                0.00    0.00  180000/200000      std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[19]     0.0    0.00    0.00  200000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() [19]
+-----------------------------------------------
+                0.00    0.00   60000/180000      __gnu_cxx::new_allocator<indFitType>::allocate(unsigned long, void const*) [46]
+                0.00    0.00  120000/180000      __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::max_size(std::allocator<indFitType> const&) [22]
+[20]     0.0    0.00    0.00  180000         __gnu_cxx::new_allocator<indFitType>::max_size() const [20]
+-----------------------------------------------
+                0.00    0.00       2/174181      bestIndividual() [144]
+                0.00    0.00   19972/174181      mutate(int) [88]
+                0.00    0.00   40000/174181      main [6]
+                0.00    0.00   54207/174181      pmx(int, int, int) [82]
+                0.00    0.00   60000/174181      select(int&, int&) [66]
+[21]     0.0    0.00    0.00  174181         std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long) [21]
+-----------------------------------------------
+                0.00    0.00  120000/120000      std::vector<indFitType, std::allocator<indFitType> >::max_size() const [25]
+[22]     0.0    0.00    0.00  120000         __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::max_size(std::allocator<indFitType> const&) [22]
+                0.00    0.00  120000/180000      __gnu_cxx::new_allocator<indFitType>::max_size() const [20]
+-----------------------------------------------
+                0.00    0.00   20000/120000      void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+                0.00    0.00   20000/120000      void std::__introsort_loop<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)) [79]
+                0.00    0.00   20000/120000      void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [80]
+                0.00    0.00   60000/120000      std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[23]     0.0    0.00    0.00  120000         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+                0.00    0.00  240000/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+-----------------------------------------------
+                0.00    0.00  120000/120000      std::vector<indFitType, std::allocator<indFitType> >::max_size() const [25]
+[24]     0.0    0.00    0.00  120000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() const [24]
+-----------------------------------------------
+                0.00    0.00  120000/120000      std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [49]
+[25]     0.0    0.00    0.00  120000         std::vector<indFitType, std::allocator<indFitType> >::max_size() const [25]
+                0.00    0.00  120000/120000      std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() const [24]
+                0.00    0.00  120000/120000      __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::max_size(std::allocator<indFitType> const&) [22]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::__copy_move_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [28]
+[26]     0.0    0.00    0.00  120000         indFitType* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<indFitType>(indFitType const*, indFitType const*, indFitType*) [26]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::uninitialized_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [30]
+[27]     0.0    0.00    0.00  120000         indFitType* std::__uninitialized_copy<true>::__uninit_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [27]
+                0.00    0.00  120000/120000      indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [33]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [29]
+[28]     0.0    0.00    0.00  120000         indFitType* std::__copy_move_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [28]
+                0.00    0.00  120000/120000      indFitType* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<indFitType>(indFitType const*, indFitType const*, indFitType*) [26]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [33]
+[29]     0.0    0.00    0.00  120000         indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [29]
+                0.00    0.00  360000/360000      std::_Niter_base<indFitType*>::iterator_type std::__niter_base<indFitType*>(indFitType*) [14]
+                0.00    0.00  120000/120000      indFitType* std::__copy_move_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [28]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_copy_a<indFitType*, indFitType*, indFitType>(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [31]
+[30]     0.0    0.00    0.00  120000         indFitType* std::uninitialized_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [30]
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_copy<true>::__uninit_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [27]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_move_if_noexcept_a<indFitType*, indFitType*, std::allocator<indFitType> >(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [32]
+[31]     0.0    0.00    0.00  120000         indFitType* std::__uninitialized_copy_a<indFitType*, indFitType*, indFitType>(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [31]
+                0.00    0.00  120000/120000      indFitType* std::uninitialized_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [30]
+-----------------------------------------------
+                0.00    0.00  120000/120000      std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[32]     0.0    0.00    0.00  120000         indFitType* std::__uninitialized_move_if_noexcept_a<indFitType*, indFitType*, std::allocator<indFitType> >(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [32]
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_copy_a<indFitType*, indFitType*, indFitType>(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [31]
+-----------------------------------------------
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_copy<true>::__uninit_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [27]
+[33]     0.0    0.00    0.00  120000         indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [33]
+                0.00    0.00  240000/240000      std::_Miter_base<indFitType*>::iterator_type std::__miter_base<indFitType*>(indFitType*) [16]
+                0.00    0.00  120000/120000      indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [29]
+-----------------------------------------------
+                0.00    0.00   10400/90519       initKey() [106]
+                0.00    0.00   19972/90519       mutate(int) [88]
+                0.00    0.00   60147/90519       select(int&, int&) [66]
+[34]     0.0    0.00    0.00   90519         randMod(int) [34]
+-----------------------------------------------
+                0.00    0.00   20000/80000       void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+                0.00    0.00   60000/80000       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[35]     0.0    0.00    0.00   80000         bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [35]
+                0.00    0.00  160000/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+-----------------------------------------------
+                0.00    0.00   80000/80000       void std::_Destroy<indFitType*>(indFitType*, indFitType*) [40]
+[36]     0.0    0.00    0.00   80000         void std::_Destroy_aux<true>::__destroy<indFitType*>(indFitType*, indFitType*) [36]
+-----------------------------------------------
+                0.00    0.00   20000/80000       std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base() [75]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[37]     0.0    0.00    0.00   80000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long) [37]
+                0.00    0.00   60000/60000       __gnu_cxx::new_allocator<indFitType>::deallocate(indFitType*, unsigned long) [45]
+-----------------------------------------------
+                0.00    0.00   20000/80000       select(int&, int&) [66]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&) [52]
+[38]     0.0    0.00    0.00   80000         std::vector<indFitType, std::allocator<indFitType> >::end() [38]
+                0.00    0.00   80000/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [18]
+-----------------------------------------------
+                0.00    0.00   20000/80000       select(int&, int&) [66]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[39]     0.0    0.00    0.00   80000         std::vector<indFitType, std::allocator<indFitType> >::begin() [39]
+                0.00    0.00   80000/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [18]
+-----------------------------------------------
+                0.00    0.00   80000/80000       void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&) [41]
+[40]     0.0    0.00    0.00   80000         void std::_Destroy<indFitType*>(indFitType*, indFitType*) [40]
+                0.00    0.00   80000/80000       void std::_Destroy_aux<true>::__destroy<indFitType*>(indFitType*, indFitType*) [36]
+-----------------------------------------------
+                0.00    0.00   20000/80000       std::vector<indFitType, std::allocator<indFitType> >::~vector() [77]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[41]     0.0    0.00    0.00   80000         void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&) [41]
+                0.00    0.00   80000/80000       void std::_Destroy<indFitType*>(indFitType*, indFitType*) [40]
+-----------------------------------------------
+                0.00    0.00   34104/74104       void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [59]
+                0.00    0.00   40000/74104       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[42]     0.0    0.00    0.00   74104         compSelect(indFitType, indFitType) [42]
+-----------------------------------------------
+                0.00    0.00     400/60911       __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&) [107]
+                0.00    0.00     511/60911       void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&) [104]
+                0.00    0.00   60000/60911       __gnu_cxx::new_allocator<indFitType>::construct(indFitType*, indFitType const&) [47]
+[43]     0.0    0.00    0.00   60911         operator new(unsigned long, void*) [43]
+-----------------------------------------------
+                0.00    0.00      10/60010       std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [137]
+                0.00    0.00   60000/60010       std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [49]
+[44]     0.0    0.00    0.00   60010         unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [44]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long) [37]
+[45]     0.0    0.00    0.00   60000         __gnu_cxx::new_allocator<indFitType>::deallocate(indFitType*, unsigned long) [45]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_allocate(unsigned long) [50]
+[46]     0.0    0.00    0.00   60000         __gnu_cxx::new_allocator<indFitType>::allocate(unsigned long, void const*) [46]
+                0.00    0.00   60000/180000      __gnu_cxx::new_allocator<indFitType>::max_size() const [20]
+-----------------------------------------------
+                0.00    0.00   60000/60000       void __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::construct<indFitType>(std::allocator<indFitType>&, indFitType*, indFitType const&) [48]
+[47]     0.0    0.00    0.00   60000         __gnu_cxx::new_allocator<indFitType>::construct(indFitType*, indFitType const&) [47]
+                0.00    0.00   60000/60911       operator new(unsigned long, void*) [43]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[48]     0.0    0.00    0.00   60000         void __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::construct<indFitType>(std::allocator<indFitType>&, indFitType*, indFitType const&) [48]
+                0.00    0.00   60000/60000       __gnu_cxx::new_allocator<indFitType>::construct(indFitType*, indFitType const&) [47]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[49]     0.0    0.00    0.00   60000         std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [49]
+                0.00    0.00  240000/240000      std::vector<indFitType, std::allocator<indFitType> >::size() const [15]
+                0.00    0.00  120000/120000      std::vector<indFitType, std::allocator<indFitType> >::max_size() const [25]
+                0.00    0.00   60000/60010       unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [44]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+[50]     0.0    0.00    0.00   60000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_allocate(unsigned long) [50]
+                0.00    0.00   60000/60000       __gnu_cxx::new_allocator<indFitType>::allocate(unsigned long, void const*) [46]
+-----------------------------------------------
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&) [52]
+[51]     0.0    0.00    0.00   60000         std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+                0.00    0.00  180000/200000      std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() [19]
+                0.00    0.00  120000/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+                0.00    0.00  120000/120000      indFitType* std::__uninitialized_move_if_noexcept_a<indFitType*, indFitType*, std::allocator<indFitType> >(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&) [32]
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [49]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::begin() [39]
+                0.00    0.00   60000/120000      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+                0.00    0.00   60000/60000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_allocate(unsigned long) [50]
+                0.00    0.00   60000/60000       void __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::construct<indFitType>(std::allocator<indFitType>&, indFitType*, indFitType const&) [48]
+                0.00    0.00   60000/80000       void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&) [41]
+                0.00    0.00   60000/80000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long) [37]
+-----------------------------------------------
+                0.00    0.00   60000/60000       select(int&, int&) [66]
+[52]     0.0    0.00    0.00   60000         std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&) [52]
+                0.00    0.00   60000/80000       std::vector<indFitType, std::allocator<indFitType> >::end() [38]
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [51]
+-----------------------------------------------
+                0.00    0.00   60000/60000       select(int&, int&) [66]
+[53]     0.0    0.00    0.00   60000         std::vector<indFitType, std::allocator<indFitType> >::operator[](unsigned long) [53]
+-----------------------------------------------
+                0.00    0.00   40000/40000       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[54]     0.0    0.00    0.00   40000         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator++() [54]
+-----------------------------------------------
+                0.00    0.00   37158/37158       std::_Niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [56]
+[55]     0.0    0.00    0.00   37158         std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, true>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [55]
+                0.00    0.00   37158/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+-----------------------------------------------
+                0.00    0.00   37158/37158       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [87]
+[56]     0.0    0.00    0.00   37158         std::_Niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [56]
+                0.00    0.00   37158/37158       std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, true>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [55]
+-----------------------------------------------
+                0.00    0.00   34104/34104       void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [59]
+[57]     0.0    0.00    0.00   34104         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator--() [57]
+-----------------------------------------------
+                0.00    0.00   32386/32386       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[58]     0.0    0.00    0.00   32386         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator+(long const&) const [58]
+                0.00    0.00   32386/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [18]
+-----------------------------------------------
+                0.00    0.00   27614/27614       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[59]     0.0    0.00    0.00   27614         void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [59]
+                0.00    0.00  102312/207084      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator*() const [17]
+                0.00    0.00   34104/34104       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator--() [57]
+                0.00    0.00   34104/74104       compSelect(indFitType, indFitType) [42]
+-----------------------------------------------
+                0.00    0.00   24772/24772       std::_Miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [61]
+[60]     0.0    0.00    0.00   24772         std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, false>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [60]
+-----------------------------------------------
+                0.00    0.00   24772/24772       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [85]
+[61]     0.0    0.00    0.00   24772         std::_Miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [61]
+                0.00    0.00   24772/24772       std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, false>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [60]
+-----------------------------------------------
+                0.00    0.00     400/20400       initPopulation() [145]
+                0.00    0.00   20000/20400       main [6]
+[62]     0.0    0.00    0.00   20400         fitness(std::string) [62]
+                0.00    0.00   20400/20400       bFitness(std::string) [63]
+-----------------------------------------------
+                0.00    0.00   20400/20400       fitness(std::string) [62]
+[63]     0.0    0.00    0.00   20400         bFitness(std::string) [63]
+                0.00    0.00 19910400/19910400     encode(int, std::string) [9]
+-----------------------------------------------
+                0.00    0.00    9986/20386       mutate(int) [88]
+                0.00    0.00   10400/20386       initKey() [106]
+[64]     0.0    0.00    0.00   20386         void std::swap<char>(char&, char&) [64]
+-----------------------------------------------
+                0.00    0.00       1/20001       void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+                0.00    0.00   20000/20001       void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+[65]     0.0    0.00    0.00   20001         std::__lg(long) [65]
+-----------------------------------------------
+                0.00    0.00   20000/20000       main [6]
+[66]     0.0    0.00    0.00   20000         select(int&, int&) [66]
+                0.00    0.00   60147/90519       randMod(int) [34]
+                0.00    0.00   60000/174181      std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long) [21]
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&) [52]
+                0.00    0.00   60000/60000       std::vector<indFitType, std::allocator<indFitType> >::operator[](unsigned long) [53]
+                0.00    0.00   20000/20000       std::vector<indFitType, std::allocator<indFitType> >::vector() [76]
+                0.00    0.00   20000/80000       std::vector<indFitType, std::allocator<indFitType> >::end() [38]
+                0.00    0.00   20000/80000       std::vector<indFitType, std::allocator<indFitType> >::begin() [39]
+                0.00    0.00   20000/20000       void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+                0.00    0.00   20000/20000       std::vector<indFitType, std::allocator<indFitType> >::~vector() [77]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::allocator<indFitType>::allocator() [70]
+[67]     0.0    0.00    0.00   20000         __gnu_cxx::new_allocator<indFitType>::new_allocator() [67]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::allocator<indFitType>::~allocator() [71]
+[68]     0.0    0.00    0.00   20000         __gnu_cxx::new_allocator<indFitType>::~new_allocator() [68]
+-----------------------------------------------
+                0.00    0.00   20000/20000       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[69]     0.0    0.00    0.00   20000         bool __gnu_cxx::operator==<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [69]
+                0.00    0.00   40000/597158      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [11]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::_Vector_impl() [72]
+[70]     0.0    0.00    0.00   20000         std::allocator<indFitType>::allocator() [70]
+                0.00    0.00   20000/20000       __gnu_cxx::new_allocator<indFitType>::new_allocator() [67]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::~_Vector_impl() [73]
+[71]     0.0    0.00    0.00   20000         std::allocator<indFitType>::~allocator() [71]
+                0.00    0.00   20000/20000       __gnu_cxx::new_allocator<indFitType>::~new_allocator() [68]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_base() [74]
+[72]     0.0    0.00    0.00   20000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::_Vector_impl() [72]
+                0.00    0.00   20000/20000       std::allocator<indFitType>::allocator() [70]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base() [75]
+[73]     0.0    0.00    0.00   20000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::~_Vector_impl() [73]
+                0.00    0.00   20000/20000       std::allocator<indFitType>::~allocator() [71]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::vector<indFitType, std::allocator<indFitType> >::vector() [76]
+[74]     0.0    0.00    0.00   20000         std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_base() [74]
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::_Vector_impl() [72]
+-----------------------------------------------
+                0.00    0.00   20000/20000       std::vector<indFitType, std::allocator<indFitType> >::~vector() [77]
+[75]     0.0    0.00    0.00   20000         std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base() [75]
+                0.00    0.00   20000/80000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long) [37]
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::~_Vector_impl() [73]
+-----------------------------------------------
+                0.00    0.00   20000/20000       select(int&, int&) [66]
+[76]     0.0    0.00    0.00   20000         std::vector<indFitType, std::allocator<indFitType> >::vector() [76]
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_base() [74]
+-----------------------------------------------
+                0.00    0.00   20000/20000       select(int&, int&) [66]
+[77]     0.0    0.00    0.00   20000         std::vector<indFitType, std::allocator<indFitType> >::~vector() [77]
+                0.00    0.00   20000/200000      std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() [19]
+                0.00    0.00   20000/20000       std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base() [75]
+                0.00    0.00   20000/80000       void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&) [41]
+-----------------------------------------------
+                0.00    0.00   20000/20000       void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [80]
+[78]     0.0    0.00    0.00   20000         void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+                0.00    0.00  104772/207084      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator*() const [17]
+                0.00    0.00   60000/80000       bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [35]
+                0.00    0.00   40000/74104       compSelect(indFitType, indFitType) [42]
+                0.00    0.00   40000/40000       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator++() [54]
+                0.00    0.00   32386/32386       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator+(long const&) const [58]
+                0.00    0.00   27614/27614       void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [59]
+                0.00    0.00   20000/20000       bool __gnu_cxx::operator==<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [69]
+                0.00    0.00   12386/12386       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [85]
+-----------------------------------------------
+                0.00    0.00   20000/20000       void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+[79]     0.0    0.00    0.00   20000         void std::__introsort_loop<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)) [79]
+                0.00    0.00   20000/120000      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+-----------------------------------------------
+                0.00    0.00   20000/20000       void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+[80]     0.0    0.00    0.00   20000         void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [80]
+                0.00    0.00   20000/120000      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+                0.00    0.00   20000/20000       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+-----------------------------------------------
+                0.00    0.00   20000/20000       select(int&, int&) [66]
+[81]     0.0    0.00    0.00   20000         void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [81]
+                0.00    0.00   20000/80000       bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [35]
+                0.00    0.00   20000/120000      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [23]
+                0.00    0.00   20000/20001       std::__lg(long) [65]
+                0.00    0.00   20000/20000       void std::__introsort_loop<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)) [79]
+                0.00    0.00   20000/20000       void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [80]
+-----------------------------------------------
+                0.00    0.00   18069/18069       crossover(int, int, int) [83]
+[82]     0.0    0.00    0.00   18069         pmx(int, int, int) [82]
+                0.00    0.00 1014935/20926541     convert(char) [8]
+                0.00    0.00  469794/509794      choose(double) [12]
+                0.00    0.00   54207/174181      std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long) [21]
+-----------------------------------------------
+                0.00    0.00   18069/18069       main [6]
+[83]     0.0    0.00    0.00   18069         crossover(int, int, int) [83]
+                0.00    0.00   18069/18069       pmx(int, int, int) [82]
+-----------------------------------------------
+                0.00    0.00   12386/12386       indFitType* std::__copy_move_backward_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [86]
+[84]     0.0    0.00    0.00   12386         indFitType* std::__copy_move_backward<false, true, std::random_access_iterator_tag>::__copy_move_b<indFitType>(indFitType const*, indFitType const*, indFitType*) [84]
+-----------------------------------------------
+                0.00    0.00   12386/12386       void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)) [78]
+[85]     0.0    0.00    0.00   12386         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [85]
+                0.00    0.00   24772/24772       std::_Miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [61]
+                0.00    0.00   12386/12386       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [87]
+-----------------------------------------------
+                0.00    0.00   12386/12386       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [87]
+[86]     0.0    0.00    0.00   12386         indFitType* std::__copy_move_backward_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [86]
+                0.00    0.00   12386/12386       indFitType* std::__copy_move_backward<false, true, std::random_access_iterator_tag>::__copy_move_b<indFitType>(indFitType const*, indFitType const*, indFitType*) [84]
+-----------------------------------------------
+                0.00    0.00   12386/12386       __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [85]
+[87]     0.0    0.00    0.00   12386         __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [87]
+                0.00    0.00   37158/37158       std::_Niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [56]
+                0.00    0.00   12386/12386       indFitType* std::__copy_move_backward_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [86]
+                0.00    0.00   12386/204772      __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [18]
+-----------------------------------------------
+                0.00    0.00    9986/9986        main [6]
+[88]     0.0    0.00    0.00    9986         mutate(int) [88]
+                0.00    0.00   19972/90519       randMod(int) [34]
+                0.00    0.00   19972/174181      std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long) [21]
+                0.00    0.00    9986/20386       void std::swap<char>(char&, char&) [64]
+-----------------------------------------------
+                0.00    0.00       1/8203        initPopulation() [145]
+                0.00    0.00      30/8203        void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     220/8203        void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00     902/8203        void std::swap<keyFitType>(keyFitType&, keyFitType&) [102]
+                0.00    0.00     911/8203        void std::_Destroy<keyFitType>(keyFitType*) [99]
+                0.00    0.00    1673/8203        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    4466/8203        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[89]     0.0    0.00    0.00    8203         keyFitType::~keyFitType() [89]
+-----------------------------------------------
+                0.00    0.00      30/8202        void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     220/8202        void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00     400/8202        __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&) [107]
+                0.00    0.00     511/8202        void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&) [104]
+                0.00    0.00     902/8202        void std::swap<keyFitType>(keyFitType&, keyFitType&) [102]
+                0.00    0.00    1673/8202        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    4466/8202        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[90]     0.0    0.00    0.00    8202         keyFitType::keyFitType(keyFitType const&) [90]
+-----------------------------------------------
+                0.00    0.00      30/6237        void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00      39/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+                0.00    0.00     220/6237        void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00    1804/6237        void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [101]
+                0.00    0.00    1911/6237        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    2233/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[91]     0.0    0.00    0.00    6237         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+-----------------------------------------------
+                0.00    0.00      15/2995        void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     110/2995        void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00     637/2995        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    2233/2995        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[92]     0.0    0.00    0.00    2995         comp(keyFitType, keyFitType) [92]
+-----------------------------------------------
+                0.00    0.00       2/2890        bool __gnu_cxx::operator==<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [154]
+                0.00    0.00      20/2890        std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+                0.00    0.00     260/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00     804/2890        bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [105]
+                0.00    0.00    1804/2890        bool __gnu_cxx::operator< <keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [100]
+[93]     0.0    0.00    0.00    2890         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+-----------------------------------------------
+                0.00    0.00     637/2441        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    1804/2441        void std::swap<keyFitType>(keyFitType&, keyFitType&) [102]
+[94]     0.0    0.00    0.00    2441         keyFitType::operator=(keyFitType const&) [94]
+-----------------------------------------------
+                0.00    0.00     637/1845        void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    1208/1845        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[95]     0.0    0.00    0.00    1845         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator--() [95]
+-----------------------------------------------
+                0.00    0.00    1674/1674        initRand(unsigned long long, unsigned long long) [150]
+[96]     0.0    0.00    0.00    1674         randULL() [96]
+-----------------------------------------------
+                0.00    0.00     511/1422        keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [125]
+                0.00    0.00     911/1422        void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*) [129]
+[97]     0.0    0.00    0.00    1422         keyFitType* std::__addressof<keyFitType>(keyFitType&) [97]
+-----------------------------------------------
+                0.00    0.00      15/1385        void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     384/1385        void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [165]
+                0.00    0.00     986/1385        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[98]     0.0    0.00    0.00    1385         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++() [98]
+-----------------------------------------------
+                0.00    0.00     911/911         void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*) [129]
+[99]     0.0    0.00    0.00     911         void std::_Destroy<keyFitType>(keyFitType*) [99]
+                0.00    0.00     911/8203        keyFitType::~keyFitType() [89]
+-----------------------------------------------
+                0.00    0.00     902/902         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[100]    0.0    0.00    0.00     902         bool __gnu_cxx::operator< <keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [100]
+                0.00    0.00    1804/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+-----------------------------------------------
+                0.00    0.00     902/902         void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [103]
+[101]    0.0    0.00    0.00     902         void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [101]
+                0.00    0.00    1804/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00     902/902         void std::swap<keyFitType>(keyFitType&, keyFitType&) [102]
+-----------------------------------------------
+                0.00    0.00     902/902         void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [101]
+[102]    0.0    0.00    0.00     902         void std::swap<keyFitType>(keyFitType&, keyFitType&) [102]
+                0.00    0.00    1804/2441        keyFitType::operator=(keyFitType const&) [94]
+                0.00    0.00     902/8202        keyFitType::keyFitType(keyFitType const&) [90]
+                0.00    0.00     902/8203        keyFitType::~keyFitType() [89]
+-----------------------------------------------
+                0.00    0.00      39/902         void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00     863/902         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+[103]    0.0    0.00    0.00     902         void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [103]
+                0.00    0.00     902/902         void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [101]
+-----------------------------------------------
+                0.00    0.00     511/511         keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [125]
+[104]    0.0    0.00    0.00     511         void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&) [104]
+                0.00    0.00     511/60911       operator new(unsigned long, void*) [43]
+                0.00    0.00     511/8202        keyFitType::keyFitType(keyFitType const&) [90]
+-----------------------------------------------
+                0.00    0.00       1/402         void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+                0.00    0.00      16/402         void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     385/402         void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [165]
+[105]    0.0    0.00    0.00     402         bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [105]
+                0.00    0.00     804/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+-----------------------------------------------
+                0.00    0.00     400/400         initPopulation() [145]
+[106]    0.0    0.00    0.00     400         initKey() [106]
+                0.00    0.00   10400/90519       randMod(int) [34]
+                0.00    0.00   10400/20386       void std::swap<char>(char&, char&) [64]
+-----------------------------------------------
+                0.00    0.00     400/400         void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&) [108]
+[107]    0.0    0.00    0.00     400         __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&) [107]
+                0.00    0.00     400/60911       operator new(unsigned long, void*) [43]
+                0.00    0.00     400/8202        keyFitType::keyFitType(keyFitType const&) [90]
+-----------------------------------------------
+                0.00    0.00      10/400         std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+                0.00    0.00     390/400         std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&) [109]
+[108]    0.0    0.00    0.00     400         void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&) [108]
+                0.00    0.00     400/400         __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&) [107]
+-----------------------------------------------
+                0.00    0.00     400/400         initPopulation() [145]
+[109]    0.0    0.00    0.00     400         std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&) [109]
+                0.00    0.00     390/400         void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&) [108]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::end() [131]
+                0.00    0.00      10/10          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+-----------------------------------------------
+                0.00    0.00      15/399         void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00     384/399         void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [165]
+[110]    0.0    0.00    0.00     399         void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00    1911/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00    1673/8202        keyFitType::keyFitType(keyFitType const&) [90]
+                0.00    0.00    1673/8203        keyFitType::~keyFitType() [89]
+                0.00    0.00     637/1845        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator--() [95]
+                0.00    0.00     637/2441        keyFitType::operator=(keyFitType const&) [94]
+                0.00    0.00     637/2995        comp(keyFitType, keyFitType) [92]
+-----------------------------------------------
+                0.00    0.00      11/181         std::vector<keyFitType, std::allocator<keyFitType> >::begin() [132]
+                0.00    0.00      11/181         std::vector<keyFitType, std::allocator<keyFitType> >::end() [131]
+                0.00    0.00      39/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator-(long const&) const [116]
+                0.00    0.00     120/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [113]
+[111]    0.0    0.00    0.00     181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [111]
+-----------------------------------------------
+                0.00    0.00       1/130         void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+                0.00    0.00       1/130         void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+                0.00    0.00      10/130         std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+                0.00    0.00      39/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+                0.00    0.00      79/130         void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+[112]    0.0    0.00    0.00     130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00     260/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+-----------------------------------------------
+                0.00    0.00       1/120         void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00       2/120         void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+                0.00    0.00     117/120         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+[113]    0.0    0.00    0.00     120         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [113]
+                0.00    0.00     120/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [111]
+-----------------------------------------------
+                0.00    0.00     115/115         decipher(std::string, std::string) [148]
+[114]    0.0    0.00    0.00     115         decode(std::string, char) [114]
+-----------------------------------------------
+                0.00    0.00      40/40          std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [137]
+[115]    0.0    0.00    0.00      40         std::vector<keyFitType, std::allocator<keyFitType> >::size() const [115]
+-----------------------------------------------
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+[116]    0.0    0.00    0.00      39         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator-(long const&) const [116]
+                0.00    0.00      39/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [111]
+-----------------------------------------------
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+[117]    0.0    0.00    0.00      39         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+                0.00    0.00    4466/8202        keyFitType::keyFitType(keyFitType const&) [90]
+                0.00    0.00    4466/8203        keyFitType::~keyFitType() [89]
+                0.00    0.00    2233/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00    2233/2995        comp(keyFitType, keyFitType) [92]
+                0.00    0.00    1208/1845        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator--() [95]
+                0.00    0.00     986/1385        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++() [98]
+                0.00    0.00     902/902         bool __gnu_cxx::operator< <keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [100]
+                0.00    0.00     863/902         void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [103]
+-----------------------------------------------
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+[118]    0.0    0.00    0.00      39         void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00     220/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00     220/8202        keyFitType::keyFitType(keyFitType const&) [90]
+                0.00    0.00     220/8203        keyFitType::~keyFitType() [89]
+                0.00    0.00     110/2995        comp(keyFitType, keyFitType) [92]
+                0.00    0.00      39/902         void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [103]
+-----------------------------------------------
+                0.00    0.00      39/39          void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+[119]    0.0    0.00    0.00      39         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+                0.00    0.00     117/120         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [113]
+                0.00    0.00      39/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator-(long const&) const [116]
+                0.00    0.00      39/39          void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [118]
+                0.00    0.00      39/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType)) [117]
+-----------------------------------------------
+                0.00    0.00       1/31          std::vector<keyFitType, std::allocator<keyFitType> >::~vector() [192]
+                0.00    0.00      30/31          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[120]    0.0    0.00    0.00      31         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() [120]
+-----------------------------------------------
+                0.00    0.00      10/30          __gnu_cxx::new_allocator<keyFitType>::allocate(unsigned long, void const*) [136]
+                0.00    0.00      20/30          __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::max_size(std::allocator<keyFitType> const&) [122]
+[121]    0.0    0.00    0.00      30         __gnu_cxx::new_allocator<keyFitType>::max_size() const [121]
+-----------------------------------------------
+                0.00    0.00      20/20          std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const [124]
+[122]    0.0    0.00    0.00      20         __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::max_size(std::allocator<keyFitType> const&) [122]
+                0.00    0.00      20/30          __gnu_cxx::new_allocator<keyFitType>::max_size() const [121]
+-----------------------------------------------
+                0.00    0.00      20/20          std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const [124]
+[123]    0.0    0.00    0.00      20         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() const [123]
+-----------------------------------------------
+                0.00    0.00      20/20          std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [137]
+[124]    0.0    0.00    0.00      20         std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const [124]
+                0.00    0.00      20/20          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() const [123]
+                0.00    0.00      20/20          __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::max_size(std::allocator<keyFitType> const&) [122]
+-----------------------------------------------
+                0.00    0.00      20/20          keyFitType* std::uninitialized_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [126]
+[125]    0.0    0.00    0.00      20         keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [125]
+                0.00    0.00     511/1422        keyFitType* std::__addressof<keyFitType>(keyFitType&) [97]
+                0.00    0.00     511/511         void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&) [104]
+-----------------------------------------------
+                0.00    0.00      20/20          keyFitType* std::__uninitialized_copy_a<keyFitType*, keyFitType*, keyFitType>(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [127]
+[126]    0.0    0.00    0.00      20         keyFitType* std::uninitialized_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [126]
+                0.00    0.00      20/20          keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [125]
+-----------------------------------------------
+                0.00    0.00      20/20          keyFitType* std::__uninitialized_move_if_noexcept_a<keyFitType*, keyFitType*, std::allocator<keyFitType> >(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [128]
+[127]    0.0    0.00    0.00      20         keyFitType* std::__uninitialized_copy_a<keyFitType*, keyFitType*, keyFitType>(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [127]
+                0.00    0.00      20/20          keyFitType* std::uninitialized_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [126]
+-----------------------------------------------
+                0.00    0.00      20/20          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[128]    0.0    0.00    0.00      20         keyFitType* std::__uninitialized_move_if_noexcept_a<keyFitType*, keyFitType*, std::allocator<keyFitType> >(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [128]
+                0.00    0.00      20/20          keyFitType* std::__uninitialized_copy_a<keyFitType*, keyFitType*, keyFitType>(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [127]
+-----------------------------------------------
+                0.00    0.00      11/11          void std::_Destroy<keyFitType*>(keyFitType*, keyFitType*) [133]
+[129]    0.0    0.00    0.00      11         void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*) [129]
+                0.00    0.00     911/911         void std::_Destroy<keyFitType>(keyFitType*) [99]
+                0.00    0.00     911/1422        keyFitType* std::__addressof<keyFitType>(keyFitType&) [97]
+-----------------------------------------------
+                0.00    0.00       1/11          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::~_Vector_base() [160]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[130]    0.0    0.00    0.00      11         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long) [130]
+                0.00    0.00      10/10          __gnu_cxx::new_allocator<keyFitType>::deallocate(keyFitType*, unsigned long) [135]
+-----------------------------------------------
+                0.00    0.00       1/11          bestIndividual() [144]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&) [109]
+[131]    0.0    0.00    0.00      11         std::vector<keyFitType, std::allocator<keyFitType> >::end() [131]
+                0.00    0.00      11/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [111]
+-----------------------------------------------
+                0.00    0.00       1/11          bestIndividual() [144]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[132]    0.0    0.00    0.00      11         std::vector<keyFitType, std::allocator<keyFitType> >::begin() [132]
+                0.00    0.00      11/181         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [111]
+-----------------------------------------------
+                0.00    0.00      11/11          void std::_Destroy<keyFitType*, keyFitType>(keyFitType*, keyFitType*, std::allocator<keyFitType>&) [134]
+[133]    0.0    0.00    0.00      11         void std::_Destroy<keyFitType*>(keyFitType*, keyFitType*) [133]
+                0.00    0.00      11/11          void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*) [129]
+-----------------------------------------------
+                0.00    0.00       1/11          std::vector<keyFitType, std::allocator<keyFitType> >::~vector() [192]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[134]    0.0    0.00    0.00      11         void std::_Destroy<keyFitType*, keyFitType>(keyFitType*, keyFitType*, std::allocator<keyFitType>&) [134]
+                0.00    0.00      11/11          void std::_Destroy<keyFitType*>(keyFitType*, keyFitType*) [133]
+-----------------------------------------------
+                0.00    0.00      10/10          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long) [130]
+[135]    0.0    0.00    0.00      10         __gnu_cxx::new_allocator<keyFitType>::deallocate(keyFitType*, unsigned long) [135]
+-----------------------------------------------
+                0.00    0.00      10/10          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_allocate(unsigned long) [138]
+[136]    0.0    0.00    0.00      10         __gnu_cxx::new_allocator<keyFitType>::allocate(unsigned long, void const*) [136]
+                0.00    0.00      10/30          __gnu_cxx::new_allocator<keyFitType>::max_size() const [121]
+-----------------------------------------------
+                0.00    0.00      10/10          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[137]    0.0    0.00    0.00      10         std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [137]
+                0.00    0.00      40/40          std::vector<keyFitType, std::allocator<keyFitType> >::size() const [115]
+                0.00    0.00      20/20          std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const [124]
+                0.00    0.00      10/60010       unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [44]
+-----------------------------------------------
+                0.00    0.00      10/10          std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+[138]    0.0    0.00    0.00      10         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_allocate(unsigned long) [138]
+                0.00    0.00      10/10          __gnu_cxx::new_allocator<keyFitType>::allocate(unsigned long, void const*) [136]
+-----------------------------------------------
+                0.00    0.00      10/10          std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&) [109]
+[139]    0.0    0.00    0.00      10         std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&) [139]
+                0.00    0.00      30/31          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() [120]
+                0.00    0.00      20/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+                0.00    0.00      20/20          keyFitType* std::__uninitialized_move_if_noexcept_a<keyFitType*, keyFitType*, std::allocator<keyFitType> >(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&) [128]
+                0.00    0.00      10/10          std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [137]
+                0.00    0.00      10/11          std::vector<keyFitType, std::allocator<keyFitType> >::begin() [132]
+                0.00    0.00      10/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00      10/10          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_allocate(unsigned long) [138]
+                0.00    0.00      10/400         void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&) [108]
+                0.00    0.00      10/11          void std::_Destroy<keyFitType*, keyFitType>(keyFitType*, keyFitType*, std::allocator<keyFitType>&) [134]
+                0.00    0.00      10/11          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long) [130]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [231]
+[140]    0.0    0.00    0.00       1         _GLOBAL__sub_I__Z7fitnessSs [140]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [147]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [231]
+[141]    0.0    0.00    0.00       1         _GLOBAL__sub_I_eTable [141]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [146]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[142]    0.0    0.00    0.00       1         initCTable(std::string) [142]
+                0.00    0.00     228/20926541     convert(char) [8]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[143]    0.0    0.00    0.00       1         initETable() [143]
+                0.00    0.00     978/20926541     convert(char) [8]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[144]    0.0    0.00    0.00       1         bestIndividual() [144]
+                0.00    0.00       2/174181      std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long) [21]
+                0.00    0.00       1/11          std::vector<keyFitType, std::allocator<keyFitType> >::end() [131]
+                0.00    0.00       1/11          std::vector<keyFitType, std::allocator<keyFitType> >::begin() [132]
+                0.00    0.00       1/1           void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[145]    0.0    0.00    0.00       1         initPopulation() [145]
+                0.00    0.00     400/400         initKey() [106]
+                0.00    0.00     400/20400       fitness(std::string) [62]
+                0.00    0.00     400/400         std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&) [109]
+                0.00    0.00       1/1           keyFitType::keyFitType() [151]
+                0.00    0.00       1/8203        keyFitType::~keyFitType() [89]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_eTable [141]
+[146]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [146]
+                0.00    0.00       1/1           std::vector<keyFitType, std::allocator<keyFitType> >::vector() [161]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z7fitnessSs [140]
+[147]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [147]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[148]    0.0    0.00    0.00       1         decipher(std::string, std::string) [148]
+                0.00    0.00     115/115         decode(std::string, char) [114]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[149]    0.0    0.00    0.00       1         initRand() [149]
+                0.00    0.00       1/1           initRand(unsigned long long, unsigned long long) [150]
+-----------------------------------------------
+                0.00    0.00       1/1           initRand() [149]
+[150]    0.0    0.00    0.00       1         initRand(unsigned long long, unsigned long long) [150]
+                0.00    0.00    1674/1674        randULL() [96]
+-----------------------------------------------
+                0.00    0.00       1/1           initPopulation() [145]
+[151]    0.0    0.00    0.00       1         keyFitType::keyFitType() [151]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<keyFitType>::allocator() [155]
+[152]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<keyFitType>::new_allocator() [152]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<keyFitType>::~allocator() [156]
+[153]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<keyFitType>::~new_allocator() [153]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+[154]    0.0    0.00    0.00       1         bool __gnu_cxx::operator==<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [154]
+                0.00    0.00       2/2890        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [93]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::_Vector_impl() [157]
+[155]    0.0    0.00    0.00       1         std::allocator<keyFitType>::allocator() [155]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<keyFitType>::new_allocator() [152]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::~_Vector_impl() [158]
+[156]    0.0    0.00    0.00       1         std::allocator<keyFitType>::~allocator() [156]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<keyFitType>::~new_allocator() [153]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_base() [159]
+[157]    0.0    0.00    0.00       1         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::_Vector_impl() [157]
+                0.00    0.00       1/1           std::allocator<keyFitType>::allocator() [155]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::~_Vector_base() [160]
+[158]    0.0    0.00    0.00       1         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::~_Vector_impl() [158]
+                0.00    0.00       1/1           std::allocator<keyFitType>::~allocator() [156]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<keyFitType, std::allocator<keyFitType> >::vector() [161]
+[159]    0.0    0.00    0.00       1         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_base() [159]
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::_Vector_impl() [157]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<keyFitType, std::allocator<keyFitType> >::~vector() [192]
+[160]    0.0    0.00    0.00       1         std::_Vector_base<keyFitType, std::allocator<keyFitType> >::~_Vector_base() [160]
+                0.00    0.00       1/11          std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long) [130]
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::~_Vector_impl() [158]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [146]
+[161]    0.0    0.00    0.00       1         std::vector<keyFitType, std::allocator<keyFitType> >::vector() [161]
+                0.00    0.00       1/1           std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_base() [159]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+[162]    0.0    0.00    0.00       1         void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00      30/6237        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [91]
+                0.00    0.00      30/8202        keyFitType::keyFitType(keyFitType const&) [90]
+                0.00    0.00      30/8203        keyFitType::~keyFitType() [89]
+                0.00    0.00      16/402         bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [105]
+                0.00    0.00      15/2995        comp(keyFitType, keyFitType) [92]
+                0.00    0.00      15/399         void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+                0.00    0.00      15/1385        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++() [98]
+                0.00    0.00       1/1           bool __gnu_cxx::operator==<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [154]
+                0.00    0.00       1/120         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [113]
+-----------------------------------------------
+                                  39             void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+                0.00    0.00       1/1           void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+[163]    0.0    0.00    0.00       1+39      void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+                0.00    0.00      79/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00      39/39          __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [119]
+                                  39             void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+[164]    0.0    0.00    0.00       1         void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+                0.00    0.00       2/120         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [113]
+                0.00    0.00       1/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00       1/1           void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [162]
+                0.00    0.00       1/1           void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [165]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+[165]    0.0    0.00    0.00       1         void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [165]
+                0.00    0.00     385/402         bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [105]
+                0.00    0.00     384/1385        __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++() [98]
+                0.00    0.00     384/399         void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           bestIndividual() [144]
+[166]    0.0    0.00    0.00       1         void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [166]
+                0.00    0.00       1/402         bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [105]
+                0.00    0.00       1/20001       std::__lg(long) [65]
+                0.00    0.00       1/130         __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [112]
+                0.00    0.00       1/1           void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)) [163]
+                0.00    0.00       1/1           void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)) [164]
+-----------------------------------------------
+
+Index by function name
+
+ [140] _GLOBAL__sub_I__Z7fitnessSs (evolve.cpp) [100] bool __gnu_cxx::operator< <keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [52] std::vector<indFitType, std::allocator<indFitType> >::push_back(indFitType const&)
+ [141] _GLOBAL__sub_I_eTable (decipher.cpp) [23] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::difference_type __gnu_cxx::operator-<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [76] std::vector<indFitType, std::allocator<indFitType> >::vector()
+  [42] compSelect(indFitType, indFitType) [112] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::difference_type __gnu_cxx::operator-<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [77] std::vector<indFitType, std::allocator<indFitType> >::~vector()
+ [142] initCTable(std::string) [35] bool __gnu_cxx::operator!=<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [53] std::vector<indFitType, std::allocator<indFitType> >::operator[](unsigned long)
+ [143] initETable()          [105] bool __gnu_cxx::operator!=<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [139] std::vector<keyFitType, std::allocator<keyFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&)
+ [144] bestIndividual()       [20] __gnu_cxx::new_allocator<indFitType>::max_size() const [131] std::vector<keyFitType, std::allocator<keyFitType> >::end()
+ [145] initPopulation()      [121] __gnu_cxx::new_allocator<keyFitType>::max_size() const [132] std::vector<keyFitType, std::allocator<keyFitType> >::begin()
+  [82] pmx(int, int, int)     [11] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::base() const [109] std::vector<keyFitType, std::allocator<keyFitType> >::push_back(keyFitType const&)
+ [146] __static_initialization_and_destruction_0(int, int) (decipher.cpp) [17] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator*() const [161] std::vector<keyFitType, std::allocator<keyFitType> >::vector()
+ [147] __static_initialization_and_destruction_0(int, int) (evolve.cpp) [58] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator+(long const&) const [21] std::vector<keyFitType, std::allocator<keyFitType> >::operator[](unsigned long)
+  [92] comp(keyFitType, keyFitType) [93] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::base() const [104] void std::_Construct<keyFitType, keyFitType>(keyFitType*, keyFitType const&)
+  [12] choose(double)         [91] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator*() const [97] keyFitType* std::__addressof<keyFitType>(keyFitType&)
+ [114] decode(std::string, char) [116] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator-(long const&) const [61] std::_Miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__miter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+   [9] encode(int, std::string) [113] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator+(long const&) const [16] std::_Miter_base<indFitType*>::iterator_type std::__miter_base<indFitType*>(indFitType*)
+  [88] mutate(int)            [24] std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() const [56] std::_Niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >::iterator_type std::__niter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  [66] select(int&, int&)    [123] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() const [14] std::_Niter_base<indFitType*>::iterator_type std::__niter_base<indFitType*>(indFitType*)
+   [8] convert(char)          [49] std::vector<indFitType, std::allocator<indFitType> >::_M_check_len(unsigned long, char const*) const [28] indFitType* std::__copy_move_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  [62] fitness(std::string)   [15] std::vector<indFitType, std::allocator<indFitType> >::size() const [85] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::copy_backward<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+ [106] initKey()              [25] std::vector<indFitType, std::allocator<indFitType> >::max_size() const [29] indFitType* std::__copy_move_a2<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  [34] randMod(int)          [137] std::vector<keyFitType, std::allocator<keyFitType> >::_M_check_len(unsigned long, char const*) const [78] void std::__insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  [96] randULL()             [115] std::vector<keyFitType, std::allocator<keyFitType> >::size() const [162] void std::__insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  [63] bFitness(std::string) [124] std::vector<keyFitType, std::allocator<keyFitType> >::max_size() const [79] void std::__introsort_loop<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, long, bool (*)(indFitType, indFitType))
+ [148] decipher(std::string, std::string) [70] std::allocator<indFitType>::allocator() [163] void std::__introsort_loop<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, long, bool (*)(keyFitType, keyFitType))
+ [149] initRand()             [71] std::allocator<indFitType>::~allocator() [30] indFitType* std::uninitialized_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+ [150] initRand(unsigned long long, unsigned long long) [155] std::allocator<keyFitType>::allocator() [126] keyFitType* std::uninitialized_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*)
+  [13] randUnit()            [156] std::allocator<keyFitType>::~allocator() [117] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, keyFitType const&, bool (*)(keyFitType, keyFitType))
+  [83] crossover(int, int, int) [60] std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, false>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [86] indFitType* std::__copy_move_backward_a<false, indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  [90] keyFitType::keyFitType(keyFitType const&) [55] std::_Iter_base<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, true>::_S_base(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >) [80] void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+ [151] keyFitType::keyFitType() [10] std::_Iter_base<indFitType*, false>::_S_base(indFitType*) [164] void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  [89] keyFitType::~keyFitType() [26] indFitType* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<indFitType>(indFitType const*, indFitType const*, indFitType*) [118] void std::__move_median_to_first<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  [94] keyFitType::operator=(keyFitType const&) [101] void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >) [31] indFitType* std::__uninitialized_copy_a<indFitType*, indFitType*, indFitType>(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&)
+  [45] __gnu_cxx::new_allocator<indFitType>::deallocate(indFitType*, unsigned long) [129] void std::_Destroy_aux<false>::__destroy<keyFitType*>(keyFitType*, keyFitType*) [127] keyFitType* std::__uninitialized_copy_a<keyFitType*, keyFitType*, keyFitType>(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+  [46] __gnu_cxx::new_allocator<indFitType>::allocate(unsigned long, void const*) [36] void std::_Destroy_aux<true>::__destroy<indFitType*>(indFitType*, indFitType*) [87] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >)
+  [47] __gnu_cxx::new_allocator<indFitType>::construct(indFitType*, indFitType const&) [50] std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_allocate(unsigned long) [59] void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+  [67] __gnu_cxx::new_allocator<indFitType>::new_allocator() [72] std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::_Vector_impl() [110] void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+  [68] __gnu_cxx::new_allocator<indFitType>::~new_allocator() [73] std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_impl::~_Vector_impl() [165] void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+ [135] __gnu_cxx::new_allocator<keyFitType>::deallocate(keyFitType*, unsigned long) [37] std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_deallocate(indFitType*, unsigned long) [119] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > std::__unguarded_partition_pivot<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+ [136] __gnu_cxx::new_allocator<keyFitType>::allocate(unsigned long, void const*) [19] std::_Vector_base<indFitType, std::allocator<indFitType> >::_M_get_Tp_allocator() [32] indFitType* std::__uninitialized_move_if_noexcept_a<indFitType*, indFitType*, std::allocator<indFitType> >(indFitType*, indFitType*, indFitType*, std::allocator<indFitType>&)
+ [107] __gnu_cxx::new_allocator<keyFitType>::construct(keyFitType*, keyFitType const&) [74] std::_Vector_base<indFitType, std::allocator<indFitType> >::_Vector_base() [128] keyFitType* std::__uninitialized_move_if_noexcept_a<keyFitType*, keyFitType*, std::allocator<keyFitType> >(keyFitType*, keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+ [152] __gnu_cxx::new_allocator<keyFitType>::new_allocator() [75] std::_Vector_base<indFitType, std::allocator<indFitType> >::~_Vector_base() [44] unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+ [153] __gnu_cxx::new_allocator<keyFitType>::~new_allocator() [138] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_allocate(unsigned long) [65] std::__lg(long)
+  [22] __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::max_size(std::allocator<indFitType> const&) [157] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::_Vector_impl() [33] indFitType* std::copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*)
+  [48] void __gnu_cxx::__alloc_traits<std::allocator<indFitType> >::construct<indFitType>(std::allocator<indFitType>&, indFitType*, indFitType const&) [158] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_impl::~_Vector_impl() [81] void std::sort<__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType)>(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, bool (*)(indFitType, indFitType))
+ [122] __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::max_size(std::allocator<keyFitType> const&) [130] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_deallocate(keyFitType*, unsigned long) [166] void std::sort<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType)>(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, bool (*)(keyFitType, keyFitType))
+ [108] void __gnu_cxx::__alloc_traits<std::allocator<keyFitType> >::construct<keyFitType>(std::allocator<keyFitType>&, keyFitType*, keyFitType const&) [120] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_M_get_Tp_allocator() [102] void std::swap<keyFitType>(keyFitType&, keyFitType&)
+  [18] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::__normal_iterator(indFitType* const&) [159] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::_Vector_base() [64] void std::swap<char>(char&, char&)
+  [57] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator--() [160] std::_Vector_base<keyFitType, std::allocator<keyFitType> >::~_Vector_base() [99] void std::_Destroy<keyFitType>(keyFitType*)
+  [54] __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >::operator++() [84] indFitType* std::__copy_move_backward<false, true, std::random_access_iterator_tag>::__copy_move_b<indFitType>(indFitType const*, indFitType const*, indFitType*) [40] void std::_Destroy<indFitType*>(indFitType*, indFitType*)
+ [111] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::__normal_iterator(keyFitType* const&) [125] keyFitType* std::__uninitialized_copy<false>::__uninit_copy<keyFitType*, keyFitType*>(keyFitType*, keyFitType*, keyFitType*) [41] void std::_Destroy<indFitType*, indFitType>(indFitType*, indFitType*, std::allocator<indFitType>&)
+  [95] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator--() [27] indFitType* std::__uninitialized_copy<true>::__uninit_copy<indFitType*, indFitType*>(indFitType*, indFitType*, indFitType*) [133] void std::_Destroy<keyFitType*>(keyFitType*, keyFitType*)
+  [98] __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >::operator++() [51] std::vector<indFitType, std::allocator<indFitType> >::_M_insert_aux(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >, indFitType const&) [134] void std::_Destroy<keyFitType*, keyFitType>(keyFitType*, keyFitType*, std::allocator<keyFitType>&)
+  [69] bool __gnu_cxx::operator==<indFitType*, std::vector<indFitType, std::allocator<indFitType> > >(__gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&, __gnu_cxx::__normal_iterator<indFitType*, std::vector<indFitType, std::allocator<indFitType> > > const&) [38] std::vector<indFitType, std::allocator<indFitType> >::end() [103] void std::iter_swap<__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >)
+ [154] bool __gnu_cxx::operator==<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > >(__gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&, __gnu_cxx::__normal_iterator<keyFitType*, std::vector<keyFitType, std::allocator<keyFitType> > > const&) [39] std::vector<indFitType, std::allocator<indFitType> >::begin() [43] operator new(unsigned long, void*)

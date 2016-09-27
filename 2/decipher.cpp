@@ -10,7 +10,7 @@
 #include <fstream>
 #include "evolve.h"
 #define TESTING 0
-#define PRINT_FITNESS 0
+#define PRINT_FITNESS 1
 
 double eTable[26][26];		// English contact table
 double cTable[26][26];		// Cipher contact table
@@ -27,6 +27,9 @@ bool comp( keyFitType a, keyFitType b );
 
 string decipher( string ciphertext, string key ); // Deciphers the encrypted ciphertext using the given key
 char decode( string key, char c );
+
+inline int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
+inline char revert( int i );	// Reverts an int back to the ASCII letter it originally was
 
 
 int main() {

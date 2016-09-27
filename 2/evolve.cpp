@@ -4,10 +4,13 @@ extern double eTable[26][26];		// English contact table
 extern double cTable[26][26];		// Cipher contact table
 extern vector < keyFitType > population; // The population of possible keys
 
+inline int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
+inline char revert( int i );	// Reverts an int back to the ASCII letter it originally was
+
 // Uses index to select character from key for fitness evaluation
 // NOTE: does not bounds check, if theres bug it'll probably happen here
 inline int encode( int index, string key ) {
-	return (int)(convert(key[index]));  // Converts char to int (ASCII 'a' - 97 = 0)
+	return (int)(key[index] - 97);  // Converts char to int (ASCII 'a' - 97 = 0)
 } // end encode
 
 // Returns the fitness found using the currently selected fitness function
@@ -25,7 +28,7 @@ double eFitness( string key ) {
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
             if(eTable[i][j] != 0)
-    			fit += pow(( eTable[i][j] - cTable[encode(i, key)][encode(j, key)] ), 2);
+    			fit += pow(( eTable[i][j] - cTable[(int)(key[i] - 97)][(int)(key[j] - 97)] ), 2);
 		}
 	}
 	return fit;
@@ -39,7 +42,7 @@ double bFitness( string key ) {
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
             if(eTable[i][j] != 0)
-    			fit += sqrt(eTable[i][j] * cTable[encode(i, key)][encode(j, key)]);
+    			fit += sqrt(eTable[i][j] * cTable[(int)(key[i] - 97)][(int)(key[j] - 97)]);
 		}
 	}
 	return fit;
@@ -149,14 +152,14 @@ void pmx( int parentA, int parentB, int child ) {
         }
 
         // Location lookup table for A and B
-        locA[convert(a[i])] = locB[convert(b[i])] = i; 
+        locA[(int)(a[i] - 97)] = locB[(int)(b[i] - 97)] = i; 
     }
 
     // Remove duplicates
     for( int i = 0; i < 26; i++ ) {
-        if( pick[i] && !pick[locB[convert(a[i])]] ) {
+        if( pick[i] && !pick[locB[(int)(a[i] - 97)]] ) {
             int loc = i;
-            do { loc = locA[convert(b[loc])]; } while( c[loc] != -1 );
+            do { loc = locA[(int)(b[loc] - 97)]; } while( c[loc] != -1 );
             c[loc] = a[i]; 
         }
     }
@@ -170,3 +173,12 @@ void pmx( int parentA, int parentB, int child ) {
     population[child].key = c;
 }
 
+// Converts an ASCII letter to an int to be used to index a table
+inline int convert( char c ) {
+	return (int)(c - 97);
+}
+
+// Reverts an int back to the ASCII letter it originally was
+inline char revert( int i ) {
+	return (char)(i + 97);
+}
