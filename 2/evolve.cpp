@@ -4,13 +4,10 @@ extern double eTable[26][26];		// English contact table
 extern double cTable[26][26];		// Cipher contact table
 extern vector < keyFitType > population; // The population of possible keys
 
-inline int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
-inline char revert( int i );	// Reverts an int back to the ASCII letter it originally was
-
 // Uses index to select character from key for fitness evaluation
 // NOTE: does not bounds check, if theres bug it'll probably happen here
 inline int encode( int index, string key ) {
-	return (int)(key[index] - 97);  // Converts char to int (ASCII 'a' - 97 = 0)
+	return ((int)(key[index] - 97));  // (int)s char to int (ASCII 'a' - 97 = 0)
 } // end encode
 
 // Returns the fitness found using the currently selected fitness function
@@ -171,14 +168,4 @@ void pmx( int parentA, int parentB, int child ) {
 
     // Put child into population
     population[child].key = c;
-}
-
-// Converts an ASCII letter to an int to be used to index a table
-inline int convert( char c ) {
-	return (int)(c - 97);
-}
-
-// Reverts an int back to the ASCII letter it originally was
-inline char revert( int i ) {
-	return (char)(i + 97);
 }

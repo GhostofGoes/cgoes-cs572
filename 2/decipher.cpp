@@ -28,9 +28,6 @@ bool comp( keyFitType a, keyFitType b );
 string decipher( string ciphertext, string key ); // Deciphers the encrypted ciphertext using the given key
 char decode( string key, char c );
 
-inline int convert( char c ); 	// Converts an ASCII letter to an int to be used to index a table
-inline char revert( int i );	// Reverts an int back to the ASCII letter it originally was
-
 
 int main() {
 	string ciphertext, temp, plaintext, key;
@@ -149,16 +146,6 @@ string bestIndividual() {
 	sort(population.begin(), population.end(), comp);
 	if(PRINT_FITNESS) { cout << "Best fitness:\t" << population[0].fit << endl; }
 	return population[0].key;
-}
-
-// Converts an ASCII letter to an int to be used to index a table
-int convert( char c ) {
-	return (int)(c - 97);
-}
-
-// Reverts an int back to the ASCII letter it originally was
-char revert( int i ) {
-	return (char)(i + 97);
 }
 
 // Cleanly prints the given table prepended by the title
