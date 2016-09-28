@@ -14,10 +14,11 @@
 using namespace std;
 
 const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
-const int CROSSOVER = 1;    // 0 = Order One, 1 = PMX
+const double CROSSOVER_PROB = 0.9;
 const int MUTATION = 0;     // 0 = Single Swap
+const double MUTATION_PROB = 0.5;
 const int SELECTION = 0;    // Unused currently
-const int EVOLUTIONS = 20000; // # of times steady state algorithm evolves (# of runs)
+const int EVOLUTIONS = 10000; // # of times steady state algorithm evolves (# of runs)
 const int POPSIZE = 500;     // Size of population
 const int TSIZE = 3;        // Size of tournament
 
@@ -31,17 +32,13 @@ typedef struct {
     double fit;
 } indFitType;
 
-inline int encode( int index, string key ); // index + key -> index
 double fitness( string key );
 double eFitness( string key );	// Euclidean distance
 double bFitness( string key );	// Bhatthacaryya distance
 
-
-void crossover( int parentA, int parentB, int child ); // Returns child that is the crossover of both parents
 void mutate( int chromosome ); // Mutates the chromosome in-place
 int select( int &parentA, int &parentB );
 
-void orderOne( int parentA, int parentB, int child );
 void pmx( int parentA, int parentB, int child );
 
 void printTable( double table[][26], string name );

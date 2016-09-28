@@ -4,12 +4,6 @@ extern double eTable[26][26];		// English contact table
 extern double cTable[26][26];		// Cipher contact table
 extern vector < keyFitType > population; // The population of possible keys
 
-// Uses index to select character from key for fitness evaluation
-// NOTE: does not bounds check, if theres bug it'll probably happen here
-inline int encode( int index, string key ) {
-	return ((int)(key[index] - 97));  // (int)s char to int (ASCII 'a' - 97 = 0)
-} // end encode
-
 // Returns the fitness found using the currently selected fitness function
 double fitness( string key ) {
     if(FITNESS_FUNC == 0)
@@ -44,20 +38,6 @@ double bFitness( string key ) {
 	}
 	return fit;
 } // end bFitness
-
-
-// Combines genomes of parents using crossover function of choice into child
-void crossover( int parentA, int parentB, int child ) {
-	// Order One Crossover
-	if(CROSSOVER == 0) {
-
-	} 
-    // PMX Crossover
-    else if(CROSSOVER == 1) {
-        pmx(parentA, parentB, child);
-    }
-
-} // end crossover
 
 
 // Mutate chromosome in-place using permutation-based mutation operator
@@ -123,10 +103,6 @@ bool compSelect( indFitType a, indFitType b) {
         return (a.fit > b.fit);
 }
 
-// Order One crossover - a fast permutation crossover.
-void orderOne( int parentA, int parentB, int child ) {
-    
-}
 
 // PMX Crossover. Code derived from Robert Heckendorn's implementation found in pmx.cpp
 void pmx( int parentA, int parentB, int child ) {

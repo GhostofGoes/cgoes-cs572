@@ -44,9 +44,10 @@ int main() {
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
-		if( choose(0.7) )
-			crossover( par1, par2, child );
-		if( choose(0.5) )
+		if( choose(CROSSOVER_PROB) ) // Crossover genetic information based on probability
+			pmx( par1, par2, child );
+		// TODO: else { straight copy genetic information from both parents into child }
+		if( choose(MUTATION_PROB) ) // Mutate the child based on probability
 			mutate(child);
 		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
 	}
@@ -147,7 +148,7 @@ string bestIndividual() {
 }
 
 // Cleanly prints the given table prepended by the title
-void printTable( double table[][26], string title = "Table" ) {
+void printTable( double table[][26], string title ) {
 	cout << "\n** " << title << " **" << endl;
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
