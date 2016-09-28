@@ -34,22 +34,28 @@ int main() {
 	int par1 = 0, par2 = 0, child = 0;
 
 	initRand();  	// Initialize random number generator
-	initETable();	// Initialize the English contact table
+	initETable();	// Initialize the English frequency table from "freq.txt"
 	while( cin >> temp ) { ciphertext += temp; } // Input the ciphertext 
 	if(TESTING) { cout << "\n ** Ciphertext **\n" << ciphertext << endl; }
-	initCTable(ciphertext);
-	initPopulation();
+	initCTable(ciphertext); // Initialize the Ciphertext frequency table from the ciphertext
+	initPopulation(); // Initialize the population with random keys
 	
 	// Steady State - WHERE THE MAGIC HAPPENS
 	for( int i = 0; i < EVOLUTIONS; i++ ) {
 		// Selects three individuals, returns two best by reference, throws away the poor soul that couldn't stand the heat
 		child = select(par1, par2);
-		if( choose(CROSSOVER_PROB) ) // Crossover genetic information based on probability
+
+		// Crossover genetic information based on probability
+		if( choose(CROSSOVER_PROB) ) 
 			pmx( par1, par2, child );
 		// TODO: else { straight copy genetic information from both parents into child }
-		if( choose(MUTATION_PROB) ) // Mutate the child based on probability
+
+		// Mutate the child based on probability
+		if( choose(MUTATION_PROB) ) 
 			mutate(child);
-		population[child].fit = fitness(population[child].key); // "Add" child to population by modifying fitness
+
+		// "Add" child to population by modifying fitness
+		population[child].fit = fitness(population[child].key); 
 	}
 
 	key = bestIndividual();

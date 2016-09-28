@@ -18,8 +18,12 @@ double eFitness( string key ) {
 	double fit = 0.0; // Fitness
 	for( int i = 0; i < 26; i++ ) {
 		for( int j = 0; j < 26; j++ ) {
-            if(eTable[i][j] != 0)
+            if(eTable[i][j] != 0) // Only calculate fitness for english frequencies that exist
     			fit += pow(( eTable[i][j] - cTable[(int)(key[i] - 97)][(int)(key[j] - 97)] ), 2);
+            // Punish if the key has a frequency that english does not
+            //else if(cTable[(int)(key[i] - 97)][(int)(key[j] - 97)] != 0)
+            //    fit *= ePunishment;
+
 		}
 	}
 	return fit;
@@ -34,6 +38,9 @@ double bFitness( string key ) {
 		for( int j = 0; j < 26; j++ ) {
             if(eTable[i][j] != 0)
     			fit += sqrt(eTable[i][j] * cTable[(int)(key[i] - 97)][(int)(key[j] - 97)]);
+            // Punish if the key has a frequency that english does not
+            //else if(cTable[(int)(key[i] - 97)][(int)(key[j] - 97)] != 0)
+            //    fit *= bPunishment;
 		}
 	}
 	return fit;

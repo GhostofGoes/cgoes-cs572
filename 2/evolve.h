@@ -21,6 +21,8 @@ const int SELECTION = 0;    // Unused currently
 const int EVOLUTIONS = 10000; // # of times steady state algorithm evolves (# of runs)
 const int POPSIZE = 500;     // Size of population
 const int TSIZE = 3;        // Size of tournament
+const double bPunishment = 0.99;
+const double ePunishment = 1.05;
 
 typedef struct {
     string key;
