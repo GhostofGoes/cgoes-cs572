@@ -14,12 +14,12 @@
 using namespace std;
 
 const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhatthacaryya
-const double CROSSOVER_PROB = 0.9;
+const double CROSSOVER_PROB = 0.8;
 const int MUTATION = 0;     // 0 = Single Swap
-const double MUTATION_PROB = 0.5;
+const double MUTATION_PROB = 1.0;
 const int SELECTION = 0;    // Unused currently
-const int EVOLUTIONS = 10000; // # of times steady state algorithm evolves (# of runs)
-const int POPSIZE = 500;     // Size of population
+const int EVOLUTIONS = 100000; // # of times steady state algorithm evolves (# of runs)
+const int POPSIZE = 256;     // Size of population
 const int TSIZE = 3;        // Size of tournament
 const double bPunishment = 0.99;
 const double ePunishment = 1.05;
