@@ -1,7 +1,8 @@
 #!/bin/bash
+outfile=$(date +%Y-%m-%d-%H-%M-%S)_decipher_iter-test.run
 for file in codes/*.code; do
-    printf "\n\nTesting %s...\n" "$file" >> iter_decipher.output
+    printf "\n\nTesting %s...\n" "$file" >> "$outfile"
     for i in $(seq 1 10); do
-        ./decipher < "$file" >> iter_decipher.output
+        ./decipher < "$file" >> "$outfile"
     done
 done
