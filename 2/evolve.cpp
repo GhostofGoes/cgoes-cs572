@@ -23,14 +23,13 @@ double eFitness( string key ) {
             // Punish if the key has a frequency that english does not
             //else if(cTable[(int)(key[i] - 97)][(int)(key[j] - 97)] != 0)
             //    fit *= ePunishment;
-
 		}
 	}
 	return fit;
 } // end eFitness
 
 
-// Fitness function using Bhatthacaryya distance
+// Fitness function using Bhattacharyya distance
 // BIGGER IS BETTER FOR THIS FITNESS (oh yeah)
 double bFitness( string key ) {
 	double fit = 0.0; // Fitness

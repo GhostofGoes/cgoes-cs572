@@ -4,7 +4,7 @@
 // Semester: 	Fall 2016
 // Description:	Assignment 2 - Genetic Algorithms - Breaking a simple Substitution Cipher
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
-// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2.
+// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2 once the semester is over.
 // if you're in the class, don't copy the code
 
 #include <fstream>
@@ -12,8 +12,8 @@
 #define TESTING 0
 #define PRINT_FITNESS 1
 
-double eTable[26][26];		// English contact table
-double cTable[26][26];		// Cipher contact table
+double eTable[26][26];		// English contact table (digraph of frequencies of letter pairs in the English language [approximate])
+double cTable[26][26];		// Cipher contact table (digrap of frequencies of letter pairs in the ciphertext)
 vector < keyFitType > population; // The population of keys and their fitnesses
 string english("abcdefghijklmnopqrstuvwxyz"); // A hack of epic proportions
 
@@ -36,7 +36,7 @@ int main() {
 	initRand();  	// Initialize random number generator
 	initETable();	// Initialize the English frequency table from "freq.txt"
 	while( cin >> temp ) { ciphertext += temp; } // Input the ciphertext 
-	if(TESTING) { cout << "\n ** Ciphertext **\n" << ciphertext << endl; }
+	if(TESTING) { cout << "\n ++ Ciphertext ++ \n" << ciphertext << endl; }
 	initCTable(ciphertext); // Initialize the Ciphertext frequency table from the ciphertext
 	initPopulation(); // Initialize the population with random keys
 	
@@ -60,7 +60,7 @@ int main() {
 
 	key = bestIndividual();
 	cout << "** goes " << key << endl;
-	if(TESTING) { cout << "\n** Deciphered text **" << endl; }
+	if(TESTING) { cout << "\n ++ Deciphered text ++ " << endl; }
 	cout << decipher(ciphertext, key) << endl;
 	return 0;
 } // end main
@@ -127,7 +127,7 @@ void initPopulation() {
 		member.fit = fitness(member.key);
 		population.push_back(member);
 	}
-}
+} // end initPopulation
 
 // Initializes key to random scrambling of the english alphabet
 string initKey() {
@@ -136,22 +136,22 @@ string initKey() {
 		swap(key[i], key[randMod(26)]);
 	}
 	return key;
-}
+} // end initKey
 
 // Comparison function for sorting that changes based on fitness function used
 bool comp( keyFitType a, keyFitType b ) {
-	if(FITNESS_FUNC == 0)
+	if(FITNESS_FUNC == 0) // Minimize for Euclidian
 		return (a.fit < b.fit);
-	else
+	else // Maximize for Bhattacharyya
 		return (a.fit > b.fit);
-}
+} // end comp
 
 // Sorts population to determine best individual, then returns that individual's key
 string bestIndividual() {
-	sort(population.begin(), population.end(), comp);
+	sort(population.begin(), population.end(), comp); // This could be a simple find the max, but it works so whatever
 	if(PRINT_FITNESS) { cout << "Best fitness:\t" << population[0].fit << endl; }
 	return population[0].key;
-}
+} // end bestIndividual
 
 // Cleanly prints the given table prepended by the title
 void printTable( double table[][26], string title ) {
@@ -162,7 +162,7 @@ void printTable( double table[][26], string title ) {
 		}
 		cout << endl;
 	}
-}
+} // end printTable
 
 // Cleanly prints the global population keys + fitnesses, prepended by the title
 void printPopulation( string title ) {
@@ -170,7 +170,7 @@ void printPopulation( string title ) {
 	for( unsigned int i = 0; i < population.size(); i++ ) {
 		cout << "Key:\t" << population[i].key << "\tFitness:\t" << population[i].fit << endl;
 	}
-}
+} // end printPopulation
 
 // Deciphers the encrypted ciphertext into a plaintext string using the key
 string decipher( string ciphertext, string key ) {
@@ -178,7 +178,7 @@ string decipher( string ciphertext, string key ) {
 	for( unsigned int i = 0; i < ciphertext.length(); i++ )
 		deciphered.push_back(decode(key, ciphertext[i]));
 	return deciphered;
-}
+} // end decipher
 
 // Decrypts a given character using the given key. Uses the global english string.
 char decode( string key, char c ) {
@@ -190,4 +190,4 @@ char decode( string key, char c ) {
 	}
 	// Return character from english key at same index
 	return english[index];
-}
+} // end decode
