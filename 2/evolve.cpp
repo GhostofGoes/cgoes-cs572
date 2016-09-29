@@ -10,7 +10,7 @@ double fitness( string key ) {
         return eFitness(key);
     else
         return bFitness(key);
-}
+} // end fitness
 
 // Fitness function using Euclidean distance
 // SMALLER IS BETTER FOR THIS FITNESS
@@ -99,7 +99,7 @@ int select( int &parentA, int &parentB ) {
 
     // Losing individual will be overwritten by child...what a horrible fate
     return members[TSIZE - 1].index;
-}
+} // end select
 
 // Comparison function for sorting that changes based on fitness function used
 bool compSelect( indFitType a, indFitType b) {
@@ -107,7 +107,7 @@ bool compSelect( indFitType a, indFitType b) {
         return (a.fit < b.fit);
     else
         return (a.fit > b.fit);
-}
+} // end compSelect
 
 
 // PMX Crossover. Code derived from Robert Heckendorn's implementation found in pmx.cpp
@@ -150,4 +150,4 @@ void pmx( int parentA, int parentB, int child ) {
 
     // Put child into population
     population[child].key = c;
-}
+} // end pmx

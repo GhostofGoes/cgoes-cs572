@@ -20,7 +20,7 @@ string english("abcdefghijklmnopqrstuvwxyz"); // A hack of epic proportions
 void initETable();
 void initCTable( string ciphertext );
 void initPopulation();
-string initKey();
+string initKey(); // Generates and returns a random key derived from the english alphabet
 
 string bestIndividual();
 bool comp( keyFitType a, keyFitType b );
@@ -72,7 +72,7 @@ void initETable() {
 	double num = 0, sum = 0;
 	ifstream inf("freq.txt");
 
-	// Initialize the table
+	// Clear the table
 	for(int i = 0; i < 26; i++) {
 		for(int j = 0; j < 26; j++) {
 			eTable[i][j] = 0;
@@ -99,6 +99,7 @@ void initETable() {
 
 // Initializes the Ciphertext contact table by counting occurances of pairs of letters in the ciphertext
 void initCTable( string ciphertext ) {
+	// Clear the table
 	for(int i = 0; i < 26; i++) {
 		for(int j = 0; j < 26; j++) {
 			cTable[i][j] = 0;
