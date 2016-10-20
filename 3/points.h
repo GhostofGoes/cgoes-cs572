@@ -2,6 +2,7 @@
 #define POINTS_H
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <cmath>
 #include <vector>
@@ -10,7 +11,9 @@
 
 using namespace std;
 
-# define PI           3.14159265358979323846  /* pi */
+# define PI 3.14159265358979323846  /* pi */
+const unsigned int fieldWidth = 10;
+
 
 const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhattacharyya
 const double CROSSOVER_PROB = 0.8; // Probability of crossing over selected parents into child
@@ -24,6 +27,11 @@ typedef struct {
     double theta;   // Range: [0, 2PI]
     double r;       // Range: [0, 1]
 } point;
+
+typedef struct {
+    double fitness;     // Fitness for the member
+    vector<point> points;   // Points in polar coordinates
+} member;
 
 
 double fitness();   // Generic function that allows selection of function using global variable instead of changing the call

@@ -1,6 +1,6 @@
 #include "points.h"
 
-extern vector< vector<point> > pop;
+extern vector<member> pop;
 extern unsigned int numPoints;
 
 
@@ -11,8 +11,11 @@ double fitness() {
 
 // Initializes the population
 void initPopulation() {
+    member m;
 	for(int i = 0; i < POPSIZE; i++) {
-		pop.push_back(genRandVec());
+        m.fitness = -1;
+        m.points = genRandVec();
+		pop.push_back(m);
 	}
 } // end initPopulation
 
@@ -30,14 +33,17 @@ vector<point> genRandVec() {
 }
 
 void printPopulation( string title ) {
-    cout << "\n++ Population " << title << " ++" << endl;
+    cout << "\n++ Population: " << title << " ++" << endl;
+    cout << setw(fieldWidth) << left << "Theta" << "\tRadius" << endl;
     for(int i = 0; i < POPSIZE; i++) {
-        printPoints(pop[i]);
+        cout << setw(fieldWidth) << left << "\nFitness: " << pop[i].fitness << endl;
+        printPoints(pop[i].points);
     }
+    cout << "++++++++++++++++++++++++++" << endl;;
 }
 
 void printPoints( vector<point> ps ) {
     for(int i = 0; i < ps.size(); i++) {
-        cout << ps[i].theta << "\t" << ps[i].r << endl;
+        cout << setw(fieldWidth) << left << ps[i].theta << "\t" << ps[i].r << endl;
     }
 }

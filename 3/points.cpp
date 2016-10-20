@@ -10,7 +10,7 @@
 #define TESTING 0
 #define PRINT_FITNESS 1
 
-vector< vector<point> > pop[POPSIZE];
+vector<member> pop[POPSIZE];
 unsigned int numPoints = 0;
 
 
