@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW=hw3
+HW=points
 outfile=$(date +%Y-%m-%d-%H-%M-%S)_"$HW".run
 
 for file in tests/*.test; do

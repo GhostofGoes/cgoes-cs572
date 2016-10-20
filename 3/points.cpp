@@ -7,7 +7,7 @@
 // If you're in the class, don't copy the code :)
 
 #include <fstream>
-#include "hw3.h"
+#include "points.h"
 #define TESTING 0
 #define PRINT_FITNESS 1
 

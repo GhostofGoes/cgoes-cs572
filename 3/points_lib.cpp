@@ -1,4 +1,4 @@
-#include "hw3.h"
+#include "points.h"
 
 // extern treeType population;
 

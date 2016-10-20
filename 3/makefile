@@ -1,4 +1,4 @@
-BIN  = hw3
+BIN  = points
 HW   = pas3
 CC   = g++
 SRCS = $(BIN).cpp $(BIN).h $(BIN)_lib.cpp rand.h rand.cpp 

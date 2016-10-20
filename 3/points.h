@@ -1,5 +1,5 @@
-#ifndef HW3_H
-#define HW3_H
+#ifndef POINTS_H
+#define POINTS_H
 
 #include <iostream>
 #include <string>
