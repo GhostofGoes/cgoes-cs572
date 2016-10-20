@@ -6,24 +6,27 @@
 // License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2 once the semester is over.
 // If you're in the class, don't copy the code :)
 
-#include <fstream>
 #include "points.h"
 #define TESTING 0
 #define PRINT_FITNESS 1
 
-// treeType population;
+vector< vector<point> > pop[POPSIZE];
+unsigned int numPoints = 0;
 
-void initPopulation();
 
 int main() {
+	cin >> numPoints;
+	if( numPoints < 2 ) { cout << "wtf" << endl; }
+	double fitness = -99.99;
+
+	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  		// Initialize random number generator
-	initPopulation();
+	initPopulation();	// Initialize population with randomly generated members
+
+	printPopulation("Testing");
 
 	return 0;
 } // end main
 
 
-// Initializes the population
-void initPopulation() {
 
-} // end initPopulation
