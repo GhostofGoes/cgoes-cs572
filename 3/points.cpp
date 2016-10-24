@@ -5,50 +5,25 @@
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 // License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2 once the semester is over.
 // If you're in the class, don't copy the code :)
+// You're welcome to use it to get un-stuck on or learn silly things like I/O, C++ syntax, libary functions, etc.
 
+#include <cstdlib>
 #include "points.h"
-#define TESTING 0
-#define PRINT_FITNESS 1
-
-vector<member> pop[POPSIZE];
-unsigned int numPoints = 0;
+#include "population.h"
 
 
 int main(int argc, char *argv[]) {
+	unsigned int numPoints = 0;
 
 	// Is our N being input on commandline or stdin?
-	if (argc > 1) { numPoints = stol(argv[1]); }
-	else { cin >> numPoints; } // Don't need to cast here since cin does that for us
-	if( numPoints < 2 ) { cout << "wtf" << endl; return 1; } // sanity check
-
-	double fitness = -99.99;
+	if (argc > 1) { numPoints = (unsigned int) stoul(argv[1]); } 	// It's an argument, convert to unsigned int
+	else { cin >> numPoints; } // Don't need to cast for this case since cin does that for us
 
 	// TODO: profile and try randf.cpp or randmt.cpp
-	initRand();  		// Initialize random number generator
-	initPopulation();	// Initialize population with randomly generated members
+	initRand();  // Initialize random number generator
 
-	printPopulation("Testing");
+	Population p1( numPoints, 5 ); // Create a population of size 5
+	p1.printPop("Testing");
 
 	return 0;
 } // end main
-
-
-// Fitness calculated by finding minimum Euclidean distance between all points
-double fitness( vector<point> points ) {
-	double fitness = -99.99;  // Weird number for obvious errors
-
-	for(point p : points) {
-
-	}
-
-	return fitness;
-} // end fitness
-
-// A fast but sloppy fitness. TODO: Not yet implemented
-double fastFitness( vector<point> points ) {
-	double fitness = -99.99;  // Weird number for obvious errors
-
-	return fitness;
-} // end fastFitness
-
-

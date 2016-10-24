@@ -1,8 +1,8 @@
 BIN  = points
 HW   = pas3
 CC   = g++
-SRCS = $(BIN).cpp $(BIN).h $(BIN)_lib.cpp rand.h rand.cpp 
-LIBS = -lm $(BIN).cpp $(BIN)_lib.cpp rand.cpp
+SRCS = $(BIN).cpp $(BIN).h population.cpp population.h rand.h rand.cpp
+LIBS = -lm $(BIN).cpp population.cpp rand.cpp
 CCFLAGS = -O3 -std=c++11
 
 $(BIN): $(SRCS)
