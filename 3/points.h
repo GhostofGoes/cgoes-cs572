@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cstdlib>
 #include <cmath>
 #include <vector>
 //#include <algorithm>
@@ -11,8 +12,8 @@
 
 using namespace std;
 
-# define PI 3.14159265358979323846  /* pi */
-const unsigned int fieldWidth = 10;
+# define PI 3.14159265358979323846  /* "good enough" value of pi */
+const unsigned int fieldWidth = 10; // For spacing when printing stuff
 
 
 const int FITNESS_FUNC = 1; // 0 = Euclidean, 1+ = Bhattacharyya
@@ -23,25 +24,30 @@ const int EVOLUTIONS = 100000; // # of times steady state algorithm evolves (# o
 const int POPSIZE = 5;    // Size of population
 const int TSIZE = 3;        // Size of tournament (not really needed, since I assumed a size of 3 at some point during development)
 
+
 typedef struct {
     double theta;   // Range: [0, 2PI]
     double r;       // Range: [0, 1]
-} point;
+} point; // Single point using polar notation on a unit circle. theta = angle, r = radius
 
 typedef struct {
-    double fitness;     // Fitness for the member
-    vector<point> points;   // Points in polar coordinates
-} member;
+    double fitness;         // Fitness of the member
+    vector<point> points;   // Points for the member in polar coordinates
+} member; // Member of population
 
 
-double fitness();   // Generic function that allows selection of function using global variable instead of changing the call
-double fastFitness();
+/* points.cpp */
+double fitness( vector<point> points );  // Fitness is calculated by finding minimum Euclidean distance between all points
+double fastFitness( vector<point> points ); // A fast but sloppy fitness. Not yet implemented.
 
-//void mutate( int chromosome ); // Mutates the chromosome in-place using mutation function selected using global variable
-// void printTable( double table[][26], string name ); // Prints a table for debugging, headed by title
-void initPopulation();
-vector<point> genRandVec();
-void printPopulation( string title ); // Prints the current population for debugging, headed by title
-void printPoints( vector<point> ps );
+
+/* points_lib.cpp */
+void initPopulation();          // Initializes the global population. Relies on global numPoints.
+vector<point> genRandVec();     // Generates a random point vector based on the value of global numPoints
+
+void printPopulation( string title );   // Prints the current population for debugging, headed by title
+void printPoints( vector<point> ps );   // Prints all the points in the point vector
+
+
 
 #endif
