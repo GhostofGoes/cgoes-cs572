@@ -3,7 +3,10 @@ Code and notes for Robert Heckendorn's CS 572 - Evolutionary Computation course 
 
 [Course Website](http://marvin.cs.uidaho.edu/Teaching/CS472/index.html)
 
+
 # License notes
-This will be licenced under AGPLv3 until the end of the semester, at which time I will change the license to MIT.
+Homework code is licenced under AGPLv3 until the end of the Fall 2016 semester, at which time I will change the license to MIT.
 This is to prevent plagarism by others from affecting me.
-Basically: don't plagarise this, as doing so could put you at risk legally and academically.
+Basically: don't plagarise the algorithms, as doing so could put you at risk academically and legally.
+
+You are welcome to use anything that isn't the core algorithms used to implement the assignments. This includes makefiles, shell scripts, notes, and the like.
