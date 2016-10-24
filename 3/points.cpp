@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 double fitness( vector<point> points ) {
 	double fitness = -99.99;  // Weird number for obvious errors
 
-	for(int i = 0; i < points.size(); i++) {
+	for(point p : points) {
 
 	}
 

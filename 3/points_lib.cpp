@@ -33,16 +33,16 @@ vector<point> genRandVec() {
 void printPopulation( string title ) {
     cout << "\n++ Population: " << title << " ++" << endl;
     cout << setw(fieldWidth) << left << "Theta" << "\tRadius" << endl;
-    for(int i = 0; i < POPSIZE; i++) {
-        cout << setw(fieldWidth) << left << "\nFitness: " << pop[i].fitness << endl;
-        printPoints(pop[i].points);
+    for( member m : pop ) {
+        cout << setw(fieldWidth) << left << "\nFitness: " << m.fitness << endl;
+        printPoints(m.points);
     }
     cout << "++++++++++++++++++++++++++" << endl;;
 } // end printPopulation
 
 // Prints all the points in point vector ps
 void printPoints( vector<point> ps ) {
-    for(int i = 0; i < ps.size(); i++) {
-        cout << setw(fieldWidth) << left << ps[i].theta << "\t" << ps[i].r << endl;
+    for( point p : ps) {
+        cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
     }
 } // end printPoints
