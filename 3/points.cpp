@@ -12,6 +12,8 @@
 #include "population.h"
 
 
+// This sets everything up, kicks off evolutions, and prints results
+// The actual interesting stuff is in population.cpp/h and points.h
 int main(int argc, char *argv[]) {
 	unsigned int numPoints = 0;
 
@@ -22,7 +24,7 @@ int main(int argc, char *argv[]) {
 	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  // Initialize random number generator
 
-	Population p1( numPoints, 5 ); // Create a population of size 5
+	Population p1( numPoints, 5, 10 ); // Create a population of size 5 that evolves 10 times
 	p1.printPop("Testing");
 	p1.evolve();
 	p1.printPop("Post-evolution");

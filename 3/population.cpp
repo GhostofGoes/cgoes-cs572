@@ -10,17 +10,55 @@
 #include "population.h"
 #include "points.h"
 
+const unsigned int fieldWidth = 10; // For spacing when printing stuff
+
 
 // Constructor ** ASSUMES initRand() HAS BEEN CALLED! **
-Population::Population( unsigned int nPoints, unsigned int pSize ) {
+Population::Population( unsigned int nPoints, unsigned int pSize, unsigned int evos ) {
     numPoints = nPoints;
     popSize = pSize;
+    evolutions = evos;
     initPopulation(); // Initialize the population
 } // end Population constructor
 
-void Population::evolve() {
 
-}
+void Population::evolve() {
+    
+    for( unsigned int i = 0; i < evolutions; i++ ) {
+
+    }
+
+} // end evolve
+
+
+void Population::mutate( chromosome c ) {
+    // TODO: pass by reference?
+} // end mutate
+
+
+chromosome Population::select() const {
+    // Thinking simple tournament selection with eliteism for now (because it works, that's why!)
+    // However, should put variables here to be able to tweak/disable stuff like eliteism 
+    // Could also try fitness proportional selection or uniform parent selection
+    chromosome c;
+
+    return c;
+} // end select
+
+
+// Where some of the Evolution Strategies magic happens
+// sigma    Mutation step size (usually 1/5)
+// mu       Individuals in population
+// lambda   Offspring generated in a cycle
+// +        Plus operator
+// ,        Comma operator
+chromosome Population::crossover( chromosome p1, chromosome p2 ) const {
+    chromosome child;
+
+
+    return child;
+} // end crossover
+
 
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 double Population::fitness( chromosome c ) const {

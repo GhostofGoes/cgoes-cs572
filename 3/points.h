@@ -11,13 +11,6 @@ using namespace std;
 
 #define PI 3.14159265358979323846  /* "good enough" value of pi */
 #define TESTING 0
-const unsigned int fieldWidth = 10; // For spacing when printing stuff
-
-
-const double CROSSOVER_PROB = 0.8; // Probability of crossing over selected parents into child
-const int MUTATION = 0;     // 0 = Single Swap
-const double MUTATION_PROB = 1.0; // Probability of mutating the child
-const int EVOLUTIONS = 100000; // # of times steady state algorithm evolves (# of runs)
 
 
 typedef struct {
