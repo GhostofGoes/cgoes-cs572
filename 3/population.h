@@ -11,21 +11,25 @@ class Population {
         Population( unsigned int nPoints ) : Population(nPoints, 100) {} // constructor with default pop size (C++11 delegating constructors)
         ~Population() {} // Empty destructor for now
 
-        double fitness( vector<point> points ); // Minimum Euclidean distance between all points
-        
-        void printPop( string title );   // Prints the population, headed by title
-        void printPoints( vector<point> points );
+        void evolve();
+        void mutate( member c );
 
-        unsigned int getNumPoints() { return numPoints; }
-        unsigned int getPopSize() { return popSize; }
-        vector<member> getPop() { return pop; }
+        double fitness( vector<point> points ) const; // Minimum Euclidean distance between all points
+        
+        void printPop( string title ) const;   // Prints the population, headed by title
+        void printPoints( vector<point> points ) const;
+
+        unsigned int getNumPoints() const { return numPoints; }
+        unsigned int getPopSize() const { return popSize; }
+        vector<member> getPop() const { return pop; }
+
     private:
         unsigned int numPoints; // Number of points for each member in population
         unsigned int popSize;   // Total size of population
         vector<member> pop;     // The population
 
         void initPopulation();      // Initializes the population with random values, and calculates their fitnesses
-        vector<point> genRandVec(); // Generates a random vector of points
+        vector<point> genRandVec() const; // Generates a random vector of points
 };
 
 

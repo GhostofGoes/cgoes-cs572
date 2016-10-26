@@ -22,11 +22,11 @@ tar:
 	
 test: $(SRCS)
 	make clean
-	$(CC) $(CCFLAGS) -Wall -g $(LIBS) -o $(BIN)
+	$(CC) $(CCFLAGS) -Wall -Wextra -g $(LIBS) -o $(BIN)
 
 debug: $(SRCS)
 	make clean
-	$(CC) -Wall -g $(LIBS) -o $(BIN)
+	$(CC) -std=c++11 -Wall -Wextra -g $(LIBS) -o $(BIN)
 
 profile: $(SRCS)
 	make clean

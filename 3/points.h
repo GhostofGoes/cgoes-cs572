@@ -9,7 +9,7 @@
 
 using namespace std;
 
-# define PI 3.14159265358979323846  /* "good enough" value of pi */
+#define PI 3.14159265358979323846  /* "good enough" value of pi */
 #define TESTING 0
 const unsigned int fieldWidth = 10; // For spacing when printing stuff
 

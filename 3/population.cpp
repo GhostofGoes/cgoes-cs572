@@ -1,10 +1,11 @@
 // Project: 	Assignment 3 - Evolution Strategies
-// Function definitions for the Population class as defined in population.h
+// Author: 		Christopher Goes
+// Description: Function definitions for the Population class as defined in population.h
 
 
 #include <cmath>
 #include <iomanip>
-//#include <algorithm>
+#include <algorithm>
 
 #include "population.h"
 #include "points.h"
@@ -17,9 +18,12 @@ Population::Population( unsigned int nPoints, unsigned int pSize ) {
     initPopulation(); // Initialize the population
 } // end Population constructor
 
+void Population::evolve() {
+
+}
 
 // Fitness calculated by finding minimum Euclidean distance between all points
-double Population::fitness( vector<point> points ) {
+double Population::fitness( vector<point> points ) const {
     double fitness = 1.0;  
 
 	for( point i : points ) {
@@ -37,9 +41,11 @@ double Population::fitness( vector<point> points ) {
 
 // Initializes the population with random values, and calculates their fitnesses
 void Population::initPopulation() {
-    for( int i = 0; i < popSize; i++ ) {
+    for( unsigned int i = 0; i < popSize; i++ ) {
         member m;
         m.points = genRandVec();
+        // TODO: use std::multimap to keep members sorted by Theta. 
+        // Maybe use a class instead of struct for members?
         m.fitness = fitness(m.points);
 		pop.push_back(m);
 	}
@@ -48,10 +54,10 @@ void Population::initPopulation() {
 
 
 // Generates a random vector of points
-vector<point> Population::genRandVec() {
+vector<point> Population::genRandVec() const {
 	vector<point> points;
 
-	for( int i = 0; i < numPoints; i++ ) {
+	for( unsigned int i = 0; i < numPoints; i++ ) {
         point p;
 		p.theta = randUnit() * 2.0 * PI;
 		p.r = randUnit();
@@ -64,7 +70,7 @@ vector<point> Population::genRandVec() {
 
 
 // Prints the population, headed by title
-void Population::printPop( string title ) {
+void Population::printPop( string title ) const {
     cout << "\n++ Population: " << title << " ++" << endl;
     cout << setw(fieldWidth) << left << "Theta" << "\tRadius" << endl;
     for( member m : pop ) {
@@ -75,7 +81,7 @@ void Population::printPop( string title ) {
 } // end printPop
 
 
-void Population::printPoints( vector<point> points ) {
+void Population::printPoints( vector<point> points ) const {
     for( point p : points ) {
         cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
     }

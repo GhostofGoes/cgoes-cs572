@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
 
 	Population p1( numPoints, 5 ); // Create a population of size 5
 	p1.printPop("Testing");
+	p1.evolve();
+	p1.printPop("Post-evolution");
 
 	return 0;
 } // end main
