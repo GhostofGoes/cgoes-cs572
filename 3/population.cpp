@@ -22,12 +22,12 @@ void Population::evolve() {
 
 }
 
-// Fitness calculated by finding minimum Euclidean distance between all points
-double Population::fitness( vector<point> points ) const {
+// Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
+double Population::fitness( chromosome c ) const {
     double fitness = 1.0;  
 
-	for( point i : points ) {
-		for( point j : points ) {
+	for( point i : c ) {
+		for( point j : c ) {
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
 			double temp = sqrt(i.r + j.r - 2 * i.r * j.r * cos(i.theta - j.theta));
             if( temp < fitness ) { fitness = temp; }
@@ -43,30 +43,30 @@ double Population::fitness( vector<point> points ) const {
 void Population::initPopulation() {
     for( unsigned int i = 0; i < popSize; i++ ) {
         member m;
-        m.points = genRandVec();
+        m.c = genChromosome();
         // TODO: use std::multimap to keep members sorted by Theta. 
         // Maybe use a class instead of struct for members?
-        m.fitness = fitness(m.points);
+        m.fitness = fitness(m.c);
 		pop.push_back(m);
 	}
     if( pop.size() != popSize ) { cerr << "pop.size() != popSize !!!" << endl; }
 } // end initPopulation
 
 
-// Generates a random vector of points
-vector<point> Population::genRandVec() const {
-	vector<point> points;
+// Generates a random chromosome as a vector of points
+chromosome Population::genChromosome() const {
+	chromosome c;
 
 	for( unsigned int i = 0; i < numPoints; i++ ) {
         point p;
 		p.theta = randUnit() * 2.0 * PI;
 		p.r = randUnit();
-        points.push_back(p);
+        c.push_back(p);
 	}
-    points[0].theta = 0.0; // Lock first point to angle of 0 to reduce drift
+    c[0].theta = 0.0; // Lock first point to angle of 0 to reduce drift
 
-    return points;
-} // end genRandVec
+    return c;
+} // end genChromosome
 
 
 // Prints the population, headed by title
@@ -75,14 +75,14 @@ void Population::printPop( string title ) const {
     cout << setw(fieldWidth) << left << "Theta" << "\tRadius" << endl;
     for( member m : pop ) {
         cout << setw(fieldWidth) << left << "\nFitness: " << m.fitness << endl;
-        printPoints(m.points);
+        printChromosome(m.c);
     }
     cout << "++++++++++++++++++++++++++" << endl;
 } // end printPop
 
 
-void Population::printPoints( vector<point> points ) const {
-    for( point p : points ) {
+void Population::printChromosome( chromosome c ) const {
+    for( point p : c ) {
         cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
     }
-} // end printPoints
+} // end printChromosome

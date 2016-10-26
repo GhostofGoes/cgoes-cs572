@@ -12,24 +12,24 @@ class Population {
         ~Population() {} // Empty destructor for now
 
         void evolve();
-        void mutate( member c );
+        void mutate( chromosome c );
 
-        double fitness( vector<point> points ) const; // Minimum Euclidean distance between all points
+        double fitness( chromosome c ) const; // Minimum Euclidean distance between all points
         
         void printPop( string title ) const;   // Prints the population, headed by title
-        void printPoints( vector<point> points ) const;
+        void printChromosome( chromosome c ) const;
 
         unsigned int getNumPoints() const { return numPoints; }
         unsigned int getPopSize() const { return popSize; }
         vector<member> getPop() const { return pop; }
 
     private:
-        unsigned int numPoints; // Number of points for each member in population
-        unsigned int popSize;   // Total size of population
+        unsigned int numPoints; // Size of chromosome (Number of points) for each member in population
+        unsigned int popSize;   // Total size of population (total # of members)
         vector<member> pop;     // The population
 
-        void initPopulation();      // Initializes the population with random values, and calculates their fitnesses
-        vector<point> genRandVec() const; // Generates a random vector of points
+        void initPopulation();              // Initializes the population with random values, and calculates their fitnesses
+        chromosome genChromosome() const;   // Generates a random vector of points
 };
 
 
