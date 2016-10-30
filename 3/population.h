@@ -1,8 +1,8 @@
 #ifndef POPULATION_H
 #define POPULATION_H
 
-// This has definitions and includes for stuff
-#include "points.h"
+
+#include "points.h"  // This has definitions and includes for stuff
 
 
 class Population {

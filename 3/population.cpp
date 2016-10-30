@@ -62,7 +62,7 @@ chromosome Population::crossover( chromosome p1, chromosome p2 ) const {
 
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 double Population::fitness( chromosome c ) const {
-    double fitness = 1.0;  
+    double fitness = 2.0;  // Diameter of unit circle
 
 	for( point i : c ) {
 		for( point j : c ) {
