@@ -19,5 +19,6 @@ typedef struct {
     double r;       // Range: [0, 1]
 } point; // Single point using polar notation on a unit circle. theta = angle, r = radius
 
+enum OP { PLUS, COMMA };
 
 #endif

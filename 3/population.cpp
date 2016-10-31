@@ -12,13 +12,14 @@
 
 
 // Constructor ** ASSUMES initRand() HAS BEEN CALLED! **
-Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize ) {
+Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize, OP op ) {
     numPoints = nPoints;
     popSize = pSize;
     generations = numGens;
     mutProb = mProb;
     crosProb = cProb;
     trnySize = tSize;
+    es_op = op;
 
     initPopulation(); // Initialize the population
 } // end Population constructor
@@ -26,12 +27,36 @@ Population::Population( int nPoints, int pSize, int numGens, double mProb, doubl
 
 // The main function and loop that evolves the population
 void Population::evolve() {
-    vector<Chromosome> newPop;
-    newPop.reserve(popSize);
-
     for( int i = 0; i < generations; i++ ) {
+        vector<Chromosome> children;
+        children.reserve(popSize);
+
+        // Generate children
+        for( int i = 0; i < popSize; i++ ) {
+            Chromosome c = select(pop);
+            if( choose(mutProb) ) {
+                c.mutate(1/5, 1/5);
+                c.updateFitness();
+            }
+            children[i] = c;
+        }
 
 
+        /* Select for new population */
+
+        // Plus operator (select from pop (parents) AND children)
+        if( es_op == PLUS ) { 
+            vector<Chromosome> newPop;
+            newPop.reserve(popSize);
+            for( int i = 0; i < popSize; i++ ) {
+                newPop[i] = select(pop, children);
+            }
+            pop = newPop;
+        } 
+
+        else { // Comma operator (select from ONLY children)
+            pop = children;
+        }
     }
 } // end evolve
 
@@ -42,13 +67,17 @@ void Population::evolve() {
 // lambda   Offspring generated in a cycle
 // +        Plus operator - selection is done from BOTH the parents and the children
 // ,        Comma operator - selection is done from ONLY the children
-Chromosome Population::select() const {
+Chromosome Population::select( vector<Chromosome> p ) const {
     // Thinking simple tournament selection with eliteism for now (because it works, that's why!)
     // However, should put variables here to be able to tweak/disable stuff like eliteism
     // Could also try fitness proportional selection or uniform parent selection
-    Chromosome c(numPoints);
 
     return c;
+} // end select
+
+
+Chromosome Population::select( vector<Chromosome> p, vector<Chromosome> c ) const {
+
 } // end select
 
 
