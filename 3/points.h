@@ -12,17 +12,18 @@ using namespace std;
 #define PI 3.14159265358979323846  /* "good enough" value of pi */
 #define TESTING 0
 
+const unsigned int fieldWidth = 10; // For spacing when printing stuff
 
 typedef struct {
     double theta;   // Range: [0, 2PI]
     double r;       // Range: [0, 1]
 } point; // Single point using polar notation on a unit circle. theta = angle, r = radius
 
-typedef vector<point> chromosome;
+// typedef vector<point> chromosome;
 
-typedef struct {
-    double fitness;         // Fitness of the member
-    chromosome c;   // Points for the member in polar coordinates
-} member; // Member of population
+//typedef struct {
+//    double fitness;         // Fitness of the member
+//    Chromosome c;   // Points for the member in polar coordinates
+//} member; // Member of population
 
 #endif

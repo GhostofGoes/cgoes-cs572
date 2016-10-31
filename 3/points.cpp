@@ -15,10 +15,10 @@
 // This sets everything up, kicks off evolutions, and prints results
 // The actual interesting stuff is in population.cpp/h and points.h
 int main(int argc, char *argv[]) {
-	unsigned int numPoints = 0;
+	int numPoints = 0;
 
 	// Is our N being input on commandline or stdin?
-	if (argc > 1) { numPoints = (unsigned int) stoul(argv[1]); } 	// It's an argument, convert to unsigned int
+	if (argc > 1) { numPoints = (int) stoul(argv[1]); } 	// It's an argument, convert to unsigned int
 	else { cin >> numPoints; } // Don't need to cast for this case since cin does that for us
 
 	// TODO: profile and try randf.cpp or randmt.cpp
