@@ -10,6 +10,10 @@ localsearch
 decipher
 points
 
+dots.py
+
+*.pyc
+
 # Compiled Object files
 *.slo
 *.lo

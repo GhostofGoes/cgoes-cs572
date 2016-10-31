@@ -20,8 +20,12 @@ Chromosome::Chromosome( int size ) {
 	}
     points[0].theta = 0.0;  // Lock first point to angle of 0 to reduce drift
     updateFitness();        // Calculate the fitness of the new point vector
-}
+} // end Chromosome
 
+
+void Chromosome::mutate() {
+
+} // end mutate
 
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 void Chromosome::updateFitness() {
@@ -40,8 +44,10 @@ void Chromosome::updateFitness() {
 
 
 void Chromosome::print() const {
+    vector<point> ps = points;
+    sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
     for( point p : points )
-        cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
+        cout << p.theta << " " << p.r << endl;
 } // end print
 
 

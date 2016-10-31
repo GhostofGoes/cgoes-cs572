@@ -19,11 +19,5 @@ typedef struct {
     double r;       // Range: [0, 1]
 } point; // Single point using polar notation on a unit circle. theta = angle, r = radius
 
-// typedef vector<point> chromosome;
-
-//typedef struct {
-//    double fitness;         // Fitness of the member
-//    Chromosome c;   // Points for the member in polar coordinates
-//} member; // Member of population
 
 #endif

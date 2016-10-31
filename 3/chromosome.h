@@ -9,7 +9,9 @@ class Chromosome {
         Chromosome( int size );   // Generates a new chromosome with random values, and calculates it's fitness
         ~Chromosome() {}  // destructor
 
+        void mutate();          // Mutate the chromosome (and recalculate fitness?)
         void updateFitness();   // Minimum Euclidean distance between all points
+
         void print() const;     // Prints the chromosome to stdout
         void pPrint() const;    // Sorts by theta then prints
 

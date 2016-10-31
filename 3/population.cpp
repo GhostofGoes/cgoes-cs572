@@ -12,26 +12,28 @@
 
 
 // Constructor ** ASSUMES initRand() HAS BEEN CALLED! **
-Population::Population( int nPoints, int pSize, int evos ) {
+Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize ) {
     numPoints = nPoints;
     popSize = pSize;
-    evolutions = evos;
+    generations = numGens;
+    mutProb = mProb;
+    crosProb = cProb;
+    trnySize = tSize;
+
     initPopulation(); // Initialize the population
 } // end Population constructor
 
 
+// The main function and loop that evolves the population
 void Population::evolve() {
-    
-    for( int i = 0; i < evolutions; i++ ) {
+    vector<Chromosome> newPop;
+    newPop.reserve(popSize);
+
+    for( int i = 0; i < generations; i++ ) {
+
 
     }
-
 } // end evolve
-
-
-void Population::mutate( Chromosome c ) {
-    // TODO: pass by reference?
-} // end mutate
 
 
 // Where the Evolution Strategies (ES) magic happens
@@ -79,3 +81,10 @@ void Population::printPop( string title ) const {
     }
     cout << "++++++++++++++++++++++++++" << endl;
 } // end printPop
+
+// Basic print for visualization and possibly output
+void Population::print() const {
+    for( Chromosome c : pop ) {
+        c.print();
+    }
+} // end print

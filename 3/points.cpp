@@ -17,17 +17,17 @@
 int main(int argc, char *argv[]) {
 	int numPoints = 0;
 
-	// Is our N being input on commandline or stdin?
 	if (argc > 1) { numPoints = (int) stoul(argv[1]); } 	// It's an argument, convert to unsigned int
 	else { cin >> numPoints; } // Don't need to cast for this case since cin does that for us
 
 	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  // Initialize random number generator
 
-	Population p1( numPoints, 5, 10 ); // Create a population of size 5 that evolves 10 times
+	Population p1( numPoints, 5, 10, 0.5, 0.5, 3 ); // Create a population of size 5 that evolves 10 times
 	p1.printPop("Testing");
 	p1.evolve();
-	p1.printPop("Post-evolution");
+	//p1.printPop("Post-evolution");
+
 
 	return 0;
 } // end main
