@@ -20,7 +20,7 @@ Chromosome::Chromosome( int size ) {
         points.push_back(p);
 	}
     points[0].theta = 0.0;      // Lock first point to angle of 0 to reduce drift
-    fitness = calcFitness();    // Calculate the fitness of the new point vector
+    updateFitness();    // Calculate the fitness of the new point vector
 } // end Chromosome
 
 
@@ -29,8 +29,13 @@ Chromosome::Chromosome( int size ) {
 void Chromosome::mutate( double tSigma, double rSigma ) {
     for( point p : points ) {
         if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
-            point.theta += randNorm(tSigma);
-            point.r += randNorm(rSigma);
+            double temp = randNorm(tSigma);
+            if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
+            else p.theta += temp;
+
+            temp = randNorm(rSigma);
+            if(temp + p.r > 1.0) p.r = -1.0 + (temp - ((1.0) - p.r)); // Remove amount that pushed us past 1.0, so its (-1.0 + whats left over)
+            else p.r += temp;
         }
     }
 } // end mutate
@@ -38,7 +43,7 @@ void Chromosome::mutate( double tSigma, double rSigma ) {
 
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 double Chromosome::calcFitness( vector<point> ps ) const {
-    fit = 2.0;  // Diameter of unit circle
+    double fit = 2.0;  // Diameter of unit circle
     for( point i : ps ) {
 		for( point j : ps ) {
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
