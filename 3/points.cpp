@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 	// Population Size = 5, Number of Generations = 10
 	// Mutation Probability = 0.5, Crossover Probability = 0.5 (not used currently)
 	// Tournament size = 3
-	Population p1( numPoints, 32, 10000, 0.5, 0.5, 3 );
+	Population p1( numPoints, 32, 1000, 0.5, 0.5, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
 	p1.evolve( PLUS );
 	//p1.printPop("PLUS: Post-evolution");
