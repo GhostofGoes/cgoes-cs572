@@ -23,10 +23,15 @@ int main(int argc, char *argv[]) {
 	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  // Initialize random number generator
 
-	Population p1( numPoints, 5, 10, 0.5, 0.5, 3, PLUS ); // Create a population of size 5 that evolves 10 times
-	p1.printPop("Testing");
-	p1.evolve();
-	//p1.printPop("Post-evolution");
+	Population p1( numPoints, 5, 10, 0.5, 0.5, 3 ); // Create a population of size 5 that evolves 10 times
+	p1.printPop("PLUS: Pre-evolution");
+	p1.evolve( PLUS );
+	p1.printPop("PLUS: Post-evolution");
+
+	// p1.resetPop();
+	// p1.printPop("COMMA: Pre-evolution");
+	// p1.evolve( COMMA );
+	// p1.printPop("COMMA: Post-evolution");
 
 
 	return 0;

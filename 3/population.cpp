@@ -12,24 +12,22 @@
 
 
 // Constructor ** ASSUMES initRand() HAS BEEN CALLED! **
-Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize, OP op ) {
+Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize ) {
     numPoints = nPoints;
     popSize = pSize;
     generations = numGens;
     mutProb = mProb;
     crosProb = cProb;
     trnySize = tSize;
-    es_op = op;
 
     initPopulation(); // Initialize the population
 } // end Population constructor
 
 
 // The main function and loop that evolves the population
-void Population::evolve() {
+void Population::evolve( OP es_op ) {
     for( int i = 0; i < generations; i++ ) {
         vector<Chromosome> children;
-        children.reserve(popSize);
 
         // Generate children
         for( int i = 0; i < popSize; i++ ) {
@@ -38,25 +36,14 @@ void Population::evolve() {
                 c.mutate(1/5, 1/5);
                 c.updateFitness();
             }
-            children[i] = c;
+            children.push_back(c);
         }
 
-
-        /* Select for new population */
-
-        // Plus operator (select from pop (parents) AND children)
-        if( es_op == PLUS ) { 
-            vector<Chromosome> newPop;
-            newPop.reserve(popSize);
-            for( int i = 0; i < popSize; i++ ) {
-                newPop[i] = select(pop, children);
-            }
-            pop = newPop;
-        } 
-
-        else { // Comma operator (select from ONLY children)
-            pop = children;
-        }
+        // Select for new population
+        if( es_op == PLUS ) // Plus operator (select from pop (parents) AND children)
+            pop = genPlus(children);
+        else // Comma operator (select from ONLY children)
+            pop = genComma(children);
     }
 } // end evolve
 
@@ -71,14 +58,58 @@ Chromosome Population::select( vector<Chromosome> p ) const {
     // Thinking simple tournament selection with eliteism for now (because it works, that's why!)
     // However, should put variables here to be able to tweak/disable stuff like eliteism
     // Could also try fitness proportional selection or uniform parent selection
+    vector<int> t;
 
-    return c;
+    for( int i = 0; i < trnySize; i++ ) {
+        int temp;
+        do {
+            temp = randMod(popSize);
+        } while( isIn(t, temp));
+        t.push_back(temp);
+    }
+
+    double best = p[t[0]].fitness;
+    int bestInd = 0;
+    for( int i = 0; i < trnySize; i++ ) {
+        double temp = p[t[i]].fitness;
+        if(temp > best) {
+            best = temp;
+            bestInd = i;
+        }
+    }
+
+    return p[bestInd];
 } // end select
 
 
 Chromosome Population::select( vector<Chromosome> p, vector<Chromosome> c ) const {
-
+    int totalSize = p.size() + c.size();
+    
 } // end select
+
+
+bool Population::isIn( vector<int> t, int val ) const {
+    for( int i : t )
+        if(i == val) 
+            return true;
+    return false;
+} // end isIn
+
+
+vector<Chromosome> Population::genComma( vector<Chromosome> c ) const {
+    vector<Chromosome> newPop;
+    for( int i = 0; i < popSize; i++ )
+        newPop.push_back(select(c));
+    return newPop;
+} // end genComma
+
+
+vector<Chromosome> Population::genPlus( vector<Chromosome> c ) const {
+    vector<Chromosome> newPop;
+    for( int i = 0; i < popSize; i++ )
+        newPop.push_back(select(pop, c));
+    return newPop;
+} // end genPlus
 
 
 // Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
@@ -93,8 +124,8 @@ Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
 // Initializes the population with random values, and calculates their fitnesses
 void Population::initPopulation() {
     for( int i = 0; i < popSize; i++ ) {
-        Chromosome c( numPoints );
-		pop.push_back(c);
+        Chromosome c( numPoints ); // Initialize a new chromosome with random values and a fitness
+		pop.push_back(c); // Add chromosome to the population
 	}
     if( (int)pop.size() != popSize ) { cerr << "pop.size() != popSize !!!" << endl; }
 } // end initPopulation
