@@ -71,3 +71,13 @@ void Chromosome::pPrint() const {
         cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
 } // end pPrint
 
+
+// Prints in format specified by assignment (less readable for debugging)
+void Chromosome::printResults() const {
+    vector<point> ps = points;
+    sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+    cout << "** " << cSize << endl;
+    for( point p : ps )
+        cout << "***\t"  << p.theta << "\t" << p.r << endl;
+    cout << "***\tFit:\t" << fitness << endl;
+} // end printResults

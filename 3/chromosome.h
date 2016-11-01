@@ -13,8 +13,9 @@ class Chromosome {
         double calcFitness( vector<point> ps ) const; // Minimum Euclidean distance between all points
         void updateFitness() { fitness = calcFitness(points); }
 
-        void print() const;     // Prints the chromosome to stdout
-        void pPrint() const;    // Sorts by theta then prints
+        void print() const;         // Prints the chromosome to stdout
+        void pPrint() const;        // Sorts by theta then prints
+        void printResults() const;  // Prints in format specified by assignment
 
         // Leaving this stuff public for performance, especially since almost exclusivly used by Population
         int cSize;              // Size of chromosome (Number of points)

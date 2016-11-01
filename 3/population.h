@@ -23,6 +23,7 @@ class Population {
         void printPop( string title ) const;   // Prints the population, headed by title
         void print() const;  // Basic dump of the population
 
+        Chromosome getBest() const;
         int getNumPoints() const { return numPoints; }
         int getPopSize() const { return popSize; }
         vector<Chromosome> getPop() const { return pop; }

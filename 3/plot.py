@@ -40,11 +40,12 @@ def main():
     c.draw(win)
     
     for p in points:
-        hack = p.split(' ')
+        hack = p[4:].strip('\n').split('\t')
         try:
             theta = float(hack[0])
-            r = float(hack[-1])
-        except ValueError:  # For lines without numbers
+            r = float(hack[1])
+        except (ValueError, IndexError):  # For lines without values
+            print('Skipping: "%s"' % p[4:].strip('\n'))
             continue
         temp = Circle( scalePoint( fromPolar(theta, r)), dotSize)
         temp.setFill("black")
