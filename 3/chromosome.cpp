@@ -19,6 +19,7 @@ Chromosome::Chromosome( int size ) {
 		p.r = randUnit();
         points.push_back(p);
 	}
+
     points[0].theta = 0.0;      // Lock first point to angle of 0 to reduce drift
     updateFitness();    // Calculate the fitness of the new point vector
 } // end Chromosome
@@ -44,6 +45,7 @@ void Chromosome::mutate( double tSigma, double rSigma ) {
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 double Chromosome::calcFitness( vector<point> ps ) const {
     double fit = 2.0;  // Diameter of unit circle
+
     for( point i : ps ) {
 		for( point j : ps ) {
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
@@ -51,6 +53,7 @@ double Chromosome::calcFitness( vector<point> ps ) const {
             if( temp < fit ) { fit = temp; }
 		}
 	}
+
     return fit;
 } // end calcFitness
 
@@ -58,6 +61,7 @@ double Chromosome::calcFitness( vector<point> ps ) const {
 void Chromosome::print() const {
     vector<point> ps = points;
     sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+
     for( point p : points )
         cout << p.theta << " " << p.r << endl;
 } // end print
@@ -67,6 +71,7 @@ void Chromosome::print() const {
 void Chromosome::pPrint() const {
     vector<point> ps = points;
     sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+
     for( point p : ps )
         cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
 } // end pPrint
@@ -76,6 +81,7 @@ void Chromosome::pPrint() const {
 void Chromosome::printResults() const {
     vector<point> ps = points;
     sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+    
     cout << "** " << cSize << endl;
     for( point p : ps )
         cout << "***\t"  << p.theta << "\t" << p.r << endl;

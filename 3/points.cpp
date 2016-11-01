@@ -11,6 +11,11 @@
 #include "points.h"
 #include "population.h"
 
+// sigma    Mutation step size (usually 1/5)
+// mu       NUMBER OF Current individuals in the population (the set of parents during selection)
+// lambda   NUMBER OF Offspring generated in a cycle
+// +        Plus operator - selection is done from BOTH the parents and the children
+// ,        Comma operator - selection is done from ONLY the children
 
 // This sets everything up, kicks off evolutions, and prints results
 // The actual interesting stuff is in population.cpp/h and points.h
@@ -28,7 +33,7 @@ int main(int argc, char *argv[]) {
 	// Tournament size = 3
 	Population p1( numPoints, 32, 10000, 0.5, 0.5, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
-	p1.evolve( COMMA );
+	p1.evolve( PLUS );
 	//p1.printPop("PLUS: Post-evolution");
 
 	// p1.resetPop();
@@ -36,8 +41,8 @@ int main(int argc, char *argv[]) {
 	// p1.evolve( COMMA );
 	// p1.printPop("COMMA: Post-evolution");
 
-	p1.getBest().printResults();
-
+	//p1.getBest().printResults();
+	p1.printResults();
 
 	return 0;
 } // end main

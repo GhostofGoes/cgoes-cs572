@@ -5,6 +5,8 @@
 #include "points.h"  // This has definitions and includes for stuff
 #include "chromosome.h"
 
+const double SIGMA = (double)(1.0 / 5.0);
+
 class Population {
     public:
         // ** ASSUMES initRand() HAS BEEN CALLED! **
@@ -13,17 +15,17 @@ class Population {
         ~Population() {} // Empty destructor for now
 
         void evolve( OP es_op ); // Main evolution loop for the population
-        Chromosome select( vector<Chromosome> p ) const; // Select an individual out of population to be a parent (I choose YOU, unique collection of points!)
-        Chromosome select( vector<Chromosome> p, vector<Chromosome> c ) const;
-        Chromosome crossover( Chromosome p1, Chromosome p2 ) const; // Combine two parents to create a child. *ahem*
+        Chromosome select( vector<Chromosome> p ) const; // Select a chromosome out of population (I choose YOU, unique collection of points!)
+        Chromosome crossover( vector<Chromosome> p ) const; // Combine two parents to create a child. *ahem*
 
-        vector<Chromosome> genComma( vector<Chromosome> c ) const;
-        vector<Chromosome> genPlus( vector<Chromosome> c ) const;
+        void genComma( vector<Chromosome> children );
+        void genPlus( vector<Chromosome> children );
         
         void printPop( string title ) const;   // Prints the population, headed by title
-        void print() const;  // Basic dump of the population
+        void print() const;                    // Basic dump of the population
+        void printResults() const { getBest().printResults(); } // Output for assignment from the population
 
-        Chromosome getBest() const;
+        Chromosome getBest() const;     // Gets the best chromosome in the population
         int getNumPoints() const { return numPoints; }
         int getPopSize() const { return popSize; }
         vector<Chromosome> getPop() const { return pop; }

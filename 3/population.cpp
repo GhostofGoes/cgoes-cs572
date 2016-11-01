@@ -24,6 +24,7 @@ Population::Population( int nPoints, int pSize, int numGens, double mProb, doubl
 } // end Population constructor
 
 
+// Where the Evolution Strategies (ES) magic happens
 // The main function and loop that evolves the population
 void Population::evolve( OP es_op ) {
     for( int i = 0; i < generations; i++ ) {
@@ -31,9 +32,9 @@ void Population::evolve( OP es_op ) {
 
         // Generate children
         for( int i = 0; i < popSize; i++ ) {
-            Chromosome c = select();
+            Chromosome c = select(pop);
             if( choose(mutProb) ) {
-                c.mutate(1/5, 1/5);
+                c.mutate(SIGMA, SIGMA);
                 c.updateFitness();
             }
             children.push_back(c);
@@ -41,55 +42,22 @@ void Population::evolve( OP es_op ) {
 
         // Select for new population
         if( es_op == PLUS ) // Plus operator (select from pop (parents) AND children)
-            pop = genPlus(children);
+            genPlus(children);
         else // Comma operator (select from ONLY children)
-            pop = genComma(children);
+            genComma(children);
     }
 } // end evolve
 
 
-// Where the Evolution Strategies (ES) magic happens
-// sigma    Mutation step size (usually 1/5)
-// mu       Current individuals in the population (the set of parents during selection)
-// lambda   Offspring generated in a cycle
-// +        Plus operator - selection is done from BOTH the parents and the children
-// ,        Comma operator - selection is done from ONLY the children
-Chromosome Population::select() const {
-    // Thinking simple tournament selection with eliteism for now (because it works, that's why!)
-    // However, should put variables here to be able to tweak/disable stuff like eliteism
-    // Could also try fitness proportional selection or uniform parent selection
+// Simple tournament selection
+// Could try fitness proportional selection or uniform parent selection at some point
+Chromosome Population::select( vector<Chromosome> p ) const {
     vector<int> t;
 
     for( int i = 0; i < trnySize; i++ ) {
         int temp;
         do {
-            temp = randMod(popSize);
-        } while( isIn(t, temp));
-        t.push_back(temp);
-    }
-
-    double best = pop[t[0]].fitness;
-    int bestInd = 0;
-    for( int i = 0; i < trnySize; i++ ) {
-        if(pop[t[i]].fitness > best) {
-            best = pop[t[i]].fitness;
-            bestInd = i;
-        }
-    }
-
-    return pop[bestInd];
-} // end select
-
-
-Chromosome Population::select( vector<Chromosome> p, vector<Chromosome> c ) const {
-    int totalSize = p.size() + c.size();
-    int endLower = p.size() - 1;
-    vector<int> t;
-
-    for( int i = 0; i < trnySize; i++ ) {
-        int temp;
-        do {
-            temp = randMod(totalSize);
+            temp = randMod(p.size());
         } while( isIn(t, temp));
         t.push_back(temp);
     }
@@ -104,7 +72,6 @@ Chromosome Population::select( vector<Chromosome> p, vector<Chromosome> c ) cons
     }
 
     return p[bestInd];
-    
 } // end select
 
 
@@ -116,26 +83,30 @@ bool Population::isIn( vector<int> t, int val ) const {
 } // end isIn
 
 
-vector<Chromosome> Population::genComma( vector<Chromosome> c ) const {
-    vector<Chromosome> newPop;
+// TODO: pretty sure i'm doing this wrong still. 
+// I'm dumb and still not understanding/remembering even after people explain to me.
+void Population::genComma( vector<Chromosome> children ) {    
     for( int i = 0; i < popSize; i++ )
-        newPop.push_back(select(c));
-    return newPop;
+        pop[i] = select(children);
 } // end genComma
 
 
-vector<Chromosome> Population::genPlus( vector<Chromosome> c ) const {
+void Population::genPlus( vector<Chromosome> children ) {
     vector<Chromosome> newPop;
+    pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
+
     for( int i = 0; i < popSize; i++ )
-        newPop.push_back(select(pop, c));
-    return newPop;
+        newPop.push_back(select(pop));
+
+    pop = newPop;
 } // end genPlus
 
 
 // Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
-Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
+Chromosome Population::crossover( vector<Chromosome> p ) const {
     Chromosome child(numPoints);
-
+    Chromosome p1 = select(p);
+    Chromosome p2 = select(p);
 
     return child;
 } // end crossover
@@ -144,12 +115,14 @@ Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
 Chromosome Population::getBest() const {
     double best = pop[0].fitness;
     int bestInd = 0;
+
     for(int i = 0; i < popSize; i++) {
         if(pop[i].fitness > best) { 
             best = pop[i].fitness;
             bestInd = i;
         }
     }
+
     return pop[bestInd];
 } // end getBest
 
@@ -167,9 +140,8 @@ void Population::printPop( string title ) const {
 
 // Basic print for visualization and possibly output
 void Population::print() const {
-    for( Chromosome c : pop ) {
+    for( Chromosome c : pop )
         c.print();
-    }
 } // end print
 
 
