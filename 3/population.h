@@ -16,7 +16,7 @@ class Population {
 
         void evolve( OP es_op ); // Main evolution loop for the population
         Chromosome select( vector<Chromosome> p ) const; // Select a chromosome out of population (I choose YOU, unique collection of points!)
-        Chromosome crossover( vector<Chromosome> p ) const; // Combine two parents to create a child. *ahem*
+        Chromosome crossover( Chromosome p1, Chromosome p2 ) const; // Combine two parents to create a child. *ahem*
 
         void genComma( vector<Chromosome> children );
         void genPlus( vector<Chromosome> children );
@@ -24,6 +24,7 @@ class Population {
         void printPop( string title ) const;   // Prints the population, headed by title
         void print() const;                    // Basic dump of the population
         void printResults() const { getBest().printResults(); } // Output for assignment from the population
+        void testPrint() const;
 
         Chromosome getBest() const;     // Gets the best chromosome in the population
         int getNumPoints() const { return numPoints; }
@@ -42,6 +43,7 @@ class Population {
 
         int trnySize;      // Tournament size
         bool isIn( vector<int> t, int val) const;
+        bool isIn( vector<point> t, point val ) const;
 
         vector<Chromosome> pop; // The population
         void initPopulation();  // Initializes the population with random values, and calculates their fitnesses

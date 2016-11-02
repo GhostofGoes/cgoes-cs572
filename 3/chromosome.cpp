@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "chromosome.h"
+extern int numFitnessCalcs;
 
 Chromosome::Chromosome( int size ) {
     cSize = size;
@@ -21,9 +22,23 @@ Chromosome::Chromosome( int size ) {
 	}
 
     points[0].theta = 0.0;      // Lock first point to angle of 0 to reduce drift
+    sort( points.begin(), points.end(), [](point a, point b){ return a.theta < b.theta; } );
     updateFitness();    // Calculate the fitness of the new point vector
 } // end Chromosome
 
+Chromosome::Chromosome( int size, double initVal ) {
+    cSize = size;
+    mutateProb = 1.0 / (double)cSize;
+
+    for( int i = 0; i < cSize; i++ ) {
+        point p;
+		p.theta = initVal;
+		p.r = initVal;
+        points.push_back(p);
+	}
+
+    fitness = 0.0;
+}
 
 // sigma    Mutation step size (usually 1/5)
 // Possible modification: per-dimension sigmas
@@ -50,10 +65,11 @@ double Chromosome::calcFitness( vector<point> ps ) const {
 		for( point j : ps ) {
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
 			double temp = sqrt(i.r + j.r - 2 * i.r * j.r * cos(i.theta - j.theta));
-            if( temp < fit ) { fit = temp; }
+            if( temp < fit ) { fit = temp; } // If dist is lower, new minimum
 		}
 	}
 
+    numFitnessCalcs++;
     return fit;
 } // end calcFitness
 

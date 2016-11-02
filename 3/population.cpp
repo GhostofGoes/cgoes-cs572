@@ -32,7 +32,15 @@ void Population::evolve( OP es_op ) {
 
         // Generate children
         for( int i = 0; i < popSize; i++ ) {
-            Chromosome c = select(pop);
+            Chromosome c;
+            if( choose(crosProb) ) {
+                Chromosome p1 = select(pop);
+                Chromosome p2 = select(pop);
+                c = crossover(p1, p2);
+            } else {
+                c = select(pop);
+            }
+
             if( choose(mutProb) ) {
                 c.mutate(SIGMA, SIGMA);
                 c.updateFitness();
@@ -50,7 +58,7 @@ void Population::evolve( OP es_op ) {
 
 
 // Simple tournament selection
-// Could try fitness proportional selection or uniform parent selection at some point
+// TODO: Could try fitness proportional selection or uniform parent selection at some point
 Chromosome Population::select( vector<Chromosome> p ) const {
     vector<int> t;
 
@@ -82,6 +90,12 @@ bool Population::isIn( vector<int> t, int val ) const {
     return false;
 } // end isIn
 
+bool Population::isIn( vector<point> t, point val ) const {
+    for( point i : t )
+        if(i.theta == val.theta && i.r == val.r)
+            return true;
+    return false;
+}
 
 // TODO: pretty sure i'm doing this wrong still. 
 // I'm dumb and still not understanding/remembering even after people explain to me.
@@ -94,6 +108,7 @@ void Population::genComma( vector<Chromosome> children ) {
 void Population::genPlus( vector<Chromosome> children ) {
     vector<Chromosome> newPop;
     pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
+    testPrint();
 
     for( int i = 0; i < popSize; i++ )
         newPop.push_back(select(pop));
@@ -103,12 +118,40 @@ void Population::genPlus( vector<Chromosome> children ) {
 
 
 // Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
-Chromosome Population::crossover( vector<Chromosome> p ) const {
-    Chromosome child(numPoints);
-    Chromosome p1 = select(p);
-    Chromosome p2 = select(p);
+Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
+    Chromosome c(numPoints, 0.0);
+    int swathLen = randMod(numPoints - 1); // TODO: tweak this?
+    int swathStart = randMod(numPoints - swathLen - 1);
+    int swathEnd = swathStart + swathLen;
+    vector<point> swath;
+    vector<point> leftover;
 
-    return child;
+    // Grab swath from parent 1 and put into child
+    for( int j = swathStart; j < swathEnd; j++ ) {
+        swath.push_back(p1.points[j]);
+        c.points[j] = p1.points[j];
+    }
+
+    // Grab genes from parent 2 that aren't in swath from parent 1
+    for( int i = 0; i < numPoints; i++ ) {
+        if( !isIn(swath, p2.points[i]) ) {
+            leftover.push_back(p2.points[i]);
+        }
+    }
+
+    // Put the genes we grabbed from parent 2 into the child's open spots
+    int temp = 0;
+    for( int i = 0; i < swathStart; i++ ) {
+        c.points[i] = leftover[temp];
+        temp++;
+    }
+    for( int i = swathEnd; i < numPoints; i++ ) {
+        c.points[i] = leftover[temp];
+        temp++;
+    }
+
+    c.updateFitness();
+    return c;
 } // end crossover
 
 
@@ -116,7 +159,7 @@ Chromosome Population::getBest() const {
     double best = pop[0].fitness;
     int bestInd = 0;
 
-    for(int i = 0; i < popSize; i++) {
+    for(int i = 1; i < popSize; i++) {
         if(pop[i].fitness > best) { 
             best = pop[i].fitness;
             bestInd = i;
@@ -144,6 +187,12 @@ void Population::print() const {
         c.print();
 } // end print
 
+void Population::testPrint() const {
+    cout << "\n++++++++++++++++++++++++++" << endl;
+    for( Chromosome c : pop ) {
+        cout << "Fitness: " << c.fitness << endl;
+    }
+}
 
 // Initializes the population with random values, and calculates their fitnesses
 void Population::initPopulation() {

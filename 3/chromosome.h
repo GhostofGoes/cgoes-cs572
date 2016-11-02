@@ -3,10 +3,12 @@
 
 #include "points.h"
 
+
 class Chromosome {
     public:
-        Chromosome() {}
+        Chromosome() { cSize = 0; fitness = 0;}
         Chromosome( int size );   // Generates a new chromosome with random values, and calculates it's fitness
+        Chromosome( int size, double initVal );
         ~Chromosome() {}  // destructor
 
         void mutate( double tSigma, double rSigma );  // Mutate the chromosome (and recalculate fitness?)

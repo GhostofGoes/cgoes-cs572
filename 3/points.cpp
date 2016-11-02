@@ -10,7 +10,13 @@
 #include <cstdlib>
 #include "points.h"
 #include "population.h"
+#include "chromosome.h"
 
+int numFitnessCalcs = 0;
+
+// TODO: add ability to modify mu 
+// TODO: add ability to modify lambda
+// TODO: evolve parameters for population
 // sigma    Mutation step size (usually 1/5)
 // mu       NUMBER OF Current individuals in the population (the set of parents during selection)
 // lambda   NUMBER OF Offspring generated in a cycle
@@ -28,10 +34,13 @@ int main(int argc, char *argv[]) {
 	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  // Initialize random number generator
 
-	// Population Size = 5, Number of Generations = 10
-	// Mutation Probability = 0.5, Crossover Probability = 0.5 (not used currently)
+	// Size of Chromosome = numPoints
+	// Population Size = 32, Number of Generations = 10000
+	// Mutation Probability = 0.2, Crossover Probability = 0.5 (not used currently)
 	// Tournament size = 3
-	Population p1( numPoints, 32, 1000, 0.5, 0.5, 3 );
+	// Population p1( numPoints, 32, 10000, 0.2, 0.5, 3 );
+
+	Population p1( numPoints, 32, 1000, 1.0, 0.3, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
 	p1.evolve( PLUS );
 	//p1.printPop("PLUS: Post-evolution");
@@ -43,6 +52,9 @@ int main(int argc, char *argv[]) {
 
 	//p1.getBest().printResults();
 	p1.printResults();
+
+	if(argc > 2)
+		cout << "Number of fitness evals: " << numFitnessCalcs << endl;
 
 	return 0;
 } // end main
