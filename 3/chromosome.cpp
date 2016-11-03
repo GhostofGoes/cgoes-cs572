@@ -44,7 +44,15 @@ Chromosome::Chromosome( int size, double initVal ) {
 // sigma    Mutation step size (usually 1/5)
 // Possible modification: per-dimension sigmas
 void Chromosome::mutate( double tSigma, double rSigma ) {
-    for( point &p : points ) {
+    points = mutate(tSigma, rSigma, points);
+} // end mutate
+
+
+vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
+    vector<point> pts = ps;
+    // const double directionProb = 0.5;
+    //if(choose(directionProb)) { // Positive direction
+    for( point &p : pts ) {
         if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
             double temp = randNorm(tSigma) + p.theta;
             // Remove amount that pushed us past 2PI, so its (0 + whats left over)
@@ -52,61 +60,10 @@ void Chromosome::mutate( double tSigma, double rSigma ) {
             else if( temp < 0.0 ) p.theta = temp + (2.0*PI);
             else p.theta = temp;
 
-            if(p.theta < 0) {
-                cout << "\ntheta: \t" << p.theta << endl;
-                cout << "temp: \t" << temp << endl;
-            }
-
             temp = randNorm(rSigma) + p.r;
             if(temp > 1.0) p.r = 1.0;
             else if(temp < -1.0) p.r = -1.0;
             else p.r = temp;
-
-        }
-    }
-} // end mutate
-
-
-vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
-    vector<point> pts = ps;
-    const double directionProb = 0.5;
-    
-    //if(choose(directionProb)) { // Positive direction
-    if(true) {
-        for( point &p : pts ) {
-            if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
-                double temp = randNorm(tSigma) + p.theta;
-                if( temp > 2.0*PI ) {
-                    p.theta = temp - (2.0*PI); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
-                }
-                else if( temp < 0.0 ) {
-                    p.theta = temp + (2.0*PI);
-                } else
-                    p.theta = temp;
-                    
-                if(p.theta < 0) {
-                    cout << "\ntheta: \t" << p.theta << endl;
-                    cout << "temp: \t" << temp << endl;
-                }
-
-                temp = randNorm(rSigma) + p.r;
-                if(temp > 1.0) p.r = 1.0;
-                else if(temp < -1.0) p.r = -1.0;
-                else p.r = temp;
-
-            }
-        }
-    } else { // Negative direction
-        for( point &p : pts ) {
-            if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
-                double temp = randNorm(tSigma);
-                if( p.theta - temp < 0.0 ) p.theta = (2.0*PI) - (temp - p.theta);
-                else p.theta -= temp;
-
-                temp = randNorm(rSigma);
-                if(p.r - temp < -1.0) p.r = 1.0 - (temp + (-1.0 - p.r)); // ex: 1.0 - (0.2 + (-1.0 - -0.9)) = 1.0 - (0.2 + -0.1) = 1.0 - 0.1 = 0.9
-                else p.r -= temp;
-            }
         }
     }
 
