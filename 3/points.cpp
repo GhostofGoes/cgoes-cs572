@@ -36,13 +36,16 @@ int main(int argc, char *argv[]) {
 
 	// Size of Chromosome = numPoints
 	// Population Size = 32, Number of Generations = 10000
-	// Mutation Probability = 0.2, Crossover Probability = 0.5 (not used currently)
+	// Mutation Probability = 0.2, Crossover Probability = 0.5
 	// Tournament size = 3
 	// Population p1( numPoints, 32, 10000, 0.2, 0.5, 3 );
 
-	Population p1( numPoints, 32, 1000, 1.0, 0.3, 3 );
+	Population p1( numPoints, 32, 2000, 1.0, 0.0, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
-	p1.evolve( PLUS );
+	Chromosome p1_best = p1.evolve( PLUS );
+	p1_best.printResults();
+	p1_best.localSearch(10000);  // Some local search
+	p1_best.printResults();
 	//p1.printPop("PLUS: Post-evolution");
 
 	// p1.resetPop();
@@ -51,7 +54,7 @@ int main(int argc, char *argv[]) {
 	// p1.printPop("COMMA: Post-evolution");
 
 	//p1.getBest().printResults();
-	p1.printResults();
+	//p1.printResults();
 
 	if(argc > 2)
 		cout << "Number of fitness evals: " << numFitnessCalcs << endl;

@@ -25,8 +25,9 @@ Population::Population( int nPoints, int pSize, int numGens, double mProb, doubl
 
 
 // Where the Evolution Strategies (ES) magic happens
-// The main function and loop that evolves the population
-void Population::evolve( OP es_op ) {
+Chromosome Population::evolve( OP es_op ) {
+
+    // Generational loop that evolves the population
     for( int i = 0; i < generations; i++ ) {
         vector<Chromosome> children;
 
@@ -54,6 +55,8 @@ void Population::evolve( OP es_op ) {
         else // Comma operator (select from ONLY children)
             genComma(children);
     }
+
+    return getBest();
 } // end evolve
 
 
@@ -108,7 +111,6 @@ void Population::genComma( vector<Chromosome> children ) {
 void Population::genPlus( vector<Chromosome> children ) {
     vector<Chromosome> newPop;
     pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
-    testPrint();
 
     for( int i = 0; i < popSize; i++ )
         newPop.push_back(select(pop));

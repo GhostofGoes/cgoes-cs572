@@ -8,6 +8,7 @@
 
 #include "chromosome.h"
 extern int numFitnessCalcs;
+const double SIGMA = (double)(1.0 / 5.0);
 
 Chromosome::Chromosome( int size ) {
     cSize = size;
@@ -57,6 +58,39 @@ void Chromosome::mutate( double tSigma, double rSigma ) {
 } // end mutate
 
 
+vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
+    vector<point> pts = ps;
+    const double directionProb = 0.5;
+    
+    if(choose(directionProb)) { // Positive direction
+        for( point p : pts ) {
+            if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
+                double temp = randNorm(tSigma);
+                if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
+                else p.theta += temp;
+
+                temp = randNorm(rSigma);
+                if(temp + p.r > 1.0) p.r = -1.0 + (temp - ((1.0) - p.r)); // Remove amount that pushed us past 1.0, so its (-1.0 + whats left over)
+                else p.r += temp;
+            }
+        }
+    } else { // Negative direction
+        for( point p : pts ) {
+            if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
+                double temp = randNorm(tSigma);
+                if( p.theta - temp < 0.0 ) p.theta = (2.0*PI) - (temp - p.theta);
+                else p.theta -= temp;
+
+                temp = randNorm(rSigma);
+                if(p.r - temp < -1.0) p.r = 1.0 - (temp + (-1.0 - p.r)); // ex: 1.0 - (0.2 + (-1.0 - -0.9)) = 1.0 - (0.2 + -0.1) = 1.0 - 0.1 = 0.9
+                else p.r -= temp;
+            }
+        }
+    }
+
+    return pts;
+}
+
 // Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
 double Chromosome::calcFitness( vector<point> ps ) const {
     double fit = 2.0;  // Diameter of unit circle
@@ -72,6 +106,22 @@ double Chromosome::calcFitness( vector<point> ps ) const {
     numFitnessCalcs++;
     return fit;
 } // end calcFitness
+
+
+// Evolves the chromosome using a local search for the specified number of iterations
+// This will *hopfully* help "clean up" the points a bit
+void Chromosome::localSearch( int iterations ) {
+
+    for( int i = 0; i < iterations; i++ ) {
+        vector<point> pts = mutate(SIGMA, SIGMA, points);
+        double fit = calcFitness(pts);
+        if( fit > fitness ) {
+            cout << "yep" << endl;
+            points = pts;
+            fitness = fit;
+        }
+    }
+} // end localSearch
 
 
 void Chromosome::print() const {

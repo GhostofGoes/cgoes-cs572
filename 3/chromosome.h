@@ -12,8 +12,12 @@ class Chromosome {
         ~Chromosome() {}  // destructor
 
         void mutate( double tSigma, double rSigma );  // Mutate the chromosome (and recalculate fitness?)
+        vector<point> mutate( double tSigma, double rSigma, vector<point> ps ) const;
+
         double calcFitness( vector<point> ps ) const; // Minimum Euclidean distance between all points
         void updateFitness() { fitness = calcFitness(points); }
+
+        void localSearch( int iterations );
 
         void print() const;         // Prints the chromosome to stdout
         void pPrint() const;        // Sorts by theta then prints

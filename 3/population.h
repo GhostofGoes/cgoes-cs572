@@ -14,7 +14,7 @@ class Population {
         Population( int nPoints ) : Population(nPoints, 100, 10000, 0.5, 0.5, 3) {} // constructor with default pop size and evolutions (C++11 delegating constructors)
         ~Population() {} // Empty destructor for now
 
-        void evolve( OP es_op ); // Main evolution loop for the population
+        Chromosome evolve( OP es_op ); // Main evolution loop for the population
         Chromosome select( vector<Chromosome> p ) const; // Select a chromosome out of population (I choose YOU, unique collection of points!)
         Chromosome crossover( Chromosome p1, Chromosome p2 ) const; // Combine two parents to create a child. *ahem*
 
@@ -40,8 +40,8 @@ class Population {
         int generations;   // Number of generations (# of times the evolution loop is pumped)
         double mutProb;    // Probability of Mutation
         double crosProb;   // Probability of crossover
-
         int trnySize;      // Tournament size
+
         bool isIn( vector<int> t, int val) const;
         bool isIn( vector<point> t, point val ) const;
 
