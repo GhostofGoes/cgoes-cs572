@@ -46,13 +46,22 @@ Chromosome::Chromosome( int size, double initVal ) {
 void Chromosome::mutate( double tSigma, double rSigma ) {
     for( point &p : points ) {
         if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
-            double temp = randNorm(tSigma);
-            if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
-            else p.theta += temp;
+            double temp = randNorm(tSigma) + p.theta;
+            // Remove amount that pushed us past 2PI, so its (0 + whats left over)
+            if( temp > 2.0*PI ) p.theta = temp - (2.0*PI); 
+            else if( temp < 0.0 ) p.theta = temp + (2.0*PI);
+            else p.theta = temp;
 
-            temp = randNorm(rSigma);
-            if(temp + p.r > 1.0) p.r = -1.0 + (temp - ((1.0) - p.r)); // Remove amount that pushed us past 1.0, so its (-1.0 + whats left over)
-            else p.r += temp;
+            if(p.theta < 0) {
+                cout << "\ntheta: \t" << p.theta << endl;
+                cout << "temp: \t" << temp << endl;
+            }
+
+            temp = randNorm(rSigma) + p.r;
+            if(temp > 1.0) p.r = 1.0;
+            else if(temp < -1.0) p.r = -1.0;
+            else p.r = temp;
+
         }
     }
 } // end mutate
@@ -62,16 +71,29 @@ vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps
     vector<point> pts = ps;
     const double directionProb = 0.5;
     
-    if(choose(directionProb)) { // Positive direction
+    //if(choose(directionProb)) { // Positive direction
+    if(true) {
         for( point &p : pts ) {
             if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
-                double temp = randNorm(tSigma);
-                if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
-                else p.theta += temp;
+                double temp = randNorm(tSigma) + p.theta;
+                if( temp > 2.0*PI ) {
+                    p.theta = temp - (2.0*PI); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
+                }
+                else if( temp < 0.0 ) {
+                    p.theta = temp + (2.0*PI);
+                } else
+                    p.theta = temp;
+                    
+                if(p.theta < 0) {
+                    cout << "\ntheta: \t" << p.theta << endl;
+                    cout << "temp: \t" << temp << endl;
+                }
 
-                temp = randNorm(rSigma);
-                if(temp + p.r > 1.0) p.r = -1.0 + (temp - ((1.0) - p.r)); // Remove amount that pushed us past 1.0, so its (-1.0 + whats left over)
-                else p.r += temp;
+                temp = randNorm(rSigma) + p.r;
+                if(temp > 1.0) p.r = 1.0;
+                else if(temp < -1.0) p.r = -1.0;
+                else p.r = temp;
+
             }
         }
     } else { // Negative direction
@@ -98,7 +120,8 @@ double Chromosome::calcFitness( vector<point> ps ) const {
     for( point i : ps ) {
 		for( point j : ps ) {
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
-			double temp = sqrt(i.r + j.r - 2 * i.r * j.r * cos(i.theta - j.theta));
+            // double temp = sqrt( pow(i.r, 2) + pow(j.r, 2) - 2 * i.r * j.r * cos(i.theta - j.theta));
+			double temp = sqrt( i.r + j.r - 2 * i.r * j.r * cos(i.theta - j.theta));
             if( temp < fit ) { fit = temp; } // If dist is lower, new minimum
 		}
 	}
