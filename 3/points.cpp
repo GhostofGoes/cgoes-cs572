@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 	Population p1( numPoints, 32, 2000, 1.0, 0.0, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
 	Chromosome p1_best = p1.evolve( PLUS );
-	p1_best.printResults();
+	//p1_best.printResults();
 	p1_best.localSearch(10000);  // Some local search
 	p1_best.printResults();
 	//p1.printPop("PLUS: Post-evolution");

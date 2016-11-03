@@ -44,7 +44,7 @@ Chromosome::Chromosome( int size, double initVal ) {
 // sigma    Mutation step size (usually 1/5)
 // Possible modification: per-dimension sigmas
 void Chromosome::mutate( double tSigma, double rSigma ) {
-    for( point p : points ) {
+    for( point &p : points ) {
         if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
             double temp = randNorm(tSigma);
             if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
@@ -63,7 +63,7 @@ vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps
     const double directionProb = 0.5;
     
     if(choose(directionProb)) { // Positive direction
-        for( point p : pts ) {
+        for( point &p : pts ) {
             if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
                 double temp = randNorm(tSigma);
                 if( temp + p.theta > 2.0*PI ) p.theta = temp - ((2.0*PI) - p.theta); // Remove amount that pushed us past 2PI, so its (0 + whats left over)
@@ -75,7 +75,7 @@ vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps
             }
         }
     } else { // Negative direction
-        for( point p : pts ) {
+        for( point &p : pts ) {
             if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
                 double temp = randNorm(tSigma);
                 if( p.theta - temp < 0.0 ) p.theta = (2.0*PI) - (temp - p.theta);
@@ -116,7 +116,6 @@ void Chromosome::localSearch( int iterations ) {
         vector<point> pts = mutate(SIGMA, SIGMA, points);
         double fit = calcFitness(pts);
         if( fit > fitness ) {
-            cout << "yep" << endl;
             points = pts;
             fitness = fit;
         }
