@@ -48,6 +48,7 @@ void Chromosome::mutate( double tSigma, double rSigma ) {
 } // end mutate
 
 
+// TODO: comments so i remember why i did things 
 vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
     vector<point> pts = ps;
     // const double directionProb = 0.5;
@@ -76,9 +77,11 @@ double Chromosome::calcFitness( vector<point> ps ) const {
 
     for( point i : ps ) {
 		for( point j : ps ) {
+            // TODO: comp function as a define or something
+            if( i.theta == j.theta && i.r == j.r ) continue;
             // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
             // double temp = sqrt( pow(i.r, 2) + pow(j.r, 2) - 2 * i.r * j.r * cos(i.theta - j.theta));
-			double temp = sqrt( i.r + j.r - 2 * i.r * j.r * cos(i.theta - j.theta));
+			double temp = sqrt( pow(i.r, 2.0) + pow(j.r, 2.0) - 2.0 * i.r * j.r * cos(i.theta - j.theta));
             if( temp < fit ) { fit = temp; } // If dist is lower, new minimum
 		}
 	}
