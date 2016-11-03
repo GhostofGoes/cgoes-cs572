@@ -17,7 +17,7 @@ clean:
 	rm -f $(BIN) *~ *.o *.output $(HW).tar
 
 tar:
-	tar -cvf $(HW).tar $(SRCS) makefile # goes.pdf
+	tar -cvf $(HW).tar $(SRCS) makefile goes.pdf
 	ls -l $(HW).tar
 	
 test: $(SRCS)
