@@ -30,7 +30,7 @@ class Population {
         int getPopSize() const { return popSize; }
         vector<Chromosome> getPop() const { return pop; }
 
-        void resetPop() { initPopulation(); }
+        void resetPop() { initPopulation(); } // Re-initializes the entire population
 
     private:
         int numPoints;     // Size of chromosome (Number of points) for each member in population

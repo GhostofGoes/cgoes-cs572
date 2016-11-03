@@ -31,17 +31,21 @@ Chromosome Population::evolve( OP es_op ) {
         // Generate children
         for( int i = 0; i < popSize; i++ ) {
             Chromosome c;
-            if( choose(crosProb) ) { // Crossover two selected parents from current population
+
+            // Crossover two selected parents from current population
+            if( choose(crosProb) ) { 
                 Chromosome p1 = select(pop);
                 Chromosome p2 = select(pop);
                 c = crossover(p1, p2);
             } else
                 c = select(pop); // Simply select a child from current population
 
-            if( choose(mutProb) ) // Mutate the child
+            // Mutate the child
+            if( choose(mutProb) ) 
                 c.mutate(SIGMA, SIGMA);
 
-            children.push_back(c); // Add child to the children
+            // Add child to the children
+            children.push_back(c); 
         }
 
         // Select for new population
@@ -68,8 +72,8 @@ Chromosome Population::select( vector<Chromosome> p ) const {
         t.push_back(temp);
     }
 
-    double best = p[t[0]].fitness;
-    int bestInd = 0;
+    double best = p[t[0]].fitness; // Fitness of the "best" seen thus far
+    int bestInd = 0; // Index of the best individual seen thus far
     for( int i = 0; i < trnySize; i++ ) {
         if(p[t[i]].fitness > best) {
             best = p[t[i]].fitness;
@@ -117,9 +121,9 @@ void Population::genPlus( vector<Chromosome> children ) {
     pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
 
     for( int i = 0; i < popSize; i++ )
-        newPop.push_back(select(pop));
+        newPop.push_back(select(pop)); // Select from combined population and add to new population
 
-    pop = newPop;
+    pop = newPop; // Set current population to new population
 } // end genPlus
 
 
