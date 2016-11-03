@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 # Code derived from the awesome dots.py by Matt Brown
 # His work is located here: https://github.com/1BADragon/Side-Projects
-# Requires: graphics.py and Tkinter
+# Requires: graphics.py in the current directory, and Tkinter installed through pip
+# Should work on both Python 2.7 and Python 3.4+ (3 is reccomended)
 
 from graphics import *
 from math import cos, sin

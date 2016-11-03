@@ -7,9 +7,12 @@
 #include <algorithm>
 
 #include "chromosome.h"
-extern int numFitnessCalcs;
+
+extern int numFitnessCalcs; // Keeps track of total number of fitness evaluations performed
 const double SIGMA = (double)(1.0 / 5.0);
 
+
+// Generates a new chromosome with random values, and calculates it's fitness
 Chromosome::Chromosome( int size ) {
     cSize = size;
     mutateProb = 1.0 / (double)cSize;
@@ -27,6 +30,9 @@ Chromosome::Chromosome( int size ) {
     updateFitness();    // Calculate the fitness of the new point vector
 } // end Chromosome
 
+
+// Initializes points with initVal
+// TODO: could be fancy and use a function pointer to try different rand libraries (python would be nice sigh)
 Chromosome::Chromosome( int size, double initVal ) {
     cSize = size;
     mutateProb = 1.0 / (double)cSize;
@@ -39,20 +45,25 @@ Chromosome::Chromosome( int size, double initVal ) {
 	}
 
     fitness = 0.0;
-}
+} // end Chromosome
 
-// sigma    Mutation step size (usually 1/5)
-// Possible modification: per-dimension sigmas
+
+// Version of mutate that modifies the chromosome's points and update's its fitness
 void Chromosome::mutate( double tSigma, double rSigma ) {
     points = mutate(tSigma, rSigma, points);
+    updateFitness();
 } // end mutate
 
 
-// TODO: comments so i remember why i did things 
+// Mutates the given chromosome (vector of points) by incrementing theta and radius for 1-2 of the points
+// sigma    Mutation step size (usually 1/5) (tSigma for Theta, rSigma for Radius)
+// Returns the mutated vector of points
+// TODO: considoring doing a decrement sometimes instead of an increment (Perhaps a seperate mutate function for this, so caller can decide)
+// TODO: perhaps tweak only the radius OR theta for a point
+// Possible modification: per-dimension sigmas (if we want to go into higher dimensions in the future)
 vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
     vector<point> pts = ps;
-    // const double directionProb = 0.5;
-    //if(choose(directionProb)) { // Positive direction
+
     for( point &p : pts ) {
         if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
             double temp = randNorm(tSigma) + p.theta;
@@ -69,24 +80,26 @@ vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps
     }
 
     return pts;
-}
+} // end mutate
 
-// Fitness calculated by finding minimum Euclidean distance between all points in the chromosome
+
+// Fitness is calculated by finding minimum Euclidean distance between all points in ps
 double Chromosome::calcFitness( vector<point> ps ) const {
-    double fit = 2.0;  // Diameter of unit circle
+    double fit = 2.0;  // Diameter of unit circle [-1.0 to 1.0]
 
     for( point i : ps ) {
 		for( point j : ps ) {
-            // TODO: comp function as a define or something
+            // TODO: comp function as a define or something, as i'm doing this in several places
+            // This check prevents comparing a point with itself, as it will always evaevaluate to zero
             if( i.theta == j.theta && i.r == j.r ) continue;
-            // From: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
-            // double temp = sqrt( pow(i.r, 2) + pow(j.r, 2) - 2 * i.r * j.r * cos(i.theta - j.theta));
+
+            // Euclidian Distance, from: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
 			double temp = sqrt( pow(i.r, 2.0) + pow(j.r, 2.0) - 2.0 * i.r * j.r * cos(i.theta - j.theta));
             if( temp < fit ) { fit = temp; } // If dist is lower, new minimum
 		}
 	}
 
-    numFitnessCalcs++;
+    numFitnessCalcs++; // Count how many times we evaluate fitness
     return fit;
 } // end calcFitness
 
@@ -106,26 +119,17 @@ void Chromosome::localSearch( int iterations ) {
 } // end localSearch
 
 
-void Chromosome::print() const {
-    vector<point> ps = points;
-    sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
-
-    for( point p : points )
-        cout << p.theta << " " << p.r << endl;
-} // end print
-
-
 // Pretty Print - Print sorted by Theta
-void Chromosome::pPrint() const {
+void Chromosome::print() const {
     vector<point> ps = points;
     sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
 
     for( point p : ps )
         cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
-} // end pPrint
+} // end print
 
 
-// Prints in format specified by assignment (less readable for debugging)
+// Prints points in format specified by assignment, sorted by theta
 void Chromosome::printResults() const {
     vector<point> ps = points;
     sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );

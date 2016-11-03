@@ -2,10 +2,7 @@
 // Author: 		Christopher Goes
 // Description: Function definitions for the Population class as defined in population.h
 
-
-//#include <cmath>
 #include <iomanip>
-//#include <algorithm>
 
 #include "population.h"
 #include "points.h"
@@ -34,19 +31,17 @@ Chromosome Population::evolve( OP es_op ) {
         // Generate children
         for( int i = 0; i < popSize; i++ ) {
             Chromosome c;
-            if( choose(crosProb) ) {
+            if( choose(crosProb) ) { // Crossover two selected parents from current population
                 Chromosome p1 = select(pop);
                 Chromosome p2 = select(pop);
                 c = crossover(p1, p2);
-            } else {
-                c = select(pop);
-            }
+            } else
+                c = select(pop); // Simply select a child from current population
 
-            if( choose(mutProb) ) {
+            if( choose(mutProb) ) // Mutate the child
                 c.mutate(SIGMA, SIGMA);
-                c.updateFitness();
-            }
-            children.push_back(c);
+
+            children.push_back(c); // Add child to the children
         }
 
         // Select for new population
@@ -56,11 +51,11 @@ Chromosome Population::evolve( OP es_op ) {
             genComma(children);
     }
 
-    return getBest();
+    return getBest(); // Return the best individual after evolving
 } // end evolve
 
 
-// Simple tournament selection
+// Selects a chromosome out of p using simple tournament selection
 // TODO: Could try fitness proportional selection or uniform parent selection at some point
 Chromosome Population::select( vector<Chromosome> p ) const {
     vector<int> t;
@@ -86,6 +81,7 @@ Chromosome Population::select( vector<Chromosome> p ) const {
 } // end select
 
 
+// Checks if val is in vector t
 bool Population::isIn( vector<int> t, int val ) const {
     for( int i : t )
         if(i == val) 
@@ -93,21 +89,29 @@ bool Population::isIn( vector<int> t, int val ) const {
     return false;
 } // end isIn
 
+
+// Checks if val is in vector t
 bool Population::isIn( vector<point> t, point val ) const {
     for( point i : t )
         if(i.theta == val.theta && i.r == val.r)
             return true;
     return false;
-}
+} // end isIN
 
+
+// ES COMMA operator
+// Selects from just the children?
+// TODO: mu and lambda (could use children.size() and popSize for this)
 // TODO: pretty sure i'm doing this wrong still. 
-// I'm dumb and still not understanding/remembering even after people explain to me.
 void Population::genComma( vector<Chromosome> children ) {    
     for( int i = 0; i < popSize; i++ )
         pop[i] = select(children);
 } // end genComma
 
 
+// ES PLUS operator
+// Selects new population from previous population and children
+// TODO: mu and lambda (could use children.size() for this)
 void Population::genPlus( vector<Chromosome> children ) {
     vector<Chromosome> newPop;
     pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
@@ -119,14 +123,17 @@ void Population::genPlus( vector<Chromosome> children ) {
 } // end genPlus
 
 
-// Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
+// Order One crossover that generates a new child as the crossover of p1 and p2
+// TODO: Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
+// TODO: verify this is implemented properly! (test)
+// TODO: link to the source I used for the algorithm
 Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
     Chromosome c(numPoints, 0.0);
     int swathLen = randMod(numPoints - 1); // TODO: tweak this?
-    int swathStart = randMod(numPoints - swathLen - 1);
-    int swathEnd = swathStart + swathLen;
-    vector<point> swath;
-    vector<point> leftover;
+    int swathStart = randMod(numPoints - swathLen - 1); // Start of the swath
+    int swathEnd = swathStart + swathLen; // End position of the swath
+    vector<point> swath;        // The swath generated from p1
+    vector<point> leftover;     // Points that we can use from p2
 
     // Grab swath from parent 1 and put into child
     for( int j = swathStart; j < swathEnd; j++ ) {
@@ -152,11 +159,12 @@ Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
         temp++;
     }
 
-    c.updateFitness();
+    c.updateFitness(); // Calculate the newly minted child's fitness'
     return c;
 } // end crossover
 
 
+// Finds and returns the best individual in the current population (highest fitness)
 Chromosome Population::getBest() const {
     double best = pop[0].fitness;
     int bestInd = 0;
@@ -178,23 +186,27 @@ void Population::printPop( string title ) const {
     cout << setw(fieldWidth) << left << "Theta" << "\tRadius" << endl;
     for( Chromosome c : pop ) {
         cout << setw(fieldWidth) << left << "\nFitness: " << c.fitness << endl;
-        c.pPrint();
+        c.print();
     }
     cout << "++++++++++++++++++++++++++" << endl;
 } // end printPop
 
-// Basic print for visualization and possibly output
+
+// Basic print of all individuals in population
 void Population::print() const {
     for( Chromosome c : pop )
         c.print();
 } // end print
 
+
+// Simple dump of the fitnesses in the current population
 void Population::testPrint() const {
     cout << "\n++++++++++++++++++++++++++" << endl;
     for( Chromosome c : pop ) {
         cout << "Fitness: " << c.fitness << endl;
     }
-}
+} // end testPrint
+
 
 // Initializes the population with random values, and calculates their fitnesses
 void Population::initPopulation() {

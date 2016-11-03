@@ -8,11 +8,14 @@
 // You're welcome to use it to get un-stuck on or learn silly things like I/O, C++ syntax, libary functions, etc.
 
 #include <cstdlib>
+
 #include "points.h"
 #include "population.h"
 #include "chromosome.h"
 
-int numFitnessCalcs = 0;
+// Keeps track of total number of fitness evaluations performed
+int numFitnessCalcs = 0; 
+
 
 // TODO: add ability to modify mu 
 // TODO: add ability to modify lambda
@@ -28,17 +31,20 @@ int numFitnessCalcs = 0;
 int main(int argc, char *argv[]) {
 	int numPoints = 0;
 
+	// TODO: arguments to tweak aspects of population or stuff like sigma, for testing
 	if (argc > 1) { numPoints = (int) stoul(argv[1]); } 	// It's an argument, convert to unsigned int
 	else { cin >> numPoints; } // Don't need to cast for this case since cin does that for us
 
 	// TODO: profile and try randf.cpp or randmt.cpp
 	initRand();  // Initialize random number generator
 
+	// ** Example usage **
 	// Size of Chromosome = numPoints
 	// Population Size = 32, Number of Generations = 10000
 	// Mutation Probability = 0.2, Crossover Probability = 0.5
-	// Tournament size = 3
+	// Tournament Size = 3
 	// Population p1( numPoints, 32, 10000, 0.2, 0.5, 3 );
+
 
 	Population p1( numPoints, 32, 2000, 1.0, 0.0, 3 );
 	//p1.printPop("PLUS: Pre-evolution");
@@ -53,11 +59,10 @@ int main(int argc, char *argv[]) {
 	// p1.evolve( COMMA );
 	// p1.printPop("COMMA: Post-evolution");
 
-	//p1.getBest().printResults();
-	//p1.printResults();
-
-	if(argc > 2)
-		cout << "Number of fitness evals: " << numFitnessCalcs << endl;
+	// Add an extra arg to see how many fitness evaluations were performed!
+	// TODO: track fitness evaluations per-population and per-chromosome
+	if(argc > 2) 
+		cout << "Total number of fitness evaluations performed:\t" << numFitnessCalcs << endl;
 
 	return 0;
 } // end main
