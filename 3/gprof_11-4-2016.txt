@@ -1,0 +1,251 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00  1608000     0.00     0.00  choose(double)
+  0.00      0.00     0.00   393435     0.00     0.00  randMod(int)
+  0.00      0.00     0.00   384000     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&)
+  0.00      0.00     0.00   148392     0.00     0.00  randNorm(double)
+  0.00      0.00     0.00   128056     0.00     0.00  std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&)
+  0.00      0.00     0.00   128000     0.00     0.00  Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const
+  0.00      0.00     0.00    64000     0.00     0.00  Chromosome::mutate(double, double)
+  0.00      0.00     0.00    64000     0.00     0.00  Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const
+  0.00      0.00     0.00    12033     0.00     0.00  void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&)
+  0.00      0.00     0.00    12006     0.00     0.00  void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome const&>(Chromosome const&)
+  0.00      0.00     0.00     2000     0.00     0.00  Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+  0.00      0.00     0.00     2000     0.00     0.00  void std::vector<Chromosome, std::allocator<Chromosome> >::_M_range_insert<__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > > >(__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, std::forward_iterator_tag)
+  0.00      0.00     0.00     2000     0.00     0.00  std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&)
+  0.00      0.00     0.00     1280     0.00     0.00  randUnit()
+  0.00      0.00     0.00      192     0.00     0.00  void std::vector<point, std::allocator<point> >::_M_emplace_back_aux<point const&>(point const&)
+  0.00      0.00     0.00       32     0.00     0.00  Chromosome::Chromosome(int)
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10ChromosomeC2Ei
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10PopulationC2Eiiiddi
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_numFitnessCalcs
+  0.00      0.00     0.00        1     0.00     0.00  Population::initPopulation()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00  128000/1608000     Population::evolve(OP) [42]
+                0.00    0.00  200000/1608000     Chromosome::localSearch(int) [40]
+                0.00    0.00 1280000/1608000     Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [15]
+[8]      0.0    0.00    0.00 1608000         choose(double) [8]
+-----------------------------------------------
+                0.00    0.00  393435/393435      Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [13]
+[9]      0.0    0.00    0.00  393435         randMod(int) [9]
+-----------------------------------------------
+                0.00    0.00  384000/384000      Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [13]
+[10]     0.0    0.00    0.00  384000         void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [10]
+-----------------------------------------------
+                0.00    0.00   20104/148392      Chromosome::localSearch(int) [40]
+                0.00    0.00  128288/148392      Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [15]
+[11]     0.0    0.00    0.00  148392         randNorm(double) [11]
+-----------------------------------------------
+                0.00    0.00      56/128056      Chromosome::localSearch(int) [40]
+                0.00    0.00   64000/128056      Population::evolve(OP) [42]
+                0.00    0.00   64000/128056      std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&) [20]
+[12]     0.0    0.00    0.00  128056         std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&) [12]
+-----------------------------------------------
+                0.00    0.00   64000/128000      Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [18]
+                0.00    0.00   64000/128000      Population::evolve(OP) [42]
+[13]     0.0    0.00    0.00  128000         Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [13]
+                0.00    0.00  393435/393435      randMod(int) [9]
+                0.00    0.00  384000/384000      void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) [10]
+-----------------------------------------------
+                0.00    0.00   64000/64000       Population::evolve(OP) [42]
+[14]     0.0    0.00    0.00   64000         Chromosome::mutate(double, double) [14]
+                0.00    0.00   64000/64000       Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [15]
+-----------------------------------------------
+                0.00    0.00   64000/64000       Chromosome::mutate(double, double) [14]
+[15]     0.0    0.00    0.00   64000         Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [15]
+                0.00    0.00 1280000/1608000     choose(double) [8]
+                0.00    0.00  128288/148392      randNorm(double) [11]
+-----------------------------------------------
+                                  37             void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&) [16]
+                0.00    0.00       1/12033       Chromosome::printResults() const [46]
+                0.00    0.00      32/12033       Chromosome::Chromosome(int) [23]
+                0.00    0.00   12000/12033       Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [18]
+[16]     0.0    0.00    0.00   12033+37      void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&) [16]
+                                  37             void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&) [16]
+-----------------------------------------------
+                0.00    0.00       6/12006       Population::initPopulation() [27]
+                0.00    0.00   12000/12006       Population::evolve(OP) [42]
+[17]     0.0    0.00    0.00   12006         void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome const&>(Chromosome const&) [17]
+-----------------------------------------------
+                0.00    0.00    2000/2000        Population::evolve(OP) [42]
+[18]     0.0    0.00    0.00    2000         Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [18]
+                0.00    0.00   64000/128000      Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [13]
+                0.00    0.00   12000/12033       void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&) [16]
+                0.00    0.00    2000/2000        void std::vector<Chromosome, std::allocator<Chromosome> >::_M_range_insert<__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > > >(__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, std::forward_iterator_tag) [19]
+                0.00    0.00    2000/2000        std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&) [20]
+-----------------------------------------------
+                0.00    0.00    2000/2000        Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [18]
+[19]     0.0    0.00    0.00    2000         void std::vector<Chromosome, std::allocator<Chromosome> >::_M_range_insert<__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > > >(__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, std::forward_iterator_tag) [19]
+-----------------------------------------------
+                0.00    0.00    2000/2000        Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [18]
+[20]     0.0    0.00    0.00    2000         std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&) [20]
+                0.00    0.00   64000/128056      std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&) [12]
+-----------------------------------------------
+                0.00    0.00    1280/1280        Chromosome::Chromosome(int) [23]
+[21]     0.0    0.00    0.00    1280         randUnit() [21]
+-----------------------------------------------
+                0.00    0.00     192/192         Chromosome::Chromosome(int) [23]
+[22]     0.0    0.00    0.00     192         void std::vector<point, std::allocator<point> >::_M_emplace_back_aux<point const&>(point const&) [22]
+-----------------------------------------------
+                0.00    0.00      32/32          Population::initPopulation() [27]
+[23]     0.0    0.00    0.00      32         Chromosome::Chromosome(int) [23]
+                0.00    0.00    1280/1280        randUnit() [21]
+                0.00    0.00     192/192         void std::vector<point, std::allocator<point> >::_M_emplace_back_aux<point const&>(point const&) [22]
+                0.00    0.00      32/12033       void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [61]
+[24]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10ChromosomeC2Ei [24]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [61]
+[25]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10PopulationC2Eiiiddi [25]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [61]
+[26]     0.0    0.00    0.00       1         _GLOBAL__sub_I_numFitnessCalcs [26]
+-----------------------------------------------
+                0.00    0.00       1/1           Population::Population(int, int, int, double, double, int) [44]
+[27]     0.0    0.00    0.00       1         Population::initPopulation() [27]
+                0.00    0.00      32/32          Chromosome::Chromosome(int) [23]
+                0.00    0.00       6/12006       void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome const&>(Chromosome const&) [17]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [24] _GLOBAL__sub_I__ZN10ChromosomeC2Ei (chromosome.cpp) [14] Chromosome::mutate(double, double) [17] void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome const&>(Chromosome const&)
+  [25] _GLOBAL__sub_I__ZN10PopulationC2Eiiiddi (population.cpp) [23] Chromosome::Chromosome(int) [16] void std::vector<Chromosome, std::allocator<Chromosome> >::_M_emplace_back_aux<Chromosome>(Chromosome&&)
+  [26] _GLOBAL__sub_I_numFitnessCalcs (points.cpp) [27] Population::initPopulation() [20] std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&)
+   [8] choose(double)         [18] Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) [22] void std::vector<point, std::allocator<point> >::_M_emplace_back_aux<point const&>(point const&)
+   [9] randMod(int)           [15] Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [12] std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&)
+  [11] randNorm(double)       [13] Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [10] void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&)
+  [21] randUnit()             [19] void std::vector<Chromosome, std::allocator<Chromosome> >::_M_range_insert<__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > > >(__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, std::forward_iterator_tag)

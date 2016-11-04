@@ -1,0 +1,1076 @@
+--------------------------------------------------------------------------------
+Profile data file 'callgrind.out.15837' (creator: callgrind-3.12.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 1393202756
+Trigger: Program termination
+Profiled target:  ./points 20 (PID 15837, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+           Ir 
+--------------------------------------------------------------------------------
+8,089,372,877  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+           Ir  file:function
+--------------------------------------------------------------------------------
+2,960,620,746  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/s_sin.c:__cos_avx [/lib/x86_64-linux-gnu/libm-2.19.so]
+1,136,374,700  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c:_int_malloc [/lib/x86_64-linux-gnu/libc-2.19.so]
+  891,363,082  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c:_int_free [/lib/x86_64-linux-gnu/libc-2.19.so]
+  850,304,000  chromosome.cpp:Chromosome::mutate(double, double) [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+  561,988,991  /build/eglibc-oGUzwX/eglibc-2.19/string/../sysdeps/x86_64/multiarch/memcpy-ssse3-back.S:__memmove_ssse3_back [/lib/x86_64-linux-gnu/libc-2.19.so]
+  317,409,795  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c:malloc [/lib/x86_64-linux-gnu/libc-2.19.so]
+  281,321,600  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/i386/fpu/fenv_private.h:__cos_avx
+  134,611,841  chromosome.cpp:Chromosome::localSearch(int) [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+  123,867,252  ???:operator new(unsigned long) [/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19]
+  116,125,545  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c:free [/lib/x86_64-linux-gnu/libc-2.19.so]
+   76,258,000  /usr/include/c++/4.8/bits/stl_vector.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   74,664,000  /usr/include/c++/4.8/bits/stl_algobase.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   51,654,122  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/s_sin.c:csloww1 [/lib/x86_64-linux-gnu/libm-2.19.so]
+   50,996,000  /usr/include/c++/4.8/ext/new_allocator.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   41,386,017  /usr/include/c++/4.8/bits/stl_vector.h:Population::evolve(OP)
+   38,952,016  /usr/include/c++/4.8/bits/stl_algobase.h:Population::evolve(OP)
+   36,184,305  rand.cpp:choose(double) [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+   30,966,816  ???:operator delete(void*) [/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19]
+   30,206,549  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c:malloc_consolidate [/lib/x86_64-linux-gnu/libc-2.19.so]
+   29,388,000  /usr/include/c++/4.8/bits/stl_construct.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   27,462,010  /usr/include/c++/4.8/ext/new_allocator.h:Population::evolve(OP)
+   25,088,000  /usr/include/c++/4.8/bits/stl_uninitialized.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   24,888,000  chromosome.h:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >)
+   16,508,618  population.cpp:Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+   15,510,000  /usr/include/c++/4.8/bits/stl_construct.h:Population::evolve(OP)
+   13,688,013  chromosome.h:Population::evolve(OP)
+   13,200,000  /usr/include/c++/4.8/bits/stl_uninitialized.h:Population::evolve(OP)
+   11,623,950  chromosome.cpp:Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+   11,307,485  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/e_log.c:__ieee754_log_avx [/lib/x86_64-linux-gnu/libm-2.19.so]
+   10,352,488  /usr/include/c++/4.8/bits/stl_vector.h:Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const
+    7,080,732  rand.cpp:randMod(int) [/mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/points]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: rand.cpp
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 30 ----------------------------------------
+         .  {
+         .      V = 1415926535897932ULL;
+         .      W = 3846264338327950ULL;
+         .      X = 2884197169399375ULL;
+         .      Y = 105820974944592ULL;
+         .      Z = 3078164062862089ULL;
+         .      Z += a;
+         .      X += b;
+    13,794      for (unsigned long long int i=0; i<((a+b) % 1000)+1000; i++) randULL();
+         .  }
+         .  
+         .  
+         .  // initialize the random number generator using process id and time
+         .  void initRand()
+         1  {
+         6      initRand((unsigned long long int)getpid()*1405321245300013ULL,
+        17  => /build/eglibc-oGUzwX/eglibc-2.19/posix/../nptl/sysdeps/unix/sysv/linux/getpid.c:getpid (1x)
+     1,136  => /build/eglibc-oGUzwX/eglibc-2.19/elf/../sysdeps/x86_64/dl-trampoline.S:_dl_runtime_resolve (1x)
+        11                 (unsigned long long int)(time(NULL)<<1)|0x1ULL);
+         3  => /home/cgoes/valgrind/valgrind-3.12.0/coregrind/m_trampoline.S:vgPlain_amd64_linux_REDIR_FOR_vtime (1x)
+     1,177  => /build/eglibc-oGUzwX/eglibc-2.19/elf/../sysdeps/x86_64/dl-trampoline.S:_dl_runtime_resolve (1x)
+         2  }
+         .  
+         .  
+         .  // return a 64 bit unsigned uniformly distributed random number
+         .  unsigned long long int randULL()
+         .  {
+         .      V = W;
+         .      W = X;
+     3,936      X = ((Y<<41) + (Y>>23)) + Z;
+     1,968      Y = Z ^ W;
+     1,968      Z = V + X;
+         .  
+         .      return Y;
+         .  }
+         .  
+         .  // return a uniformly distributed random number between 0 and 1
+         .  // NOTE: this can be relatively slow since the multiply is a 64 bit
+         .  // multiply.
+         .  double randUnit()
+         .  {
+ 3,218,560      V = W;
+ 3,218,560      W = X;
+ 8,423,704      X = ((Y<<41) + (Y>>23)) + Z;
+ 3,218,560      Y = Z ^ W;
+ 3,407,212      Z = V + X;
+         .  
+11,881,438      return Y*unitizer64;
+     1,280  }
+         .  
+         .  
+         .  
+         .  // return a uniformly distributed random number between -1 and 1
+         .  // NOTE: this can be relatively slow since the multiply is a 64 bit
+         .  // multiply.
+         .  double randPMUnit()
+         .  {
+-- line 82 ----------------------------------------
+-- line 87 ----------------------------------------
+         .      Z = V + X;
+         .  
+         .      return Y*unitizer64_2 - 1.0;
+         .  }
+         .  
+         .  
+         .  // return a uniformly distributed random number between 0 and m-1
+         .  int randMod(int m) {
+   786,748      V = W;
+   786,748      W = X;
+ 1,966,870      X = ((Y<<41) + (Y>>23)) + Z;
+   786,748      Y = Z ^ W;
+   786,748      Z = V + X;
+         .  
+ 1,180,122      return Y%m;
+   786,748  }
+         .  
+         .  
+         .  // return two uniformly distributed random numbers in the rand 0 to m-1
+         .  // where they are not equal.
+         .  void randMod2(int m, int &a, int &b) 
+         .  {
+         .      a = randMod(m);
+         .      b = a + randMod(m-1) + 1;
+-- line 110 ----------------------------------------
+-- line 124 ----------------------------------------
+         .  
+         .      return Y&mask;
+         .  }
+         .  
+         .  
+         .  // return true with a probability of prob
+         .  bool choose(double prob)
+         .  {
+ 3,216,000      return randUnit()<prob;
+ 1,608,000  }
+         .  
+         .  
+         .  // returns zero or nonzero 50% of the time
+         .  unsigned long long randCoinToss()
+         .  {
+         .      V = W;
+         .      W = X;
+         .      X = ((Y<<41) + (Y>>23)) + Z;
+-- line 141 ----------------------------------------
+-- line 173 ----------------------------------------
+         .  
+         .  
+         .  // Random number generator with normal (Gaussian) distribution
+         .  // from p 117 of Knuth vol 2 2nd ed.
+         .  // Note: this is slow.   Should use the Ziggurat method some day.
+         .  static bool gotSpare64=false;
+         .  static double spare64;
+         .  double randNorm(double stddev)
+   148,338  {
+         .      double u, v, s;
+         .  
+ 1,004,511      if (gotSpare64) {
+    74,169          gotSpare64=false;
+    74,169          return spare64;
+         .      }
+         .      else {
+   188,652          do {
+   188,652              u = 2*randUnit() - 1;
+   188,652              v = 2*randUnit() - 1;
+   471,630              s = u*u + v*v;
+   222,507          } while (s>=1.0 || s==0.0);
+         .      }
+         .  
+ 1,780,060      s = sqrt(-2*log(s)/s)*stddev;
+11,678,330  => /build/eglibc-oGUzwX/eglibc-2.19/math/w_log.c:log (74169x)
+       844  => /build/eglibc-oGUzwX/eglibc-2.19/elf/../sysdeps/x86_64/dl-trampoline.S:_dl_runtime_resolve (1x)
+   148,338      spare64 = v*s;
+    74,169      gotSpare64 = true;
+         .  
+   148,338      return u*s;
+   296,676  }
+         .  
+         .  
+         .  
+         .  // Random number generators with a Cauchy distribution
+         .  // based on the inversion method using CDF F(x) = .5 + atan(x)/pi
+         .  // which yeilds  tan(pi F(x) - .5) as a the tranformation.
+         .  // To incorporate a mean and scale: scale*randCauchy()+mean
+         .  // 
+-- line 209 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/4.8/bits/stl_vector.h
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 79 ----------------------------------------
+         .        struct _Vector_impl 
+         .        : public _Tp_alloc_type
+         .        {
+         .  	pointer _M_start;
+         .  	pointer _M_finish;
+         .  	pointer _M_end_of_storage;
+         .  
+         .  	_Vector_impl()
+   654,099  	: _Tp_alloc_type(), _M_start(0), _M_finish(0), _M_end_of_storage(0)
+         .  	{ }
+         .  
+         .  	_Vector_impl(_Tp_alloc_type const& __a)
+20,760,288  	: _Tp_alloc_type(__a), _M_start(0), _M_finish(0), _M_end_of_storage(0)
+         .  	{ }
+         .  
+         .  #if __cplusplus >= 201103L
+         .  	_Vector_impl(_Tp_alloc_type&& __a)
+         .  	: _Tp_alloc_type(std::move(__a)),
+         .  	  _M_start(0), _M_finish(0), _M_end_of_storage(0)
+         .  	{ }
+         .  #endif
+-- line 99 ----------------------------------------
+-- line 153 ----------------------------------------
+         .  	    size_t __n = __x._M_impl._M_finish - __x._M_impl._M_start;
+         .  	    _M_create_storage(__n);
+         .  	  }
+         .        }
+         .  #endif
+         .  
+         .        ~_Vector_base()
+         .        { _M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage
+ 6,790,096  		      - this->_M_impl._M_start); }
+         .  
+         .      public:
+         .        _Vector_impl _M_impl;
+         .  
+         .        pointer
+         .        _M_allocate(size_t __n)
+29,388,610        { return __n != 0 ? _M_impl.allocate(__n) : 0; }
+         .  
+         .        void
+         .        _M_deallocate(pointer __p, size_t __n)
+         .        {
+16,323,470  	if (__p)
+         .  	  _M_impl.deallocate(__p, __n);
+         .        }
+         .  
+         .      private:
+         .        void
+         .        _M_create_storage(size_t __n)
+         .        {
+ 6,920,097  	this->_M_impl._M_start = this->_M_allocate(__n);
+ 6,920,096  	this->_M_impl._M_finish = this->_M_impl._M_start;
+13,840,192  	this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+         .        }
+         .      };
+         .  
+         .  
+         .    /**
+         .     *  @brief A standard container which offers fixed time access to
+         .     *  individual elements in any order.
+         .     *
+-- line 191 ----------------------------------------
+-- line 302 ----------------------------------------
+         .         *  @brief  %Vector copy constructor.
+         .         *  @param  __x  A %vector of identical element and allocator types.
+         .         *
+         .         *  The newly-created %vector uses a copy of the allocation
+         .         *  object used by @a __x.  All the elements of @a __x are copied,
+         .         *  but any extra memory in
+         .         *  @a __x (for fast expansion) will not be copied.
+         .         */
+ 7,164,096        vector(const vector& __x)
+         .        : _Base(__x.size(),
+         .          _Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+   204,000        { this->_M_impl._M_finish =
+         .  	  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+         .  				      this->_M_impl._M_start,
+         .  				      _M_get_Tp_allocator());
+         .        }
+         .  
+         .  #if __cplusplus >= 201103L
+         .        /**
+         .         *  @brief  %Vector move constructor.
+-- line 321 ----------------------------------------
+-- line 406 ----------------------------------------
+         .  #endif
+         .  
+         .        /**
+         .         *  The dtor only erases the elements, and note that if the
+         .         *  elements themselves are pointers, the pointed-to memory is
+         .         *  not touched in any way.  Managing the pointer is the user's
+         .         *  responsibility.
+         .         */
+         6        ~vector() _GLIBCXX_NOEXCEPT
+         .        { std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+   268,007  		      _M_get_Tp_allocator()); }
+         .  
+         .        /**
+         .         *  @brief  %Vector assignment operator.
+         .         *  @param  __x  A %vector of identical element and allocator types.
+         .         *
+         .         *  All the elements of @a __x are copied, but any extra memory in
+         .         *  @a __x (for fast expansion) will not be copied.  Unlike the
+         .         *  copy constructor, the allocator object is not copied.
+-- line 424 ----------------------------------------
+-- line 638 ----------------------------------------
+         .        crend() const noexcept
+         .        { return const_reverse_iterator(begin()); }
+         .  #endif
+         .  
+         .        // [23.2.4.2] capacity
+         .        /**  Returns the number of elements in the %vector.  */
+         .        size_type
+         .        size() const _GLIBCXX_NOEXCEPT
+26,138,922        { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+         .  
+         .        /**  Returns the size() of the largest possible %vector.  */
+         .        size_type
+         .        max_size() const _GLIBCXX_NOEXCEPT
+         .        { return _Alloc_traits::max_size(_M_get_Tp_allocator()); }
+         .  
+         .  #if __cplusplus >= 201103L
+         .        /**
+-- line 654 ----------------------------------------
+-- line 719 ----------------------------------------
+         .  
+         .        /**
+         .         *  Returns the total number of elements that the %vector can
+         .         *  hold before needing to allocate more memory.
+         .         */
+         .        size_type
+         .        capacity() const _GLIBCXX_NOEXCEPT
+         .        { return size_type(this->_M_impl._M_end_of_storage
+   392,171  			 - this->_M_impl._M_start); }
+         .  
+         .        /**
+         .         *  Returns true if the %vector is empty.  (Thus begin() would
+         .         *  equal end().)
+         .         */
+         .        bool
+         .        empty() const _GLIBCXX_NOEXCEPT
+         .        { return begin() == end(); }
+-- line 735 ----------------------------------------
+-- line 763 ----------------------------------------
+         .         *
+         .         *  This operator allows for easy, array-style, data access.
+         .         *  Note that data access with this operator is unchecked and
+         .         *  out_of_range lookups are not defined. (For checked lookups
+         .         *  see at().)
+         .         */
+         .        reference
+         .        operator[](size_type __n)
+   128,000        { return *(this->_M_impl._M_start + __n); }
+         .  
+         .        /**
+         .         *  @brief  Subscript access to the data contained in the %vector.
+         .         *  @param __n The index of the element for which data should be
+         .         *  accessed.
+         .         *  @return  Read-only (constant) reference to data.
+         .         *
+         .         *  This operator allows for easy, array-style, data access.
+         .         *  Note that data access with this operator is unchecked and
+         .         *  out_of_range lookups are not defined. (For checked lookups
+         .         *  see at().)
+         .         */
+         .        const_reference
+         .        operator[](size_type __n) const
+         1        { return *(this->_M_impl._M_start + __n); }
+         .  
+         .      protected:
+         .        /// Safety check used only from at().
+         .        void
+         .        _M_range_check(size_type __n) const
+         .        {
+         .  	if (__n >= this->size())
+         .  	  __throw_out_of_range(__N("vector::_M_range_check"));
+-- line 794 ----------------------------------------
+-- line 895 ----------------------------------------
+         .         *  element at the end of the %vector and assigns the given data
+         .         *  to it.  Due to the nature of a %vector this operation can be
+         .         *  done in constant time if the %vector has preallocated space
+         .         *  available.
+         .         */
+         .        void
+         .        push_back(const value_type& __x)
+         .        {
+ 1,346,016  	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+         .  	  {
+         .  	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+         .  	                             __x);
+   104,948  	    ++this->_M_impl._M_finish;
+         .  	  }
+         .  	else
+         .  #if __cplusplus >= 201103L
+ 1,608,606  	  _M_emplace_back_aux(__x);
+    72,398  => /usr/include/c++/4.8/bits/vector.tcc:void std::vector<point, std::allocator<point> >::_M_emplace_back_aux<point const&>(point const&) (192x)
+         .  #else
+         .  	  _M_insert_aux(end(), __x);
+         .  #endif
+         .        }
+         .  
+         .  #if __cplusplus >= 201103L
+         .        void
+         .        push_back(value_type&& __x)
+-- line 919 ----------------------------------------
+-- line 1283 ----------------------------------------
+         .        // Called by the range insert to implement [23.1.1]/9
+         .        template<typename _InputIterator>
+         .          void
+         .          _M_insert_dispatch(iterator __pos, _InputIterator __first,
+         .  			   _InputIterator __last, __false_type)
+         .          {
+         .  	  typedef typename std::iterator_traits<_InputIterator>::
+         .  	    iterator_category _IterCategory;
+     6,000  	  _M_range_insert(__pos, __first, __last, _IterCategory());
+20,478,558  => /usr/include/c++/4.8/bits/vector.tcc:void std::vector<Chromosome, std::allocator<Chromosome> >::_M_range_insert<__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > > >(__gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, __gnu_cxx::__normal_iterator<Chromosome*, std::vector<Chromosome, std::allocator<Chromosome> > >, std::forward_iterator_tag) (2000x)
+         .  	}
+         .  
+         .        // Called by the second insert_dispatch above
+         .        template<typename _InputIterator>
+         .          void
+         .          _M_range_insert(iterator __pos, _InputIterator __first,
+         .  			_InputIterator __last, std::input_iterator_tag);
+         .  
+-- line 1299 ----------------------------------------
+-- line 1328 ----------------------------------------
+         .  
+         .        template<typename... _Args>
+         .          void
+         .          _M_emplace_back_aux(_Args&&... __args);
+         .  #endif
+         .  
+         .        // Called by the latter.
+         .        size_type
+         2        _M_check_len(size_type __n, const char* __s) const
+         .        {
+         6  	if (max_size() - size() < __n)
+         .  	  __throw_length_error(__N(__s));
+         .  
+   304,172  	const size_type __len = size() + std::max(size(), __n);
+ 2,221,331  	return (__len < size() || __len > max_size()) ? max_size() : __len;
+         .        }
+         .  
+         .        // Internal erase functions follow.
+         .  
+         .        // Called by erase(q1,q2), clear(), resize(), _M_fill_assign,
+         .        // _M_assign_aux.
+         .        void
+         .        _M_erase_at_end(pointer __pos)
+-- line 1350 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/4.8/bits/stl_uninitialized.h
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 66 ----------------------------------------
+         .        template<typename _InputIterator, typename _ForwardIterator>
+         .          static _ForwardIterator
+         .          __uninit_copy(_InputIterator __first, _InputIterator __last,
+         .  		      _ForwardIterator __result)
+         .          {
+         .  	  _ForwardIterator __cur = __result;
+         .  	  __try
+         .  	    {
+39,600,431  	      for (; __first != __last; ++__first, ++__cur)
+         .  		std::_Construct(std::__addressof(*__cur), *__first);
+         .  	      return __cur;
+         .  	    }
+         5  	  __catch(...)
+         .  	    {
+         .  	      std::_Destroy(__result, __cur);
+         1  	      __throw_exception_again;
+         .  	    }
+         .  	}
+         .      };
+         .  
+         .    template<>
+         .      struct __uninitialized_copy<true>
+         .      {
+         .        template<typename _InputIterator, typename _ForwardIterator>
+-- line 89 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/4.8/bits/stl_algobase.h
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 213 ----------------------------------------
+         .    */
+         .    template<typename _Tp>
+         .      inline const _Tp&
+         .      max(const _Tp& __a, const _Tp& __b)
+         .      {
+         .        // concept requirements
+         .        __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
+         .        //return  __a < __b ? __b : __a;
+ 1,200,588        if (__a < __b)
+         .  	return __b;
+         .        return __a;
+         .      }
+         .  
+         .    /**
+         .     *  @brief This does what you think it does.
+         .     *  @ingroup sorting_algorithms
+         .     *  @param  __a  A thing of arbitrary type.
+-- line 229 ----------------------------------------
+-- line 325 ----------------------------------------
+         .    template<>
+         .      struct __copy_move<false, false, random_access_iterator_tag>
+         .      {
+         .        template<typename _II, typename _OI>
+         .          static _OI
+         .          __copy_m(_II __first, _II __last, _OI __result)
+         .          { 
+         .  	  typedef typename iterator_traits<_II>::difference_type _Distance;
+   165,990  	  for(_Distance __n = __last - __first; __n > 0; --__n)
+         .  	    {
+         .  	      *__result = *__first;
+         .  	      ++__first;
+         .  	      ++__result;
+         .  	    }
+         .  	  return __result;
+         .  	}
+         .      };
+-- line 341 ----------------------------------------
+-- line 362 ----------------------------------------
+         .  
+         .    template<bool _IsMove>
+         .      struct __copy_move<_IsMove, true, random_access_iterator_tag>
+         .      {
+         .        template<typename _Tp>
+         .          static _Tp*
+         .          __copy_m(const _Tp* __first, const _Tp* __last, _Tp* __result)
+         .          {
+20,148,288  	  const ptrdiff_t _Num = __last - __first;
+22,487,793  	  if (_Num)
+52,496,367  	    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+ 5,915,998  => /build/eglibc-oGUzwX/eglibc-2.19/string/../sysdeps/x86_64/multiarch/memcpy-ssse3-back.S:__memmove_ssse3_back (74000x)
+32,733,618  	  return __result + _Num;
+         .  	}
+         .      };
+         .  
+         .    template<bool _IsMove, typename _II, typename _OI>
+         .      inline _OI
+         .      __copy_move_a(_II __first, _II __last, _OI __result)
+         .      {
+         .        typedef typename iterator_traits<_II>::value_type _ValueTypeI;
+-- line 381 ----------------------------------------
+-- line 557 ----------------------------------------
+         .  
+         .    template<bool _IsMove>
+         .      struct __copy_move_backward<_IsMove, true, random_access_iterator_tag>
+         .      {
+         .        template<typename _Tp>
+         .          static _Tp*
+         .          __copy_move_b(const _Tp* __first, const _Tp* __last, _Tp* __result)
+         .          {
+       177  	  const ptrdiff_t _Num = __last - __first;
+       118  	  if (_Num)
+       647  	    __builtin_memmove(__result - _Num, __first, sizeof(_Tp) * _Num);
+        69  => /build/eglibc-oGUzwX/eglibc-2.19/string/../sysdeps/x86_64/multiarch/memcpy-ssse3-back.S:__memmove_ssse3_back (2x)
+         .  	  return __result - _Num;
+         .  	}
+         .      };
+         .  
+         .    template<bool _IsMove, typename _BI1, typename _BI2>
+         .      inline _BI2
+         .      __copy_move_backward_a(_BI1 __first, _BI1 __last, _BI2 __result)
+         .      {
+-- line 575 ----------------------------------------
+-- line 981 ----------------------------------------
+         .    { return sizeof(int) * __CHAR_BIT__  - 1 - __builtin_clz(__n); }
+         .  
+         .    inline _GLIBCXX_CONSTEXPR unsigned
+         .    __lg(unsigned __n)
+         .    { return sizeof(int) * __CHAR_BIT__  - 1 - __builtin_clz(__n); }
+         .  
+         .    inline _GLIBCXX_CONSTEXPR long
+         .    __lg(long __n)
+       165    { return sizeof(long) * __CHAR_BIT__ - 1 - __builtin_clzl(__n); }
+         .  
+         .    inline _GLIBCXX_CONSTEXPR unsigned long
+         .    __lg(unsigned long __n)
+         .    { return sizeof(long) * __CHAR_BIT__ - 1 - __builtin_clzl(__n); }
+         .  
+         .    inline _GLIBCXX_CONSTEXPR long long
+         .    __lg(long long __n)
+         .    { return sizeof(long long) * __CHAR_BIT__ - 1 - __builtin_clzll(__n); }
+-- line 997 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: population.cpp
+--------------------------------------------------------------------------------
+       Ir 
+
+-- line 4 ----------------------------------------
+        .  
+        .  #include <iomanip>
+        .  
+        .  #include "population.h"
+        .  #include "points.h"
+        .  
+        .  
+        .  // Constructor ** ASSUMES initRand() HAS BEEN CALLED! **
+        4  Population::Population( int nPoints, int pSize, int numGens, double mProb, double cProb, int tSize ) {
+        1      numPoints = nPoints;
+        1      popSize = pSize;
+        1      generations = numGens;
+        1      mutProb = mProb;
+        1      crosProb = cProb;
+        1      trnySize = tSize;
+        .  
+        1      initPopulation(); // Initialize the population
+2,048,143  => population.cpp:Population::initPopulation() (1x)
+        4  } // end Population constructor
+        .  
+        .  
+        .  // Where the Evolution Strategies (ES) magic happens
+       11  Chromosome Population::evolve( OP es_op ) {
+        .  
+        .      // Generational loop that evolves the population
+   10,005      for( int i = 0; i < generations; i++ ) {
+        .          vector<Chromosome> children;
+        .  
+        .          // Generate children
+  346,000          for( int i = 0; i < popSize; i++ ) {
+        .              Chromosome c;
+        .  
+        .              // Crossover two selected parents from current population
+  256,000              if( choose(crosProb) ) { 
+1,441,980  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:choose(double) (64000x)
+        .                  Chromosome p1 = select(pop);
+        .                  Chromosome p2 = select(pop);
+        .                  c = crossover(p1, p2);
+        .              } else
+  256,000                  c = select(pop); // Simply select a child from current population
+128,871,852  => population.cpp:Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const (64000x)
+        .  
+        .              // Mutate the child
+  384,000              if( choose(mutProb) ) 
+1,440,300  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:choose(double) (64000x)
+  320,000                  c.mutate(SIGMA, SIGMA);
+3,865,633,214  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/chromosome.cpp:Chromosome::mutate(double, double) (64000x)
+        .  
+        .              // Add child to the children
+        .              children.push_back(c); 
+        .          }
+        .  
+        .          // Select for new population
+    6,000          if( es_op == PLUS ) // Plus operator (select from pop (parents) AND children)
+    6,000              genPlus(children);
+2,301,048,756  => population.cpp:Population::genPlus(std::vector<Chromosome, std::allocator<Chromosome> >) (2000x)
+        .          else // Comma operator (select from ONLY children)
+        .              genComma(children);
+        .      }
+        .  
+        .      return getBest(); // Return the best individual after evolving
+        8  } // end evolve
+        .  
+        .  
+        .  // Selects a chromosome out of p using simple tournament selection
+        .  // TODO: Could try fitness proportional selection or uniform parent selection at some point
+1,408,000  Chromosome Population::select( vector<Chromosome> p ) const {
+        .      vector<int> t;
+        .  
+2,432,000      for( int i = 0; i < trnySize; i++ ) {
+        .          int temp;
+  786,748          do {
+1,180,122              temp = randMod(p.size());
+7,080,732  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:randMod(int) (393374x)
+        .          } while( isIn(t, temp));
+        .          t.push_back(temp);
+        .      }
+        .  
+  640,000      double best = p[t[0]].fitness; // Fitness of the "best" seen thus far
+  256,000      int bestInd = 0; // Index of the best individual seen thus far
+1,792,000      for( int i = 0; i < trnySize; i++ ) {
+3,456,000          if(p[t[i]].fitness > best) {
+        .              best = p[t[i]].fitness;
+        .              bestInd = i;
+        .          }
+        .      }
+        .  
+        .      return p[bestInd];
+1,152,000  } // end select
+        .  
+        .  
+        .  // Checks if val is in vector t
+        .  bool Population::isIn( vector<int> t, int val ) const {
+1,560,892      for( int i : t )
+1,442,108          if(i == val) 
+   18,748              return true;
+  384,000      return false;
+        .  } // end isIn
+        .  
+        .  
+        .  // Checks if val is in vector t
+        .  bool Population::isIn( vector<point> t, point val ) const {
+        .      for( point i : t )
+        .          if(i.theta == val.theta && i.r == val.r)
+        .              return true;
+-- line 101 ----------------------------------------
+-- line 111 ----------------------------------------
+        .      for( int i = 0; i < popSize; i++ )
+        .          pop[i] = select(children);
+        .  } // end genComma
+        .  
+        .  
+        .  // ES PLUS operator
+        .  // Selects new population from previous population and children
+        .  // TODO: mu and lambda (could use children.size() for this)
+   20,000  void Population::genPlus( vector<Chromosome> children ) {
+        .      vector<Chromosome> newPop;
+    8,000      pop.insert( pop.end(), children.begin(), children.end()); // Add children to current population
+        .  
+  332,000      for( int i = 0; i < popSize; i++ )
+  256,000          newPop.push_back(select(pop)); // Select from combined population and add to new population
+128,611,668  => population.cpp:Population::select(std::vector<Chromosome, std::allocator<Chromosome> >) const (64000x)
+        .  
+    6,000      pop = newPop; // Set current population to new population
+18,404,014  => /usr/include/c++/4.8/bits/vector.tcc:std::vector<Chromosome, std::allocator<Chromosome> >::operator=(std::vector<Chromosome, std::allocator<Chromosome> > const&) (2000x)
+   16,000  } // end genPlus
+        .  
+        .  
+        .  // Order One crossover that generates a new child as the crossover of p1 and p2
+        .  // TODO: Crossover with only one parent is basically a sneaky way to save some of the parents when using the Comma operator
+        .  // TODO: verify this is implemented properly! (test)
+        .  // TODO: link to the source I used for the algorithm
+        .  Chromosome Population::crossover( Chromosome p1, Chromosome p2 ) const {
+        .      Chromosome c(numPoints, 0.0);
+-- line 135 ----------------------------------------
+-- line 165 ----------------------------------------
+        .  
+        .      c.updateFitness(); // Calculate the newly minted child's fitness'
+        .      return c;
+        .  } // end crossover
+        .  
+        .  
+        .  // Finds and returns the best individual in the current population (highest fitness)
+        .  Chromosome Population::getBest() const {
+        3      double best = pop[0].fitness;
+        1      int bestInd = 0;
+        .  
+      161      for(int i = 1; i < popSize; i++) {
+      155          if(pop[i].fitness > best) { 
+        .              best = pop[i].fitness;
+        .              bestInd = i;
+        .          }
+        .      }
+        .  
+        .      return pop[bestInd];
+        .  } // end getBest
+        .  
+-- line 185 ----------------------------------------
+-- line 208 ----------------------------------------
+        .      cout << "\n++++++++++++++++++++++++++" << endl;
+        .      for( Chromosome c : pop ) {
+        .          cout << "Fitness: " << c.fitness << endl;
+        .      }
+        .  } // end testPrint
+        .  
+        .  
+        .  // Initializes the population with random values, and calculates their fitnesses
+        8  void Population::initPopulation() {
+      133      for( int i = 0; i < popSize; i++ ) {
+       96          Chromosome c( numPoints ); // Initialize a new chromosome with random values and a fitness
+2,009,771  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/chromosome.cpp:Chromosome::Chromosome(int) (32x)
+        .  		pop.push_back(c); // Add chromosome to the population
+        .  	}
+        2      if( (int)pop.size() != popSize ) { cerr << "pop.size() != popSize !!!" << endl; }
+       10  } // end initPopulation
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/4.8/bits/stl_construct.h
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 67 ----------------------------------------
+         .    /**
+         .     * Constructs an object in existing memory by invoking an allocated
+         .     * object's constructor with an initializer.
+         .     */
+         .  #if __cplusplus >= 201103L
+         .    template<typename _T1, typename... _Args>
+         .      inline void
+         .      _Construct(_T1* __p, _Args&&... __args)
+12,792,126      { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+         .  #else
+         .    template<typename _T1, typename _T2>
+         .      inline void
+         .      _Construct(_T1* __p, const _T2& __value)
+         .      {
+         .        // _GLIBCXX_RESOLVE_LIB_DEFECTS
+         .        // 402. wrong new expression in [some_]allocator::construct
+         .        ::new(static_cast<void*>(__p)) _T1(__value);
+-- line 83 ----------------------------------------
+-- line 94 ----------------------------------------
+         .  
+         .    template<bool>
+         .      struct _Destroy_aux
+         .      {
+         .        template<typename _ForwardIterator>
+         .          static void
+         .          __destroy(_ForwardIterator __first, _ForwardIterator __last)
+         .  	{
+33,536,529  	  for (; __first != __last; ++__first)
+         .  	    std::_Destroy(std::__addressof(*__first));
+         .  	}
+         .      };
+         .  
+         .    template<>
+         .      struct _Destroy_aux<true>
+         .      {
+         .        template<typename _ForwardIterator>
+-- line 110 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: chromosome.h
+--------------------------------------------------------------------------------
+        Ir 
+
+         .  #ifndef CHROMOSOME_H
+         .  #define CHROMOSOME_H
+         .  
+         .  #include "points.h"
+         .  
+         .  
+41,192,583  class Chromosome {
+ 7,812,014  => /usr/include/c++/4.8/bits/vector.tcc:std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&) (64000x)
+         .      public:
+   128,000          Chromosome() { cSize = 0; fitness = 0;} // Simple constructor
+         .          Chromosome( int size );   // Generates a new chromosome with random values, and calculates it's fitness
+         .          Chromosome( int size, double initVal ); // Initializes points with initVal
+         .          ~Chromosome() {}  // TODO: valgrind and see if we're leaking memory
+         .  
+         .          void mutate( double tSigma, double rSigma );  // Mutate the chromosome and updates it's fitness
+         .          vector<point> mutate( double tSigma, double rSigma, vector<point> ps ) const;
+         .  
+         .          double calcFitness( vector<point> ps ) const; // Minimum Euclidean distance between all points
+   128,064          void updateFitness() { fitness = calcFitness(points); }
+         .  
+         .          void localSearch( int iterations ); // Performs a local search on the chromosome's points for the specified number of iterations
+         .  
+         .          void print() const;        // Sorts by theta then prints
+         .          void printResults() const;  // Prints points in format specified by assignment, sorted by theta
+         .  
+         .          // Leaving this stuff public for performance, especially since almost exclusivly used by Population
+         .          int cSize;              // Size of chromosome (Number of points)
+-- line 26 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: chromosome.cpp
+--------------------------------------------------------------------------------
+         Ir 
+
+-- line 8 ----------------------------------------
+          .  
+          .  #include "chromosome.h"
+          .  
+          .  extern int numFitnessCalcs; // Keeps track of total number of fitness evaluations performed
+          .  const double SIGMA = (double)(1.0 / 5.0);
+          .  
+          .  
+          .  // Generates a new chromosome with random values, and calculates it's fitness
+        256  Chromosome::Chromosome( int size ) {
+         32      cSize = size;
+        128      mutateProb = 1.0 / (double)cSize;
+          .  
+          .      // Generates a random chromosome as a vector of points
+      2,112      for( int i = 0; i < cSize; i++ ) {
+          .          point p;
+      2,560  		p.theta = randUnit() * 2.0 * PI;
+     13,125  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:randUnit() (640x)
+      1,280  		p.r = randUnit();
+     13,085  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:randUnit() (640x)
+         64          points.push_back(p);
+          .  	}
+          .  
+        128      points[0].theta = 0.0;      // Lock first point to angle of 0 to reduce drift
+          .      sort( points.begin(), points.end(), [](point a, point b){ return a.theta < b.theta; } );
+          .      updateFitness();    // Calculate the fitness of the new point vector
+        256  } // end Chromosome
+          .  
+          .  
+          .  // Initializes points with initVal
+          .  // TODO: could be fancy and use a function pointer to try different rand libraries (python would be nice sigh)
+          .  Chromosome::Chromosome( int size, double initVal ) {
+          .      cSize = size;
+          .      mutateProb = 1.0 / (double)cSize;
+          .  
+-- line 39 ----------------------------------------
+-- line 44 ----------------------------------------
+          .          points.push_back(p);
+          .  	}
+          .  
+          .      fitness = 0.0;
+          .  } // end Chromosome
+          .  
+          .  
+          .  // Version of mutate that modifies the chromosome's points and update's its fitness
+    448,000  void Chromosome::mutate( double tSigma, double rSigma ) {
+    256,000      points = mutate(tSigma, rSigma, points);
+ 77,325,161  => chromosome.cpp:Chromosome::mutate(double, double, std::vector<point, std::allocator<point> >) const (64000x)
+          .      updateFitness();
+    448,000  } // end mutate
+          .  
+          .  
+          .  // Mutates the given chromosome (vector of points) by incrementing theta and radius for 1-2 of the points
+          .  // sigma    Mutation step size (usually 1/5) (tSigma for Theta, rSigma for Radius)
+          .  // Returns the mutated vector of points
+          .  // TODO: considoring doing a decrement sometimes instead of an increment (Perhaps a seperate mutate function for this, so caller can decide)
+          .  // TODO: perhaps tweak only the radius OR theta for a point
+          .  // Possible modification: per-dimension sigmas (if we want to go into higher dimensions in the future)
+    576,000  vector<point> Chromosome::mutate( double tSigma, double rSigma, vector<point> ps ) const {
+          .      vector<point> pts = ps;
+          .  
+  4,602,691      for( point &p : pts ) {
+  5,920,000          if(choose(mutateProb)) { // Mutate only 1-2 of the points usually
+  4,499,755  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:choose(double) (200000x)
+    222,507              double temp = randNorm(tSigma) + p.theta;
+  2,488,772  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:randNorm(double) (10173x)
+          .              // Remove amount that pushed us past 2PI, so its (0 + whats left over)
+    149,132              if( temp > 2.0*PI ) p.theta = temp - (2.0*PI); 
+    226,491              else if( temp < 0.0 ) p.theta = temp + (2.0*PI);
+    144,094              else p.theta = temp;
+          .  
+    222,507              temp = randNorm(rSigma) + p.r;
+     71,211  => /mnt/c/Users/goesc/Documents/GitHub/cgoes-cs572/3/rand.cpp:randNorm(double) (10173x)
+    164,265              if(temp > 1.0) p.r = 1.0;
+          .              else if(temp < -1.0) p.r = -1.0;
+    619,740              else p.r = temp;
+          .          }
+          .      }
+          .  
+          .      return pts;
+    448,000  } // end mutate
+          .  
+          .  
+          .  // Fitness is calculated by finding minimum Euclidean distance between all points in ps
+          .  double Chromosome::calcFitness( vector<point> ps ) const {
+    222,096      double fit = 2.0;  // Diameter of unit circle [-1.0 to 1.0]
+          .  
+  7,699,968      for( point i : ps ) {
+119,931,840  		for( point j : ps ) {
+          .              // TODO: comp function as a define or something, as i'm doing this in several places
+          .              // This check prevents comparing a point with itself, as it will always evaevaluate to zero
+ 93,480,320              if( i.theta == j.theta && i.r == j.r ) continue;
+          .  
+          .              // Euclidian Distance, from: https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions
+675,171,844  			double temp = sqrt( pow(i.r, 2.0) + pow(j.r, 2.0) - 2.0 * i.r * j.r * cos(i.theta - j.theta));
+441,835,319  => /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/s_sin.c:__cos_avx (3800000x)
+ 85,877,120              if( temp < fit ) { fit = temp; } // If dist is lower, new minimum
+          .  		}
+          .  	}
+          .  
+     74,032      numFitnessCalcs++; // Count how many times we evaluate fitness
+          .      return fit;
+          .  } // end calcFitness
+          .  
+          .  
+          .  // Evolves the chromosome using a local search for the specified number of iterations
+          .  // This will *hopfully* help "clean up" the points a bit
+         11  void Chromosome::localSearch( int iterations ) {
+          .  
+     30,003      for( int i = 0; i < iterations; i++ ) {
+          .          vector<point> pts = mutate(SIGMA, SIGMA, points);
+          .          double fit = calcFitness(pts);
+     30,000          if( fit > fitness ) {
+        171              points = pts;
+      6,954  => /usr/include/c++/4.8/bits/vector.tcc:std::vector<point, std::allocator<point> >::operator=(std::vector<point, std::allocator<point> > const&) (57x)
+        171              fitness = fit;
+          .          }
+          .      }
+          8  } // end localSearch
+          .  
+          .  
+          .  // Pretty Print - Print sorted by Theta
+          .  void Chromosome::print() const {
+          .      vector<point> ps = points;
+          .      sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+          .  
+          .      for( point p : ps )
+          .          cout << setw(fieldWidth) << left << p.theta << "\t" << p.r << endl;
+          .  } // end print
+          .  
+          .  
+          .  // Prints points in format specified by assignment, sorted by theta
+          8  void Chromosome::printResults() const {
+          .      vector<point> ps = points;
+          .      sort( ps.begin(), ps.end(), [](point a, point b){ return a.theta < b.theta; } );
+          .      
+         10      cout << "** " << cSize << endl;
+        851  => /build/eglibc-oGUzwX/eglibc-2.19/elf/../sysdeps/x86_64/dl-trampoline.S:_dl_runtime_resolve (1x)
+      5,800  => ???:std::ostream::operator<<(int) (1x)
+        124      for( point p : ps )
+          .          cout << "***\t"  << p.theta << "\t" << p.r << endl;
+          2      cout << "***\tFit:\t" << fitness << endl;
+          9  } // end printResults
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/4.8/ext/new_allocator.h
+--------------------------------------------------------------------------------
+        Ir 
+
+-- line 93 ----------------------------------------
+         .        address(const_reference __x) const _GLIBCXX_NOEXCEPT
+         .        { return std::__addressof(__x); }
+         .  
+         .        // NB: __n is permitted to be 0.  The C++ standard says nothing
+         .        // about what the return value is when __n == 0.
+         .        pointer
+         .        allocate(size_type __n, const void* = 0)
+         .        { 
+21,991,111  	if (__n > this->max_size())
+         .  	  std::__throw_bad_alloc();
+         .  
+55,341,207  	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+19,973,638  => ???:operator new(unsigned long) (86000x)
+         .        }
+         .  
+         .        // __p is not permitted to be a null pointer.
+         .        void
+         .        deallocate(pointer __p, size_type)
+15,896,815        { ::operator delete(__p); }
+ 9,313,968  => ???:operator delete(void*) (72000x)
+         .  
+         .        size_type
+         .        max_size() const _GLIBCXX_USE_NOEXCEPT
+         .        { return size_t(-1) / sizeof(_Tp); }
+         .  
+         .  #if __cplusplus >= 201103L
+         .        template<typename _Up, typename... _Args>
+         .          void
+         .          construct(_Up* __p, _Args&&... __args)
+ 3,332,480  	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+         .  
+         .        template<typename _Up>
+         .          void 
+         .          destroy(_Up* __p) { __p->~_Up(); }
+         .  #else
+         .        // _GLIBCXX_RESOLVE_LIB_DEFECTS
+         .        // 402. wrong new expression in [some_] allocator::construct
+         .        void 
+-- line 128 ----------------------------------------
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  /build/eglibc-oGUzwX/eglibc-2.19/string/../sysdeps/x86_64/multiarch/memcpy-ssse3-back.S
+  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/i386/fpu/fenv_private.h
+  /build/eglibc-oGUzwX/eglibc-2.19/malloc/malloc.c
+  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/s_sin.c
+  /build/eglibc-oGUzwX/eglibc-2.19/math/../sysdeps/ieee754/dbl-64/e_log.c
+
+--------------------------------------------------------------------------------
+Ir 
+--------------------------------------------------------------------------------
+19  percentage of events annotated
+
