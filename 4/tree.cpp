@@ -675,7 +675,7 @@ Tree *Tree::pickNode()
 //  TESTS
 //
 
-
+/*
 int main()
 {
     initRand();
@@ -807,4 +807,5 @@ int main()
 
     return 0;
 }
+*/
 
