@@ -18,7 +18,7 @@ int numFitnessCalcs = 0;
 
 
 // This sets everything up, kicks off evolutions, and prints results
-int main(int argc, char *argv[]) {
+int main() {
     initRand();         // Initialize the random number generator
     int maxGen = 0;
     int popSize = 0;
@@ -33,9 +33,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-
-	// Add any arg to see how many fitness evaluations were performed!
-	if(argc > 1) 
+	if(TESTING) 
 		cout << "Total number of fitness evaluations performed:\t" << numFitnessCalcs << endl;
 
     // Output for assignment

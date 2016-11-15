@@ -1,41 +1,41 @@
+// Initial code courtesy of Robert Heckendorn
+// It has been modified to suit my purposes for this course
+
 #ifndef TREEH
 #define TREEH
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+
 #include "rand.h"
 #include "opList.h"
 
 
-// // // // // // // // // // // // // // // // // // // // // // // // 
-// Side
-//
 enum Side {LEFT, RIGHT, SIDEERROR};
+
+void initOps(int maxNumOps);
+void addOpOrTerm(char * name, int arity, double (*f)(double x, double y));
+void setX(double x);            // set the x variable
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // 
 // Op class
 //
-// Operators are Op objects that contain a function that
-// can be evaluated
+// Operators are Op objects that contain a function that can be evaluated
 //
 // This class can be either an operator or a terminal
 // 
 class Op
 {
-// data
 public:
-    double (*f_)(double x, double y);   // function if arity>0
-    char *name_;                        // printable name of operator (NULL if constant)
-    int arity_;                         // arity of operator
-// methods
-public:
-    Op(char *name, int arity, double (*f)(double x, double y));
+    Op(char * name, int arity, double (*f)(double x, double y));
+    Op(char * name, int arity, double (*u)(double x));
+
+    double (*f_)(double x, double y);   // Binary function if arity >= 2
+    double (*u_)(double x);             // TODO: Unary function if arity == 1
+    int arity_;                         // "arity"" of operator
+    char * name_;                        // Printable name of operator (NULL if constant)
 };
-
-
-void initOps(int maxNumOps);
-void addOpOrTerm(char *name, int arity, double (*f)(double x, double y));
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // 
@@ -45,7 +45,6 @@ void addOpOrTerm(char *name, int arity, double (*f)(double x, double y));
 // not intended to be set by the user.  For example getRandTree should
 // only be called with one parameter.  The others are for recursion.
 //
-
 class Tree
 {
 // data
@@ -67,11 +66,11 @@ private:
 
 // methods
 private:
-    void printAux();                    // print helper routine
-    void printAuxPre();                 // print helper routine
+    void printAux() const;                    // print helper routine
+    void printAuxPre() const;                 // print helper routine
     int leftLinearize(Tree *appendix);  // used in free()
 
-//
+
 public:
     void init();
     static Tree *get(Op *op, double initValue); // get a node (initValue is optional)
@@ -81,31 +80,39 @@ public:
     static Tree *getRandTree(int maxDepth, Tree *up=NULL, int depth=1);  // get random tree
     static Tree *getRandFullTree(int maxDepth, Tree *up=NULL, int depth=1); // get random full tree
     static void free(Tree *&freeMe);       // free up a whole tree with freeMe as root
-    static void printFreeSpace();
 
 
 public:
     Tree(Op *op);               // create a tree
+
     bool check(bool hasParent=false);  // vet the tree
-    Tree *copy(Tree *up=NULL);  // the only command that copies any nodes
-    int size();                 // size accessor
-    int depth();                // depth
-    bool isTerm();              // true if terminator
-    bool isOp();                // true if operator
-    Tree *up();                 // parent accessor
-    double value();             // value accessor
-    double eval();              // evaluate the tree
-    double evalUp();            // evaluate by going from this node up
-    void printIndent(int depth=0);  // print internal form of tree
-    void print();               // print in nice neat infix expression
-    void printPre();            // print in nice neat prefix expression
-    bool join(Side s, Tree *subtree);  // add a subtree to a tree
-    Side remove();              // remove a subtree from its parent.
-                                // THIS WILL NOT FREE THE SUBTREE
-                                // returns side removed from in parent
+    int depth() const;                // Calculates current depth of the tree
     Tree *pickNode();           // uniformly any node but the root
+
+    // Evaluations
+    double eval();              // evaluate the tree (NOTE: modifies value_!)
+    double evalUp();            // evaluate by going from this node up
+
+    // Tree edits
+    Tree *copy(Tree *up=NULL);  // the only command that copies any nodes
+    bool join(Side s, Tree *subtree);  // add a subtree to a tree
+    Side remove();              // Remove subtree from parent, returns side removed from in parent. 
+    // NOTE: THIS WILL NOT FREE THE SUBTREE
+
+    // Printing
+    void printIndent(int depth=0);  // print internal form of tree
+    void print() const;                   // print in nice neat infix expression
+    void printPre() const;                // print in nice neat prefix expression
+    static void printFreeSpace() { printf("Free Space: unused: %d  used: %d\n", freeListSize_, freeListUsed_); }
+
+    // Accessors
+    bool isTerm() const { return left_ == NULL; }   // true if terminator
+    bool isOp() const { return left_ != NULL; }     // true if operator
+    Tree *up() const { return up_; }                // parent accessor
+    int size() const { return size_; }              // size accessor
+    double value() const { return value_; }            // value accessor
+
 };
 
-void setX(double x);            // set the x variable
 
 #endif

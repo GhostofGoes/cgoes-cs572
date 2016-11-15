@@ -1,21 +1,9 @@
+// Initial code courtesy of Robert Heckendorn
+// It has been modified to suit my purposes for this course
+
 #include "tree.h"
+
 #define BADDOUBLE 666.0
-
-// give a simple 4 character hex address of something to make it easier to 
-// spot what address is what without full address being given.
-unsigned long long int addrToNum(void *addr)
-{
-    return ((unsigned long long int)addr) & 0xffff;
-}
-
-
-Op::Op(char *name, int arity, double (*f)(double x, double y))
-{
-    name_ = name;
-    arity_ = arity;
-    f_ = f;
-}
-
 
 // the list of possible operators
 int numOpsTotal;   // total number of ops
@@ -29,6 +17,26 @@ Op **opList1;
 Op **opList2;
 
 
+// give a simple 4 character hex address of something to make it easier to 
+// spot what address is what without full address being given.
+unsigned long long int addrToNum(void *addr)
+{
+    return ((unsigned long long int)addr) & 0xffff;
+}
+
+Op::Op(char * name, int arity, double (*f)(double x, double y))
+{
+    name_ = name;
+    arity_ = arity;
+    f_ = f;
+}
+
+Op::Op(char * name, int arity, double (*u)(double x)) {
+    name_ = name;
+    arity_ = arity;
+    u_ = u;
+}
+
 void initOps(int maxNumOps)
 {
     numOps0 = numOps1 = numOps2 = 0;
@@ -38,8 +46,7 @@ void initOps(int maxNumOps)
     opList2 = new Op * [maxNumOps];
 }
 
-
-void addOpOrTerm(char *name, int arity, double (*f)(double x, double y))
+void addOpOrTerm(char * name, int arity, double (*f)(double x, double y))
 {
     switch (arity) {
     case 0:
@@ -56,8 +63,6 @@ void addOpOrTerm(char *name, int arity, double (*f)(double x, double y))
 }
 
 
-
-
 // // // // // // // // // // // // // // // // // // // // // // // //
 // Tree Memory Allocation
 //
@@ -66,10 +71,10 @@ void addOpOrTerm(char *name, int arity, double (*f)(double x, double y))
 // Someone should check that it is faster in this case.  It also provides
 // some small amount of error checking.
 
-int Tree::freeListInitSize_=0;
-int Tree::freeListSize_=0;
-int Tree::freeListUsed_=0;
-Tree *Tree::freeList_=NULL;
+int Tree::freeListInitSize_ = 0;
+int Tree::freeListSize_ = 0;
+int Tree::freeListUsed_ = 0;
+Tree *Tree::freeList_ = NULL;
 
 void Tree::init()
 {
@@ -132,8 +137,7 @@ Tree *Tree::get(Op *op, double initValue=0.0)   // some ops assume an initial va
 }
 
 
-// frees up a tree.  NOTE: it will set the tree pointer you give it
-// to NULL!
+// frees up a tree.  NOTE: it will set the tree pointer you give it to NULL!
 void Tree::free(Tree *&freeMe)
 {
     Tree *left, *right;
@@ -167,12 +171,6 @@ void Tree::free(Tree *&freeMe)
 }
 
 
-void Tree::printFreeSpace()
-{
-    printf("Free Space: unused: %d  used: %d\n", freeListSize_, freeListUsed_);
-}
-
-
 // // // // // // // // // // // // // // // // // // // // // // // // 
 // Tree Class
 //
@@ -198,13 +196,11 @@ Tree *Tree::getRandOp()
 }
 
 
-
 // Gets a single node with a random term
 Tree *Tree::getRandTerm()
 {
     return get(opList0[randMod(numOps0)], randUnit()*3.0);
 }
-
 
 
 // Gets a single node with random op or term
@@ -229,9 +225,8 @@ Tree *Tree::getRandOpOrTerm()
 }
 
 
-
 // Constructs a random tree that is no deeper than maxDepth
-// it attaches to a parent tree at pointer: up.
+// It attaches to a parent tree at pointer: up.
 Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth)
 {
     Tree *t;
@@ -254,9 +249,8 @@ Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth)
 }
 
 
-
 // Constructs a random tree that is no deeper than maxDepth
-// it attaches to a parent tree at pointer: up.
+// It attaches to a parent tree at pointer: up.
 Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth)
 {
     Tree *t;
@@ -278,10 +272,6 @@ Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth)
 }
 
 
-
-
-
-
 // // // // // // // // // // // // // // // // // // // // // // // // 
 // Tree Methods
 //
@@ -301,7 +291,6 @@ Tree::Tree(Op *op)
 }
 
 
-
 void Tree::printIndent(int indent)
 {
     for (int i=0; i<indent; i++) printf("   ");
@@ -315,9 +304,7 @@ void Tree::printIndent(int indent)
 }
 
 
-
-
-void Tree::printAux()
+void Tree::printAux() const
 {
     if (op_->arity_==0) {
 	if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
@@ -348,7 +335,7 @@ void Tree::printAux()
 }
 
 
-void Tree::printAuxPre()
+void Tree::printAuxPre() const
 {
     if (op_->arity_==0) {
 	if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
@@ -385,36 +372,6 @@ Tree *Tree::copy(Tree *up)
 }
 
 
-int Tree::size()
-{
-    return size_;
-}
-
-
-Tree *Tree::up()
-{
-    return up_;
-}
-
-
-double Tree::value()
-{
-    return value_;
-}
-
-
-bool Tree::isTerm()
-{
-    return left_==NULL;
-}
-
-
-bool Tree::isOp()
-{
-    return left_!=NULL;
-}
-
-
 // if name is nullptr then return the value because it is a constant!!
 double Tree::eval()
 {
@@ -423,7 +380,7 @@ double Tree::eval()
 }
 
 
-int Tree::depth()
+int Tree::depth() const
 {
     int result;
 
@@ -453,19 +410,18 @@ double Tree::evalUp()
 }
 
 
-void Tree::print()
+void Tree::print() const
 {
     printAux();
     printf("\n");
 }
 
 
-void Tree::printPre()
+void Tree::printPre() const
 {
     printAuxPre();
     printf("\n");
 }
-
 
 
 // actually don't have to linearize and that would save time.
@@ -681,13 +637,13 @@ int main()
     initRand();
     initOps(10);
 
-    addOpOrTerm((char *)"+", 2, addOp);
-    addOpOrTerm((char *)"-", 2, subOp);
-    addOpOrTerm((char *)"*", 2, mulOp);
-    addOpOrTerm((char *)"/", 2, divOp);
-    addOpOrTerm((char *)"sin", 1, sinOp);
-    addOpOrTerm((char *)"x", 0, xOp);
-    addOpOrTerm((char *)NULL, 0, constOp);  // WARNING: null name means it is a constant!!!!
+    addOpOrTerm((char * )"+", 2, addOp);
+    addOpOrTerm((char * )"-", 2, subOp);
+    addOpOrTerm((char * )"*", 2, mulOp);
+    addOpOrTerm((char * )"/", 2, divOp);
+    addOpOrTerm((char * )"sin", 1, sinOp);
+    addOpOrTerm((char * )"x", 0, xOp);
+    addOpOrTerm((char * )NULL, 0, constOp);  // WARNING: null name means it is a constant!!!!
 
     // BEGIN TESTS
 
