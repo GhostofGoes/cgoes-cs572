@@ -7,6 +7,8 @@
 // If you're in the class, don't copy the code :)
 // You're welcome to use it to learn silly things like I/O, C++ syntax, libary functions, etc.
 
+// Objective of the assignment: Given inputs to a function and results of those inputs, evolve a function that gives the same results the original
+
 #include <cstdio>
 
 #include "func.h"
@@ -24,20 +26,23 @@ int main() {
     int popSize = 0;
     int xover = 0;
     int numPairs = 0;   // Number of pairs to be input
-    p * data = NULL; // Pairs of real numbers x, f(x)
+    p * data = NULL;    // List of pairs of real numbers x, f(x)
 	
     cin >> numPairs;
     data = new p[numPairs];
     for( int i = 0; i < numPairs; i++ ) {
-        cin >> data->x >> data->fx;
+        cin >> data[i].x >> data[i].fx;
     }
 
+    //for( int i = 0; i < numPairs; i++ ) {
+    //    printf("%f\t%f\n", data[i].x, data[i].fx);
+    //}
 
 	if(TESTING) 
-		cout << "Total number of fitness evaluations performed:\t" << numFitnessCalcs << endl;
+		cout << "\nTotal number of fitness evaluations performed:\t" << numFitnessCalcs << endl;
 
     // Output for assignment
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %d", maxGen, popSize, xover);
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %d\n", maxGen, popSize, xover);
 
 	return 0;
 } // end main
