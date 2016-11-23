@@ -12,20 +12,18 @@ int numOps1;       // number of unary ops
 int numOps2;       // number of binary ops
 
 // the list of possible operators of different numbers of arguments
-Op **opList0;
-Op **opList1;
-Op **opList2;
+Op **opList0;   // Nullary ops
+Op **opList1;   // Unary ops
+Op **opList2;   // Binary ops
 
 
 // give a simple 4 character hex address of something to make it easier to 
 // spot what address is what without full address being given.
-unsigned long long int addrToNum(void *addr)
-{
+unsigned long long int addrToNum(void *addr) {
     return ((unsigned long long int)addr) & 0xffff;
 }
 
-Op::Op(char * name, int arity, double (*f)(double x, double y))
-{
+Op::Op(char * name, int arity, double (*f)(double x, double y)) {
     name_ = name;
     arity_ = arity;
     f_ = f;
@@ -37,8 +35,7 @@ Op::Op(char * name, int arity, double (*u)(double x)) {
     u_ = u;
 }
 
-void initOps(int maxNumOps)
-{
+void initOps(int maxNumOps) {
     numOps0 = numOps1 = numOps2 = 0;
     numOpsTotal = numOps0 + numOps1 + numOps2;
     opList0 = new Op * [maxNumOps];
@@ -46,8 +43,7 @@ void initOps(int maxNumOps)
     opList2 = new Op * [maxNumOps];
 }
 
-void addOpOrTerm(char * name, int arity, double (*f)(double x, double y))
-{
+void addOpOrTerm(char * name, int arity, double (*f)(double x, double y)) {
     switch (arity) {
     case 0:
 	opList0[numOps0++] = new Op(name, arity, f);
@@ -76,8 +72,7 @@ int Tree::freeListSize_ = 0;
 int Tree::freeListUsed_ = 0;
 Tree *Tree::freeList_ = NULL;
 
-void Tree::init()
-{
+void Tree::init() {
     left_ = NULL;
     right_ = NULL;
     up_ = NULL;
@@ -88,8 +83,7 @@ void Tree::init()
 
 
 // this gets a single node 
-Tree *Tree::get(Op *op, double initValue=0.0)   // some ops assume an initial value!
-{
+Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial value!
     Tree *result;
 
     if (freeListInitSize_==0) {
@@ -138,8 +132,7 @@ Tree *Tree::get(Op *op, double initValue=0.0)   // some ops assume an initial va
 
 
 // frees up a tree.  NOTE: it will set the tree pointer you give it to NULL!
-void Tree::free(Tree *&freeMe)
-{
+void Tree::free(Tree *&freeMe) {
     Tree *left, *right;
 
     if (freeMe) {
@@ -181,8 +174,7 @@ void Tree::free(Tree *&freeMe)
 
 
 // Gets a single node with a random operator chosen
-Tree *Tree::getRandOp()
-{
+Tree *Tree::getRandOp() {
     int index;
 
     index = randMod(numOps1+numOps2);
@@ -204,8 +196,7 @@ Tree *Tree::getRandTerm()
 
 
 // Gets a single node with random op or term
-Tree *Tree::getRandOpOrTerm()
-{
+Tree *Tree::getRandOpOrTerm() {
     int index;
 
     index = randMod(numOpsTotal);
@@ -227,8 +218,7 @@ Tree *Tree::getRandOpOrTerm()
 
 // Constructs a random tree that is no deeper than maxDepth
 // It attaches to a parent tree at pointer: up.
-Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth)
-{
+Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth) {
     Tree *t;
 
     if (depth==maxDepth) t = getRandTerm();     
@@ -251,8 +241,7 @@ Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth)
 
 // Constructs a random tree that is no deeper than maxDepth
 // It attaches to a parent tree at pointer: up.
-Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth)
-{
+Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth) {
     Tree *t;
 
     if (depth==maxDepth) t = getRandTerm();     
@@ -277,8 +266,7 @@ Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth)
 //
 
 // The tree constructor
-Tree::Tree(Op *op)
-{
+Tree::Tree(Op *op) {
     left_ = NULL;
     right_ = NULL;
     up_ = NULL;
@@ -291,8 +279,7 @@ Tree::Tree(Op *op)
 }
 
 
-void Tree::printIndent(int indent)
-{
+void Tree::printIndent(int indent) {
     for (int i=0; i<indent; i++) printf("   ");
     printf("[%d, 0x%04llx]", size_, addrToNum(this));
 
@@ -304,33 +291,28 @@ void Tree::printIndent(int indent)
 }
 
 
-void Tree::printAux() const
-{
+void Tree::printAux() const {
     if (op_->arity_==0) {
-	if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
-	else printf("%lg", value_);  // terminal value
+        if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
+        else printf("%lg", value_);  // terminal value
     }
     else if (op_->arity_==1) {
-	if (op_->name_) printf("%s", op_->name_);
-	printf("(");
-	if (left_) left_->printAux();
-	printf(")");
+        if (op_->name_) printf("%s", op_->name_);
+        printf("(");
+        if (left_) left_->printAux();
+        printf(")");
     }
     else {
-	printf("(");
+        printf("(");
 
-	if (left_) left_->printAux();
+        if (left_) left_->printAux();
 
-	if (op_) {
-	    printf(" %s ", op_->name_);
-	}
-	else {
-	    printf("NO OP POINTER\n");
-	}
+        if (op_) printf(" %s ", op_->name_);
+        else printf("NO OP POINTER\n");
 
-	if (right_) right_->printAux();
+        if (right_) right_->printAux();
 
-	printf(")");
+        printf(")");
     }
 }
 
@@ -338,27 +320,26 @@ void Tree::printAux() const
 void Tree::printAuxPre() const
 {
     if (op_->arity_==0) {
-	if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
-	else printf("%lg", value_);  // terminal value
+        if (op_->name_) printf("%s", op_->name_);     // if name_==nullptr then constant!
+        else printf("%lg", value_);  // terminal value
     }
     else {
-	printf("(");
-	if (op_->name_) printf("%s", op_->name_);
-	if (left_) {
+        printf("(");
+        if (op_->name_) printf("%s", op_->name_);
+        if (left_) {
             printf(" ");
             left_->printAuxPre();
         }
-	if (right_) {
+        if (right_) {
             printf(" ");
             right_->printAuxPre();
         }
-	printf(")");
+        printf(")");
     }
 }
 
 
-Tree *Tree::copy(Tree *up)
-{
+Tree *Tree::copy(Tree *up) {
     Tree *t;
 
     t = get(op_);
@@ -372,33 +353,30 @@ Tree *Tree::copy(Tree *up)
 }
 
 
-// if name is nullptr then return the value because it is a constant!!
-double Tree::eval()
-{
-    if (op_->name_) value_ = (op_->f_)((left_ ? left_->eval() : 0), (right_ ? right_->eval() : 0));
-    return value_;
-}
-
-
-int Tree::depth() const
-{
-    int result;
-
-    result = 1;
-    if (left_!=NULL) result = left_->depth()+1;
+int Tree::depth() const {
+    int result = 1;
+    if (left_!=NULL) result = left_->depth() + 1;
     if (right_!=NULL) {
         int tmp;
-
-        if ((tmp = right_->depth())+1>result) result = tmp+1;
+        if ((tmp = right_->depth()) + 1 > result) result = tmp + 1;
     }
 
     return result;
 }
 
 
-// if name is nullptr then return the value because it is a constant!!
-double Tree::evalUp()
-{
+// Use setX defined in opList.h to set the value of X before calling this!
+double Tree::eval() {
+    // Checks if constant, if not then calls op with left and right if they are evaluatable, otherwise just 0
+    if (op_->name_) value_ = (op_->f_)((left_ ? left_->eval() : 0), (right_ ? right_->eval() : 0));
+    return value_;
+}
+
+
+// Use setX defined in opList.h to set the value of X before calling this!
+// Evaluates entire tree, regardless of where this is called
+// Basically, evaluates itself, then continues evaluating tree above it until reaches root
+double Tree::evalUp() {
     Tree *node;
 
     node = this;
@@ -410,15 +388,13 @@ double Tree::evalUp()
 }
 
 
-void Tree::print() const
-{
+void Tree::print() const {
     printAux();
     printf("\n");
 }
 
 
-void Tree::printPre() const
-{
+void Tree::printPre() const {
     printAuxPre();
     printf("\n");
 }
@@ -426,70 +402,66 @@ void Tree::printPre() const
 
 // actually don't have to linearize and that would save time.
 // do that some day.
-int Tree::leftLinearize(Tree *appendix)
-{
+int Tree::leftLinearize(Tree *appendix) {
     Tree *follow, *bottomLeft;
-    int size;
+    int size = 1;
 
     follow = this;
     bottomLeft = this;
-    size = 1;
 
     while (1) {
-	// find bottom of the left tree
-	while (bottomLeft->left_) {
-	    bottomLeft = bottomLeft->left_;
-	    size++;
-	}
+        // find bottom of the left tree
+        while (bottomLeft->left_) {
+            bottomLeft = bottomLeft->left_;
+            size++;
+	    }
 
-	// find next right branch
-	while (follow->left_ && (! follow->right_)) follow = follow->left_;
+        // find next right branch
+        while (follow->left_ && (! follow->right_)) follow = follow->left_;
 
-	// move to bottom left
-	if (follow->right_) {
-	    bottomLeft->left_ = follow->right_;
-	    follow->right_ = NULL;
-	}
+        // move to bottom left
+        if (follow->right_) {
+            bottomLeft->left_ = follow->right_;
+            follow->right_ = NULL;
+        }
 
-	// if at the end of the tree add appendix tree if needed
-	if (follow->left_==NULL) {
-	    follow->left_ = appendix;
-	    break;
-	}
-    };
+        // if at the end of the tree add appendix tree if needed
+        if (follow->left_==NULL) {
+            follow->left_ = appendix;
+            break;
+        }
+    } // why was there a semicolon here?
 
     return size;
 }
 
 
 
-bool Tree::join(Side s, Tree *node)
-{
+bool Tree::join(Side s, Tree *node) {
     if (node) {
-	if (((s==LEFT) && left_) || ((s==RIGHT) && right_)) {
-	    printf("ERROR(join): can't join on %s since there is a subtree there.\n", ((s==LEFT) ? "left" : "right"));
-	    return false;
-	}
-	else {
-	    int delta;
+        if (((s==LEFT) && left_) || ((s==RIGHT) && right_)) {
+            printf("ERROR(join): can't join on %s since there is a subtree there.\n", ((s==LEFT) ? "left" : "right"));
+            return false;
+        }
+        else {
+            int delta;
 
-	    // attach it
-	    if (s==LEFT) left_ = node;
-	    else right_ = node;
+            // attach it
+            if (s==LEFT) left_ = node;
+            else right_ = node;
 
-	    // adjust the sizes
-	    node->up_ = this;
-	    delta = node->size_;
-	    while ((node = node->up_)) node->size_ += delta;
-	}
+            // adjust the sizes
+            node->up_ = this;
+            delta = node->size_;
+            while ((node = node->up_)) node->size_ += delta;
+        }
     }
 
     return true;
 }
 
 
-bool Tree::check(bool hasParent)
-{
+bool Tree::check(bool hasParent) {
     int l, r;
     unsigned int loc;
     bool ok;
@@ -565,13 +537,11 @@ bool Tree::check(bool hasParent)
 }
 
 
-Side Tree::remove()
-{
+Side Tree::remove() {
     Tree *node;
-    int delta;
-
+    int delta = size_;
     node = this;
-    delta = size_;
+
     while ((node = node->up_)) {
 	node->size_ -= delta;
     }
@@ -597,8 +567,7 @@ Side Tree::remove()
 
 
 // randomly and uniformly pick any node in the tree but the root
-Tree *Tree::pickNode()
-{
+Tree *Tree::pickNode() {
     Tree *node;
     int loc, split;
     
@@ -628,11 +597,8 @@ Tree *Tree::pickNode()
 
 
 
-//  TESTS
-//
-
-/*
-int main()
+// Suite of tests to make sure things are work as they should
+void testTreeLibrary()
 {
     initRand();
     initOps(10);
@@ -760,8 +726,4 @@ int main()
     t->check();
 
     Tree::printFreeSpace();
-
-    return 0;
-}
-*/
-
+} // end testTreeLibrary

@@ -22,9 +22,9 @@ int numFitnessCalcs = 0;
 // This sets everything up, kicks off evolutions, and prints results
 int main() {
     initRand();         // Initialize the random number generator
-    int maxGen = 0;
-    int popSize = 0;
-    int xover = 0;
+    int maxGen = 0;     // Maximum number of generations
+    int popSize = 0;    // Population size
+    int xover = 0;      // Crossover Probability
     int numPairs = 0;   // Number of pairs to be input
     p * data = NULL;    // List of pairs of real numbers x, f(x)
 	
@@ -46,3 +46,8 @@ int main() {
 
 	return 0;
 } // end main
+
+
+double fitness() {
+
+}

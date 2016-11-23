@@ -15,7 +15,9 @@ enum Side {LEFT, RIGHT, SIDEERROR};
 
 void initOps(int maxNumOps);
 void addOpOrTerm(char * name, int arity, double (*f)(double x, double y));
-void setX(double x);            // set the x variable
+void setX(double x); // set the x variable, used when evaluating tree
+
+void testTreeLibrary(); // Suite of tests to make sure things are work as they should
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // 
@@ -24,7 +26,6 @@ void setX(double x);            // set the x variable
 // Operators are Op objects that contain a function that can be evaluated
 //
 // This class can be either an operator or a terminal
-// 
 class Op
 {
 public:
@@ -57,7 +58,7 @@ private:
     int size_;     // size of the tree beneath this node including this node
     bool used_;    // is the node allocated (provides debugging support)
 
-// class variables
+// Memory management
 private:
     static int freeListInitSize_;
     static int freeListSize_;
@@ -66,8 +67,8 @@ private:
 
 // methods
 private:
-    void printAux() const;                    // print helper routine
-    void printAuxPre() const;                 // print helper routine
+    void printAux() const;              // print helper routine
+    void printAuxPre() const;           // print helper routine
     int leftLinearize(Tree *appendix);  // used in free()
 
 
@@ -83,15 +84,15 @@ public:
 
 
 public:
-    Tree(Op *op);               // create a tree
+    Tree(Op *op);       // create a tree
 
     bool check(bool hasParent=false);  // vet the tree
-    int depth() const;                // Calculates current depth of the tree
-    Tree *pickNode();           // uniformly any node but the root
+    int depth() const;  // Calculates current depth of the tree
+    Tree *pickNode();   // uniformly any node but the root
 
-    // Evaluations
-    double eval();              // evaluate the tree (NOTE: modifies value_!)
-    double evalUp();            // evaluate by going from this node up
+    // setX(x) must be called before evaluating! (See opList.h)
+    double eval();      // evaluate the tree (NOTE: modifies value_!)
+    double evalUp();    // evaluate by going from this node up
 
     // Tree edits
     Tree *copy(Tree *up=NULL);  // the only command that copies any nodes

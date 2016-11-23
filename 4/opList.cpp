@@ -1,6 +1,7 @@
 // Initial code courtesy of Robert Heckendorn
 // It has been modified to suit my purposes for this course
 
+// Assumes math.h has been imported in rand.h
 #include "rand.h"
 #include "opList.h"
 

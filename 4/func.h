@@ -15,9 +15,10 @@ using namespace std;
 const unsigned int fieldWidth = 10; // For spacing when printing stuff
 
 typedef struct {
-    double x;
-    double fx;
-} p; 
+    double x;   // Input x to f()
+    double fx;  // Result of f(x)
+} p; // Stores data for given inputs and results for the original function
 
+double fitness();
 
 #endif
