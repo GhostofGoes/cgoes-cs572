@@ -54,6 +54,7 @@ void addOpOrTerm(char * name, int arity, double (*f)(double x, double y)) {
     case 2:
 	opList2[numOps2++] = new Op(name, arity, f);
 	break;
+    default: printf("ERROR(addOpOrTerm): Invalid arity\n");
     }
     numOpsTotal++;
 }
@@ -96,26 +97,26 @@ Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial v
 
     // are their preallocated nodes available?
     if (freeList_==NULL) {
-	for (int i=0; i<freeListInitSize_; i++) {
-	    Tree *tmp;
+        for (int i=0; i<freeListInitSize_; i++) {
+            Tree *tmp;
 
-	    tmp = freeList_;
-	    freeList_ = new Tree(NULL);
-	    freeList_->used_ = false;
-	    freeListSize_++;
-	    freeList_->left_ = tmp;
-	}
-	freeListInitSize_ = int(1.618*freeListInitSize_);
+            tmp = freeList_;
+            freeList_ = new Tree(NULL);
+            freeList_->used_ = false;
+            freeListSize_++;
+            freeList_->left_ = tmp;
+        }
+        freeListInitSize_ = int(1.618*freeListInitSize_); // wtf?
     }
 
     // get node from free list
     if (freeList_) {
-	result = freeList_;
-	freeList_ = result->left_;
+        result = freeList_;
+        freeList_ = result->left_;
     }
     else {
-	printf("ERROR(get): unable to allocate more nodes.\n");
-	exit(1);
+        printf("ERROR(get): unable to allocate more nodes.\n");
+        exit(1); // TODO: this could be bad
     }
 
     // set up initial values for fetched tree node
@@ -137,12 +138,10 @@ void Tree::free(Tree *&freeMe) {
 
     if (freeMe) {
         if (!freeMe->used_) {
-            printf("ERROR(free): trying to free tree: 0x%04llx that is already free.\n", 
-                   addrToNum(freeMe));
+            printf("ERROR(free): trying to free tree: 0x%04llx that is already free.\n", addrToNum(freeMe));
             return;
         }
         freeMe->used_ = false;
-
         freeMe->value_ = 0.0;
 
         right = freeMe->right_;
@@ -155,8 +154,8 @@ void Tree::free(Tree *&freeMe) {
         freeList_ = freeMe;
         freeMe = NULL;
 
-	freeListUsed_--;
-	freeListSize_++;
+        freeListUsed_--;
+        freeListSize_++;
 
         free(left);
         free(right);
@@ -175,43 +174,37 @@ void Tree::free(Tree *&freeMe) {
 
 // Gets a single node with a random operator chosen
 Tree *Tree::getRandOp() {
-    int index;
-
-    index = randMod(numOps1+numOps2);
-    if (index<numOps1) {
-	return get(opList1[index]);
-    }
+    int index = randMod(numOps1+numOps2);
+    if (index<numOps1)
+	    return get(opList1[index]);
     else {
-	index -= numOps1;
-	return get(opList2[index]);
+	    index -= numOps1;
+	    return get(opList2[index]);
     }
 }
 
 
 // Gets a single node with a random term
-Tree *Tree::getRandTerm()
-{
+Tree *Tree::getRandTerm() {
     return get(opList0[randMod(numOps0)], randUnit()*3.0);
 }
 
 
 // Gets a single node with random op or term
 Tree *Tree::getRandOpOrTerm() {
-    int index;
-
-    index = randMod(numOpsTotal);
+    int index = randMod(numOpsTotal);
     if (index<numOps0) {
-	return get(opList0[index], randUnit()*3.0);
+	    return get(opList0[index], randUnit()*3.0);
     }
     else {
-	index -= numOps0;
-	if (index<numOps1) {
-	    return get(opList1[index]);
-	}
-	else {
-	    index -= numOps1;
-	    return get(opList2[index]);
-	}
+        index -= numOps0;
+        if (index<numOps1) {
+            return get(opList1[index]);
+        }
+        else {
+            index -= numOps1;
+            return get(opList2[index]);
+        }
     }
 }
 
@@ -226,12 +219,12 @@ Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth) {
     else t = getRandOpOrTerm();
 
     if (t->op_->arity_>=1) {
-	t->left_ = getRandTree(maxDepth, t, depth+1);
-	t->size_ += t->left_->size_;
+        t->left_ = getRandTree(maxDepth, t, depth+1);
+        t->size_ += t->left_->size_;
     }
     if (t->op_->arity_>=2) {
-	t->right_ = getRandTree(maxDepth, t, depth+1);
-	t->size_ += t->right_->size_;
+        t->right_ = getRandTree(maxDepth, t, depth+1);
+        t->size_ += t->right_->size_;
     }
     t->up_ = up;
 
@@ -248,12 +241,12 @@ Tree *Tree::getRandFullTree(int maxDepth, Tree *up, int depth) {
     else t = getRandOp();
 
     if (t->op_->arity_>=1) {
-	t->left_ = getRandFullTree(maxDepth, t, depth+1);
-	t->size_ += t->left_->size_;
+        t->left_ = getRandFullTree(maxDepth, t, depth+1);
+        t->size_ += t->left_->size_;
     }
     if (t->op_->arity_>=2) {
-	t->right_ = getRandFullTree(maxDepth, t, depth+1);
-	t->size_ += t->right_->size_;
+        t->right_ = getRandFullTree(maxDepth, t, depth+1);
+        t->size_ += t->right_->size_;
     }
     t->up_ = up;
 
@@ -272,8 +265,8 @@ Tree::Tree(Op *op) {
     up_ = NULL;
     op_ = op;
     if (op_) {
-	if (op_->name_) value_ = BADDOUBLE;
-	else value_ = op_->f_(0.0, 0.0);     // must be terminal value
+        if (op_->name_) value_ = BADDOUBLE;
+        else value_ = op_->f_(0.0, 0.0); // must be terminal value
     }
     size_ = 1;
 }
@@ -381,9 +374,9 @@ double Tree::evalUp() {
 
     node = this;
     while (1) {
-	if (op_->name_) value_ = (op_->f_)((left_ ? left_->eval() : 0), (right_ ? right_->eval() : 0));
-	if (node->up_ == NULL) return node->value_;
-	node = node->up_;
+        if (op_->name_) value_ = (op_->f_)((left_ ? left_->eval() : 0), (right_ ? right_->eval() : 0));
+        if (node->up_ == NULL) return node->value_;
+        node = node->up_;
     }
 }
 
@@ -452,7 +445,7 @@ bool Tree::join(Side s, Tree *node) {
 
             // adjust the sizes
             node->up_ = this;
-            delta = node->size_;
+            delta = node->size_; // TODO: why do we have temp variable?
             while ((node = node->up_)) node->size_ += delta;
         }
     }
@@ -469,8 +462,7 @@ bool Tree::check(bool hasParent) {
 //    printf("checking 0x%08x\n", this);
 
     if (this==NULL) {
-	printf("ERROR(check): node: 0x%04llx a NULL pointer and asked to check it as if it pointed to a tree!\n", 
-               addrToNum(this));
+	    printf("ERROR(check): node: 0x%04llx a NULL pointer and asked to check it as if it pointed to a tree!\n", addrToNum(this));
         ok = false;
     }
     else {
@@ -543,27 +535,26 @@ Side Tree::remove() {
     node = this;
 
     while ((node = node->up_)) {
-	node->size_ -= delta;
+	    node->size_ -= delta;
     }
 
     node = up_;
     up_ = NULL;
 
     if (node) {
-	if (node->left_ == this) {
-	    node->left_ = NULL;
-	    return LEFT;
-	}
-	else if (node->right_ == this) {
-	    node->right_ = NULL;
-	    return RIGHT;
-	}
-	else printf("ERROR(remove): neither the left nor the right link of the parent of the removed node point to the node removed.\n");
+        if (node->left_ == this) {
+            node->left_ = NULL;
+            return LEFT;
+        }
+        else if (node->right_ == this) {
+            node->right_ = NULL;
+            return RIGHT;
+        }
+        else printf("ERROR(remove): neither the left nor the right link of the parent of the removed node point to the node removed.\n");
     }
 
     return SIDEERROR;
 }
-
 
 
 // randomly and uniformly pick any node in the tree but the root
@@ -578,28 +569,25 @@ Tree *Tree::pickNode() {
     // find the node
     node = this;
     while (1) {
-//	printf("L: %d\n", loc);
+    //	printf("L: %d\n", loc);
+        if (node->size_ == loc) return node;
 
-	if (node->size_ == loc) return node;
+        if (node->left_) split = node->left_->size_;
+        else split = 0;
 
-	if (node->left_) split = node->left_->size_;
-	else split = 0;
-
-	if (loc<=split) {
-	    node = node->left_;
-	}
-	else {
-	    node = node->right_;
-	    loc -= split;
-	}
+        if (loc<=split)
+            node = node->left_;
+        else {
+            node = node->right_;
+            loc -= split;
+        }
     }
 }
 
 
 
 // Suite of tests to make sure things are work as they should
-void testTreeLibrary()
-{
+void testTreeLibrary() {
     initRand();
     initOps(10);
 

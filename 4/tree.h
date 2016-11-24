@@ -9,6 +9,7 @@
 
 #include "rand.h"
 #include "opList.h"
+#include "func.h"
 
 
 enum Side {LEFT, RIGHT, SIDEERROR};
@@ -26,6 +27,7 @@ void testTreeLibrary(); // Suite of tests to make sure things are work as they s
 // Operators are Op objects that contain a function that can be evaluated
 //
 // This class can be either an operator or a terminal
+//
 class Op
 {
 public:
@@ -102,8 +104,8 @@ public:
 
     // Printing
     void printIndent(int depth=0);  // print internal form of tree
-    void print() const;                   // print in nice neat infix expression
-    void printPre() const;                // print in nice neat prefix expression
+    void print() const;             // print in nice neat infix expression
+    void printPre() const;          // print in nice neat prefix expression
     static void printFreeSpace() { printf("Free Space: unused: %d  used: %d\n", freeListSize_, freeListUsed_); }
 
     // Accessors
@@ -111,7 +113,13 @@ public:
     bool isOp() const { return left_ != NULL; }     // true if operator
     Tree *up() const { return up_; }                // parent accessor
     int size() const { return size_; }              // size accessor
-    double value() const { return value_; }            // value accessor
+    double value() const { return value_; }         // value accessor
+
+
+    // Evolutionary components
+    double fitness( p *data );
+    void mutate();
+    void crossover();
 
 };
 

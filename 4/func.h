@@ -19,6 +19,8 @@ typedef struct {
     double fx;  // Result of f(x)
 } p; // Stores data for given inputs and results for the original function
 
-double fitness();
+const int maxGen = 17;     // Maximum number of generations
+const int popSize = 10;    // Population size
+const double xover = 0.3;      // Crossover Probability
 
 #endif
