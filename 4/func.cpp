@@ -61,11 +61,7 @@ int main() {
         pop[i]->evalFitness(data);
     }
 
-    if(TESTING) {
-        pop[0]->print();
-        pop[0]->mutate();
-        pop[0]->print();
-    }
+
 
     // **** THE EVOLUTION MAGIC ****
 
@@ -74,24 +70,22 @@ int main() {
     for( int i = 0; i < maxGen; i++ ) {
         
         for( auto &t : pop ) {
-            
+            // Crossover
+            if( choose(xover) ) {
+
+            }
+            // TODO: make sure we're checking the trees to ensure they're valid!!!
+        
             // Mutate 
             // TODO: vareity of mutation types (enum), randomly choose?
             //      Maybe vary prob. of type chosen based on it's performance?
             if( choose(mutateProb) ) {
                 t->mutate();
             }
-
-            // Crossover
-            if( choose(xover) ) {
-
-            }
-            // TODO: make sure we're checking the trees to ensure they're valid!!!
         }
 
         updateFitnesses(pop, data);
     } // end generational loop
-
 
     // Determine the best individual in the population
     std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
@@ -100,10 +94,6 @@ int main() {
 
 
     // **** OUTPUT ****
-
-    if(TESTING)
-        for( int i = 0; i < popSize; i++ )
-            printf("x: %f\tError: %f\n", data[i].x, pop[i]->getFitness());
 
 	if(TESTING) {
 		printf("\nTotal of fitness evaluations performed:\t%d\n", numFitnessCalcs);
@@ -123,7 +113,7 @@ int main() {
 
 // Note: error == fitness
 double Tree::evalFitness( p *data ) {
-    double error = 0;
+    double error = 0; // TODO: could we just operate on fitness_ ?
 
     // error = sum from i to N of (f(x_i) - f*(x_i))^2
     for( int i = 0; i < size_; i++ ) {

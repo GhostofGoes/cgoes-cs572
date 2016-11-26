@@ -1,0 +1,84 @@
+
+
+Testing tests/f1.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3929
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+19.273052	((0.937736 - x) + sin(0.844678))
+
+real	0m0.127s
+user	0m0.125s
+sys	0m0.000s
+
+
+Testing tests/f2.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3911
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+8.514039	sin(1.50429)
+
+real	0m0.158s
+user	0m0.141s
+sys	0m0.016s
+
+
+Testing tests/f3.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3916
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+1.471028	sin(1.18576)
+
+real	0m0.189s
+user	0m0.156s
+sys	0m0.016s
+
+
+Testing tests/f4.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3940
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+0.007195	(1.70508 / x)
+
+real	0m0.158s
+user	0m0.156s
+sys	0m0.000s
+
+
+Testing tests/f5.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3908
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+0.015396	(x - x)
+
+real	0m0.127s
+user	0m0.109s
+sys	0m0.016s
+
+
+Testing tests/f6.dat...
+
+Total of fitness evaluations performed:	4608
+Total mutations: 	3926
+Total crossovers: 	0
+Total selections: 	0
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+0.050102	sin(0.22379)
+
+real	0m0.142s
+user	0m0.125s
+sys	0m0.016s
