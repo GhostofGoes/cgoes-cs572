@@ -59,7 +59,9 @@ private:
     double value_; // the cached value for this node (value if terminal)
     int size_;     // size of the tree beneath this node including this node
     bool used_;    // is the node allocated (provides debugging support)
-
+    double fitness_; // Fitness of the tree. Also referred to as "error" in some places in code
+    // NOTE: smaller is better for fitness! (since it's the error)
+      
 // Memory management
 private:
     static int freeListInitSize_;
@@ -114,10 +116,11 @@ public:
     Tree *up() const { return up_; }                // parent accessor
     int size() const { return size_; }              // size accessor
     double value() const { return value_; }         // value accessor
+    double getFitness() const { return fitness_; }  // fitness accessor
 
 
     // Evolutionary components
-    double fitness( p *data );
+    double fitness( p *data ); // Evaluates and updates fitness for the tree
     void mutate();
     void crossover();
 

@@ -80,6 +80,7 @@ void Tree::init() {
     used_ = false;
     value_ = 0.0;
     size_ = 1;
+    fitness_ = -99;
 }
 
 
