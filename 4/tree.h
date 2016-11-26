@@ -61,7 +61,7 @@ private:
     bool used_;    // is the node allocated (provides debugging support)
     double fitness_; // Fitness of the tree. Also referred to as "error" in some places in code
     // NOTE: smaller is better for fitness! (since it's the error)
-      
+
 // Memory management
 private:
     static int freeListInitSize_;
@@ -119,8 +119,9 @@ public:
     double getFitness() const { return fitness_; }  // fitness accessor
 
 
-    // Evolutionary components
-    double fitness( p *data ); // Evaluates and updates fitness for the tree
+    // Evolutionary components 
+    // These are defined in func.cpp (I'm lazy)
+    double evalFitness( p *data ); // Evaluates and updates fitness for the tree
     void mutate();
     void crossover();
 

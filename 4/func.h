@@ -1,14 +1,11 @@
 #ifndef FUNC_H
 #define FUNC_H
 
-#include <vector>
-
 #include "rand.h"
 
-using namespace std;
 
 #define PI 3.14159265358979323846  /* "good enough" value of pi */
-#define TESTING 0
+#define TESTING 1
 
 typedef struct {
     double x;   // Input x to f()

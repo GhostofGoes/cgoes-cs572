@@ -12,6 +12,7 @@
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
+#include <vector>
 
 #include "func.h"
 #include "tree.h"
@@ -21,22 +22,23 @@
 int numFitnessCalcs = 0; 
 int numMutations = 0;
 int numXovers = 0;
+int numSelections = 0;
 
-Tree * select( vector<Tree *> population ); // Selects a tree out of the population
+Tree * select( std::vector<Tree *> population ); // Selects a tree out of the population
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
 
 // This sets everything up, kicks off evolutions, and prints results
 int main() {
     initRand();         // Initialize the random number generator
 
-    vector<Tree *> pop(popSize);
+    std::vector<Tree *> pop(popSize);
     int numPairs = 0;   // Number of pairs to be input
     p * data = NULL;    // List of pairs of real numbers x, f(x)
 	
-    cin >> numPairs;
+    std::cin >> numPairs;
     data = new p[numPairs];
     for( int i = 0; i < numPairs; i++ )
-        cin >> data[i].x >> data[i].fx;
+        std::cin >> data[i].x >> data[i].fx;
 
     initOps(10); // TODO: why 10?
     addOpOrTerm((char * )"+", 2, addOp);
@@ -75,19 +77,20 @@ int main() {
 
     }
 
-    sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
     Tree * bestIndividual = pop[0];
 
     // **** OUTPUT ****
 
     if(TESTING)
         for( int i = 0; i < popSize; i++ )
-            printf("x: %f\tError: %f\n", data[i].x, pop[i]->fitness(data));
+            printf("x: %f\tError: %f\n", data[i].x, pop[i]->getFitness());
 
 	if(TESTING) {
 		printf("\nTotal of fitness evaluations performed:\t%d\n", numFitnessCalcs);
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers: \t%d\n", numXovers);
+        printf("Total selections: \t%d\n", numSelections);
     }
 
     // Output for assignment
@@ -99,7 +102,7 @@ int main() {
 } // end main
 
 
-double Tree::fitness( p *data ) {
+double Tree::evalFitness( p *data ) {
     double error = 0;
 
     // error = sum from i to N of (f(x_i) - f*(x_i))^2
@@ -108,6 +111,8 @@ double Tree::fitness( p *data ) {
         error += pow((data[i].fx - eval()), 2);
     }
 
+    fitness_ = error;
+    numFitnessCalcs++;
     return error;
 } // end fitness
 
@@ -135,7 +140,9 @@ void Tree::crossover() {
 } // end crossover
 
 
-Tree * select( vector<Tree *> population ) {
+// Assumes global tournySize
+Tree * select( std::vector<Tree *> population ) {
 
+    numSelections++;
 } // end select
 
