@@ -26,6 +26,8 @@ int numSelections = 0;
 
 Tree * select( std::vector<Tree *> population ); // Selects a tree out of the population
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
+bool isIn( std::vector<int> t, int val );
+
 
 // This sets everything up, kicks off evolutions, and prints results
 int main() {
@@ -140,9 +142,38 @@ void Tree::crossover() {
 } // end crossover
 
 
-// Assumes global tournySize
-Tree * select( std::vector<Tree *> population ) {
+// Selects a chromosome out of p using simple tournament selection
+// Most of this code came from Assignment 3 population.cpp
+Tree * select( std::vector<Tree *> p ) {
+    std::vector<int> t;
+
+    for( int i = 0; i < tournySize; i++ ) {
+        int temp;
+        do {
+            temp = randMod(p.size());
+        } while( isIn(t, temp));
+        t.push_back(temp);
+    }
+
+    double bestFit = p[t[0]]->getFitness(); // Fitness of the "best" seen thus far
+    int bestIndex = 0; // Index of the best individual seen thus far
+
+    for( int i = 0; i < tournySize; i++ ) {
+        if(p[t[i]]->getFitness() > bestFit) {
+            bestFit = p[t[i]]->getFitness();
+            bestIndex = i;
+        }
+    }
 
     numSelections++;
+    return p[bestIndex]; 
 } // end select
+
+
+// Checks if val is in vector t
+bool isIn( std::vector<int> t, int val ) {
+    for( int i : t )
+        if(i == val) return true;
+    return false;
+} // end isIn
 
