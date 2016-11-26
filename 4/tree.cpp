@@ -19,7 +19,7 @@ Op **opList2;   // Binary ops
 
 // give a simple 4 character hex address of something to make it easier to 
 // spot what address is what without full address being given.
-unsigned long long int addrToNum(void *addr) {
+unsigned long long int addrToNum(const void *addr) {
     return ((unsigned long long int)addr) & 0xffff;
 }
 
@@ -67,6 +67,8 @@ void addOpOrTerm(char * name, int arity, double (*f)(double x, double y)) {
 // and it is often faster than running the new and delete all the time.
 // Someone should check that it is faster in this case.  It also provides
 // some small amount of error checking.
+//
+// (Chris's note) This is basically a Memory Pool, so time isn't wasted on re-allocating chunks using malloc or new
 
 int Tree::freeListInitSize_ = 0;
 int Tree::freeListSize_ = 0;
@@ -273,7 +275,7 @@ Tree::Tree(Op *op) {
 }
 
 
-void Tree::printIndent(int indent) {
+void Tree::printIndent(int indent) const {
     for (int i=0; i<indent; i++) printf("   ");
     printf("[%d, 0x%04llx]", size_, addrToNum(this));
 
