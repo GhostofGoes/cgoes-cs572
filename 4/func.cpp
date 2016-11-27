@@ -12,39 +12,41 @@
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
-#include <vector>
+using std::vector;
 
 #include "func.h"
 #include "tree.h"
 #include "opList.h"
 
 // Keeps track of total number of fitness evaluations performed
-int numFitnessCalcs = 0; 
+int numFitnessEvals = 0; 
 int numMutations = 0;
 int numXovers = 0;
 int numSelections = 0;
 
-Tree * select( std::vector<Tree *> population ); // Selects a tree out of the population
-void updateFitnesses( std::vector<Tree *> population, p * data );
+Tree * select( vector<Tree *> population ); // Selects a tree out of the population
+void updateFitnesses( vector<Tree *> population, vector<p> data );
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
-bool isIn( std::vector<int> t, int val );
+bool isIn( vector<int> t, int val );
 
 
 // This sets everything up, kicks off evolutions, and prints results
 int main() {
     initRand();         // Initialize the random number generator
 
-    int numPairs = 0;   // Number of pairs to be input
-    p * data = NULL;    // List of pairs of real numbers x, f(x)
-    std::vector<Tree *> pop(popSize); // The population
+    int numPairs = 0;   // Number of data points to be input
+    vector<p> data;     // List of pairs of real numbers x, f(x)
+    vector<Tree *> pop(popSize); // The population
 	
     // Input the dataset of function inputs and results
     std::cin >> numPairs;
-    data = new p[numPairs];
-    for( int i = 0; i < numPairs; i++ )
-        std::cin >> data[i].x >> data[i].fx;
-
+    for( int i = 0; i < numPairs; i++ ) {
+        p point;
+        std::cin >> point.x >> point.fx;
+        data.push_back(point);
+    }
+    
     // Initialize Heckendorn's library
     initOps(10); // TODO: why 10?
     addOpOrTerm((char * )"+", 2, addOp);
@@ -58,6 +60,7 @@ int main() {
     // Initialize the population with random trees
     for( int i = 0; i < popSize; i++ ) {
         pop[i] = Tree::getRandTree(treeDepth);
+        if(TESTING) pop[i]->check();
         pop[i]->evalFitness(data);
     }
 
@@ -65,23 +68,19 @@ int main() {
 
     // **** THE EVOLUTION MAGIC ****
 
-    // TODO: why is it "max" generations?
+    // TODO: why is it "max" generations? could we end earlier?
     // Generational loop
     for( int i = 0; i < maxGen; i++ ) {
         
         for( auto &t : pop ) {
-            // Crossover
-            if( choose(xover) ) {
+
+            if( choose(xover) ) {       // Crossover
 
             }
-            // TODO: make sure we're checking the trees to ensure they're valid!!!
         
-            // Mutate 
-            // TODO: vareity of mutation types (enum), randomly choose?
-            //      Maybe vary prob. of type chosen based on it's performance?
-            if( choose(mutateProb) ) {
+            // TODO: variety of mutation types (enum), randomly choose
+            if( choose(mutateProb) )    // Mutation
                 t->mutate();
-            }
         }
 
         updateFitnesses(pop, data);
@@ -89,41 +88,36 @@ int main() {
 
     // Determine the best individual in the population
     std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
-    Tree * bestIndividual = pop[0];
-
 
 
     // **** OUTPUT ****
 
 	if(TESTING) {
-		printf("\nTotal of fitness evaluations performed:\t%d\n", numFitnessCalcs);
-        printf("Total mutations: \t%d\n", numMutations);
-        printf("Total crossovers: \t%d\n", numXovers);
-        printf("Total selections: \t%d\n", numSelections);
+		printf("\nTotal fitness evaluations:\t%d\n", numFitnessEvals);
+        printf("Total mutations: \t\t%d\n", numMutations);
+        printf("Total crossovers:\t\t%d\n", numXovers);
+        printf("Total selections:\t\t%d\n\n", numSelections);
     }
 
     // Output for assignment
     printf("MaxGen: %d\tPopSize: %d\tXoverProb: %f\n", maxGen, popSize, xover);
-    printf("%f\t", bestIndividual->getFitness());
-    bestIndividual->print(); // This prints a newline at the end
+    printf("%f\t", pop[0]->getFitness());
+    pop[0]->print(); // This prints a newline at the end
 
 	return 0;
 } // end main
 
 
-// Note: error == fitness
-double Tree::evalFitness( p *data ) {
-    double error = 0; // TODO: could we just operate on fitness_ ?
+// Error = sum from i to N of (f(x_i) - f*(x_i))^2
+void Tree::evalFitness( std::vector <p> data ) {
+    fitness_ = 0;
 
-    // error = sum from i to N of (f(x_i) - f*(x_i))^2
-    for( int i = 0; i < size_; i++ ) {
-        setX(data[i].x);
-        error += pow((data[i].fx - eval()), 2);
+    for( p &point : data ) {
+        setX(point.x);
+        fitness_ += pow((point.fx - eval()), 2);
     }
 
-    fitness_ = error;
-    numFitnessCalcs++;
-    return error;
+    numFitnessEvals++;
 } // end fitness
 
 
@@ -145,25 +139,27 @@ void Tree::mutate() {
     chosen = getRandTree(chosenDepth);      // Generate a random tree
     chosenParent->join(chosenSide, chosen); // Attach to random part of the tree
 
-    if(TESTING)
-        check(); // Verify integrity of the complete mutated tree
-
+    if(TESTING) check(); // Verify integrity of the complete mutated tree
     numMutations++;
 } // end mutate
 
 
 // Crosses over the two trees given as parameters
 // The tree this is called on is the resulting child
-void Tree::crossover() {
+void Tree::crossover( Tree * parA, Tree * parB ) {
     
 
+
+    if(TESTING)
+        check();
+    
     numXovers++;
 } // end crossover
 
 
-// Selects a chromosome out of p using simple tournament selection
+// Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
-Tree * select( std::vector<Tree *> pop ) {
+Tree * select( vector<Tree *> pop ) {
     std::vector<int> t;
 
     for( int i = 0; i < tournySize; i++ ) {
@@ -190,15 +186,15 @@ Tree * select( std::vector<Tree *> pop ) {
 
 
 // Checks if val is in vector t
-bool isIn( std::vector<int> t, int val ) {
+bool isIn( vector<int> t, int val ) {
     for( int i : t )
         if(i == val) return true;
     return false;
 } // end isIn
 
 
-void updateFitnesses( std::vector<Tree *> pop, p * data ) {
+void updateFitnesses( vector<Tree *> pop, vector<p> data ) {
     for( auto &i : pop )
         i->evalFitness(data);
-}
+} // end updateFitnesses
 

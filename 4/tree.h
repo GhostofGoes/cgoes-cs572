@@ -90,7 +90,7 @@ public:
 public:
     Tree(Op *op);       // create a tree
 
-    bool check(bool hasParent=false);  // vet the tree
+    bool check(bool hasParent=false) const;  // vet the tree
     int depth() const;  // Calculates current depth of the tree
     Tree *pickNode();   // uniformly any node but the root
 
@@ -121,9 +121,9 @@ public:
 
     // Evolutionary components 
     // These are defined in func.cpp (I'm lazy)
-    double evalFitness( p *data ); // Evaluates and updates fitness for the tree
+    void evalFitness( std::vector<p> data ); // Evaluates and updates fitness for the tree
     void mutate();
-    void crossover();
+    void crossover( Tree * parentA, Tree * parentB );
 
 };
 

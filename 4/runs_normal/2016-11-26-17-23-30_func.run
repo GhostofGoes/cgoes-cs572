@@ -1,0 +1,90 @@
+
+
+Testing tests/f1.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3911
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+4508.164201	((((1.65015 + ((1.18589 + (x + ((1.05176 + x) + (1.52526 + x)))) - sin(2.65799))) + x) - 1.97596) - sin(((x - (0.287673 * 2.32079)) / 1.77881)))
+
+real	0m0.080s
+user	0m0.063s
+sys	0m0.016s
+
+
+Testing tests/f2.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3941
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+493.625066	((((2.43775 + x) + (((((sin(x) - (x / x)) / (sin(x) - (1.85647 + x))) * (((2.79463 - x) * sin(0.501696)) - 0.647672)) / (((sin(x) - (0.230368 / 2.9705)) * 2.00552) + (sin(2.52101) / sin((x - x))))) - x)) * sin(sin((x / 0.946355)))) + sin(((sin(1.58831) / (((((x + 2.36855) + (1.8514 - x)) - 0.736347) - (0.924717 - x)) * (sin(((x * 0.729955) + x)) + (((x + 1.49762) + sin(0.929117)) - (sin(x) / (x * 2.66888)))))) * (sin(x) + sin(0.664992)))))
+
+real	0m0.095s
+user	0m0.063s
+sys	0m0.000s
+
+
+Testing tests/f3.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3891
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+116689.235787	((sin(x) + (((sin((0.786807 * 1.46181)) - (x - sin((sin(x) * (x / x))))) - (x - sin(1.91337))) - (((x * x) + (x - sin(0.515174))) + (sin((((0.668708 * x) + 2.0317) / ((x + 2.77398) - sin(0.661779)))) - x)))) / ((x - ((2.51417 * 2.08246) - x)) / sin(sin(((((0.206279 / (1.70128 * x)) / (sin(x) * (x * x))) + (((1.92361 / x) + (1.96106 / 0.0952356)) + 1.73347)) + x)))))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.016s
+
+
+Testing tests/f4.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3894
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+76479.686058	(0.624816 + (((sin((x + (((0.0581115 - 0.374732) / (x + x)) * 1.392))) * (((((1.79179 - x) + (0.121159 + 2.57836)) / (sin(0.933016) - (x - x))) / x) / x)) / ((x * (2.76176 * (0.23888 / sin((1.70267 - x))))) - (sin((x - ((1.26654 - x) / x))) - x))) - sin(((((sin((0.197843 + x)) * sin((2.56456 + x))) - sin(0.658035)) - (((1.4919 / 0.38047) * (sin(x) - (x + 2.85153))) - sin((x - sin(0.323441))))) - 1.88809))))
+
+real	0m0.095s
+user	0m0.078s
+sys	0m0.016s
+
+
+Testing tests/f5.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3892
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+7.528921	(0.882921 / 2.4366)
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+
+Testing tests/f6.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3901
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+3.935294	sin(sin((x + 1.29679)))
+
+real	0m0.109s
+user	0m0.094s
+sys	0m0.016s

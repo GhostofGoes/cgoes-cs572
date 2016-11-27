@@ -457,7 +457,7 @@ bool Tree::join(Side s, Tree *node) {
 }
 
 
-bool Tree::check(bool hasParent) {
+bool Tree::check(bool hasParent) const {
     int l, r;
     unsigned int loc;
     bool ok;
@@ -561,7 +561,7 @@ Side Tree::remove() {
 
 
 // randomly and uniformly pick any node in the tree but the root
-Tree *Tree::pickNode() {
+Tree * Tree::pickNode() {
     Tree *node;
     int loc, split;
     

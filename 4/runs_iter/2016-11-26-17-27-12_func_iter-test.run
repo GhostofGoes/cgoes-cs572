@@ -1,0 +1,738 @@
+
+
+Testing tests/f1.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3920
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+7347.924893	(sin((((sin(x) - (sin(x) / x)) / 0.757377) / (1.43928 * (sin(0.811827) - sin(x))))) - (((2.04028 - x) - sin((((x - ((x - 1.01093) + (2.03484 / x))) - (((2.25472 + x) - (x + 2.76608)) * (1.49076 + (x * x)))) + (sin(((1.40371 * x) * (0.62795 * x))) - (((x * 1.97631) + (2.77803 - x)) + sin((0.00839506 + 2.05798))))))) * x))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3901
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+105.633503	(x * (x * 0.545913))
+
+real	0m0.127s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3893
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+608.809945	((sin((((2.25643 - 0.323218) - ((((x / x) + x) * x) / sin(x))) / x)) + ((sin((sin(x) - ((1.14647 / (2.56696 * 2.70442)) - x))) + ((x * x) - 2.97986)) - 1.88693)) / 1.50363)
+
+real	0m0.095s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3903
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+4661.079966	(((((x * 2.62086) + sin(x)) + (2.12846 - x)) + 1.45941) + x)
+
+real	0m0.103s
+user	0m0.094s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3903
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+1933.555997	(x * (1.60288 / (1.35283 * ((sin(sin((sin(1.88531) - (0.474056 / x)))) * ((sin((x - x)) - (x * 0.0601219)) / 0.510332)) + (x / x)))))
+
+real	0m0.095s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3916
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+3812.536767	(((sin(2.64246) + ((((1.52004 - x) - ((1.52818 + (2.04584 - x)) / (x / 1.55942))) / (2.7802 + (0.788701 / x))) + x)) - sin((((sin((2.13306 - (x / x))) / (((1.27083 - x) * (1.60308 - 0.821575)) + ((x / x) / sin(0.48718)))) + x) * (0.258321 * sin((((x * 2.48779) * sin(x)) / x)))))) / (((2.94458 - (1.15438 + (2.4166 / sin(2.36929)))) - 0.13032) / (1.13431 - x)))
+
+real	0m0.083s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3912
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+2217.159860	(sin(2.83122) * ((((x / 2.44249) * (((x + ((x + 1.61087) * (0.195338 / 1.08424))) * (x - (0.783227 * (x * 1.03779)))) - 0.966107)) * 2.04383) + sin(((1.56746 / sin((0.311366 + x))) - 2.40173))))
+
+real	0m0.098s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3912
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+684.675936	((x * x) * (1.67851 / 2.6042))
+
+real	0m0.095s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3940
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+1199.055834	((sin(x) + (x - (x * 1.19817))) + ((x * x) * 0.460369))
+
+real	0m0.089s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3925
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+357.067322	((0.81411 + ((0.471451 * (x + 1.44931)) - 0.309915)) * x)
+
+real	0m0.095s
+user	0m0.094s
+sys	0m0.000s
+
+
+Testing tests/f2.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3916
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+406.028577	(sin(x) * 2.56225)
+
+real	0m0.090s
+user	0m0.063s
+sys	0m0.031s
+
+Total fitness evaluations:	4608
+Total mutations: 		3906
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+547.227356	(1.82716 * sin(x))
+
+real	0m0.081s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3914
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+205.823603	(sin(x) * (1.64611 + 2.23173))
+
+real	0m0.087s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3924
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+731.261183	sin(x)
+
+real	0m0.071s
+user	0m0.063s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3905
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+419.085874	((sin(x) + sin(2.91805)) * 2.56327)
+
+real	0m0.065s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3929
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+396.691767	(sin(x) * (((((x / x) / sin(2.17215)) * x) / (1.70909 * x)) * ((((((sin(0.712034) + x) + (x * sin(2.48529))) / x) / sin(0.14237)) + 2.28283) - x)))
+
+real	0m0.082s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3902
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+665.624922	(2.47702 * sin(((x * 1.95735) - ((x - sin((((2.55141 * 1.34422) * 2.1216) + sin((2.91409 / x))))) + (sin(2.27208) * ((sin((2.11971 + x)) - ((0.525647 / x) * (x / x))) + (sin((x / 2.69568)) * (x * 0.392978))))))))
+
+real	0m0.084s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3925
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+683.274673	((sin(1.53493) * (sin(x) / ((1.77472 / 2.53805) * sin(1.36643)))) / 1.21172)
+
+real	0m0.080s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3894
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+731.261183	sin(x)
+
+real	0m0.083s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3888
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+731.261183	sin(x)
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+
+Testing tests/f3.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3937
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+15756.824557	((sin(x) * (2.4264 + 1.981)) * (0.960538 + x))
+
+real	0m0.083s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3915
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+128242.161366	(x / sin((((sin(x) * 0.440379) * (x * (sin(x) * x))) - (sin(x) - (2.97291 / x)))))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3938
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+71193.564458	(sin(x) * (x + x))
+
+real	0m0.083s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3913
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+101654.581363	(sin(x) * x)
+
+real	0m0.080s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3920
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+127375.624508	((x / ((sin((1.16054 * 2.14553)) + ((((x - 1.01632) / 2.56909) + 0.095345) / sin(0.94294))) / sin((((((x / 2.46087) + (1.5523 + x)) * sin(sin(x))) - x) / x)))) * (((x - (sin((((1.57438 * x) / (x + x)) * ((0.442189 / 0.437632) * (2.54667 / x)))) / ((((1.95428 - x) + (x + x)) + ((x + x) - (2.83167 - x))) - sin((x - (2.5837 / 0.526614)))))) * sin(((1.32526 * ((1.27061 + (0.309078 + x)) * sin((2.06471 * 1.80831)))) + (sin(0.29106) / sin(sin((1.66669 / x))))))) * 0.848038))
+
+real	0m0.083s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3935
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+43090.853585	(0.689342 * (((((1.00632 * (sin(x) - 1.37494)) * x) + (x - (x * (x + ((1.40492 / x) - (0.80319 + x)))))) / 0.218203) - x))
+
+real	0m0.096s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3894
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+71454.011432	(((((0.997101 * x) + sin(sin(sin(((x - 0.746597) / (x * x)))))) - (sin(((sin(0.618) - x) - sin(((1.77787 * 1.92197) + (1.72698 / 1.27468))))) * (0.128896 + 2.28711))) + x) * sin(x))
+
+real	0m0.083s
+user	0m0.063s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3927
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+109819.482799	(((x * x) * (1.80125 / x)) - (x - (sin(sin(x)) * x)))
+
+real	0m0.081s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3932
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+102838.601801	(x - ((((sin(x) + sin((((x / 0.745941) * 2.72502) / (1.36504 - x)))) * (sin((((1.44796 / 0.221476) * 1.87848) / 2.44962)) * (x - (((x / 1.72472) / 1.92403) - sin(0.941458))))) + sin((sin(x) / ((((x * 0.325524) + (0.946573 / 0.74605)) - sin(sin(2.8687))) * (sin(1.15732) - 0.578184))))) - (((0.353803 * x) - sin(((sin(2.06483) - ((x * x) * (x * x))) * (((0.130306 * 1.11819) / 0.217914) / ((x - 2.03464) * sin(2.25433)))))) * ((((((x - 0.982871) / (2.45568 * x)) * 0.130322) * x) - (x - (0.257001 + x))) + (((sin((x - x)) + sin(x)) * 2.73101) * ((sin(1.56805) / x) * x))))))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3923
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+64944.348816	(sin((2.64876 + (0.593207 - sin(x)))) * (x * 2.54901))
+
+real	0m0.074s
+user	0m0.063s
+sys	0m0.016s
+
+
+Testing tests/f4.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3938
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+76347.603492	((((((x - ((0.529041 / (x + x)) * (2.2513 / (x + x)))) * sin((((2.94464 * x) - (x - 1.38819)) * ((2.92774 / 0.474107) / (0.474603 + 1.75311))))) + sin(x)) - ((x / (x + 0.0229659)) / ((x - x) + sin(((0.263922 - (0.889514 * x)) / (sin(0.384612) * (1.57445 / 2.32881))))))) + sin(x)) / x)
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3924
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+244507.080285	(((2.44296 + x) / (x - 0.0490166)) + 1.29806)
+
+real	0m0.083s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3926
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+8460.193135	((2.33596 + ((1.43345 / x) * (((x / x) - ((((x - x) / sin(x)) * (sin(x) + (x + x))) * (sin(sin(x)) * 1.99854))) * ((((x + (2.3208 * x)) + x) + (x - x)) + (2.74597 / x))))) * 1.36645)
+
+real	0m0.113s
+user	0m0.094s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3918
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+63657.054360	(2.82029 / (x * x))
+
+real	0m0.099s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3893
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+44197.406585	(((((sin(((sin(x) / (0.0658942 - x)) / x)) / ((((0.371726 + 2.39663) - (x / x)) / ((x / x) / 0.217755)) - 0.345236)) * (((x * ((x + x) - sin(0.619568))) + x) / (((x * (1.20244 + 0.950116)) + ((x + 0.959149) / x)) - (sin((x + x)) / 2.24587)))) + 1.92775) + ((x + ((sin(2.58498) - 1.38403) - 1.18889)) / sin(0.383904))) - (((((sin(((0.551067 + x) * sin(x))) + ((x + (1.69856 + 0.425693)) + ((2.43973 / 0.817716) - 1.98394))) - (x - (sin((0.991457 + 0.647857)) - ((2.9495 * 2.44031) / x)))) - x) / x) - x))
+
+real	0m0.105s
+user	0m0.094s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3902
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+132653.204084	(((((sin((((x + 2.69386) * (x * x)) + ((0.976216 - x) * sin(x)))) - sin(x)) / 0.783915) / ((((((x + 0.69566) - x) / ((2.7543 / x) * (2.61474 * x))) - sin(2.74749)) * x) + x)) + x) - ((2.06095 / (0.089413 - x)) - x))
+
+real	0m0.100s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3934
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+19514.262536	((((((sin(2.76341) * 1.35498) * sin(((x * sin(x)) - ((2.18495 * x) * (x + 0.35828))))) - 0.731673) - sin(((((x * (x - x)) - x) / (1.28917 - (sin(2.21551) / sin(0.334685)))) + 1.24373))) * (2.37747 / 0.771406)) / ((x * (sin(sin(0.201171)) - ((x * x) + (x + x)))) / x))
+
+real	0m0.099s
+user	0m0.094s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3918
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+119938.080395	(((2.5914 / x) - (sin((sin((((x * 2.292) * (2.08809 / 2.41877)) * (0.147043 + (0.482851 / x)))) * (sin(((0.329676 + x) - 0.784945)) * ((x * (x + x)) + ((2.7683 + x) + 1.00853))))) + (x + (0.803745 / (x + (x * x)))))) / x)
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3933
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+18120.294042	((x - (((x - sin(2.63245)) + 2.07273) / (sin(sin(x)) / ((x + 1.6145) + ((((x + x) * (x - x)) - (sin(x) + 2.40138)) * 0.535529))))) / ((x - (x + (((((2.51946 / x) - (0.0627263 - x)) * (x * x)) + ((sin(x) + sin(x)) + x)) / ((2.83016 / 1.1896) / x)))) / (1.28317 / (1.09775 - sin(((x - sin((x * x))) + sin(0.364813)))))))
+
+real	0m0.095s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3897
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+36746.840836	((x + ((1.6278 + ((1.56941 * (((2.94385 / x) - (x - 1.73578)) - (sin(2.04228) + (1.04679 * 0.945914)))) / ((((x + x) / sin(2.49409)) * x) * 2.58706))) - sin(x))) - ((2.2039 - ((((((0.367184 * 1.9072) / sin(2.1534)) / ((2.00261 * x) + 1.74878)) - (((x - 1.43832) + (0.656424 + x)) * x)) + 2.34422) * ((0.440701 + (sin(x) * ((x + x) + sin(2.70752)))) / (((1.69375 + (x / x)) + 2.19913) / 0.982386)))) / ((x + (((((x + 1.52553) / (0.55339 + x)) / ((2.42495 / x) / 1.17344)) + 1.6608) - 1.75066)) * (sin(sin(1.34286)) * 1.46727))))
+
+real	0m0.099s
+user	0m0.078s
+sys	0m0.000s
+
+
+Testing tests/f5.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3913
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.510295	(x / (x + x))
+
+real	0m0.088s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3928
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+7.217090	sin(0.670676)
+
+real	0m0.096s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3910
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.668670	sin(0.464396)
+
+real	0m0.093s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3932
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.521346	sin((0.765543 - 0.255119))
+
+real	0m0.094s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3906
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.638147	sin(0.587091)
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3901
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.543412	sin(sin(0.521698))
+
+real	0m0.082s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3934
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.516967	sin(((0.378195 + sin(1.43366)) - ((1.58352 * 1.77842) - 1.98925)))
+
+real	0m0.101s
+user	0m0.109s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3902
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.519305	sin(0.512007)
+
+real	0m0.092s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3935
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.921366	sin(2.50608)
+
+real	0m0.091s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3911
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.544565	(1.5355 / 2.89759)
+
+real	0m0.090s
+user	0m0.094s
+sys	0m0.000s
+
+
+Testing tests/f6.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		3906
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+3.583996	sin(((2.01398 - x) - ((((0.0357424 * 2.90965) * sin(sin(0.817171))) - (((sin(sin(1.83845)) * ((x - x) * x)) / 2.85411) * x)) * (sin(x) * 0.0332293))))
+
+real	0m0.092s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3911
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+11.895709	((sin(x) * (2.56839 * 1.0224)) * 0.113882)
+
+real	0m0.078s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3923
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+7.021818	sin((1.69985 - x))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3947
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+3.750551	sin((((((x - 2.67467) + 0.542686) + sin((x - x))) + 1.36451) + (2.72351 - sin((sin(0.332653) - (1.67988 - 2.27893))))))
+
+real	0m0.080s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3898
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+10.362096	sin((((((sin(((x - x) - (1.71881 / 1.9092))) / (((x + x) - 1.70158) / ((x * x) * (0.206415 + 2.04365)))) - (sin(sin((2.66999 / 1.83632))) - (((0.972722 / x) * x) / 2.46869))) / (((x + sin(2.55403)) * x) - ((2.25292 + (2.79723 + (1.02651 / x))) / sin((x * (x / x)))))) + sin(2.25927)) + x))
+
+real	0m0.099s
+user	0m0.078s
+sys	0m0.031s
+
+Total fitness evaluations:	4608
+Total mutations: 		3926
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+3.887157	sin((1.96388 - x))
+
+real	0m0.082s
+user	0m0.078s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3933
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+4.036461	sin((2.34482 - x))
+
+real	0m0.095s
+user	0m0.078s
+sys	0m0.016s
+
+Total fitness evaluations:	4608
+Total mutations: 		3877
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+13.770961	(sin(x) / (((x - 1.61147) * x) + (2.21176 + (x + sin(((2.37779 * (x / x)) - 0.081782))))))
+
+real	0m0.086s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3915
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+2.787493	sin(sin((2.24535 - x)))
+
+real	0m0.092s
+user	0m0.094s
+sys	0m0.000s
+
+Total fitness evaluations:	4608
+Total mutations: 		3936
+Total crossovers:		0
+Total selections:		0
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+4.264987	sin((x + 1.22548))
+
+real	0m0.092s
+user	0m0.078s
+sys	0m0.000s
