@@ -85,11 +85,16 @@ int main() {
                 children[i]->mutate();
         }
 
+        for( int i = elites; i < popSize; i++ ) {
+            pop[i] = select(children);
+        }
+        //pop = children;
         updateFitnesses(pop, data);
+        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
     } // end generational loop
 
     // Determine the best individual in the population
-    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    //std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
 
     // TODO: bit of local search on the best individual?
 
@@ -99,7 +104,8 @@ int main() {
 		printf("\nFitness evaluations:\t%d\n", numFitnessEvals);
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
-        printf("Total selections:\t%d\n\n", numSelections);
+        printf("Total selections:\t%d\n", numSelections);
+        printf("Mutate prob: %f\tElites: %d\tTournament size: %d\n\n", mutateProb, elites, tournySize);
     }
 
     // Output for assignment
@@ -112,10 +118,10 @@ int main() {
 
 
 // Error = sum from i to N of (f(x_i) - f*(x_i))^2
-void Tree::evalFitness( const std::vector <p> &data ) {
+void Tree::evalFitness( std::vector <p> data ) {
     fitness_ = 0;
 
-    for( const p &point : data ) {
+    for( p &point : data ) {
         setX(point.x);
         fitness_ += pow((point.fx - eval()), 2);
     }

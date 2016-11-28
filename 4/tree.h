@@ -121,7 +121,7 @@ public:
 
     // Evolutionary components 
     // These are defined in func.cpp (I'm lazy)
-    void evalFitness( const std::vector<p> &data ); // Evaluates and updates fitness for the tree
+    void evalFitness( std::vector<p> data ); // Evaluates and updates fitness for the tree
     void mutate();
     void crossover( Tree * t );
 
