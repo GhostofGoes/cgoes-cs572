@@ -40,8 +40,6 @@ int main() {
     vector<p> data;     // List of pairs of real numbers x, f(x)
     vector<Tree *> pop(popSize);    // The population
     vector<Tree *> children(popSize); // Population consisting of modified population members
-    vector<Tree *> newPop(popSize); // Population selected from members of current population
-    vector<Tree *> clonePop(popSize * 2);
 	
     // Input the dataset of function inputs and results
     std::cin >> numPairs;
@@ -76,10 +74,10 @@ int main() {
     // Generational loop
     for( int i = 0; i < maxGen; i++ ) {
         
-        for( int j = 0; j < popSize; j++ ) // Make copy of current population
-            children[j] = pop[j]->copy();
-        
+        // TODO: Elieteism? (j = elites)
         for( Tree * &child : children ) {
+            child = select(pop)->copy();
+
             if( choose(xover) )           // Crossover
                 child->crossover(select(pop)); // Select individual out of population to crossover with
             
@@ -88,30 +86,17 @@ int main() {
                 child->mutate();
         }
 
-        updateFitnesses(children, data);
-
-        // Add children to current population
-        // pop.insert( pop.end(), children.begin(), children.end()); 
-        clonePop = pop;
-        clonePop.insert( clonePop.end(), children.begin(), children.end());
-
-        // Select from children and previous population to generate new population
-        for( int j = 0; j < popSize; j++ ) {
-            newPop[j] = select(clonePop); // this most definitely leaks n/2 nodes of memory. MEH.
-        }
-        printPop(newPop);
-        pop = newPop;
+        for( auto &i : pop )
+            Tree::free(i);
+            
+        pop = children;
         updateFitnesses(pop, data);
-        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
-
-        // TODO: ELIETEISM j = elites
-
+        // Dude, hold my beer...
     } // end generational loop
 
     // Determine the best individual in the population
-    //std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
 
-    printPop(pop);
     // TODO: bit of local search on the best individual?
 
     // **** OUTPUT ****
