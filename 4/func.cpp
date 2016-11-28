@@ -70,11 +70,10 @@ int main() {
 
     // **** THE EVOLUTION MAGIC ****
 
-    // TODO: why is it "max" generations? could we end earlier?
+    // TODO: check for error <= 0.01, exit early if we reach it
     // Generational loop
     for( int GEN = 0; GEN < maxGen; GEN++ ) {
         
-        // TODO: Elieteism? (j = elites)
         for( int i = 0; i < popSize; i++ ) {
             children[i] = select(pop)->copy();
 
@@ -82,30 +81,25 @@ int main() {
                 children[i]->crossover(select(pop)); // Select individual out of population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
-            if( choose(mutateProb) )        // Mutation
+            if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
-        }
-            
-        for( int i = elites; i < popSize; i++ ) {
-            pop[i] = select(children); // leaky leaky
         }
 
         updateFitnesses(pop, data);
-        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
     } // end generational loop
 
     // Determine the best individual in the population
-    // std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
 
     // TODO: bit of local search on the best individual?
 
     // **** OUTPUT ****
 
-	if(TESTING) {
-		printf("\nTotal fitness evaluations:\t%d\n", numFitnessEvals);
-        printf("Total mutations: \t\t%d\n", numMutations);
-        printf("Total crossovers:\t\t%d\n", numXovers);
-        printf("Total selections:\t\t%d\n\n", numSelections);
+	if(STATS) {
+		printf("\nFitness evaluations:\t%d\n", numFitnessEvals);
+        printf("Total mutations: \t%d\n", numMutations);
+        printf("Total crossovers:\t%d\n", numXovers);
+        printf("Total selections:\t%d\n\n", numSelections);
     }
 
     // Output for assignment
@@ -118,10 +112,10 @@ int main() {
 
 
 // Error = sum from i to N of (f(x_i) - f*(x_i))^2
-void Tree::evalFitness( std::vector <p> data ) {
+void Tree::evalFitness( const std::vector <p> &data ) {
     fitness_ = 0;
 
-    for( p &point : data ) {
+    for( const p &point : data ) {
         setX(point.x);
         fitness_ += pow((point.fx - eval()), 2);
     }
@@ -157,7 +151,7 @@ void Tree::mutate() {
 // Similiar methodology as mutate()
 void Tree::crossover( Tree * t ) {
     Tree * swath = t->pickNode()->copy();   // Grab a random swath from the given tree
-    Tree * chosen = pickNode();             // Choose a random subtree to replace with the over'd swath
+    Tree * chosen = pickNode();             // Choose a random subtree to replace with the xover'd swath
     Tree * chosenParent = chosen->up();     // Save it's parent
     Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
     free(chosen);                           // Release old subtree to the memory pool
@@ -183,7 +177,7 @@ Tree * select( vector<Tree *> pop ) {
     }
 
     double bestFit = pop[t[0]]->getFitness(); // Fitness of the "best" seen thus far
-    int bestIndex = 0; // Index of the best individual seen thus far
+    int bestIndex = t[0]; // Index of the best individual seen thus far
 
     for( int i = 0; i < tournySize; i++ ) {
         if(pop[t[i]]->getFitness() < bestFit) {
@@ -209,6 +203,7 @@ void updateFitnesses( vector<Tree *> pop, vector<p> data ) {
     for( auto &i : pop )
         i->evalFitness(data);
 } // end updateFitnesses
+
 
 void printPop( vector<Tree *> pop ) {
     for( int i = 0; i < popSize; i++ )
