@@ -73,7 +73,7 @@ Chromosome Population::select( vector<Chromosome> p ) const {
     }
 
     double best = p[t[0]].fitness; // Fitness of the "best" seen thus far
-    int bestInd = 0; // Index of the best individual seen thus far
+    int bestInd = t[0]; // Index of the best individual seen thus far
     for( int i = 0; i < trnySize; i++ ) {
         if(p[t[i]].fitness > best) {
             best = p[t[i]].fitness;
