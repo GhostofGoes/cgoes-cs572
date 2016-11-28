@@ -1,0 +1,90 @@
+
+
+Testing tests/f1.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1304
+Total crossovers:		1270
+Total selections:		1270
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+2232.574019	((0.274979 * x) * ((((0.587866 * 0.655141) * (((1.83091 * x) * 1.12242) / 1.75235)) - ((x / sin(1.77416)) / ((2.77528 * x) - sin(x)))) + x))
+
+real	0m0.067s
+user	0m0.047s
+sys	0m0.016s
+
+
+Testing tests/f2.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1315
+Total crossovers:		1298
+Total selections:		1298
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+696.799551	(sin(((x + x) - (x / 1.18956))) * (2.31665 + sin((x / 0.974261))))
+
+real	0m0.069s
+user	0m0.047s
+sys	0m0.016s
+
+
+Testing tests/f3.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1288
+Total crossovers:		1319
+Total selections:		1319
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+68201.532357	(((1.46453 + (x + x)) * sin(x)) + ((((sin((x * (x * 0.775099))) - (((2.64733 + 1.23572) + (1.94727 * 0.0950803)) * (((sin((x * x)) * sin((0.412781 * x))) + 1.71431) * 0.696729))) * x) - x) / (x - ((((((1.60575 / 1.40939) - x) / (x - x)) * sin((((((sin(x) * (x - sin(x))) + 1.82041) * ((x * (sin(x) * x)) - sin(((2.41654 - 1.03849) - x)))) - ((((x / 1.98359) / sin(0.449835)) / 0.424896) - ((x / x) - (x / 2.24203)))) / (x - ((2.31902 / x) - x))))) / x) - x))))
+
+real	0m0.069s
+user	0m0.063s
+sys	0m0.016s
+
+
+Testing tests/f4.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1251
+Total crossovers:		1283
+Total selections:		1283
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+9961.609160	(x - (x + ((1.90422 / sin(x)) / (x / ((sin(0.712364) * x) - (2.97907 + x))))))
+
+real	0m0.063s
+user	0m0.047s
+sys	0m0.016s
+
+
+Testing tests/f5.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1255
+Total crossovers:		1298
+Total selections:		1298
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+6.991994	sin(((0.656128 + (sin(2.54377) * 2.16436)) / 2.90711))
+
+real	0m0.069s
+user	0m0.047s
+sys	0m0.016s
+
+
+Testing tests/f6.dat...
+
+Total fitness evaluations:	4608
+Total mutations: 		1324
+Total crossovers:		1290
+Total selections:		1290
+
+MaxGen: 17	PopSize: 256	XoverProb: 0.300000
+11.722057	(0.404786 * sin(x))
+
+real	0m0.069s
+user	0m0.047s
+sys	0m0.016s

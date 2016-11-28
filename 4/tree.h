@@ -123,7 +123,7 @@ public:
     // These are defined in func.cpp (I'm lazy)
     void evalFitness( std::vector<p> data ); // Evaluates and updates fitness for the tree
     void mutate();
-    void crossover( Tree * parentA, Tree * parentB );
+    void crossover( Tree * t );
 
 };
 

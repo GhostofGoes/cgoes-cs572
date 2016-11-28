@@ -29,6 +29,7 @@ void updateFitnesses( vector<Tree *> population, vector<p> data );
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
 bool isIn( vector<int> t, int val );
+void printPop( vector<Tree *> pop );
 
 
 // This sets everything up, kicks off evolutions, and prints results
@@ -37,7 +38,10 @@ int main() {
 
     int numPairs = 0;   // Number of data points to be input
     vector<p> data;     // List of pairs of real numbers x, f(x)
-    vector<Tree *> pop(popSize); // The population
+    vector<Tree *> pop(popSize);    // The population
+    vector<Tree *> children(popSize); // Population consisting of modified population members
+    vector<Tree *> newPop(popSize); // Population selected from members of current population
+    vector<Tree *> clonePop(popSize * 2);
 	
     // Input the dataset of function inputs and results
     std::cin >> numPairs;
@@ -48,7 +52,7 @@ int main() {
     }
     
     // Initialize Heckendorn's library
-    initOps(10); // TODO: why 10?
+    initOps(10); // TODO: why 10? but it works so i don't question it
     addOpOrTerm((char * )"+", 2, addOp);
     addOpOrTerm((char * )"-", 2, subOp);
     addOpOrTerm((char * )"*", 2, mulOp);
@@ -59,7 +63,7 @@ int main() {
 
     // Initialize the population with random trees
     for( int i = 0; i < popSize; i++ ) {
-        pop[i] = Tree::getRandTree(treeDepth);
+        pop[i] = Tree::getRandTree(startingDepth);
         if(TESTING) pop[i]->check();
         pop[i]->evalFitness(data);
     }
@@ -72,23 +76,43 @@ int main() {
     // Generational loop
     for( int i = 0; i < maxGen; i++ ) {
         
-        for( auto &t : pop ) {
-
-            if( choose(xover) ) {       // Crossover
-
-            }
+        for( int j = 0; j < popSize; j++ ) // Make copy of current population
+            children[j] = pop[j]->copy();
         
+        for( Tree * &child : children ) {
+            if( choose(xover) )           // Crossover
+                child->crossover(select(pop)); // Select individual out of population to crossover with
+            
             // TODO: variety of mutation types (enum), randomly choose
-            if( choose(mutateProb) )    // Mutation
-                t->mutate();
+            if( choose(mutateProb) )        // Mutation
+                child->mutate();
         }
 
+        updateFitnesses(children, data);
+
+        // Add children to current population
+        // pop.insert( pop.end(), children.begin(), children.end()); 
+        clonePop = pop;
+        clonePop.insert( clonePop.end(), children.begin(), children.end());
+
+        // Select from children and previous population to generate new population
+        for( int j = 0; j < popSize; j++ ) {
+            newPop[j] = select(clonePop); // this most definitely leaks n/2 nodes of memory. MEH.
+        }
+        printPop(newPop);
+        pop = newPop;
         updateFitnesses(pop, data);
+        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+
+        // TODO: ELIETEISM j = elites
+
     } // end generational loop
 
     // Determine the best individual in the population
-    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    //std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
 
+    printPop(pop);
+    // TODO: bit of local search on the best individual?
 
     // **** OUTPUT ****
 
@@ -129,30 +153,33 @@ void Tree::mutate() {
     // Could modify a random node with a new random op or term
     // Could modify a constant node with a new random constant
 
-    Tree * chosen = pickNode();         // Choose a random subtree to mutate
-    int chosenDepth = chosen->depth();  // Save it's depth
-    Tree * chosenParent = chosen->up(); // Save it's parent
-    Side chosenSide = chosen->remove(); // Save the side it's on
-    
-    free(chosen);   // Free old subtree's memory back to the memory pool
+    Tree * chosen = pickNode();             // Choose a random subtree to mutate
+    int chosenDepth = chosen->depth();      // Save it's depth
+    Tree * chosenParent = chosen->up();     // Save it's parent
+    Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
+    free(chosen);                           // Release old subtree to the memory pool
 
+    chosenDepth += randMod(growthFactor) + 1;   // Grow tree by random amount (profile this)
     chosen = getRandTree(chosenDepth);      // Generate a random tree
     chosenParent->join(chosenSide, chosen); // Attach to random part of the tree
 
-    if(TESTING) check(); // Verify integrity of the complete mutated tree
+    if(TESTING) check();                    // Verify integrity of the complete mutated tree
     numMutations++;
 } // end mutate
 
 
-// Crosses over the two trees given as parameters
-// The tree this is called on is the resulting child
-void Tree::crossover( Tree * parA, Tree * parB ) {
-    
+// Crosses over a random swath of the given tree with the current tree
+// Similiar methodology as mutate()
+void Tree::crossover( Tree * t ) {
+    Tree * swath = t->pickNode()->copy();   // Grab a random swath from the given tree
+    Tree * chosen = pickNode();             // Choose a random subtree to replace with the over'd swath
+    Tree * chosenParent = chosen->up();     // Save it's parent
+    Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
+    free(chosen);                           // Release old subtree to the memory pool
 
+    chosenParent->join(chosenSide, swath);  // Insert the swath into the tree
 
-    if(TESTING)
-        check();
-    
+    if(TESTING) check();                    // Verify integrity of the modified tree
     numXovers++;
 } // end crossover
 
@@ -174,7 +201,7 @@ Tree * select( vector<Tree *> pop ) {
     int bestIndex = 0; // Index of the best individual seen thus far
 
     for( int i = 0; i < tournySize; i++ ) {
-        if(pop[t[i]]->getFitness() > bestFit) {
+        if(pop[t[i]]->getFitness() < bestFit) {
             bestFit = pop[t[i]]->getFitness();
             bestIndex = i;
         }
@@ -198,3 +225,7 @@ void updateFitnesses( vector<Tree *> pop, vector<p> data ) {
         i->evalFitness(data);
 } // end updateFitnesses
 
+void printPop( vector<Tree *> pop ) {
+    for( int i = 0; i < popSize; i++ )
+        printf("[%d]\t%f\n", i, pop[i]->getFitness());
+} // end printPop
