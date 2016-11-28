@@ -72,30 +72,30 @@ int main() {
 
     // TODO: why is it "max" generations? could we end earlier?
     // Generational loop
-    for( int i = 0; i < maxGen; i++ ) {
+    for( int GEN = 0; GEN < maxGen; GEN++ ) {
         
         // TODO: Elieteism? (j = elites)
-        for( Tree * &child : children ) {
-            child = select(pop)->copy();
+        for( int i = 0; i < popSize; i++ ) {
+            children[i] = select(pop)->copy();
 
             if( choose(xover) )           // Crossover
-                child->crossover(select(pop)); // Select individual out of population to crossover with
+                children[i]->crossover(select(pop)); // Select individual out of population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )        // Mutation
-                child->mutate();
+                children[i]->mutate();
+        }
+            
+        for( int i = elites; i < popSize; i++ ) {
+            pop[i] = select(children); // leaky leaky
         }
 
-        for( auto &i : pop )
-            Tree::free(i);
-            
-        pop = children;
         updateFitnesses(pop, data);
-        // Dude, hold my beer...
+        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
     } // end generational loop
 
     // Determine the best individual in the population
-    std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+    // std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
 
     // TODO: bit of local search on the best individual?
 
