@@ -24,13 +24,9 @@ test: $(SRCS)
 	make clean
 	$(CC) $(CCFLAGS) -Wall -Wextra -g $(LIBS) -o $(BIN)
 
-debug: $(SRCS)
-	make clean
-	$(CC) -std=c++11 -Wall -Wextra -g $(LIBS) -o $(BIN)
-
 profile: $(SRCS)
 	make clean
-	$(CC) -std=c++11 -p -g $(LIBS) -o $(BIN)
+	$(CC) -std=c++11 -p -g -O3 $(LIBS) -o $(BIN)
 
 full-test:
 	touch $(SRCS)
