@@ -4,7 +4,7 @@
 #include <vector>
 #include "rand.h"
 
-#define TESTING 0
+#define TESTING 1
 #define STATS 1
 
 typedef struct {

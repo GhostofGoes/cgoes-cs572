@@ -78,7 +78,8 @@ int main() {
             children[i] = select(pop)->copy();
 
             if( choose(xover) )           // Crossover
-                children[i]->crossover(select(pop)); // Select individual out of population to crossover with
+                children[i]->equalCrossover(select(pop));
+                //children[i]->crossover(select(pop)); // Select individual out of population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
@@ -89,7 +90,7 @@ int main() {
             pop[i] = select(children);
         }
         //pop = children;
-        for( auto &i : pop )
+        for( Tree * &i : pop )
             i->evalFitness(data);
         
         std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
@@ -169,6 +170,27 @@ void Tree::crossover( Tree * t ) {
     if(TESTING) check();                    // Verify integrity of the modified tree
     numXovers++;
 } // end crossover
+
+
+// Variation of crossover that only crosses over subtrees at the same depth
+// Additionally, it only chooses subtrees in range [depth/2 + 1, depth] to avoid massive damage
+void Tree::equalCrossover( Tree * t ) {
+    int maxDepth = std::min(depth(), t->depth());
+    int minDepth = (int)(maxDepth / 2) - 1;
+    int chosenDepth = randMod(minDepth) + minDepth;
+    //printf("maxDepth: %d\t minDepth: %d\t chosenDepth: %d\n", maxDepth, minDepth, chosenDepth);
+
+    Tree * swath = t->pickNode(chosenDepth)->copy();
+    Tree * chosen = pickNode(chosenDepth);
+    Tree * chosenParent = chosen->up();
+    Side chosenSide = chosen->remove();
+    free(chosen);
+
+    chosenParent->join(chosenSide, swath);
+
+    if(TESTING) check();
+    numXovers++;
+} // end equalCrossover
 
 
 // Selects a chromosome out of population using simple tournament selection

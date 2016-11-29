@@ -93,6 +93,7 @@ public:
     bool check(bool hasParent=false) const;  // vet the tree
     int depth() const;      // Calculates current depth of the tree (TODO: cache depth?)
     Tree * pickNode();      // Uniformly picks a random node that isn't the root
+    Tree * pickNode( int d ); // Uniformly picks a random node at depth d (d must be greater than 0!)
 
     // setX(x) must be called before evaluating! (See opList.h)
     double eval();      // evaluate the tree (NOTE: modifies value_!)
@@ -124,6 +125,8 @@ public:
     void evalFitness( const std::vector<p> &data ); // Evaluates and updates fitness for the tree
     void mutate();
     void crossover( Tree * t );
+    void equalCrossover( Tree * t );
+
 
 };
 

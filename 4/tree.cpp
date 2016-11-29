@@ -587,6 +587,30 @@ Tree * Tree::pickNode() {
     }
 }
 
+// this is probably broken
+// TODO: print trees that it picks
+Tree * Tree::pickNode( int loc ) {
+    Tree *node;
+    int split;
+    
+    if (loc>=size_) loc++;  // prevent choosing the root
+
+    // find the node
+    node = this;
+    while (1) {
+        if (node->size_ == loc) return node;
+
+        if (node->left_) split = node->left_->size_;
+        else split = 0;
+
+        if (loc<=split)
+            node = node->left_;
+        else {
+            node = node->right_;
+            loc -= split;
+        }
+    }
+}
 
 
 // Suite of tests to make sure things are work as they should
