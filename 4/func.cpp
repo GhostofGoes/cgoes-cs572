@@ -28,7 +28,9 @@ Tree * select( vector<Tree *> population ); // Selects a tree out of the populat
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
 bool isIn( vector<int> t, int val );
-void printPop( vector<Tree *> pop );
+void printPopFits( vector<Tree *> pop );
+void printPopTrees( vector<Tree *> pop );
+void printPopAll( vector<Tree *> pop );
 
 
 // This sets everything up, kicks off evolutions, and prints results
@@ -48,7 +50,7 @@ int main() {
         data.push_back(point);
     }
     
-    // Initialize Heckendorn's library
+    // Initialize Heckendorn's library (see tree.h, and testTreeLibrary in tree.cpp)
     initOps(10); // TODO: why 10? but it works so i don't question it
     addOpOrTerm((char * )"+", 2, addOp);
     addOpOrTerm((char * )"-", 2, subOp);
@@ -60,39 +62,52 @@ int main() {
 
     // Initialize the population with random trees
     for( int i = 0; i < popSize; i++ ) {
-        pop[i] = Tree::getRandTree(randMod(maxStartingDepth) + minStartingDepth);
+        pop[i] = Tree::getRandTree(randMod(startingDepthRange) + minStartingDepth);
         if(TESTING) pop[i]->check();
         pop[i]->evalFitness(data);
     }
 
-
+    if(DUMP) {
+        printf("*** STARTING POPULATION ***\n");
+        printPopAll(pop);
+        printf("\n\n *** Evolution Phase *** \n");
+    }
 
     // **** THE EVOLUTION MAGIC ****
 
     // TODO: check for error <= 0.01, exit early if we reach it
     // Generational loop
+    if(elites >= popSize) {
+        printf("ERROR: elites (%d) >= popSize (%d)!\n", elites, popSize);
+        return 1;
+    }
+
     for( int GEN = 0; GEN < maxGen; GEN++ ) {
         
         for( int i = 0; i < popSize; i++ ) {
             children[i] = select(pop)->copy();
 
             if( choose(xover) )           // Crossover
-                //children[i]->equalCrossover(select(pop));
                 children[i]->crossover(select(pop)); // Select individual out of population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
+            
+            children[i]->evalFitness(data);
         }
 
         for( int i = elites; i < popSize; i++ ) {
             pop[i] = select(children);
         }
 
-        for( Tree * &i : pop )
-            i->evalFitness(data);
-        
         std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+
+        if(DUMP) {
+            printPopAll(pop);
+            printf("\n\n\n");
+        }
+        
     } // end generational loop
 
     // Determine the best individual in the population
@@ -106,13 +121,17 @@ int main() {
 		printf("\nFitness evaluations:\t%d\n", numFitnessEvals);
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
-        printf("Total selections:\t%d\n", numSelections);
-        printf("Mutate prob: %g\tElites: %d\tTournament size: %d\n\n", mutateProb, elites, tournySize);
+        printf("Total selections:\t%d\n\n", numSelections);
+        printf("Elites: %d\tTournySize: %d\tMutateProb: %g\n", elites, tournySize, mutateProb);
     }
 
     // Output for assignment
     printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\n", maxGen, popSize, xover);
-    printf("%g\t", pop[0]->getFitness());
+    if(STATS) {
+        printf("\nDepth: %d\tSize: %d\n", pop[0]->depth(), pop[0]->size());
+        printf("Error: %g\tFitness: %g\n\n", pop[0]->getError(), pop[0]->getFitness());
+    }
+    printf("%g\t", pop[0]->getError());
     pop[0]->print(); // This prints a newline at the end
 
 	return 0;
@@ -124,9 +143,12 @@ void Tree::evalFitness( const std::vector <p> &data ) {
     fitness_ = 0;
 
     for( const p &point : data ) {
-        setX(point.x);
-        fitness_ += pow((point.fx - eval()), 2);
+        setX(point.x); // Sets global value used in eval()
+        fitness_ += pow((point.fx - eval()), 2); // ( f(x_i) - f*(x_i) )^2
     }
+
+    error_ = fitness_;
+    fitness_ += size_ * punishment; // Punish large trees. Assumes size is current, may need to update.
 
     numFitnessEvals++;
 } // end fitness
@@ -200,7 +222,7 @@ Tree * select( vector<Tree *> pop ) {
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
         do {
-            temp = randMod(pop.size());
+            temp = randMod(popSize); // pop.size()
         } while( isIn(t, temp));
         t.push_back(temp);
     }
@@ -228,7 +250,24 @@ bool isIn( vector<int> t, int val ) {
 } // end isIn
 
 
-void printPop( vector<Tree *> pop ) {
+void printPopFits( vector<Tree *> pop ) {
     for( int i = 0; i < popSize; i++ )
         printf("[%d]\t%f\n", i, pop[i]->getFitness());
 } // end printPop
+
+
+void printPopTrees( vector<Tree *> pop ) {
+    for( auto &t : pop )
+        t->print();
+} // end printPopTrees
+
+
+void printPopAll( vector <Tree *> pop ) {
+    for( int i = 0; i < popSize; i++ ) {
+        printf("\n");
+        printf("[%d]\t%f\n", i, pop[i]->getFitness());
+        printf("Depth: \t%d\n", pop[i]->depth());
+        printf("Size: \t%d\n", pop[i]->size());
+        pop[i]->print();
+    }
+} // end printPopAll

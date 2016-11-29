@@ -60,6 +60,7 @@ private:
     int size_;     // size of the tree beneath this node including this node
     bool used_;    // is the node allocated (provides debugging support)
     double fitness_; // Fitness of the tree. Also referred to as "error" in some places in code
+    double error_;
     // NOTE: smaller is better for fitness! (since it's the error)
 
 // Memory management
@@ -91,7 +92,7 @@ public:
     Tree(Op *op);       // create a tree
 
     bool check(bool hasParent=false) const;  // vet the tree
-    int depth() const;      // Calculates current depth of the tree (TODO: cache depth?)
+    int depth() const;      // Calculates current depth of the tree (TODO: cache this somehow)
     Tree * pickNode();      // Uniformly picks a random node that isn't the root
     Tree * pickNode( int d ); // Uniformly picks a random node at depth d (d must be greater than 0!)
 
@@ -118,6 +119,7 @@ public:
     int size() const { return size_; }              // size accessor
     double value() const { return value_; }         // value accessor
     double getFitness() const { return fitness_; }  // fitness accessor
+    double getError() const { return error_; }      // error accessor
 
 
     // Evolutionary components 
