@@ -18,8 +18,8 @@ using std::vector;
 #include "tree.h"
 #include "opList.h"
 
-// Keeps track of total number of fitness evaluations performed
-int numFitnessEvals = 0; 
+// Trackers for number of core operations performed (fitness evals, mutations, etc.)
+int numFitnessEvals = 0;
 int numMutations = 0;
 int numXovers = 0;
 int numSelections = 0;
@@ -39,8 +39,8 @@ int main() {
 
     int numPairs = 0;   // Number of data points to be input
     vector<p> data;     // List of pairs of real numbers x, f(x)
-    vector<Tree *> pop(popSize);    // The population
-    vector<Tree *> children(popSize); // Population consisting of modified population members
+    vector<Tree *> pop(popSize);        // Current population
+    vector<Tree *> children(popSize);   // Newly generated population consisting of modified population members
 	
     // Input the dataset of function inputs and results
     std::cin >> numPairs;
@@ -70,50 +70,40 @@ int main() {
     if(DUMP) {
         printf("*** STARTING POPULATION ***\n");
         printPopAll(pop);
-        printf("\n\n *** Evolution Phase *** \n");
+        printf("\n\n\n\n *** Evolution Phase *** \n");
     }
+
 
     // **** THE EVOLUTION MAGIC ****
 
     // TODO: check for error <= 0.01, exit early if we reach it
     // Generational loop
-    if(elites >= popSize) {
-        printf("ERROR: elites (%d) >= popSize (%d)!\n", elites, popSize);
-        return 1;
-    }
-
     for( int GEN = 0; GEN < maxGen; GEN++ ) {
-        
         for( int i = 0; i < popSize; i++ ) {
             children[i] = select(pop)->copy();
 
-            if( choose(xover) )           // Crossover
-                children[i]->crossover(select(pop)); // Select individual out of population to crossover with
+            if( choose(xover) )          // Crossover
+                children[i]->crossover(select(pop)); // Select individual out of current population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
             
-            children[i]->evalFitness(data);
-        }
+            children[i]->evalFitness(data); // Update fitnesses of the modified children
+        } // end children loop
 
-        for( int i = elites; i < popSize; i++ ) {
-            pop[i] = select(children);
-        }
+        // Select from children and replace non-elites in population
+        for( int i = elites; i < popSize; i++ )
+            pop[i] = select(children); 
 
-        std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
+        // Sort population by fitness
+        std::sort(pop.begin(), pop.end(), compTrees); 
 
-        if(DUMP) {
-            printPopAll(pop);
-            printf("\n\n\n");
-        }
-        
+        if(DUMP) { printPopAll(pop); printf("\n\n"); }
     } // end generational loop
 
-    // Determine the best individual in the population
-    //std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
-
     // TODO: bit of local search on the best individual?
+
 
     // **** OUTPUT ****
 
@@ -125,7 +115,7 @@ int main() {
         printf("Elites: %d\tTournySize: %d\tMutateProb: %g\n", elites, tournySize, mutateProb);
     }
 
-    // Output for assignment
+    // Output for assignment (Note: best individual is pop[0], since we assume it's sorted)
     printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\n", maxGen, popSize, xover);
     if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", pop[0]->depth(), pop[0]->size());
@@ -136,6 +126,7 @@ int main() {
 
 	return 0;
 } // end main
+
 
 
 // Error = sum from i to N of (f(x_i) - f*(x_i))^2
