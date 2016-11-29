@@ -12,6 +12,8 @@ points
 func
 */runs_normal/
 */runs_iter/
+*/profiling/
+gmon.out
 
 dots.py
 
