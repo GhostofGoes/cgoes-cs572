@@ -59,9 +59,8 @@ int main() {
     addOpOrTerm((char * )NULL, 0, constOp);  // WARNING: null name means it is a constant!!!!
 
     // Initialize the population with random trees
-    // TODO: try randomly varying the starting depth (e.g randMod(startingDepth) )
     for( int i = 0; i < popSize; i++ ) {
-        pop[i] = Tree::getRandTree(startingDepth);
+        pop[i] = Tree::getRandTree(randMod(maxStartingDepth) + minStartingDepth);
         if(TESTING) pop[i]->check();
         pop[i]->evalFitness(data);
     }
