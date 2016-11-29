@@ -1,6 +1,8 @@
 #!/bin/bash
 # Profiles  my homework files 
 # http://www.shellcheck.net/ is amazing
+# Note: this will not give execution times or percentages on Bash for Windows
+#   To work around this, download Valgrind source code, compile, and use Callgrind.
 
 HW=func
 outfile=$(date +%Y-%m-%d-%H-%M-%S)_"$HW".profile

@@ -36,6 +36,8 @@ void printPopAll( vector<Tree *> pop );
 // This sets everything up, kicks off evolutions, and prints results
 int main() {
     initRand();         // Initialize the random number generator
+    int oversizedTrees = 0;
+    int biggestOversize = 0;
 
     int numPairs = 0;   // Number of data points to be input
     vector<p> data;     // List of pairs of real numbers x, f(x)
@@ -76,7 +78,6 @@ int main() {
 
     // **** THE EVOLUTION MAGIC ****
 
-    // TODO: check for error <= 0.01, exit early if we reach it
     // Generational loop
     int GEN;
     for( GEN = 0; GEN < maxGen; GEN++ ) {
@@ -91,7 +92,13 @@ int main() {
             if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
             
-            children[i]->evalFitness(data); // Update fitnesses of the modified children
+            if(children[i]->size() > 1000) {
+                oversizedTrees++;
+                if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
+                children[i] = pop[i];
+            } else {
+                children[i]->evalFitness(data); // Update fitnesses of the modified children
+            }
         } // end children loop
 
         // Select from children and replace non-elites in population
@@ -117,7 +124,10 @@ int main() {
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
         printf("Total selections:\t%d\n", numSelections);
-        printf("Generations done:\t%d\n\n", GEN);
+        printf("Generations done:\t%d\n", GEN);
+        printf("Oversized Trees: \t%d\n", oversizedTrees);
+        printf("Biggest oversize:\t%d\n", biggestOversize);
+        printf("\n");
     }
 
     // Output for assignment (Note: best individual is pop[0], since we assume it's sorted)
@@ -165,7 +175,7 @@ void Tree::mutate() {
     Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
     free(chosen);                           // Release old subtree to the memory pool
 
-    chosenDepth += randMod(growthFactor) + 1;   // Grow tree by random amount
+    //chosenDepth += randMod(growthFactor);   // Grow tree by random amount
     chosen = getRandTree(chosenDepth);      // Generate a random tree
     chosenParent->join(chosenSide, chosen); // Attach to random part of the tree
 

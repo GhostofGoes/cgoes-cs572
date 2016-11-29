@@ -3,7 +3,7 @@
 
 #include "tree.h"
 
-#define BADDOUBLE 666.0
+#define BADDOUBLE 666.66
 
 // the list of possible operators
 int numOpsTotal;   // total number of ops
@@ -82,8 +82,8 @@ void Tree::init() {
     used_ = false;
     value_ = 0.0;
     size_ = 1;
-    fitness_ = -99.0;
-    error_ = -99.0;
+    fitness_ = BADDOUBLE;
+    error_ = BADDOUBLE;
 }
 
 
