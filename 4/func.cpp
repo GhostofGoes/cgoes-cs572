@@ -78,8 +78,8 @@ int main() {
             children[i] = select(pop)->copy();
 
             if( choose(xover) )           // Crossover
-                children[i]->equalCrossover(select(pop));
-                //children[i]->crossover(select(pop)); // Select individual out of population to crossover with
+                //children[i]->equalCrossover(select(pop));
+                children[i]->crossover(select(pop)); // Select individual out of population to crossover with
             
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
@@ -89,7 +89,7 @@ int main() {
         for( int i = elites; i < popSize; i++ ) {
             pop[i] = select(children);
         }
-        //pop = children;
+
         for( Tree * &i : pop )
             i->evalFitness(data);
         
@@ -147,7 +147,7 @@ void Tree::mutate() {
     Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
     free(chosen);                           // Release old subtree to the memory pool
 
-    chosenDepth += randMod(growthFactor) + 1;   // Grow tree by random amount (profile this)
+    chosenDepth += randMod(growthFactor) + 1;   // Grow tree by random amount
     chosen = getRandTree(chosenDepth);      // Generate a random tree
     chosenParent->join(chosenSide, chosen); // Attach to random part of the tree
 

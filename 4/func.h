@@ -4,7 +4,7 @@
 #include <vector>
 #include "rand.h"
 
-#define TESTING 1
+#define TESTING 0
 #define STATS 1
 
 typedef struct {
@@ -15,10 +15,10 @@ typedef struct {
 const int maxGen = 100;     // Maximum number of generations
 const int popSize = 256;    // Population size
 
-const double xover = 0.3;       // Crossover Probability
-const double mutateProb = 0.3;  // Mutation probability
+const double xover = 0.4;       // Crossover Probability
+const double mutateProb = 0.5;  // Mutation probability
 const int tournySize = 3;       // Tournament size
-const int elites = 20;
+const int elites = 5;
 
 const int startingDepth = 10;    // Initial depth of the trees in population
 const int growthFactor = 1;     // Factor by which crossed over trees grow
