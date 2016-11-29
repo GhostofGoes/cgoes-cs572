@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 1
+#define STATS 0
 #define DUMP 0
 
 // Stores data for given inputs and results for the original function (basically a tuple)

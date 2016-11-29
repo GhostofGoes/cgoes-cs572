@@ -112,11 +112,11 @@ int main() {
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
         printf("Total selections:\t%d\n\n", numSelections);
-        printf("Elites: %d\tTournySize: %d\tMutateProb: %g\n", elites, tournySize, mutateProb);
     }
 
     // Output for assignment (Note: best individual is pop[0], since we assume it's sorted)
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\n", maxGen, popSize, xover);
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tElites: %d TournySize: %d\n", 
+        maxGen, popSize, xover, mutateProb, elites, tournySize);
     if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", pop[0]->depth(), pop[0]->size());
         printf("Error: %g\tFitness: %g\n\n", pop[0]->getError(), pop[0]->getFitness());
