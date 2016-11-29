@@ -78,9 +78,11 @@ int main() {
 
     // TODO: check for error <= 0.01, exit early if we reach it
     // Generational loop
-    for( int GEN = 0; GEN < maxGen; GEN++ ) {
+    int GEN;
+    for( GEN = 0; GEN < maxGen; GEN++ ) {
         for( int i = 0; i < popSize; i++ ) {
-            children[i] = select(pop)->copy();
+            //children[i] = select(pop)->copy();
+            children[i] = pop[i]->copy();
 
             if( choose(xover) )          // Crossover
                 children[i]->crossover(select(pop)); // Select individual out of current population to crossover with
@@ -93,12 +95,15 @@ int main() {
         } // end children loop
 
         // Select from children and replace non-elites in population
-        for( int i = elites; i < popSize; i++ )
-            pop[i] = select(children); 
+        for( int i = elites; i < popSize; i++ ) {
+            pop[i] = select(children);
+        }
+            
 
         // Sort population by fitness
         std::sort(pop.begin(), pop.end(), compTrees); 
 
+        if(pop[0]->getError() < desiredError) break;
         if(DUMP) { printPopAll(pop); printf("\n\n"); }
     } // end generational loop
 
@@ -111,7 +116,8 @@ int main() {
 		printf("\nFitness evaluations:\t%d\n", numFitnessEvals);
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
-        printf("Total selections:\t%d\n\n", numSelections);
+        printf("Total selections:\t%d\n", numSelections);
+        printf("Generations done:\t%d\n\n", GEN);
     }
 
     // Output for assignment (Note: best individual is pop[0], since we assume it's sorted)
@@ -213,7 +219,7 @@ Tree * select( vector<Tree *> pop ) {
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
         do {
-            temp = randMod(popSize); // pop.size()
+            temp = randMod(pop.size());
         } while( isIn(t, temp));
         t.push_back(temp);
     }

@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 0
+#define STATS 1
 #define DUMP 0
 
 // Stores data for given inputs and results for the original function (basically a tuple)
@@ -14,8 +14,9 @@ typedef struct {
     double fx;  // Result of f(x)
 } p; 
 
-const int maxGen = 100;     // Maximum number of generations
-const int popSize = 256;    // Population size
+const double desiredError = 0.0001;
+const int maxGen = 500;     // Maximum number of generations
+const int popSize = 1024;    // Population size
 
 const double xover = 0.5;       // Crossover Probability of an individual
 const double mutateProb = 0.3;  // Mutation probability of an individual
