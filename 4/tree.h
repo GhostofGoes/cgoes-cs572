@@ -91,15 +91,15 @@ public:
     Tree(Op *op);       // create a tree
 
     bool check(bool hasParent=false) const;  // vet the tree
-    int depth() const;  // Calculates current depth of the tree
-    Tree *pickNode();   // uniformly any node but the root
+    int depth() const;      // Calculates current depth of the tree (TODO: cache depth?)
+    Tree * pickNode();      // Uniformly picks a random node that isn't the root
 
     // setX(x) must be called before evaluating! (See opList.h)
     double eval();      // evaluate the tree (NOTE: modifies value_!)
     double evalUp();    // evaluate by going from this node up
 
     // Tree edits
-    Tree *copy(Tree *up=NULL);  // the only command that copies any nodes
+    Tree * copy(Tree *up=NULL);  // the only command that copies any nodes
     bool join(Side s, Tree *subtree);  // add a subtree to a tree
     Side remove();              // Remove subtree from parent, returns side removed from in parent. 
     // NOTE: THIS WILL NOT FREE THE SUBTREE
@@ -113,7 +113,7 @@ public:
     // Accessors
     bool isTerm() const { return left_ == NULL; }   // true if terminator
     bool isOp() const { return left_ != NULL; }     // true if operator
-    Tree *up() const { return up_; }                // parent accessor
+    Tree * up() const { return up_; }               // parent accessor
     int size() const { return size_; }              // size accessor
     double value() const { return value_; }         // value accessor
     double getFitness() const { return fitness_; }  // fitness accessor
@@ -121,7 +121,7 @@ public:
 
     // Evolutionary components 
     // These are defined in func.cpp (I'm lazy)
-    void evalFitness( std::vector<p> data ); // Evaluates and updates fitness for the tree
+    void evalFitness( const std::vector<p> &data ); // Evaluates and updates fitness for the tree
     void mutate();
     void crossover( Tree * t );
 

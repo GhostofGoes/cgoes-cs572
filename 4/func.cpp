@@ -25,7 +25,6 @@ int numXovers = 0;
 int numSelections = 0;
 
 Tree * select( vector<Tree *> population ); // Selects a tree out of the population
-void updateFitnesses( vector<Tree *> population, vector<p> data );
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
 bool isIn( vector<int> t, int val );
@@ -60,6 +59,7 @@ int main() {
     addOpOrTerm((char * )NULL, 0, constOp);  // WARNING: null name means it is a constant!!!!
 
     // Initialize the population with random trees
+    // TODO: try randomly varying the starting depth (e.g randMod(startingDepth) )
     for( int i = 0; i < popSize; i++ ) {
         pop[i] = Tree::getRandTree(startingDepth);
         if(TESTING) pop[i]->check();
@@ -89,7 +89,9 @@ int main() {
             pop[i] = select(children);
         }
         //pop = children;
-        updateFitnesses(pop, data);
+        for( auto &i : pop )
+            i->evalFitness(data);
+        
         std::sort(pop.begin(), pop.end(), compTrees); // Sort population by fitness
     } // end generational loop
 
@@ -105,12 +107,12 @@ int main() {
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
         printf("Total selections:\t%d\n", numSelections);
-        printf("Mutate prob: %f\tElites: %d\tTournament size: %d\n\n", mutateProb, elites, tournySize);
+        printf("Mutate prob: %g\tElites: %d\tTournament size: %d\n\n", mutateProb, elites, tournySize);
     }
 
     // Output for assignment
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %f\n", maxGen, popSize, xover);
-    printf("%f\t", pop[0]->getFitness());
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\n", maxGen, popSize, xover);
+    printf("%g\t", pop[0]->getFitness());
     pop[0]->print(); // This prints a newline at the end
 
 	return 0;
@@ -118,10 +120,10 @@ int main() {
 
 
 // Error = sum from i to N of (f(x_i) - f*(x_i))^2
-void Tree::evalFitness( std::vector <p> data ) {
+void Tree::evalFitness( const std::vector <p> &data ) {
     fitness_ = 0;
 
-    for( p &point : data ) {
+    for( const p &point : data ) {
         setX(point.x);
         fitness_ += pow((point.fx - eval()), 2);
     }
@@ -172,7 +174,7 @@ void Tree::crossover( Tree * t ) {
 // Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
 Tree * select( vector<Tree *> pop ) {
-    std::vector<int> t;
+    std::vector<int> t; // The indicies of the members of the tournament
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
@@ -203,12 +205,6 @@ bool isIn( vector<int> t, int val ) {
         if(i == val) return true;
     return false;
 } // end isIn
-
-
-void updateFitnesses( vector<Tree *> pop, vector<p> data ) {
-    for( auto &i : pop )
-        i->evalFitness(data);
-} // end updateFitnesses
 
 
 void printPop( vector<Tree *> pop ) {
