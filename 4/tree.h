@@ -18,6 +18,8 @@ void initOps(int maxNumOps);
 void addOpOrTerm(char * name, int arity, double (*f)(double x, double y));
 void setX(double x); // set the x variable, used when evaluating tree
 
+
+
 void testTreeLibrary(); // Suite of tests to make sure things are work as they should
 
 
@@ -40,6 +42,7 @@ public:
     char * name_;                        // Printable name of operator (NULL if constant)
 };
 
+Op * randOp( int arity );
 
 // // // // // // // // // // // // // // // // // // // // // // // // 
 // Tree Class
@@ -125,7 +128,11 @@ public:
     // Evolutionary components 
     // These are defined in func.cpp (I'm lazy)
     void evalFitness( const std::vector<p> &data ); // Evaluates and updates fitness for the tree
+
     void mutate();
+    void nodeMutate( Tree * node=NULL );
+    void leafMutate( Tree * node=NULL );
+
     void crossover( Tree * t );
     void equalCrossover( Tree * t );
 

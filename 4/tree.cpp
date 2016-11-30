@@ -59,6 +59,18 @@ void addOpOrTerm(char * name, int arity, double (*f)(double x, double y)) {
     numOpsTotal++;
 }
 
+// Gets a single node with a random operator of the specified arity chosen
+Op * randOp( int arity ) {
+    switch(arity) {
+        case 0:
+            return opList0[randMod(numOps0)];
+        case 1:
+            return opList1[randMod(numOps1)];
+        case 2:
+            return opList2[randMod(numOps2)];
+    }
+}
+
 
 // // // // // // // // // // // // // // // // // // // // // // // //
 // Tree Memory Allocation

@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 1
+#define STATS 0
 #define DUMP 0
 
 // Stores data for given inputs and results for the original function (basically a tuple)
@@ -16,10 +16,12 @@ typedef struct {
 
 const double desiredError = 0.0001;
 const int maxGen = 500;     // Maximum number of generations
-const int popSize = 256;    // Population size
+const int popSize = 400;    // Population size
 
-const double xover = 0.5;       // Crossover Probability of an individual
+const double xover = 0.6;       // Crossover Probability of an individual
 const double mutateProb = 0.3;  // Mutation probability of an individual
+const double nodeMutateProb = 0.1;
+
 const int tournySize = 3;       // Tournament size
 const int elites = 20;          // Number of elites that persist between generations (NOTE: must be less tahn popSize!)
 

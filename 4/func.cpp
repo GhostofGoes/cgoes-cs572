@@ -23,6 +23,17 @@ int numFitnessEvals = 0;
 int numMutations = 0;
 int numXovers = 0;
 int numSelections = 0;
+int numNodeMutations = 0;
+int numLeafMutations = 0;
+
+extern int numOpsTotal;   // total number of ops
+extern int numOps0;       // number of nullary ops
+extern int numOps1;       // number of unary ops
+extern int numOps2;       // number of binary ops
+
+extern Op **opList0;   // Nullary ops
+extern Op **opList1;   // Unary ops
+extern Op **opList2;   // Binary ops
 
 Tree * select( vector<Tree *> population ); // Selects a tree out of the population
 
@@ -91,6 +102,8 @@ int main() {
             // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
+            else if( choose(mutateProb) )
+                children[i]->nodeMutate();
             
             if(children[i]->size() > 1000) {
                 oversizedTrees++;
@@ -124,8 +137,10 @@ int main() {
         printf("Total mutations: \t%d\n", numMutations);
         printf("Total crossovers:\t%d\n", numXovers);
         printf("Total selections:\t%d\n", numSelections);
+        printf("Node mutations:  \t%d\n", numNodeMutations);
+        printf("Leaf mutations:  \t%d\n", numLeafMutations);
         printf("Generations done:\t%d\n", GEN);
-        printf("Oversized Trees: \t%d\n", oversizedTrees);
+        printf("\nOversized Trees: \t%d\n", oversizedTrees);
         printf("Biggest oversize:\t%d\n", biggestOversize);
         printf("\n");
     }
@@ -182,6 +197,36 @@ void Tree::mutate() {
     if(TESTING) check();                    // Verify integrity of the complete mutated tree
     numMutations++;
 } // end mutate
+
+
+void Tree::nodeMutate( Tree * node ) {
+    if(node == NULL) node = this;
+
+    if(node->left_ != NULL) nodeMutate(node->left_);
+    if(node->right_ != NULL) nodeMutate(node->right_);
+
+    if(choose(nodeMutateProb)) {
+        switch(node->op_->arity_) {
+            case 0:
+                node->op_ = opList0[randMod(numOps0)];
+                node->value_ = randUnit()*3.0;
+                break;
+            case 1:
+                node->op_ = opList1[randMod(numOps1)];
+                break;
+            case 2:
+                node->op_ = opList2[randMod(numOps2)];
+                break;
+        } 
+    }
+
+    numNodeMutations++;
+} // end nodeMutate
+
+
+void Tree::leafMutate( Tree * node ) {
+    numLeafMutations++;
+} // end leafMutate
 
 
 // Crosses over a random swath of the given tree with the current tree
