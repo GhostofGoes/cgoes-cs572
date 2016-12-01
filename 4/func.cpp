@@ -245,9 +245,9 @@ void Tree::crossover( Tree * t ) {
 } // end crossover
 
 
-// Variation of crossover that only crosses over subtrees at the same depth
+// Variation of crossover that only crosses over subtrees AT the same depth (aka the depth the subtrees are located in matches)
 // Additionally, it only chooses subtrees in range [depth/2 + 1, depth] to avoid massive damage
-void Tree::equalCrossover( Tree * t ) {
+void Tree::insertDepthCrossover( Tree * t ) {
     int maxDepth = std::min(depth(), t->depth());
     int minDepth = (int)(maxDepth / 2) - 1;
     int chosenDepth = randMod(minDepth) + minDepth;
@@ -263,7 +263,33 @@ void Tree::equalCrossover( Tree * t ) {
 
     if(TESTING) check();
     numXovers++;
-} // end equalCrossover
+} // end insertDepthCrossover
+
+
+// Variation of crossover that only crosses over subtrees OF the same depth (e.g, the depths of the subtrees match)
+void Tree::sameDepthCrossover( Tree * t ) {
+    Tree * chosen = pickNode();             // Choose a random subtree to replace with the xover'd swath
+    
+    
+
+    Tree * swath = t->pickNode()   // Grab a random swath from the given tree
+
+    
+    while( chosen->depth() != swath->depth() ) {
+        swath = t->pickNode();
+    }
+    
+    
+    
+    Tree * chosenParent = chosen->up();     // Save it's parent
+    Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
+    free(chosen);                           // Release old subtree to the memory pool
+
+    chosenParent->join(chosenSide, swath);  // Insert the swath into the tree
+
+    if(TESTING) check();                    // Verify integrity of the modified tree
+    numXovers++;
+} // end sameDepthCrossover
 
 
 // Selects a chromosome out of population using simple tournament selection

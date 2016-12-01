@@ -134,7 +134,8 @@ public:
     void leafMutate( Tree * node=NULL );
 
     void crossover( Tree * t );
-    void equalCrossover( Tree * t );
+    void insertDepthCrossover( Tree * t );
+    void sameDepthCrossover( Tree * t );
 
 
 };
