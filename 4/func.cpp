@@ -40,8 +40,10 @@ extern Op **opList2;   // Binary ops
 Tree * select( vector<Tree *> population ); // Selects a tree out of the population
 Tree * localSearch( Tree * t, vector<p> data );
 
-bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
+bool compTreeFitness( Tree * a, Tree * b ) { return a->getFitness() < b->getFitness(); }
+bool compTreeError( Tree * a, Tree * b ) { return a->getError() < b->getError(); }
 bool isIn( const vector<int>& t, int val );
+
 void printPopFits( vector<Tree *> pop );
 void printPopTrees( vector<Tree *> pop );
 void printPopAll( vector<Tree *> pop );
@@ -108,7 +110,7 @@ int main() {
             else if( choose(mutateProb) )
                 children[i]->nodeMutate();
             
-            if(children[i]->size() > 1000) {
+            if(children[i]->size() > 1500) {
                 oversizedTrees++;
                 if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
                 children[i] = pop[i];
@@ -122,12 +124,13 @@ int main() {
             pop[i] = select(children);
 
         // Sort population by fitness
-        std::sort(pop.begin(), pop.end(), compTrees); 
+        std::sort(pop.begin(), pop.end(), compTreeFitness); 
 
         if(pop[0]->getError() < desiredError) break;
         if(DUMP) { printPopAll(pop); printf("\n\n"); }
     } // end generational loop
 
+    std::sort(pop.begin(), pop.end(), compTreeError);
     Tree * best = pop[0];
     if(LOCALSEARCH) best = localSearch(pop[0], data); // Bit of local search on best individual
 
@@ -297,7 +300,7 @@ void Tree::sameDepthCrossover( Tree * t ) {
 // Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
 Tree * select( vector<Tree *> pop ) {
-    std::vector<int> t; // The indicies of the members of the tournament
+    std::vector<int> t(tournySize); // The indicies of the members of the tournament
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
