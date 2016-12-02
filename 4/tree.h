@@ -4,7 +4,6 @@
 #ifndef TREEH
 #define TREEH
 
-#include <cstdlib>
 #include <cstdio>
 
 #include "rand.h"

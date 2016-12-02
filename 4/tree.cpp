@@ -45,16 +45,17 @@ void initOps(int maxNumOps) {
 
 void addOpOrTerm(char * name, int arity, double (*f)(double x, double y)) {
     switch (arity) {
-    case 0:
-	opList0[numOps0++] = new Op(name, arity, f);
-	break;
-    case 1:
-	opList1[numOps1++] = new Op(name, arity, f);
-	break;
-    case 2:
-	opList2[numOps2++] = new Op(name, arity, f);
-	break;
-    default: printf("ERROR(addOpOrTerm): Invalid arity\n");
+        case 0:
+            opList0[numOps0++] = new Op(name, arity, f);
+            break;
+        case 1:
+            opList1[numOps1++] = new Op(name, arity, f);
+            break;
+        case 2:
+            opList2[numOps2++] = new Op(name, arity, f);
+            break;
+        default: 
+            printf("ERROR(addOpOrTerm): Invalid arity\n");
     }
     numOpsTotal++;
 }
@@ -69,7 +70,6 @@ Op * randOp( int arity ) {
         case 2:
             return opList2[randMod(numOps2)];
     }
-
     return NULL;
 }
 
@@ -103,9 +103,8 @@ void Tree::init() {
 
 // this gets a single node 
 Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial value!
-    Tree *result;
 
-    if (freeListInitSize_==0) {
+    if (freeListInitSize_ == 0) {
         freeListInitSize_ = 2;
         freeList_ = new Tree(NULL);
         freeList_->used_ = false;
@@ -114,8 +113,8 @@ Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial v
     }
 
     // are their preallocated nodes available?
-    if (freeList_==NULL) {
-        for (int i=0; i<freeListInitSize_; i++) {
+    if (freeList_ == NULL) {
+        for (int i = 0; i < freeListInitSize_; i++) {
             Tree *tmp;
 
             tmp = freeList_;
@@ -124,18 +123,14 @@ Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial v
             freeListSize_++;
             freeList_->left_ = tmp;
         }
-        freeListInitSize_ = int(1.618*freeListInitSize_); // wtf?
+        freeListInitSize_ = int(1.618 * freeListInitSize_); // Why 1.618?
     }
 
+    if(freeList_ == NULL) { printf("ERROR(get): unable to allocate more nodes.\n"); return NULL; }
+
     // get node from free list
-    if (freeList_) {
-        result = freeList_;
-        freeList_ = result->left_;
-    }
-    else {
-        printf("ERROR(get): unable to allocate more nodes.\n");
-        exit(1); // TODO: this could be bad
-    }
+    Tree *result = freeList_;
+    freeList_ = result->left_;
 
     // set up initial values for fetched tree node
     result->init();
@@ -152,8 +147,6 @@ Tree *Tree::get(Op *op, double initValue=0.0) {  // some ops assume an initial v
 
 // frees up a tree.  NOTE: it will set the tree pointer you give it to NULL!
 void Tree::free(Tree *&freeMe) {
-    Tree *left, *right;
-
     if (freeMe) {
         if (!freeMe->used_) {
             printf("ERROR(free): trying to free tree: 0x%04llx that is already free.\n", addrToNum(freeMe));
@@ -162,10 +155,10 @@ void Tree::free(Tree *&freeMe) {
         freeMe->used_ = false;
         freeMe->value_ = 0.0;
 
-        right = freeMe->right_;
+        Tree * right = freeMe->right_;
         freeMe->right_ = NULL;
 
-        left = freeMe->left_;
+        Tree * left = freeMe->left_;
         freeMe->left_ = NULL;
 
         freeMe->left_ = freeList_;
@@ -192,19 +185,18 @@ void Tree::free(Tree *&freeMe) {
 
 // Gets a single node with a random operator chosen
 Tree *Tree::getRandOp() {
-    int index = randMod(numOps1+numOps2);
+    int index = randMod(numOps1 + numOps2);
     if (index < numOps1)
 	    return get(opList1[index]);
     else {
-	    index -= numOps1;
-	    return get(opList2[index]);
+	    return get(opList2[index - numOps1]);
     }
 }
 
 
 // Gets a single node with a random term
 Tree *Tree::getRandTerm() {
-    return get(opList0[randMod(numOps0)], randUnit()*3.0);
+    return get(opList0[randMod(numOps0)], randUnit() * 3.0);
 }
 
 
@@ -212,7 +204,7 @@ Tree *Tree::getRandTerm() {
 Tree *Tree::getRandOpOrTerm() {
     int index = randMod(numOpsTotal);
     if (index < numOps0) {
-	    return get(opList0[index], randUnit()*3.0);
+	    return get(opList0[index], randUnit() * 3.0);
     }
     else {
         index -= numOps0;
@@ -220,8 +212,7 @@ Tree *Tree::getRandOpOrTerm() {
             return get(opList1[index]);
         }
         else {
-            index -= numOps1;
-            return get(opList2[index]);
+            return get(opList2[index - numOps1]);
         }
     }
 }
@@ -237,11 +228,11 @@ Tree *Tree::getRandTree(int maxDepth, Tree *up, int depth) {
     else t = getRandOpOrTerm();
 
     if (t->op_->arity_>=1) {
-        t->left_ = getRandTree(maxDepth, t, depth+1);
+        t->left_ = getRandTree(maxDepth, t, depth + 1);
         t->size_ += t->left_->size_;
     }
     if (t->op_->arity_>=2) {
-        t->right_ = getRandTree(maxDepth, t, depth+1);
+        t->right_ = getRandTree(maxDepth, t, depth + 1);
         t->size_ += t->right_->size_;
     }
     t->up_ = up;
@@ -468,12 +459,8 @@ bool Tree::join(Side s, Tree *node) {
 
 
 bool Tree::check(bool hasParent) const {
-    //int l, r;
-    //unsigned int loc;
     bool ok;
     
-//    printf("checking 0x%08x\n", this);
-
     if (this==NULL) {
 	    printf("ERROR(check): node: 0x%04llx a NULL pointer and asked to check it as if it pointed to a tree!\n", addrToNum(this));
         ok = false;
@@ -545,8 +532,8 @@ bool Tree::check(bool hasParent) const {
 
 Side Tree::remove() {
     Tree *node = this;
-    int delta = size_;
 
+    int delta = size_;
     while (( node = node->up_ )) node->size_ -= delta;
 
     node = up_;
@@ -571,14 +558,12 @@ Side Tree::remove() {
 // randomly and uniformly pick any node in the tree but the root
 Tree * Tree::pickNode() {
     Tree *node = this;
+    
     int loc = randMod(size_ - 1) + 1; // pick a node number
-    //int split;
-
     if (loc>=size_) loc++;  // prevent choosing the root
 
     // find the node
     while (1) {
-    //	printf("L: %d\n", loc);
         if (node->size_ == loc) return node;
 
         int split;
@@ -594,11 +579,10 @@ Tree * Tree::pickNode() {
     }
 }
 
-// this is probably broken
+// TODO: this is probably broken
 // TODO: print trees that it picks
 Tree * Tree::pickNode( int loc ) {
     Tree *node = this;
-    //int split;
     
     if (loc>=size_) loc++;  // prevent choosing the root
 
