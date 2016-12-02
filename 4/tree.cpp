@@ -69,7 +69,7 @@ Op * randOp( int arity ) {
         case 2:
             return opList2[randMod(numOps2)];
     }
-    
+
     return NULL;
 }
 
@@ -359,6 +359,9 @@ Tree *Tree::copy(Tree *up) {
     t->left_ = (left_ ? left_->copy(t) : NULL);
     t->right_ = (right_ ? right_->copy(t) : NULL);
     t->size_ = size_;
+
+    t->fitness_ = fitness_;
+    t->error_ = error_;
 
     return t;
 }

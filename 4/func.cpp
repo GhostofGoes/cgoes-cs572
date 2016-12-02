@@ -25,6 +25,8 @@ int numXovers = 0;
 int numSelections = 0;
 int numNodeMutations = 0;
 int numLeafMutations = 0;
+double preLocalSearchError = 0.0;
+int localSearchImprovements = 0;
 
 extern int numOpsTotal;   // total number of ops
 extern int numOps0;       // number of nullary ops
@@ -36,6 +38,7 @@ extern Op **opList1;   // Unary ops
 extern Op **opList2;   // Binary ops
 
 Tree * select( vector<Tree *> population ); // Selects a tree out of the population
+Tree * localSearch( Tree * t, vector<p> data );
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
 bool isIn( vector<int> t, int val );
@@ -128,6 +131,7 @@ int main() {
     } // end generational loop
 
     // TODO: bit of local search on the best individual?
+    Tree * best = localSearch(pop[0], data);
 
 
     // **** OUTPUT ****
@@ -142,18 +146,20 @@ int main() {
         printf("Generations done:\t%d\n", GEN);
         printf("\nOversized Trees: \t%d\n", oversizedTrees);
         printf("Biggest oversize:\t%d\n", biggestOversize);
+        printf("\nPre-LocalSearch Error: %g\n", preLocalSearchError);
+        printf("Local Search Improvements: %d\n", localSearchImprovements);
         printf("\n");
     }
 
-    // Output for assignment (Note: best individual is pop[0], since we assume it's sorted)
+    // Output for assignment
     printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tElites: %d TournySize: %d\n", 
         maxGen, popSize, xover, mutateProb, elites, tournySize);
     if(STATS) {
-        printf("\nDepth: %d\tSize: %d\n", pop[0]->depth(), pop[0]->size());
-        printf("Error: %g\tFitness: %g\n\n", pop[0]->getError(), pop[0]->getFitness());
+        printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
+        printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
     }
-    printf("%g\t", pop[0]->getError());
-    pop[0]->print(); // This prints a newline at the end
+    printf("%g\t", best->getError());
+    best->print(); // This prints a newline at the end
 
 	return 0;
 } // end main
@@ -318,6 +324,32 @@ Tree * select( vector<Tree *> pop ) {
     numSelections++;
     return pop[bestIndex]; 
 } // end select
+
+
+// Cheap local search. Another way would be to try different operators until stuff is better.
+Tree * localSearch( Tree * t, vector<p> data ) {
+    //double bestFitness = t->getFitness();
+    double bestError = t->getError();
+    preLocalSearchError = bestError;
+    Tree * bestTree = t;
+    Tree * newTree = t->copy();
+
+    for( int i = 0; i < localSearchLimit; i++ ) {
+        newTree->nodeMutate();
+        newTree->mutate();
+        newTree->evalFitness(data);
+        if( newTree->getError() < bestError ) {
+            if(localSearchImprovements > 0)
+                Tree::free(bestTree);                   // Free the previous best
+            bestTree = newTree->copy();             // Replace with copy of the new best
+            //bestFitness = bestTree->getFitness();   // Save the fitness
+            bestError = bestTree->getError();       // Save the error
+            localSearchImprovements++;
+        }
+    }
+
+    return bestTree;
+} // end localSearch
 
 
 // Checks if val is in vector t
