@@ -300,14 +300,15 @@ void Tree::sameDepthCrossover( Tree * t ) {
 // Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
 Tree * select( vector<Tree *> pop ) {
-    std::vector<int> t; // The indicies of the members of the tournament
+    std::vector<int> t((size_t) tournySize, (int) -1); // The indicies of the members of the tournament
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
         do {
             temp = randMod(pop.size());
         } while( isIn(t, temp) );
-        t.push_back(temp);
+        //t.push_back(temp);
+        t[i] = temp;
     }
 
     double bestFit = pop[t[0]]->getFitness(); // Fitness of the "best" seen thus far
