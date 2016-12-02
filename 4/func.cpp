@@ -300,12 +300,13 @@ void Tree::sameDepthCrossover( Tree * t ) {
 // Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
 Tree * select( vector<Tree *> pop ) {
-    std::vector<int> t(tournySize); // The indicies of the members of the tournament
+    std::vector<int> t; // The indicies of the members of the tournament
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
-        do temp = randMod(pop.size());
-        while( isIn(t, temp) );
+        do {
+            temp = randMod(pop.size());
+        } while( isIn(t, temp) );
         t.push_back(temp);
     }
 

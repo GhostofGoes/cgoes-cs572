@@ -14,7 +14,7 @@ all:
 
 clean:
 	# Rename files to .run if you want to save them
-	rm -f $(BIN) *~ *.o *.output $(HW).tar
+	rm -f $(BIN) *~ *.o *.output *.out $(HW).tar
 
 tar:
 	tar -cvf $(HW).tar $(SRCS) makefile # goes.pdf
