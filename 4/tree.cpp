@@ -188,9 +188,8 @@ Tree *Tree::getRandOp() {
     int index = randMod(numOps1 + numOps2);
     if (index < numOps1)
 	    return get(opList1[index]);
-    else {
+    else
 	    return get(opList2[index - numOps1]);
-    }
 }
 
 
@@ -203,17 +202,14 @@ Tree *Tree::getRandTerm() {
 // Gets a single node with random op or term
 Tree *Tree::getRandOpOrTerm() {
     int index = randMod(numOpsTotal);
-    if (index < numOps0) {
+    if (index < numOps0)
 	    return get(opList0[index], randUnit() * 3.0);
-    }
     else {
         index -= numOps0;
-        if (index < numOps1) {
+        if (index < numOps1)
             return get(opList1[index]);
-        }
-        else {
+        else
             return get(opList2[index - numOps1]);
-        }
     }
 }
 
@@ -461,7 +457,7 @@ bool Tree::join(Side s, Tree *node) {
 bool Tree::check(bool hasParent) const {
     bool ok;
     
-    if (this==NULL) {
+    if (this == NULL) {
 	    printf("ERROR(check): node: 0x%04llx a NULL pointer and asked to check it as if it pointed to a tree!\n", addrToNum(this));
         ok = false;
     }
@@ -558,7 +554,7 @@ Side Tree::remove() {
 // randomly and uniformly pick any node in the tree but the root
 Tree * Tree::pickNode() {
     Tree *node = this;
-    
+
     int loc = randMod(size_ - 1) + 1; // pick a node number
     if (loc>=size_) loc++;  // prevent choosing the root
 

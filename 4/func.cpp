@@ -128,8 +128,8 @@ int main() {
         if(DUMP) { printPopAll(pop); printf("\n\n"); }
     } // end generational loop
 
-    // TODO: bit of local search on the best individual?
-    Tree * best = localSearch(pop[0], data);
+    Tree * best = pop[0];
+    if(LOCALSEARCH) best = localSearch(pop[0], data); // Bit of local search on best individual
 
 
     // **** OUTPUT ****
@@ -144,8 +144,10 @@ int main() {
         printf("Generations done:\t%d\n", GEN);
         printf("\nOversized Trees: \t%d\n", oversizedTrees);
         printf("Biggest oversize:\t%d\n", biggestOversize);
-        printf("\nPre-LocalSearch Error: %g\n", preLocalSearchError);
-        printf("Local Search Improvements: %d\n", localSearchImprovements);
+        if(LOCALSEARCH) {
+            printf("\nPre-LocalSearch Error: %g\n", preLocalSearchError);
+            printf("Local Search Improvements: %d\n", localSearchImprovements);
+        }
         printf("\n");
     }
 
@@ -274,16 +276,12 @@ void Tree::insertDepthCrossover( Tree * t ) {
 void Tree::sameDepthCrossover( Tree * t ) {
     Tree * chosen = pickNode();             // Choose a random subtree to replace with the xover'd swath
     
-
-
     Tree * swath = t->pickNode();   // Grab a random swath from the given tree
 
     
     while( chosen->depth() != swath->depth() ) {
         swath = t->pickNode();
     }
-    
-    
     
     Tree * chosenParent = chosen->up();     // Save it's parent
     Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
