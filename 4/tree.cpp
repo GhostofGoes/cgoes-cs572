@@ -193,7 +193,7 @@ void Tree::free(Tree *&freeMe) {
 // Gets a single node with a random operator chosen
 Tree *Tree::getRandOp() {
     int index = randMod(numOps1+numOps2);
-    if (index<numOps1)
+    if (index < numOps1)
 	    return get(opList1[index]);
     else {
 	    index -= numOps1;
@@ -211,12 +211,12 @@ Tree *Tree::getRandTerm() {
 // Gets a single node with random op or term
 Tree *Tree::getRandOpOrTerm() {
     int index = randMod(numOpsTotal);
-    if (index<numOps0) {
+    if (index < numOps0) {
 	    return get(opList0[index], randUnit()*3.0);
     }
     else {
         index -= numOps0;
-        if (index<numOps1) {
+        if (index < numOps1) {
             return get(opList1[index]);
         }
         else {
@@ -351,15 +351,13 @@ void Tree::printAuxPre() const
 
 
 Tree *Tree::copy(Tree *up) {
-    Tree *t;
+    Tree *t = get(op_);
 
-    t = get(op_);
     t->up_ = up;
     t->value_ = value_;
     t->left_ = (left_ ? left_->copy(t) : NULL);
     t->right_ = (right_ ? right_->copy(t) : NULL);
     t->size_ = size_;
-
     t->fitness_ = fitness_;
     t->error_ = error_;
 
@@ -391,9 +389,7 @@ double Tree::eval() {
 // Evaluates entire tree, regardless of where this is called
 // Basically, evaluates itself, then continues evaluating tree above it until reaches root
 double Tree::evalUp() {
-    Tree *node;
-
-    node = this;
+    Tree *node = this;
     while (1) {
         if (op_->name_) value_ = (op_->f_)((left_ ? left_->eval() : 0), (right_ ? right_->eval() : 0));
         if (node->up_ == NULL) return node->value_;
@@ -417,11 +413,9 @@ void Tree::printPre() const {
 // actually don't have to linearize and that would save time.
 // do that some day.
 int Tree::leftLinearize(Tree *appendix) {
-    Tree *follow, *bottomLeft;
+    Tree *follow = this;
+    Tree *bottomLeft = this;
     int size = 1;
-
-    follow = this;
-    bottomLeft = this;
 
     while (1) {
         // find bottom of the left tree
@@ -458,16 +452,14 @@ bool Tree::join(Side s, Tree *node) {
             return false;
         }
         else {
-            int delta;
-
             // attach it
             if (s==LEFT) left_ = node;
             else right_ = node;
 
             // adjust the sizes
             node->up_ = this;
-            delta = node->size_; // TODO: why do we have temp variable?
-            while ((node = node->up_)) node->size_ += delta;
+            int delta = node->size_; // Needed since node is being reassigned in while loop evaluation
+            while (( node = node->up_ )) node->size_ += delta;
         }
     }
 
@@ -476,8 +468,8 @@ bool Tree::join(Side s, Tree *node) {
 
 
 bool Tree::check(bool hasParent) const {
-    int l, r;
-    unsigned int loc;
+    //int l, r;
+    //unsigned int loc;
     bool ok;
     
 //    printf("checking 0x%08x\n", this);
@@ -488,7 +480,7 @@ bool Tree::check(bool hasParent) const {
     }
     else {
         ok = true;
-        loc = addrToNum(this);
+        unsigned int loc = addrToNum(this);
 
         // Is size positive?
         if (size_<0) {
@@ -515,7 +507,8 @@ bool Tree::check(bool hasParent) const {
         }
 
         // Is sum of sizes consistant?
-        l = r = 0;
+        int l = 0;
+        int r = 0;
         if (left_) l = left_->size_;
         if (right_) r = right_->size_;
         if (l+r+1!=size_) {
@@ -551,13 +544,10 @@ bool Tree::check(bool hasParent) const {
 
 
 Side Tree::remove() {
-    Tree *node;
+    Tree *node = this;
     int delta = size_;
-    node = this;
 
-    while ((node = node->up_)) {
-	    node->size_ -= delta;
-    }
+    while (( node = node->up_ )) node->size_ -= delta;
 
     node = up_;
     up_ = NULL;
@@ -580,19 +570,18 @@ Side Tree::remove() {
 
 // randomly and uniformly pick any node in the tree but the root
 Tree * Tree::pickNode() {
-    Tree *node;
-    int loc, split;
-    
-    // pick a node number
-    loc = randMod(size_-1)+1;
+    Tree *node = this;
+    int loc = randMod(size_ - 1) + 1; // pick a node number
+    //int split;
+
     if (loc>=size_) loc++;  // prevent choosing the root
 
     // find the node
-    node = this;
     while (1) {
     //	printf("L: %d\n", loc);
         if (node->size_ == loc) return node;
 
+        int split;
         if (node->left_) split = node->left_->size_;
         else split = 0;
 
@@ -608,16 +597,16 @@ Tree * Tree::pickNode() {
 // this is probably broken
 // TODO: print trees that it picks
 Tree * Tree::pickNode( int loc ) {
-    Tree *node;
-    int split;
+    Tree *node = this;
+    //int split;
     
     if (loc>=size_) loc++;  // prevent choosing the root
 
     // find the node
-    node = this;
     while (1) {
         if (node->size_ == loc) return node;
 
+        int split;
         if (node->left_) split = node->left_->size_;
         else split = 0;
 

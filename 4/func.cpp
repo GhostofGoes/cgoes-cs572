@@ -41,7 +41,7 @@ Tree * select( vector<Tree *> population ); // Selects a tree out of the populat
 Tree * localSearch( Tree * t, vector<p> data );
 
 bool compTrees( Tree * a, Tree * b) { return a->getFitness() < b->getFitness(); }
-bool isIn( vector<int> t, int val );
+bool isIn( const vector<int>& t, int val );
 void printPopFits( vector<Tree *> pop );
 void printPopTrees( vector<Tree *> pop );
 void printPopAll( vector<Tree *> pop );
@@ -118,10 +118,8 @@ int main() {
         } // end children loop
 
         // Select from children and replace non-elites in population
-        for( int i = elites; i < popSize; i++ ) {
+        for( int i = elites; i < popSize; i++ )
             pop[i] = select(children);
-        }
-            
 
         // Sort population by fitness
         std::sort(pop.begin(), pop.end(), compTrees); 
@@ -159,7 +157,7 @@ int main() {
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
     }
     printf("%g\t", best->getError());
-    best->print(); // This prints a newline at the end
+    best->print(); // Note: this also prints a newline at the end
 
 	return 0;
 } // end main
@@ -305,9 +303,8 @@ Tree * select( vector<Tree *> pop ) {
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
-        do {
-            temp = randMod(pop.size());
-        } while( isIn(t, temp));
+        do temp = randMod(pop.size());
+        while( isIn(t, temp) );
         t.push_back(temp);
     }
 
@@ -353,7 +350,7 @@ Tree * localSearch( Tree * t, vector<p> data ) {
 
 
 // Checks if val is in vector t
-bool isIn( vector<int> t, int val ) {
+bool isIn( const vector<int>& t, int val ) {
     for( int i : t )
         if(i == val) return true;
     return false;
