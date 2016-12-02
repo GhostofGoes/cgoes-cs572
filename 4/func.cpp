@@ -199,7 +199,7 @@ void Tree::mutate() {
     Side chosenSide = chosen->remove();     // Save the side it's on, whilst trimming from tree
     free(chosen);                           // Release old subtree to the memory pool
 
-    //chosenDepth += randMod(growthFactor);   // Grow tree by random amount
+    chosenDepth += randMod(growthFactor);   // Grow tree by random amount
     chosen = getRandTree(chosenDepth);      // Generate a random tree
     chosenParent->join(chosenSide, chosen); // Attach to random part of the tree
 

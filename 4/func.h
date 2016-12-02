@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 1
+#define STATS 0
 #define DUMP 0
 #define LOCALSEARCH 0
 
@@ -19,7 +19,7 @@ const double desiredError = 0.0001;
 const int localSearchLimit = 1000;
 
 const int maxGen = 500;     // Maximum number of generations
-const int popSize = 400;    // Population size
+const int popSize = 512;    // Population size
 
 const double xover = 0.5;       // Crossover Probability of an individual
 const double mutateProb = 0.7;  // Mutation probability of an individual
