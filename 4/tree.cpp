@@ -69,6 +69,8 @@ Op * randOp( int arity ) {
         case 2:
             return opList2[randMod(numOps2)];
     }
+    
+    return NULL;
 }
 
 

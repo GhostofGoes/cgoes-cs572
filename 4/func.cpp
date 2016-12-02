@@ -270,9 +270,9 @@ void Tree::insertDepthCrossover( Tree * t ) {
 void Tree::sameDepthCrossover( Tree * t ) {
     Tree * chosen = pickNode();             // Choose a random subtree to replace with the xover'd swath
     
-    
 
-    Tree * swath = t->pickNode()   // Grab a random swath from the given tree
+
+    Tree * swath = t->pickNode();   // Grab a random swath from the given tree
 
     
     while( chosen->depth() != swath->depth() ) {

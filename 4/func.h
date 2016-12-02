@@ -18,7 +18,7 @@ const double desiredError = 0.0001;
 const int maxGen = 500;     // Maximum number of generations
 const int popSize = 400;    // Population size
 
-const double xover = 0.6;       // Crossover Probability of an individual
+const double xover = 0.5;       // Crossover Probability of an individual
 const double mutateProb = 0.3;  // Mutation probability of an individual
 const double nodeMutateProb = 0.1;
 
@@ -29,6 +29,6 @@ const int startingDepthRange = 15;  // Range of initial depths of the trees in p
 const int minStartingDepth = 3;     // Lowest value for the range
 const int growthFactor = 2;         // Factor by which crossed over trees grow
 
-const double punishment = 0.05;     // Punishment scalar to limit tree growth (fitness += depth * punishment)
+const double punishment = 0.10;     // Punishment scalar to limit tree growth (fitness += depth * punishment)
 
 #endif
