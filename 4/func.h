@@ -22,11 +22,11 @@ const int maxGen = 500;     // Maximum number of generations
 const int popSize = 400;    // Population size
 
 const double xover = 0.5;       // Crossover Probability of an individual
-const double mutateProb = 0.3;  // Mutation probability of an individual
+const double mutateProb = 0.7;  // Mutation probability of an individual
 const double nodeMutateProb = 0.5;
 
 const int tournySize = 3;       // Tournament size
-const int elites = 10;          // Number of elites that persist between generations (NOTE: must be less tahn popSize!)
+const int elites = 20;          // Number of elites that persist between generations (NOTE: must be less tahn popSize!)
 
 const int startingDepthRange = 15;  // Range of initial depths of the trees in population
 const int minStartingDepth = 3;     // Lowest value for the range
