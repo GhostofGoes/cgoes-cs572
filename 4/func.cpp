@@ -37,7 +37,7 @@ extern Op **opList0;   // Nullary ops
 extern Op **opList1;   // Unary ops
 extern Op **opList2;   // Binary ops
 
-Tree * select( vector<Tree *> population ); // Selects a tree out of the population
+Tree * select( const vector<Tree *>& population ); // Selects a tree out of the population
 Tree * localSearch( Tree * t, vector<p> data );
 
 bool compTreeFitness( Tree * a, Tree * b ) { return a->getFitness() < b->getFitness(); }
@@ -110,7 +110,7 @@ int main() {
             else if( choose(mutateProb) )
                 children[i]->nodeMutate();
             
-            if(children[i]->size() > 2500) {
+            if(children[i]->size() > maxTreeSize) {
                 oversizedTrees++;
                 if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
                 children[i] = pop[i];
@@ -122,6 +122,16 @@ int main() {
         // Select from children and replace non-elites in population
         for( int i = elites; i < popSize; i++ )
             pop[i] = select(children);
+        
+        for( int i = 0; i < popSize; i++ ){
+            bool used = false;
+            if(children[i] == NULL) continue;
+            for( int j = 0; j < popSize; j++ ) {
+                if( children[i] == pop[j] )
+                    used = true;
+            }
+            if(!used) Tree::free(children[i]);
+        }
 
         // Sort population by fitness
         std::sort(pop.begin(), pop.end(), compTreeFitness); 
@@ -155,8 +165,8 @@ int main() {
     }
 
     // Output for assignment
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tPunishment: %g\tElites: %d TournySize: %d\n", 
-        maxGen, popSize, xover, mutateProb, punishment, elites, tournySize);
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tPunishment: %g Desired error: %g\tElites: %d TournySize: %d\n", 
+        maxGen, popSize, xover, mutateProb, punishment, desiredError, elites, tournySize);
     if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
@@ -294,15 +304,13 @@ void Tree::sameDepthCrossover( Tree * t ) {
 
 // Selects a chromosome out of population using simple tournament selection
 // Most of this code came from Assignment 3 population.cpp
-Tree * select( vector<Tree *> pop ) {
+Tree * select( const vector<Tree *>& pop ) {
     std::vector<int> t((size_t) tournySize, (int) -1); // The indicies of the members of the tournament
 
     for( int i = 0; i < tournySize; i++ ) {
         int temp;
-        do {
-            temp = randMod(pop.size());
-        } while( isIn(t, temp) );
-        //t.push_back(temp);
+        do { temp = randMod(pop.size()); } 
+        while( isIn(t, temp) );
         t[i] = temp;
     }
 

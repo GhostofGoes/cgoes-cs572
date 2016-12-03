@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 0
+#define STATS 1
 #define DUMP 0
 #define LOCALSEARCH 0
 
@@ -31,7 +31,8 @@ const int elites = 20;          // Number of elites that persist between generat
 const int startingDepthRange = 15;  // Range of initial depths of the trees in population
 const int minStartingDepth = 3;     // Lowest value for the range
 const int growthFactor = 2;         // Factor by which crossed over trees grow
+const int maxTreeSize = 3500;
 
-const double punishment = 0.10;     // Punishment scalar to limit tree growth (fitness += depth * punishment)
+const double punishment = 0.08;     // Punishment scalar to limit tree growth (fitness += depth * punishment)
 
 #endif
