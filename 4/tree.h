@@ -130,11 +130,10 @@ public:
 
     void mutate();
     void nodeMutate( Tree * node=NULL );
-    void leafMutate( Tree * node=NULL );
 
     void crossover( Tree * t );
-    void insertDepthCrossover( Tree * t );
-    void sameDepthCrossover( Tree * t );
+    void insertDepthCrossover( Tree * t );  // BUGGY
+    void sameDepthCrossover( Tree * t );    // UNFINISHED
 
 
 };

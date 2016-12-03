@@ -110,7 +110,7 @@ int main() {
             else if( choose(mutateProb) )
                 children[i]->nodeMutate();
             
-            if(children[i]->size() > 1500) {
+            if(children[i]->size() > 2500) {
                 oversizedTrees++;
                 if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
                 children[i] = pop[i];
@@ -161,7 +161,7 @@ int main() {
         printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
     }
-    printf("%g\t", best->getError());
+    printf("%f\t", best->getError());
     best->print(); // Note: this also prints a newline at the end
 
 	return 0;
@@ -208,6 +208,7 @@ void Tree::mutate() {
 } // end mutate
 
 
+// TODO: leaf-based mutation
 void Tree::nodeMutate( Tree * node ) {
     if(node == NULL) node = this;
 
@@ -231,11 +232,6 @@ void Tree::nodeMutate( Tree * node ) {
 
     numNodeMutations++;
 } // end nodeMutate
-
-
-void Tree::leafMutate( Tree * node ) {
-    numLeafMutations++;
-} // end leafMutate
 
 
 // Crosses over a random swath of the given tree with the current tree
@@ -275,13 +271,12 @@ void Tree::insertDepthCrossover( Tree * t ) {
 } // end insertDepthCrossover
 
 
+// TODO: UNFINISHED!
 // Variation of crossover that only crosses over subtrees OF the same depth (e.g, the depths of the subtrees match)
 void Tree::sameDepthCrossover( Tree * t ) {
     Tree * chosen = pickNode();             // Choose a random subtree to replace with the xover'd swath
-    
     Tree * swath = t->pickNode();   // Grab a random swath from the given tree
 
-    
     while( chosen->depth() != swath->depth() ) {
         swath = t->pickNode();
     }
