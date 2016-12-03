@@ -174,7 +174,7 @@ int main() {
         printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
     }
-    printf("%f\t", best->getError());
+    printf("%g\t", best->getError());
     best->print(); // Note: this also prints a newline at the end
 
 	return 0;
