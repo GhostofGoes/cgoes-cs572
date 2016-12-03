@@ -123,12 +123,15 @@ int main() {
         for( int i = elites; i < popSize; i++ )
             pop[i] = select(children);
         
+        // Memory management
         for( int i = 0; i < popSize; i++ ){
             bool used = false;
             if(children[i] == NULL) continue;
             for( int j = 0; j < popSize; j++ ) {
-                if( children[i] == pop[j] )
+                if( children[i] == pop[j] ) {
                     used = true;
+                    break;
+                }
             }
             if(!used) Tree::free(children[i]);
         }
