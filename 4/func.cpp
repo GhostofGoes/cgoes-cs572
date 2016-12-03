@@ -155,8 +155,8 @@ int main() {
     }
 
     // Output for assignment
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tElites: %d TournySize: %d\n", 
-        maxGen, popSize, xover, mutateProb, elites, tournySize);
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tPunishment: %g\tElites: %d TournySize: %d\n", 
+        maxGen, popSize, xover, mutateProb, punishment, elites, tournySize);
     if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
