@@ -2,8 +2,8 @@ BIN  = func
 HW   = pas4
 CC   = g++
 SRCS = $(BIN).cpp $(BIN).h opList.cpp opList.h tree.cpp tree.h rand.h rand.cpp
-LIBS = -lm $(BIN).cpp opList.cpp tree.cpp rand.cpp
-CCFLAGS = -O3 -std=c++11
+LIBS = $(BIN).cpp opList.cpp tree.cpp rand.cpp
+CCFLAGS = -Ofast -std=c++11
 
 $(BIN): $(SRCS)
 	$(CC) $(CCFLAGS) $(LIBS) -o $(BIN)
