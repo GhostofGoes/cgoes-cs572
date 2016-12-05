@@ -18,7 +18,7 @@ typedef struct {
 const double desiredError = 0.0001;
 const int localSearchLimit = 1000;
 
-const int maxGen = 500;     // Maximum number of generations
+const int maxGen = 520;     // Maximum number of generations
 const int popSize = 1024;    // Population size
 
 const double xover = 0.5;       // Crossover Probability of an individual
@@ -32,7 +32,5 @@ const int startingDepthRange = 15;  // Range of initial depths of the trees in p
 const int minStartingDepth = 3;     // Lowest value for the range
 const int growthFactor = 2;         // Factor by which crossed over trees grow
 const int maxTreeSize = 3500;
-
-const double punishment = 0.08;     // Punishment scalar to limit tree growth (fitness += depth * punishment)
 
 #endif

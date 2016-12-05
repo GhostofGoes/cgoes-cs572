@@ -28,18 +28,20 @@ int numLeafMutations = 0;
 double preLocalSearchError = 0.0;
 int localSearchImprovements = 0;
 
+// Used for nodeMutate
 extern int numOpsTotal;   // total number of ops
 extern int numOps0;       // number of nullary ops
 extern int numOps1;       // number of unary ops
 extern int numOps2;       // number of binary ops
-
 extern Op **opList0;   // Nullary ops
 extern Op **opList1;   // Unary ops
 extern Op **opList2;   // Binary ops
 
-Tree * select( const vector<Tree *>& population ); // Selects a tree out of the population
-Tree * localSearch( Tree * t, vector<p> data );
 
+Tree * select( const vector<Tree *>& population );  // Selects a tree out of the population
+Tree * localSearch( Tree * t, vector<p> data );     // Does a simple local search on a individual tree
+
+// Simple helper functions
 bool compTreeFitness( Tree * a, Tree * b ) { return a->getFitness() < b->getFitness(); }
 bool compTreeError( Tree * a, Tree * b ) { return a->getError() < b->getError(); }
 bool isIn( const vector<int>& t, int val );
@@ -68,8 +70,8 @@ int main() {
         data.push_back(point);
     }
     
-    // Initialize Heckendorn's library (see tree.h, and testTreeLibrary in tree.cpp)
-    initOps(10); // TODO: why 10? but it works so i don't question it
+    // Initialize Tree library (see tree.h, and testTreeLibrary in tree.cpp)
+    initOps(10); // 10?
     addOpOrTerm((char * )"+", 2, addOp);
     addOpOrTerm((char * )"-", 2, subOp);
     addOpOrTerm((char * )"*", 2, mulOp);
@@ -85,7 +87,7 @@ int main() {
         pop[i]->evalFitness(data);
     }
 
-    if(DUMP) {
+    if(DUMP) { // For debugging
         printf("*** STARTING POPULATION ***\n");
         printPopAll(pop);
         printf("\n\n\n\n *** Evolution Phase *** \n");
@@ -98,23 +100,22 @@ int main() {
     int GEN;
     for( GEN = 0; GEN < maxGen; GEN++ ) {
         for( int i = 0; i < popSize; i++ ) {
-            //children[i] = select(pop)->copy();
             children[i] = pop[i]->copy();
 
             if( choose(xover) )          // Crossover
                 children[i]->crossover(select(pop)); // Select individual out of current population to crossover with
             
-            // TODO: variety of mutation types (enum), randomly choose
             if( choose(mutateProb) )     // Mutation
                 children[i]->mutate();
             else if( choose(mutateProb) )
                 children[i]->nodeMutate();
             
-            if(children[i]->size() > maxTreeSize) {
+            // Check if tree is too big. If not, evaluate fitness.
+            if( children[i]->size() > maxTreeSize ) {
                 oversizedTrees++;
-                if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
+                if( children[i]->size() > biggestOversize ) biggestOversize = children[i]->size();
+                if( children[i]->getUsed() ) Tree::free(children[i]);
                 children[i] = pop[i];
-                // TODO: check if used_ then free
             } else {
                 children[i]->evalFitness(data); // Update fitnesses of the modified children
             }
@@ -126,26 +127,25 @@ int main() {
         
         // Memory management
         for( int i = 0; i < popSize; i++ ){
-            if(children[i] == NULL || !children[i]->getUsed()) continue;
+            if( children[i] == NULL || !children[i]->getUsed() ) continue;
             bool used = false;
             
-            for( int j = 0; j < popSize; j++ ) {
-                if( children[i] == pop[j] ) {
-                    used = true;
-                    break;
-                }
-            }
-
-            if(!used) Tree::free(children[i]);
+            for( int j = 0; j < popSize; j++ )
+                if( children[i] == pop[j] ) { used = true; break; }
+            if( !used ) 
+                Tree::free(children[i]);
         }
 
         // Sort population by fitness
         std::sort(pop.begin(), pop.end(), compTreeFitness); 
 
-        if(pop[0]->getError() < desiredError) break;
-        if(DUMP) { printPopAll(pop); printf("\n\n"); }
+        // End early if error is "good enough"
+        if( pop[0]->getError() < desiredError ) break;
+        
+        if(DUMP) { printPopAll(pop); printf("\n\n"); }  // For debugging
     } // end generational loop
 
+    // Get best individual in population based on Error (and not fitness!)
     std::sort(pop.begin(), pop.end(), compTreeError);
     Tree * best = pop[0];
     if(LOCALSEARCH) best = localSearch(pop[0], data); // Bit of local search on best individual
@@ -171,8 +171,8 @@ int main() {
     }
 
     // Output for assignment
-    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tPunishment: %g Desired error: %g\tElites: %d TournySize: %d\n", 
-        maxGen, popSize, xover, mutateProb, punishment, desiredError, elites, tournySize);
+    printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tDesired error: %g\tElites: %d TournySize: %d\n", 
+        maxGen, popSize, xover, mutateProb, desiredError, elites, tournySize);
     if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", best->depth(), best->size());
         printf("Error: %g\tFitness: %g\n\n", best->getError(), best->getFitness());
@@ -195,15 +195,14 @@ void Tree::evalFitness( const std::vector <p> &data ) {
     }
 
     error_ = fitness_;
-    //fitness_ += size_ * punishment; // Punish large trees. Assumes size is current, may need to update.
-    //fitness_ += pow(size_ * 1.2, 2) / 2500;
-    fitness_ += pow(2.0 * size_, 2) / 4000;
+    fitness_ += pow(2.0 * size_, 2) / 4000; // Punish large trees. Assumes size is current, may need to update.
 
     numFitnessEvals++;
 } // end fitness
 
 
 // Generate a random tree, and attach it to a random part of the tree (destructive but exploratory)
+// TODO: variety of mutation types (enum), randomly choose
 void Tree::mutate() {
     // Could always save the tree for later (instead of free)
     //      - Perhaps a pool for "userful" trees
@@ -351,9 +350,8 @@ Tree * localSearch( Tree * t, vector<p> data ) {
         newTree->evalFitness(data);
         if( newTree->getError() < bestError ) {
             if(localSearchImprovements > 0)
-                Tree::free(bestTree);                   // Free the previous best
+                Tree::free(bestTree);               // Free the previous best
             bestTree = newTree->copy();             // Replace with copy of the new best
-            //bestFitness = bestTree->getFitness();   // Save the fitness
             bestError = bestTree->getError();       // Save the error
             localSearchImprovements++;
         }
