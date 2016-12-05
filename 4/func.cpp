@@ -114,6 +114,7 @@ int main() {
                 oversizedTrees++;
                 if(children[i]->size() > biggestOversize) biggestOversize = children[i]->size();
                 children[i] = pop[i];
+                // TODO: check if used_ then free
             } else {
                 children[i]->evalFitness(data); // Update fitnesses of the modified children
             }
@@ -125,14 +126,16 @@ int main() {
         
         // Memory management
         for( int i = 0; i < popSize; i++ ){
+            if(children[i] == NULL || !children[i]->getUsed()) continue;
             bool used = false;
-            if(children[i] == NULL) continue;
+            
             for( int j = 0; j < popSize; j++ ) {
                 if( children[i] == pop[j] ) {
                     used = true;
                     break;
                 }
             }
+
             if(!used) Tree::free(children[i]);
         }
 
@@ -192,7 +195,9 @@ void Tree::evalFitness( const std::vector <p> &data ) {
     }
 
     error_ = fitness_;
-    fitness_ += size_ * punishment; // Punish large trees. Assumes size is current, may need to update.
+    //fitness_ += size_ * punishment; // Punish large trees. Assumes size is current, may need to update.
+    //fitness_ += pow(size_ * 1.2, 2) / 2500;
+    fitness_ += pow(2.0 * size_, 2) / 4000;
 
     numFitnessEvals++;
 } // end fitness

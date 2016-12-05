@@ -122,6 +122,7 @@ public:
     double value() const { return value_; }         // value accessor
     double getFitness() const { return fitness_; }  // fitness accessor
     double getError() const { return error_; }      // error accessor
+    bool getUsed() const { return used_; }          // used accessor
 
 
     // Evolutionary components 

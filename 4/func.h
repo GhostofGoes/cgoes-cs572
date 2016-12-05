@@ -5,7 +5,7 @@
 #include "rand.h"
 
 #define TESTING 0
-#define STATS 1
+#define STATS 0
 #define DUMP 0
 #define LOCALSEARCH 0
 
