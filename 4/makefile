@@ -10,7 +10,7 @@ $(BIN): $(SRCS)
 
 clean:
 	# Rename files to .run if you want to save them
-	rm -f $(BIN) *~ *.o *.output *.out $(HW).tar
+	rm -f $(BIN) *~ *.o *.output *.out $(HW).tar *.s
 
 tar:
 	tar -cvf $(HW).tar $(SRCS) makefile # goes.pdf
@@ -24,6 +24,5 @@ profile: $(SRCS)
 	make clean
 	$(CC) $(CCFLAGS) -p -g $(LIBS) -o $(BIN)
 
-run:
-	make
-	time ./test.sh
+assembly: $(SRCS)
+	$(CC) $(CCFLAGS) -S $(LIBS)
