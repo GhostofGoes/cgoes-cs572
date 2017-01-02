@@ -2,7 +2,7 @@
 // Author: 		Christopher Goes
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
 // License:		MITv2
-// Objective of the assignment: Given inputs to a function and results of those inputs, evolve a function that gives the same results the original
+// Objective:   Given inputs to a function and results of those inputs, evolve a function that gives the same results the original
 
 #include <iostream>
 #include <cstdio>
@@ -34,6 +34,9 @@ int main() {
     addOpOrTerm((char * )NULL, 0, constOp);  // WARNING: null name means it is a constant!!!!
 
     // TODO: do we need to pass by reference or value for CUDA?
+    // TODO: use speedup from CUDA to evolve population settings, e.g mutation rate (so a meta-evolution)
+    // TODO: build my own CUDA-compatible tree library
+    // TODO: CUDA random library
 
     vector<p> data = ingestData();  // Input of dataset a list of pairs of real numbers x, f(x)
     Population p1(data);                // Create a population
@@ -41,17 +44,12 @@ int main() {
     int p1gens = p1.evolve();
     std::cout << "EVOLVED!!" << std::endl;
     Chromosome p1best = p1.getBest();
+
     if(LOCALSEARCH) p1best.localSearch( 1000, data ); 
 
 	if(STATS) {
         p1.printTotalStats();
         printf("P1 - Number of Generations done:\t%d\n", p1gens);
-    }
-
-    // Output for assignment
-    //printf("MaxGen: %d\tPopSize: %d\tXoverProb: %g\tMutateProb: %g\tDesired error: %g\tElites: %d TournySize: %d\n", 
-     //   maxGen, popSize, xover, mutateProb, desiredError, elites, tournySize);
-    if(STATS) {
         printf("\nDepth: %d\tSize: %d\n", p1best.depth(), p1best.size());
         printf("Error: %g\tFitness: %g\n\n", p1best.error(), p1best.fitness());
     }
