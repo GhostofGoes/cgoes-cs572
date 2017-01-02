@@ -1,10 +1,11 @@
-// Filename: 	localsearch.cpp
+// Project:		Assignment 1 - Local Search
 // Author: 		Christopher Goes
 // Course: 		CS 572 Evolutionary Computation
 // Semester: 	Fall 2016
-// Description:	Assignment 1 - Local Search
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
-// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2.
+// License:		MITv2
+// If you're in the class, don't copy the code
+// You're welcome to use it to get un-stuck, or learn things like I/O, C++ syntax, libary functions, etc
 
 #include <stdio.h>
 #include <iostream>

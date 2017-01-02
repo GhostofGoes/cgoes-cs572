@@ -1,11 +1,11 @@
-// Filename: 	decipher.cpp
+// Project:		Assignment 2 - Genetic Algorithms - Breaking a simple Substitution Cipher
 // Author: 		Christopher Goes
 // Course: 		CS 572 Evolutionary Computation
 // Semester: 	Fall 2016
-// Description:	Assignment 2 - Genetic Algorithms - Breaking a simple Substitution Cipher
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
-// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2 once the semester is over.
-// if you're in the class, don't copy the code
+// License:		MITv2
+// If you're in the class, don't copy the code
+// You're welcome to use it to get un-stuck, or learn things like I/O, C++ syntax, libary functions, etc
 
 #include <fstream>
 #include "evolve.h"

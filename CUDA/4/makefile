@@ -1,5 +1,4 @@
 BIN  = func
-HW   = pas4
 CC   = g++
 SRCS = $(BIN).cpp $(BIN).h opList.cpp opList.h tree.cpp tree.h rand.h rand.cpp population.cpp population.h chromosome.cpp chromosome.h
 LIBS = $(BIN).cpp opList.cpp tree.cpp rand.cpp population.cpp chromosome.cpp
@@ -13,8 +12,8 @@ clean:
 	rm -f $(BIN) *~ *.o *.output *.out $(HW).tar *.s
 
 tar:
-	tar -cvf $(HW).tar $(SRCS) makefile # goes.pdf
-	ls -l $(HW).tar
+	tar -cvf $(BIN).tar $(SRCS) makefile
+	ls -l $(BIN).tar
 
 test: $(SRCS)
 	make clean

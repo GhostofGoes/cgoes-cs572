@@ -3,11 +3,11 @@
 // Course: 		CS 572 Evolutionary Computation
 // Semester: 	Fall 2016
 // Github:		https://github.com/GhostofGoes/cgoes-cs572
-// License:		AGPLv3 until end of Fall 2016 semester. Then will convert to MITv2 once the semester is over.
+// License:		MITv2
 // If you're in the class, don't copy the code :)
-// You're welcome to use it to learn silly things like I/O, C++ syntax, libary functions, etc.
+// You're welcome to use it to learn silly things like I/O, C++ syntax, libary functions, etc
 
-// Objective of the assignment: Given inputs to a function and results of those inputs, evolve a function that gives the same results the original
+// Objective:   Given inputs to a function and results of those inputs, evolve a function that gives the same results the original
 
 #include <iostream>
 #include <cstdio>
