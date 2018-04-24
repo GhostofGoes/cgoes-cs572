@@ -1,12 +1,10 @@
-# CS572 - Evolutionary Computation
-Code and notes for Robert Heckendorn's CS 572 - Evolutionary Computation course at the University of Idaho Fall 2016.
+# Evolutionary Computation
+Code and notes for Robert Heckendorn's excellent Evolutionary Computation course at the University of Idaho Fall 2016.
 
-[Course Website](http://marvin.cs.uidaho.edu/Teaching/CS472/index.html)
+# A note on plagarism.
 
+If you are currently in the class: DO NOT USE THIS CODE IN YOUR PROJECT. MIT License does not enable its use in a school assignment. Plagiarizing will get you suspended or expelled, I've seen it happen before. You're welcome to read it and fill gaps in understanding in C++, such as function calls and syntax, not the algorithms and logical structure of the program.
 
 # License
-
-MIT. Use as you please, if you're feeling generous give me a shoutout.
-
-Please do not copy this for your homework. You're welcome to read it and learn from it, but don't copy it. 
-That's not learning, that's plagarism.
+    Code and documentation copyright 2015-2018 Christopher Goes.
+    All code and documentation released under the MIT License.
